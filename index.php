@@ -53,7 +53,7 @@ $hasRightSidebar = (bool) $this->countModules('sidebar-right');
 $activeMenu = $app->getMenu()->getActive();
 $defaultMenu = $app->getMenu()->getDefault();
 $isHome = $activeMenu && $defaultMenu && $activeMenu->id === $defaultMenu->id;
-$pageTheme = $this->params->get('pageTheme', 'dark') === 'light' ? 'light' : 'dark';
+$pageTheme = $this->params->get('pageTheme', 'light') === 'light' ? 'light' : 'dark';
 $showHomeComponent = (bool) $this->params->get('showHomeComponent', 0);
 $showMain = !$isHome || $showHomeComponent || (bool) $this->countModules('breadcrumb or main-top or sidebar-left or sidebar-right or main-bottom');
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');

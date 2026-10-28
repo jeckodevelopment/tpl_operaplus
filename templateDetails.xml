@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.11.0</version>
+  <version>1.12.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Opera+ / Jecko Development</author>
   <authorUrl>https://opera.plus</authorUrl>
@@ -51,7 +51,7 @@
       <field name="footerText" type="textarea" label="Footer - claim finale" default="Opera+ · L’opera lirica raccontata al grande pubblico" filter="string" />
     </fieldset>
     <fieldset name="appearance" label="TPL_OPERAPLUS_APPEARANCE">
-      <field name="pageTheme" type="list" label="Tema cromatico della pagina" description="Duplica lo stile del template e assegna Tema chiaro ai menu delle pagine interne, lasciando scuro per la homepage." default="dark"><option value="dark">Scuro · homepage</option><option value="light">Chiaro · pagine interne</option></field>
+      <field name="pageTheme" type="list" label="Tema cromatico della pagina" description="Duplica lo stile del template e assegna Tema chiaro ai menu delle pagine interne, lasciando scuro per la homepage." default="light"><option value="dark">Scuro · homepage</option><option value="light">Chiaro · pagine interne</option></field>
       <field name="accent" type="color" label="TPL_OPERAPLUS_ACCENT" default="#b78e63" />
       <field name="background" type="color" label="TPL_OPERAPLUS_BACKGROUND" default="#171316" />
       <field name="containerWidth" type="number" label="TPL_OPERAPLUS_CONTAINER" default="1200" min="900" max="1600" step="20" />
@@ -89,6 +89,9 @@
       <field name="opGuide10" type="note" class="alert alert-info" label="⑨ Menu laterale multilivello" description="Modulo Menu nella posizione sidebar-right o sidebar-left; Mostra voci sottomenu = Sì; Livello finale = Tutti. Le frecce discrete espandono ogni livello; i link mantengono la navigazione. Il ramo attivo si apre automaticamente. Non usare la classe op-mega nella sidebar." />
       <field name="opGuide11" type="note" class="alert alert-info" label="⑩ Campo password" description="Nei moduli Login della sidebar il template nasconde il pulsante/icona della password. Il campo resta utilizzabile e i dati del modulo Joomla non vengono modificati." />
       <field name="opGuide12" type="note" class="alert alert-info" label="⑪ Navigazione v1.9: frecce e spaziature" description="Menu orizzontale: il simbolo più è sostituito da una freccia discreta, cliccabile e ruotata quando il sottomenu è aperto. Mega menu: nessun indicatore sulle intestazioni delle colonne. Sidebar: sottomenu compatti, senza margini verticali ampi. Non occorrono classi aggiuntive nei moduli Menu." />
+    </fieldset>
+    <fieldset name="op_guide_112" label="Guida v1.12 · Pagine e moduli">
+      <field name="opGuide112" type="note" class="alert alert-info" label="Aspetto pagine e navigazione" description="Tema predefinito: Chiaro. Se aggiorni uno stile già salvato, seleziona Chiaro manualmente nella scheda Aspetto. Header/hero/footer mantengono il fondo scuro. Pre-footer: modulo Personalizzato in posizione pre-footer, con titolo H2, testo P e link class op-button; sfondo avorio tenue. Nei moduli utenti Joomla (reset, remind, login, registrazione) margini e pulsanti sono automatici. Il mega menu orizzontale viene allineato dal JavaScript con 32px di margine dal bordo schermo. Vedi GUIDA_STILI.md nel pacchetto per esempi e indicazioni aggiuntive." />
     </fieldset>
   </fields></config>
 </extension>

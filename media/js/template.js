@@ -117,23 +117,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Opera+ 1.10.0 — align mega panels within the viewport, even when the trigger is the last item.
+// v1.12 — One positioning controller, using viewport coordinates rather than conflicting margins.
 document.addEventListener('DOMContentLoaded', () => {
- const panels = document.querySelectorAll('.op-navigation li.op-has-mega > ul, .op-navigation li.op-has-mega > .mod-menu__sub');
- const align = () => {
-  if (window.matchMedia('(max-width: 900px)').matches) { panels.forEach(p => p.style.removeProperty('margin-left')); return; }
-  panels.forEach(panel => {
-   panel.style.removeProperty('margin-left');
-   const rect = panel.getBoundingClientRect();
-   const gutter = 24;
-   const shift = rect.left < gutter ? gutter - rect.left : rect.right > innerWidth - gutter ? innerWidth - gutter - rect.right : 0;
-   if (shift) panel.style.marginLeft = `${shift}px`;
+  const panels = Array.from(document.querySelectorAll('.op-navigation li.op-has-mega > ul, .op-navigation li.op-has-mega > .mod-menu__sub'));
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const position = () => {
+    panels.forEach(panel => {
+      if (!desktop()) {
+        ['position','left','right','top','width','max-width','margin-left','transform'].forEach(key => panel.style.removeProperty(key));
+        return;
+      }
+      const owner = panel.parentElement;
+      const rect = owner.getBoundingClientRect();
+      const gutter = 32;
+      const viewportWidth = document.documentElement.clientWidth;
+      const preferred = Math.min(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--op-mega-width')) || 760, viewportWidth - gutter * 2);
+      const left = Math.max(gutter, Math.min(rect.left + rect.width / 2 - preferred / 2, viewportWidth - gutter - preferred));
+      panel.style.setProperty('position','fixed','important');
+      panel.style.setProperty('left', left + 'px','important');
+      panel.style.setProperty('right','auto','important');
+      panel.style.setProperty('top', rect.bottom + 'px','important');
+      panel.style.setProperty('width',preferred+'px','important');
+      panel.style.setProperty('max-width','calc(100vw - 64px)','important');
+      panel.style.setProperty('margin-left','0','important');
+      panel.style.setProperty('transform','none','important');
+    });
+  };
+  position();
+  window.addEventListener('resize', position, {passive:true});
+  window.addEventListener('scroll', position, {passive:true});
+  document.querySelectorAll('.op-navigation li.op-has-mega').forEach(item => {
+    item.addEventListener('mouseenter',position);
+    item.addEventListener('focusin',position);
+    item.querySelectorAll('.op-submenu-toggle').forEach(button=>button.addEventListener('click',()=>requestAnimationFrame(position)));
   });
- };
- window.addEventListener('resize', align, {passive:true});
- document.querySelectorAll('.op-navigation li.op-has-mega').forEach(li=>{li.addEventListener('mouseenter',align);li.addEventListener('focusin',align);li.querySelectorAll('.op-submenu-toggle').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(align)));});
- align();
 });
-
-/* Keep mega menu within viewport, including rightmost and lone parent items. */
-document.addEventListener('DOMContentLoaded',()=>{const adjust=()=>{document.querySelectorAll('.op-navigation li.op-has-mega > ul,.op-navigation li.op-has-mega > .mod-menu__sub').forEach(panel=>{panel.style.removeProperty('margin-left');if(window.innerWidth<=900)return;const r=panel.getBoundingClientRect(),gut=32;const delta=r.right>window.innerWidth-gut?window.innerWidth-gut-r.right:r.left<gut?gut-r.left:0;if(delta)panel.style.setProperty('margin-left',delta+'px','important');});};adjust();window.addEventListener('resize',adjust,{passive:true});document.querySelectorAll('.op-navigation li.op-has-mega').forEach(node=>node.addEventListener('mouseenter',()=>requestAnimationFrame(adjust)));});

@@ -143,3 +143,11 @@ Pubblica il modulo nativo **Percorso di navigazione** in posizione `breadcrumb`,
 
 ### Mega menu
 Il JS corregge automaticamente la posizione dei pannelli quando la voce padre è vicina al bordo destro della finestra, mantenendo un margine minimo di 32 px.
+
+
+## v1.12.0 — Fondi chiari, moduli Joomla e mega menu
+- Il tema predefinito è **Chiaro**: il contenuto della homepage e delle pagine interne è avorio; header, hero e footer restano scuri. Nelle opzioni dello stile `Tema cromatico della pagina` scegli Scuro solo dove necessario. Negli stili già esistenti il valore salvato resta invariato: seleziona manualmente Chiaro.
+- Il modulo `pre-footer` usa una fascia chiara `#eee7e0`, con titoli scuri e pulsanti bordeaux squadrati. Per la CTA usa un modulo Personalizzato con H2, paragrafo e link `class="op-button"`.
+- I componenti Joomla utenti (reset password, password dimenticata, accesso, registrazione, profilo) hanno distanze tra input e pulsanti, campi e controlli coerenti. Previsti anche form, paginazione e pulsanti standard.
+- Il mega menu desktop usa coordinate viewport: margine minimo **32px** da entrambi i lati, incluso il menu all'estrema destra. I controlli precedenti di allineamento sono stati eliminati.
+- Quando vengono aggiunte o modificate classi CSS, aggiornare sempre questa guida e quella del backend.

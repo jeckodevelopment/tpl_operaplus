@@ -47,6 +47,58 @@ $assetUrl = static function ($value) {
 };
 $heroLogo = $assetUrl($this->params->get('heroLogo', '')) ?: $logo;
 $footerLogo = $assetUrl($this->params->get('footerLogo', '')) ?: $logo;
+// Branding: favicon and Open Graph. Use Joomla's document metadata API to avoid duplicates.
+$mediaFile = static function ($value): string {
+    // Joomla's media field may return an image URL with a fragment or JSON payload.
+    $value = trim((string) $value);
+    if ($value !== '' && $value[0] === '{') {
+        $data = json_decode($value, true);
+        $value = is_array($data) ? (string) ($data['imagefile'] ?? $data['file'] ?? '') : '';
+    }
+    return trim(preg_replace('/#.*$/', '', $value));
+};
+$absoluteMediaUrl = static function ($value) use ($mediaFile): string {
+    $value = $mediaFile($value);
+    if ($value === '' || preg_match('~^(?:javascript:|data:|file:)~i', $value)) { return ''; }
+    if (preg_match('~^https?://~i', $value)) { return $value; }
+    if (str_starts_with($value, '//')) { return Uri::getInstance()->getScheme() . ':' . $value; }
+    return rtrim(Uri::root(), '/') . '/' . ltrim($value, '/');
+};
+$faviconValue = (string) ($this->params->get('faviconFile', '') ?: $this->params->get('faviconPath', ''));
+$faviconUrl = $absoluteMediaUrl($faviconValue);
+$faviconPath = parse_url($faviconUrl, PHP_URL_PATH) ?: '';
+$faviconExt = strtolower(pathinfo($faviconPath, PATHINFO_EXTENSION));
+if (!in_array($faviconExt, ['ico', 'png', 'svg', 'gif'], true)) { $faviconUrl = ''; }
+$faviconMime = ['ico' => 'image/x-icon', 'png' => 'image/png', 'svg' => 'image/svg+xml', 'gif' => 'image/gif'][$faviconExt] ?? 'image/x-icon';
+$ogImage = '';
+// Preserve metadata already provided by SEO plugins or Joomla extensions.
+if (!$this->getMetaData('og:image', 'property')) {
+    $menuImage = '';
+    if ($activeMenuForSeo = $app->getMenu()->getActive()) {
+        $menuParams = $activeMenuForSeo->getParams();
+        // Explicit OG image takes priority over the native menu image.
+        $menuImage = (string) ($menuParams->get('og_image', '') ?: $menuParams->get('menu_image', ''));
+    }
+    $ogImage = $absoluteMediaUrl($menuImage);
+    if ($ogImage === '' && $app->input->getCmd('option') === 'com_content' && $app->input->getCmd('view') === 'article') {
+        $articleId = $app->input->getInt('id');
+        if ($articleId > 0) {
+            $db = $app->getContainer()->get(\Joomla\Database\DatabaseInterface::class);
+            $query = $db->getQuery(true)
+                ->select($db->quoteName('images'))
+                ->from($db->quoteName('#__content'))
+                ->where($db->quoteName('id') . ' = ' . (int) $articleId);
+            $db->setQuery($query);
+            $imagesJson = $db->loadResult();
+            if ($imagesJson) {
+                $images = json_decode((string) $imagesJson, true);
+                $ogImage = $absoluteMediaUrl($images['image_intro'] ?? $images['image_fulltext'] ?? '');
+            }
+        }
+    }
+    if ($ogImage === '') { $ogImage = $absoluteMediaUrl($this->params->get('defaultOgImage', '')); }
+    if ($ogImage !== '') { $this->setMetaData('og:image', $ogImage, 'property'); }
+}
 $hasSidebar = $this->countModules('sidebar-left or sidebar-right');
 $hasLeftSidebar = (bool) $this->countModules('sidebar-left');
 $hasRightSidebar = (bool) $this->countModules('sidebar-right');
@@ -62,6 +114,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <html lang="<?php echo htmlspecialchars($this->language, ENT_QUOTES, 'UTF-8'); ?>" dir="<?php echo htmlspecialchars($this->direction, ENT_QUOTES, 'UTF-8'); ?>">
 <head>
 <jdoc:include type="metas" />
+<?php if ($faviconUrl !== '') : ?><link rel="icon" href="<?php echo $e($faviconUrl); ?>" type="<?php echo $e($faviconMime); ?>" /><?php endif; ?>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />

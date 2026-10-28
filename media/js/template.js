@@ -117,38 +117,40 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// v1.12 — One positioning controller, using viewport coordinates rather than conflicting margins.
+// v1.13 — single megamenu positioner. Use absolute coordinates relative to
+// the actual offsetParent; fixed menus are unreliable under transformed ancestors.
 document.addEventListener('DOMContentLoaded', () => {
-  const panels = Array.from(document.querySelectorAll('.op-navigation li.op-has-mega > ul, .op-navigation li.op-has-mega > .mod-menu__sub'));
   const desktop = () => window.matchMedia('(min-width: 901px)').matches;
-  const position = () => {
+  const panels = [...document.querySelectorAll('.op-navigation li.op-has-mega > ul, .op-navigation li.op-has-mega > .mod-menu__sub')];
+  const reposition = () => {
     panels.forEach(panel => {
       if (!desktop()) {
-        ['position','left','right','top','width','max-width','margin-left','transform'].forEach(key => panel.style.removeProperty(key));
+        ['position','left','right','top','width','max-width','margin-left','transform'].forEach(k => panel.style.removeProperty(k));
         return;
       }
-      const owner = panel.parentElement;
-      const rect = owner.getBoundingClientRect();
-      const gutter = 32;
-      const viewportWidth = document.documentElement.clientWidth;
-      const preferred = Math.min(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--op-mega-width')) || 760, viewportWidth - gutter * 2);
-      const left = Math.max(gutter, Math.min(rect.left + rect.width / 2 - preferred / 2, viewportWidth - gutter - preferred));
-      panel.style.setProperty('position','fixed','important');
-      panel.style.setProperty('left', left + 'px','important');
-      panel.style.setProperty('right','auto','important');
-      panel.style.setProperty('top', rect.bottom + 'px','important');
-      panel.style.setProperty('width',preferred+'px','important');
-      panel.style.setProperty('max-width','calc(100vw - 64px)','important');
-      panel.style.setProperty('margin-left','0','important');
-      panel.style.setProperty('transform','none','important');
+      const parent = panel.parentElement;
+      const box = parent.getBoundingClientRect();
+      const viewport = document.documentElement.clientWidth;
+      const gutter = Math.min(32, Math.max(12, viewport * 0.04));
+      const configured = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--op-mega-width')) || 760;
+      const width = Math.max(0, Math.min(configured, viewport - gutter * 2));
+      const desiredLeft = Math.max(gutter, Math.min(box.left + box.width / 2 - width / 2, viewport - gutter - width));
+      const offset = panel.offsetParent?.getBoundingClientRect() || box;
+      panel.style.setProperty('position', 'absolute', 'important');
+      panel.style.setProperty('left', (desiredLeft - offset.left) + 'px', 'important');
+      panel.style.setProperty('right', 'auto', 'important');
+      panel.style.setProperty('top', (box.bottom - offset.top) + 'px', 'important');
+      panel.style.setProperty('width', width + 'px', 'important');
+      panel.style.setProperty('max-width', 'calc(100vw - 2 * ' + gutter + 'px)', 'important');
+      panel.style.setProperty('margin-left', '0', 'important');
+      panel.style.setProperty('transform', 'none', 'important');
     });
   };
-  position();
-  window.addEventListener('resize', position, {passive:true});
-  window.addEventListener('scroll', position, {passive:true});
-  document.querySelectorAll('.op-navigation li.op-has-mega').forEach(item => {
-    item.addEventListener('mouseenter',position);
-    item.addEventListener('focusin',position);
-    item.querySelectorAll('.op-submenu-toggle').forEach(button=>button.addEventListener('click',()=>requestAnimationFrame(position)));
+  reposition();
+  window.addEventListener('resize', reposition, {passive:true});
+  window.addEventListener('scroll', reposition, {passive:true});
+  panels.forEach(p => {
+    p.parentElement.addEventListener('mouseenter', reposition);
+    p.parentElement.addEventListener('focusin', reposition);
   });
 });

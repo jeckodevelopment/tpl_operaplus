@@ -276,17 +276,7 @@ body.operaplus .op-sidebar li.op-side-parent>ul,body.operaplus .op-sidebar li.op
 body.operaplus .op-sidebar li.op-side-parent>ul a,body.operaplus .op-sidebar li.op-side-parent>.mod-menu__sub a{padding-top:.34rem!important;padding-bottom:.34rem!important;font-size:.85rem}
 @media(max-width:900px){body.operaplus .op-navigation .op-submenu-toggle{min-width:34px;width:34px;height:38px}body.operaplus .op-navigation .op-submenu-toggle::before{width:8px;height:8px}}
 
-/* v1.10.0 — tighter sidebar navigation and safe mega-menu viewport gutters */
-@media(min-width:901px){
- body.operaplus .op-navigation li.op-has-mega>ul,
- body.operaplus .op-navigation li.op-has-mega>.mod-menu__sub{
-   left:50%!important;right:auto!important;
-   width:min(var(--op-mega-width,760px),calc(100vw - 48px))!important;
-   max-width:calc(100vw - 48px)!important;
-   box-sizing:border-box!important;
-   padding:1.25rem clamp(1rem,2vw,1.65rem)!important;
- }
-}
+/* v1.13: mega menu position belongs to a single JS controller. */
 body.operaplus .op-sidebar ul.mod-menu,body.operaplus .op-sidebar ul.menu,
 body.operaplus .op-sidebar ul.mod-menu ul,body.operaplus .op-sidebar ul.menu ul{
  display:block!important;gap:0!important;row-gap:0!important;
@@ -393,3 +383,45 @@ body.operaplus .op-content :is(.pagination,.pager){display:flex;gap:.35rem;flex-
 body.operaplus .op-content :is(.pagination,.pager) a{display:inline-flex;padding:.45rem .8rem;border:1px solid #ded3d0;text-decoration:none}
 /* Mega panel: fixed positioning is set by JS, always within 32px of viewport. */
 @media(min-width:901px){body.operaplus .op-navigation li.op-has-mega>ul,body.operaplus .op-navigation li.op-has-mega>.mod-menu__sub{transform:none!important;margin-left:0!important;z-index:200}}
+
+
+/* v1.13 — consistent light-theme sidebar modules, including native Joomla controls */
+body.operaplus.theme-light .op-sidebar,
+body.operaplus.theme-light .op-sidebar .moduletable,
+body.operaplus.theme-light .op-sidebar .moduletable-card,
+body.operaplus.theme-light .op-sidebar .mod-custom,
+body.operaplus.theme-light .op-sidebar .card {
+  --op-text:#30232a;--op-muted:#65565d;--op-line:#ded1d5;--op-panel:#fff;
+  color:#30232a!important;background:#fff!important;
+  border-color:#e4d9dc!important;
+}
+body.operaplus.theme-light .op-sidebar :is(h2,h3,h4,h5,legend,label,p,li,span,.card-header,.moduletable-title){color:#30232a}
+body.operaplus.theme-light .op-sidebar a:not(.op-button):not(.btn){color:#632b3a!important}
+body.operaplus.theme-light .op-sidebar .op-side-toggle{color:#632b3a!important}
+body.operaplus.theme-light .op-sidebar input:not([type=checkbox]):not([type=radio]){background:#fff!important;color:#30232a!important;border:1px solid #cbbdc1!important}
+body.operaplus.theme-light .op-sidebar input::placeholder{color:#81747a!important}
+body.operaplus.theme-light .op-sidebar :is(button[type=submit],input[type=submit],.btn-primary){background:#632b3a!important;color:#fff!important;border-color:#632b3a!important}
+body.operaplus.theme-light .op-sidebar .op-side-row:hover{background:#f5edef}
+body.operaplus.theme-light .op-sidebar .op-side-row.active,
+body.operaplus.theme-light .op-sidebar li.active>.op-side-row{background:#efe1e7}
+/* Mega menu must not be repositioned by another CSS rule after JS calculates its left edge. */
+@media(min-width:901px){
+ body.operaplus .op-navigation li.op-has-mega>ul,
+ body.operaplus .op-navigation li.op-has-mega>.mod-menu__sub{
+  right:auto!important;transform:none!important;margin-left:0!important;
+  box-sizing:border-box!important;min-width:0!important;
+ }
+}
+/* Single course article / landing page */
+.op-course-detail{max-width:1100px;margin:0 auto;padding:clamp(1rem,3vw,2.6rem) 0 4rem;color:#30272c}
+.op-course-detail__header{margin:0 0 2rem;max-width:880px}
+.op-course-detail__composer{font:700 .75rem/1.5 Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#87445d;margin:0 0 .65rem}
+.op-course-detail__title{font:400 clamp(2.4rem,5vw,4.3rem)/1.09 Georgia,serif;letter-spacing:-.035em;color:#30232a;margin:0 0 1.1rem}
+.op-course-detail__tags{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.1rem 0 0}
+.op-course-detail__image{display:block;width:100%;max-height:580px;aspect-ratio:16/9;object-fit:cover;background:#3f222e;margin:0 0 clamp(1.5rem,4vw,3rem)}
+.op-course-detail__body{max-width:810px;font:400 1rem/1.85 Manrope,sans-serif;color:#342c30}
+.op-course-detail__body h2{font:400 clamp(1.7rem,3vw,2.6rem)/1.2 Georgia,serif;margin:2rem 0 .9rem}
+.op-course-detail__body h3{font:400 clamp(1.4rem,2vw,1.9rem)/1.25 Georgia,serif;margin:1.6rem 0 .7rem}
+body.operaplus.theme-dark .op-course-detail,body.operaplus.theme-dark .op-course-detail__body{color:#f3ece1}
+body.operaplus.theme-dark .op-course-detail__title{color:#f3ece1}
+@media(max-width:760px){.op-course-detail__image{aspect-ratio:4/3}}

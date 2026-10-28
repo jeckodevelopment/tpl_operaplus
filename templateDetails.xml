@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.10.0</version>
+  <version>1.11.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Opera+ / Jecko Development</author>
   <authorUrl>https://opera.plus</authorUrl>
@@ -18,6 +18,7 @@
     <filename>templateDetails.xml</filename>
     <filename>GUIDA_STILI.md</filename>
     <filename>README.md</filename>
+    <folder>html</folder>
   </files>
   <media destination="templates/site/operaplus" folder="media">
     <folder>css</folder><folder>js</folder><folder>images</folder>
@@ -26,7 +27,7 @@
     <position>topbar</position><position>header-actions</position><position>menu</position><position>hero</position><position>hero-side</position><position>announcement</position><position>breadcrumb</position><position>search</position>
     <position>intro</position><position>content-highlights</position><position>mission</position><position>featured</position><position>story</position><position>courses</position><position>partners</position><position>schools</position><position>association</position><position>contacts</position>
     <position>main-top</position><position>sidebar-left</position><position>sidebar-right</position>
-    <position>main-bottom</position><position>bottom</position><position>footer</position><position>footer-social</position><position>footer-brand</position><position>footer-links</position><position>footer-legal</position><position>debug</position>
+    <position>main-bottom</position><position>pre-footer</position><position>bottom</position><position>footer</position><position>footer-social</position><position>footer-brand</position><position>footer-links</position><position>footer-legal</position><position>debug</position>
   </positions>
   <languages folder="language">
     <language tag="it-IT">it-IT/tpl_operaplus.ini</language>
@@ -50,6 +51,7 @@
       <field name="footerText" type="textarea" label="Footer - claim finale" default="Opera+ · L’opera lirica raccontata al grande pubblico" filter="string" />
     </fieldset>
     <fieldset name="appearance" label="TPL_OPERAPLUS_APPEARANCE">
+      <field name="pageTheme" type="list" label="Tema cromatico della pagina" description="Duplica lo stile del template e assegna Tema chiaro ai menu delle pagine interne, lasciando scuro per la homepage." default="dark"><option value="dark">Scuro · homepage</option><option value="light">Chiaro · pagine interne</option></field>
       <field name="accent" type="color" label="TPL_OPERAPLUS_ACCENT" default="#b78e63" />
       <field name="background" type="color" label="TPL_OPERAPLUS_BACKGROUND" default="#171316" />
       <field name="containerWidth" type="number" label="TPL_OPERAPLUS_CONTAINER" default="1200" min="900" max="1600" step="20" />
@@ -72,6 +74,7 @@
       <field name="menuMode" type="list" label="Modalità sottomenu" description="I dropdown classici supportano più livelli; un menu con classe op-mega apre un pannello a colonne." default="hover"><option value="hover">Hover e tastiera (desktop), click (mobile)</option><option value="click">Click e tastiera (tutti i dispositivi)</option></field>
     </fieldset>
     <fieldset name="styleguide" label="Guida pratica · Moduli e CSS">
+      <field name="opGuide111" type="note" class="alert alert-info" label="v1.11 · Corsi e pagine interne" description="Categoria Corsi: crea voce di menu Articoli → Blog categoria; imposta Categoria=Corsi, articolo con Immagine introduttiva, Autore=compositore e tag. Il template usa automaticamente card editoriali per la categoria con alias corsi. Stile chiaro: Aspetto → Tema cromatico della pagina → Chiaro, poi assegna questo stile ai menu interni. Breadcrumb: modulo Percorso di navigazione in posizione breadcrumb. Pre-footer: modulo Personalizzato in posizione pre-footer, titolo ‘Vuoi conoscere Opera+?’, testo e link in op-button. Gli avvisi Joomla sono formattati automaticamente. Tutte queste caratteristiche si applicano ai moduli senza CSS manuale." />
       <field name="opGuide110" type="note" class="alert alert-info" label="v1.10 · Navigazione compatta" description="Sidebar: i link e i sottomenu sono compatti automaticamente nelle posizioni sidebar-left / sidebar-right; non serve CSS nel modulo. Mega menu: il pannello conserva almeno 24 px dai bordi dello schermo anche se la voce padre è l’ultima a destra. Configura colonne e larghezza in Navigazione e mega menu." />
       <field name="opGuide0" type="note" class="alert alert-info" label="Introduzione" description="La guida è organizzata per argomenti. I moduli nativi non richiedono codice HTML; i moduli Personalizzati possono usare le classi CSS qui elencate." />
       <field name="opGuide1" type="note" class="alert alert-info" label="① Menu orizzontale" description="Modulo Menu → posizione menu · Nascondi titolo → Sì · Mostra voci sottomenu → Sì · Livello finale → Tutti. Per il menu verticale usa sidebar-right o sidebar-left." />

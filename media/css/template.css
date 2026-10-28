@@ -307,3 +307,50 @@ body.operaplus .op-sidebar li.op-side-parent>.op-side-row{min-height:0!important
 body.operaplus .op-sidebar li.op-side-parent>.op-side-row>.op-side-toggle{height:22px!important;min-height:22px!important}
 body.operaplus .op-sidebar li.op-side-parent>ul,body.operaplus .op-sidebar li.op-side-parent>.mod-menu__sub{margin:0 0 .06rem .55rem!important;padding:0 0 0 .45rem!important}
 body.operaplus .op-sidebar ul.mod-menu ul li>a,body.operaplus .op-sidebar ul.menu ul li>a{padding:.24rem .42rem!important;font-size:.84rem!important}
+
+/* v1.11.0 — anchored mega menu safe gutters, light editorial pages */
+@media (min-width:901px){
+ body.operaplus .op-navigation li.op-has-mega > ul,body.operaplus .op-navigation li.op-has-mega > .mod-menu__sub{max-width:calc(100vw - 64px)!important;}
+}
+body.operaplus.theme-light.is-internal{--op-text:#282126;--op-muted:#60545a;background:#f8f5f0!important;color:#282126!important}
+body.operaplus.theme-light.is-internal .op-main{background:#f8f5f0!important;color:#282126!important}
+body.operaplus.theme-light.is-internal .op-content,body.operaplus.theme-light.is-internal .op-content p,body.operaplus.theme-light.is-internal .op-content li{color:#342d30}
+body.operaplus.theme-light.is-internal .op-content h1,body.operaplus.theme-light.is-internal .op-content h2,body.operaplus.theme-light.is-internal .op-content h3,body.operaplus.theme-light.is-internal .op-content h4,body.operaplus.theme-light.is-internal .op-content h5{color:#281e24}
+body.operaplus.theme-light.is-internal .op-content a:not(.op-button){color:#702c43}
+body.operaplus.theme-light.is-internal .op-sidebar .moduletable,body.operaplus.theme-light.is-internal .op-sidebar .moduletable-card{background:#fff;color:#30232a;border:1px solid #e6ddd9}
+body.operaplus.theme-light.is-internal .op-sidebar a{color:#542739}
+/* Courses list (Joomla category alias corsi) */
+.op-course-index{padding:clamp(1.25rem,3vw,2.5rem) 0 3rem}
+.op-course-index__header{max-width:850px;margin-bottom:2.6rem}
+.op-course-index__header h1{font-family:Georgia,serif;font-size:clamp(2.1rem,4vw,3.45rem);font-weight:400;letter-spacing:-.03em;margin:.6rem 0 1rem}
+.op-course-index__description{font-size:1rem;line-height:1.8;color:#645961}
+.op-course-index__items{display:grid;gap:2.5rem}
+.op-course-item{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:0 0 2.5rem;border-bottom:1px solid #e5dcd7}
+.op-course-item__visual{display:block;overflow:hidden;background:#43242d;aspect-ratio:16/10}
+.op-course-item__visual img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.op-course-item__visual:hover img{transform:scale(1.025)}
+.op-course-item__placeholder{height:100%;display:grid;place-items:center;color:#f3ece1;font:400 2.8rem Georgia,serif}
+.op-course-item__composer{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#8b475d!important;margin:0 0 .5rem}
+.op-course-item__copy h2{font:400 clamp(2rem,3.2vw,3.15rem)/1.1 Georgia,serif!important;margin:0 0 1rem}
+.op-course-item__copy h2 a{text-decoration:none;color:inherit!important}
+.op-course-item__intro{font-size:.95rem;line-height:1.8;margin-bottom:1.25rem}
+.op-course-item__tags{display:flex;gap:.45rem;flex-wrap:wrap;margin:0 0 1.4rem}
+.op-course-tag{font:600 .72rem Manrope,sans-serif;letter-spacing:.02em;padding:.42rem .72rem;border:1px solid #d6bfc4;color:#653146;background:#f6edef}
+/* Joomla system messages styled as editorial preparation notice */
+body.operaplus .joomla-alert,body.operaplus #system-message-container .alert,body.operaplus .alert-message,body.operaplus .alert-info{border:1px solid #d7c8bd!important;border-left:3px solid #84445b!important;background:#f3ede6!important;color:#46363d!important;border-radius:0!important;padding:1rem 1.25rem!important;box-shadow:none!important}
+body.operaplus .alert-warning{border-left-color:#bd8a42!important;background:#f8f0df!important}
+body.operaplus .alert-danger{border-left-color:#ae4c50!important;background:#f9eaea!important}
+body.operaplus .alert-success{border-left-color:#507660!important;background:#edf5ed!important}
+/* Breadcrumb */
+body.operaplus .op-breadcrumb{margin:0 0 1.3rem;padding:.6rem 0;border-bottom:1px solid #dcd2ca}
+body.operaplus .op-breadcrumb ol,body.operaplus .op-breadcrumb ul,body.operaplus .op-breadcrumb .breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;list-style:none!important;padding:0!important;margin:0!important;background:transparent!important}
+body.operaplus .op-breadcrumb li,body.operaplus .op-breadcrumb a{font-size:.73rem;line-height:1.5;letter-spacing:.04em;color:#765a66;text-decoration:none}
+body.operaplus .op-breadcrumb li+li:before{content:' / ';color:#ac969d;margin-right:.5rem}
+body.operaplus .op-breadcrumb .divider,body.operaplus .op-breadcrumb .icon-location{display:none!important}
+/* Full width prefooter call to action */
+body.operaplus .op-prefooter{background:#6c3246;color:#f7eee5;padding:clamp(2rem,4vw,3.5rem) 0}
+body.operaplus .op-prefooter h2,body.operaplus .op-prefooter h3{font:400 clamp(1.8rem,3vw,2.7rem)/1.15 Georgia,serif;color:#fff6f0;margin:0 0 .7rem}
+body.operaplus .op-prefooter p{color:#f0dfe2;line-height:1.7}
+body.operaplus .op-prefooter .op-button{background:transparent;border:1px solid #f0dfe2;color:#fff}
+body.operaplus .op-prefooter .op-container{max-width:var(--op-max);}
+@media(max-width:760px){.op-course-item{grid-template-columns:1fr;gap:1.25rem}.op-course-index__header{margin-bottom:2rem}}

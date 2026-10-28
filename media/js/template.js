@@ -134,3 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
  document.querySelectorAll('.op-navigation li.op-has-mega').forEach(li=>{li.addEventListener('mouseenter',align);li.addEventListener('focusin',align);li.querySelectorAll('.op-submenu-toggle').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(align)));});
  align();
 });
+
+/* Keep mega menu within viewport, including rightmost and lone parent items. */
+document.addEventListener('DOMContentLoaded',()=>{const adjust=()=>{document.querySelectorAll('.op-navigation li.op-has-mega > ul,.op-navigation li.op-has-mega > .mod-menu__sub').forEach(panel=>{panel.style.removeProperty('margin-left');if(window.innerWidth<=900)return;const r=panel.getBoundingClientRect(),gut=32;const delta=r.right>window.innerWidth-gut?window.innerWidth-gut-r.right:r.left<gut?gut-r.left:0;if(delta)panel.style.setProperty('margin-left',delta+'px','important');});};adjust();window.addEventListener('resize',adjust,{passive:true});document.querySelectorAll('.op-navigation li.op-has-mega').forEach(node=>node.addEventListener('mouseenter',()=>requestAnimationFrame(adjust)));});

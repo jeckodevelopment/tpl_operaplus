@@ -122,3 +122,24 @@ L’editor visuale Joomla può rimuovere alcune classi/HTML a seconda della conf
 - Sottomenu: struttura padre/figlio definita in Joomla; l'apertura resta controllata dalle frecce laterali.
 - Mega menu: almeno 24 px di margine dal bordo destro e sinistro della finestra sul desktop, anche se la voce padre è l'ultima del menu; su mobile occupa la larghezza disponibile.
 - Le impostazioni di larghezza e colonne continuano a trovarsi nella scheda **Navigazione e mega menu**.
+
+
+## v1.11.0 — Pagine corsi, moduli e varianti chiare
+
+### Categoria Corsi (nativo Joomla)
+Crea una categoria Joomla con **alias `corsi`**. Crea una voce menu di tipo **Articoli → Blog di categoria**, categoria Corsi. Ogni corso è un articolo: **Titolo** = opera (es. Rigoletto), **Autore/Alias autore** = compositore (es. Giuseppe Verdi), **Immagine introduttiva** = copertina orizzontale, **Tag** = temi e caratteristiche. L'override `html/com_content/category/blog.php` gestisce automaticamente la grafica; non occorre scrivere HTML. Le altre categorie continuano a usare il blog Joomla standard.
+
+### Tema chiaro
+Duplica lo stile Opera+ in **Sistema → Stili template sito**. In *Aspetto*, seleziona **Tema cromatico della pagina = Chiaro** e assegna lo stile ai menu delle pagine interne. Lascia lo stile predefinito scuro per la homepage.
+
+### Messaggi di Joomla
+I messaggi di sistema (`alert-info`, `alert-warning`, `alert-danger`, `alert-success`) ricevono automaticamente una grafica sobria tipo “Il corso è in preparazione”. Per un testo editoriale facoltativo in un modulo Personalizzato puoi usare `alert alert-info`.
+
+### Pre-footer
+Pubblica un modulo **Personalizzato** in posizione `pre-footer`, assegnato ai menu desiderati. Usa un titolo H2 come “Vuoi conoscere Opera+?”, un paragrafo e un collegamento con classe `op-button`. La banda bordeaux viene aggiunta dal template.
+
+### Breadcrumb
+Pubblica il modulo nativo **Percorso di navigazione** in posizione `breadcrumb`, preferibilmente nelle sole pagine interne. Non serve alcuna classe CSS.
+
+### Mega menu
+Il JS corregge automaticamente la posizione dei pannelli quando la voce padre è vicina al bordo destro della finestra, mantenendo un margine minimo di 32 px.

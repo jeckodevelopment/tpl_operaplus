@@ -54,3 +54,11 @@ Rimossi i controlli icona adiacenti alla password nel login sidebar. Sottomenu l
 - Mega menu: margine di sicurezza 24px da entrambi i bordi e riallineamento automatico del pannello.
 - Guida agli stili aggiornata.
 - Sorgenti versionati nella repository GitHub `jeckodevelopment/tpl_operaplus`.
+
+
+### Versione 1.11.0
+- Correzione overflow del mega menu con calcolo dei margini reali.
+- Tema chiaro selezionabile per singolo stile Joomla e assegnabile alle voci di menu.
+- Override blog di categoria per `corsi`: immagine intro, titolo, autore/compositore, tag, testo e link.
+- Formattazione avvisi Joomla, breadcrumb e modulo pre-footer.
+- Aggiornamento guida amministrazione e documentazione.

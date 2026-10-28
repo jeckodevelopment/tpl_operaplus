@@ -53,6 +53,7 @@ $hasRightSidebar = (bool) $this->countModules('sidebar-right');
 $activeMenu = $app->getMenu()->getActive();
 $defaultMenu = $app->getMenu()->getDefault();
 $isHome = $activeMenu && $defaultMenu && $activeMenu->id === $defaultMenu->id;
+$pageTheme = $this->params->get('pageTheme', 'dark') === 'light' ? 'light' : 'dark';
 $showHomeComponent = (bool) $this->params->get('showHomeComponent', 0);
 $showMain = !$isHome || $showHomeComponent || (bool) $this->countModules('breadcrumb or main-top or sidebar-left or sidebar-right or main-bottom');
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
@@ -68,7 +69,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <jdoc:include type="scripts" />
 <style>:root{--op-accent:<?php echo $accent; ?>;--op-bg:<?php echo $background; ?>;--op-max:<?php echo $width; ?>px;--op-mega-width:<?php echo $megaWidth; ?>px;--op-mega-cols:<?php echo $megaColumns; ?>;--op-burgundy:<?php echo $burgundy; ?>;--op-ivory:<?php echo $ivory; ?>;<?php foreach (['h1','h2','h3','h4','h5','heroH1'] as $level) : ?>--op-<?php echo strtolower($level); ?>-size:<?php echo $titleSizes[$level]; ?>px;<?php endforeach; ?>}</style>
 </head>
-<body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus <?php echo $isHome ? 'is-home' : 'is-internal'; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
+<body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus <?php echo $isHome ? 'is-home' : 'is-internal'; ?> theme-<?php echo $pageTheme; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
 <a class="skip-link" href="<?php echo $showMain ? '#main-content' : ($this->countModules('hero') ? '#home-hero' : '#site-footer'); ?>"><?php echo Text::_('TPL_OPERAPLUS_SKIP'); ?></a>
 <?php if ($this->countModules('topbar')) : ?><div class="op-topbar"><div class="op-container"><jdoc:include type="modules" name="topbar" style="none" /></div></div><?php endif; ?>
 <header class="op-header"><div class="op-container op-header-inner">
@@ -119,6 +120,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <?php if ($this->countModules('main-bottom')) : ?><jdoc:include type="modules" name="main-bottom" style="card" /><?php endif; ?>
 </div></main>
 <?php endif; ?>
+<?php if ($this->countModules('pre-footer')) : ?><section class="op-prefooter"><div class="op-container"><jdoc:include type="modules" name="pre-footer" style="none" /></div></section><?php endif; ?>
 <?php if ($this->countModules('bottom')) : ?><section class="op-section op-section-alt"><div class="op-container"><jdoc:include type="modules" name="bottom" style="card" /></div></section><?php endif; ?>
 <footer id="site-footer" class="op-footer">
   <div class="op-container">

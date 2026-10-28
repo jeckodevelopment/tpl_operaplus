@@ -475,3 +475,9 @@ body.operaplus .op-sidebar li.op-side-parent>ul,body.operaplus .op-sidebar li.op
 body.operaplus .op-sidebar :is(.op-side-row,li>a,li>.op-side-row>a){margin-block:0!important;min-height:0!important;line-height:1.25!important}
 body.operaplus .op-sidebar :is(li>a,li>.op-side-row>a){padding:.19rem .45rem!important}
 body.operaplus .op-sidebar li.op-side-parent>.op-side-row>.op-side-toggle{height:22px!important}
+
+/* Opera+ v1.16.0 — tighter internal content start; homepage untouched. */
+body.operaplus.is-internal .op-main{padding-top:clamp(.85rem,1.8vw,1.5rem)!important}
+body.operaplus.is-internal .op-breadcrumb{margin-bottom:.85rem!important;padding-top:.1rem!important}
+body.operaplus.is-internal .op-main .page-header:first-child,body.operaplus.is-internal .op-main .op-course-index__header:first-child{margin-top:0!important}
+@media(max-width:700px){body.operaplus.is-internal .op-main{padding-top:.75rem!important}}

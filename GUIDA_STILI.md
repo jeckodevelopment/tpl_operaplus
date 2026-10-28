@@ -170,3 +170,36 @@ Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/
 - Catalogo corsi: l'immagine introduttiva usa `object-fit: contain`, non viene tagliata. Per il collegamento all'articolo viene usata la stringa Joomla `COM_CONTENT_READ_MORE` (personalizzabile tramite override lingua Joomla); non è più usata `TPL_OPERAPLUS_DISCOVER_COURSE`.
 - Sidebar: sottomenu compatti con nessun margine verticale tra i livelli.
 - Mantieni i contenuti testuali nei campi Joomla: niente diciture editoriali fissate nel PHP.
+
+
+## v1.16.0 — Stringhe di lingua e spaziatura delle pagine interne
+
+Nel blog della categoria `corsi`, il pulsante di apertura usa **`TPL_OPERAPLUS_DISCOVER_COURSE`** (e non più `COM_CONTENT_READ_MORE`). Per personalizzarne il testo senza cambiare il codice: **Sistema → Lingue → Sostituzioni lingua**, scegli la lingua del sito e cerca la costante. La lingua italiana mostra «Scopri il corso», quella inglese «Explore course».
+
+### Inventario delle costanti linguistiche del template
+
+| Costante | Dove viene utilizzata |
+|---|---|
+| `TPL_OPERAPLUS_DISCOVER_COURSE` | Pulsante per aprire il singolo articolo corso dal blog della categoria `corsi` |
+| `TPL_OPERAPLUS_NO_COURSES` | Messaggio per categoria corsi priva di articoli pubblicati |
+| `TPL_OPERAPLUS_SKIP` | Collegamento accessibile «Vai al contenuto» |
+| `TPL_OPERAPLUS_MENU` | Nome accessibile menu principale e pulsante mobile |
+| `TPL_OPERAPLUS_XML_DESCRIPTION` | Descrizione del template nell'amministrazione (file `.sys.ini`) |
+| `TPL_OPERAPLUS_BRANDING` | Nome/etichetta area identità visiva |
+| `TPL_OPERAPLUS_LOGO` | Etichetta impostazione logo |
+| `TPL_OPERAPLUS_BRAND_TEXT` | Etichetta nome associazione |
+| `TPL_OPERAPLUS_TAGLINE` | Etichetta sottotitolo |
+| `TPL_OPERAPLUS_FOOTER_TEXT` | Etichetta testo footer |
+| `TPL_OPERAPLUS_APPEARANCE` | Etichetta aspetto |
+| `TPL_OPERAPLUS_ACCENT` | Etichetta colore accento |
+| `TPL_OPERAPLUS_BACKGROUND` | Etichetta sfondo |
+| `TPL_OPERAPLUS_CONTAINER` | Etichetta larghezza massima |
+| `TPL_OPERAPLUS_STICKY` | Etichetta intestazione fissa |
+
+Le ultime etichette sono definite nei file lingua per compatibilità; alcune impostazioni nuove hanno invece **etichette definite direttamente nel manifest XML**, e non sono attualmente sovrascrivibili attraverso le sostituzioni lingua. Gli override Joomla continuano a usare eventuali traduzioni native dei componenti, se presenti. I titoli, il nome della categoria, gli autori e i tag dei corsi provengono dai dati Joomla.
+
+### Spazio sopra i contenuti
+
+Le pagine interne (`is-internal`) hanno ora un padding superiore ridotto a circa **14–24 px** (12 px su mobile), e breadcrumb più vicino al contenuto. L'homepage non viene modificata.
+
+**Regola di manutenzione:** ogni nuova costante `Text::_('...')` introdotta o modificata deve essere aggiunta sia a questa tabella, sia alla scheda «Guida · Stringhe di lingua» nel backend Joomla.

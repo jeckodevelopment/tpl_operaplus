@@ -83,3 +83,9 @@ Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/
 - Course action/empty labels moved to Joomla language files.
 - Improved course category editorial spacing and cover proportions.
 - Horizontal menu alignment normalized; mega panel uses fixed viewport-relative positioning.
+
+
+## v1.16.0
+- Ripristinata la chiave `TPL_OPERAPLUS_DISCOVER_COURSE` nel pulsante del catalogo corsi.
+- Documentate tutte le costanti lingua attualmente presenti nel template, anche nel backend.
+- Compattato lo spazio superiore delle sole pagine interne.

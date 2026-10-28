@@ -42,7 +42,7 @@ $articles = array_merge((array) ($this->lead_items ?? []), (array) ($this->intro
         <h2><a href="<?php echo $escape($url); ?>"><?php echo $escape($item->title); ?></a></h2>
         <?php if (!empty($item->introtext)) : ?><div class="op-course-item__intro"><?php echo $item->introtext; ?></div><?php endif; ?>
         <?php if ($tags) : ?><div class="op-course-item__tags" aria-label="Tag"><?php foreach ($tags as $tag) : ?><span class="op-course-tag"><?php echo $escape($tag->title ?? ''); ?></span><?php endforeach; ?></div><?php endif; ?>
-        <a class="op-button" href="<?php echo $escape($url); ?>"><?php echo $escape(Text::_('COM_CONTENT_READ_MORE')); ?> </a>
+        <a class="op-button" href="<?php echo $escape($url); ?>"><?php echo $escape(Text::_('TPL_OPERAPLUS_DISCOVER_COURSE')); ?> </a>
       </div>
     </article>
   <?php endforeach; ?>

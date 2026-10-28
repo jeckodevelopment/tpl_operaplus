@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "operaplus",
+  "version": "1.7.0",
+  "description": "Opera+ Joomla template assets",
+  "assets": [
+    {
+      "name": "template.operaplus",
+      "type": "style",
+      "uri": "template.css"
+    },
+    {
+      "name": "template.operaplus",
+      "type": "script",
+      "uri": "template.js",
+      "attributes": {
+        "defer": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+<?php defined('_JEXEC') or die; $this->getWebAssetManager()->useStyle('template.operaplus'); $this->setMetaData('viewport', 'width=device-width, initial-scale=1'); ?>
+<!doctype html><html lang="<?php echo htmlspecialchars($this->language, ENT_QUOTES, 'UTF-8'); ?>"><head><jdoc:include type="metas" /><jdoc:include type="styles" /><jdoc:include type="scripts" /></head><body class="operaplus"><main class="op-container op-main"><jdoc:include type="message" /><jdoc:include type="component" /></main></body></html>

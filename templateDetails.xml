@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="template" client="site" method="upgrade">
+  <name>operaplus</name>
+  <version>1.10.0</version>
+  <creationDate>2026-10-28</creationDate>
+  <author>Opera+ / Jecko Development</author>
+  <authorUrl>https://opera.plus</authorUrl>
+  <copyright>Copyright (C) Opera+</copyright>
+  <license>GNU General Public License version 2 or later</license>
+  <description>TPL_OPERAPLUS_XML_DESCRIPTION</description>
+  <inheritable>1</inheritable>
+  <files>
+    <filename>index.php</filename>
+    <filename>component.php</filename>
+    <filename>error.php</filename>
+    <filename>offline.php</filename>
+    <filename>joomla.asset.json</filename>
+    <filename>templateDetails.xml</filename>
+    <filename>GUIDA_STILI.md</filename>
+    <filename>README.md</filename>
+  </files>
+  <media destination="templates/site/operaplus" folder="media">
+    <folder>css</folder><folder>js</folder><folder>images</folder>
+  </media>
+  <positions>
+    <position>topbar</position><position>header-actions</position><position>menu</position><position>hero</position><position>hero-side</position><position>announcement</position><position>breadcrumb</position><position>search</position>
+    <position>intro</position><position>content-highlights</position><position>mission</position><position>featured</position><position>story</position><position>courses</position><position>partners</position><position>schools</position><position>association</position><position>contacts</position>
+    <position>main-top</position><position>sidebar-left</position><position>sidebar-right</position>
+    <position>main-bottom</position><position>bottom</position><position>footer</position><position>footer-social</position><position>footer-brand</position><position>footer-links</position><position>footer-legal</position><position>debug</position>
+  </positions>
+  <languages folder="language">
+    <language tag="it-IT">it-IT/tpl_operaplus.ini</language>
+    <language tag="it-IT">it-IT/tpl_operaplus.sys.ini</language>
+    <language tag="en-GB">en-GB/tpl_operaplus.ini</language>
+    <language tag="en-GB">en-GB/tpl_operaplus.sys.ini</language>
+  </languages>
+  <config><fields name="params">
+    <fieldset name="branding" label="TPL_OPERAPLUS_BRANDING">
+      <field name="logo" type="media" label="TPL_OPERAPLUS_LOGO" directory="images" />
+      <field name="brandText" type="text" label="TPL_OPERAPLUS_BRAND_TEXT" default="Opera+" filter="string" />
+      <field name="tagline" type="text" label="TPL_OPERAPLUS_TAGLINE" default="L'opera lirica raccontata al grande pubblico" filter="string" />
+      <field name="heroLogo" type="media" label="Logo dell’hero (opzionale)" description="Se non compilato, usa il logo principale del template" directory="images" />
+      <field name="footerLogo" type="media" label="Logo del footer (opzionale)" description="Se non compilato, usa il logo principale del template" directory="images" />
+      <field name="footerHeading" type="text" label="Footer - nome associazione" default="Associazione Opera+" filter="string" />
+      <field name="footerTaxId" type="text" label="Footer - codice fiscale" default="97925160018" filter="string" />
+      <field name="footerAddress" type="text" label="Footer - sede legale" default="via Federico Patetta 12, 10155 Torino" filter="string" />
+      <field name="footerEmail" type="email" label="Footer - email" default="info@opera.plus" />
+      <field name="footerPec" type="email" label="Footer - PEC" default="operaplus@pec.it" />
+      <field name="footerTopLabel" type="text" label="Footer - testo torna su" default="Torna all’inizio ↑" filter="string" />
+      <field name="footerText" type="textarea" label="Footer - claim finale" default="Opera+ · L’opera lirica raccontata al grande pubblico" filter="string" />
+    </fieldset>
+    <fieldset name="appearance" label="TPL_OPERAPLUS_APPEARANCE">
+      <field name="accent" type="color" label="TPL_OPERAPLUS_ACCENT" default="#b78e63" />
+      <field name="background" type="color" label="TPL_OPERAPLUS_BACKGROUND" default="#171316" />
+      <field name="containerWidth" type="number" label="TPL_OPERAPLUS_CONTAINER" default="1200" min="900" max="1600" step="20" />
+      <field name="burgundy" type="color" label="Bordeaux" default="#632b3a" />
+      <field name="ivory" type="color" label="Avorio" default="#f3ece1" />
+      <field name="showHomeComponent" type="radio" label="Mostra componente anche in homepage" default="0"><option value="1">JYES</option><option value="0">JNO</option></field>
+      <field name="stickyHeader" type="radio" label="TPL_OPERAPLUS_STICKY" default="1"><option value="1">JYES</option><option value="0">JNO</option></field>
+    </fieldset>
+    <fieldset name="typography" label="Tipografia · Titoli H1–H5">
+      <field name="h1Size" type="list" label="Dimensione H1 (desktop)" default="64"><option value="40">40 px</option><option value="48">48 px</option><option value="56">56 px</option><option value="64">64 px</option><option value="72">72 px</option><option value="80">80 px</option></field>
+      <field name="h2Size" type="list" label="Dimensione H2 (desktop)" default="43"><option value="28">28 px</option><option value="32">32 px</option><option value="36">36 px</option><option value="40">40 px</option><option value="43">43 px</option><option value="48">48 px</option><option value="56">56 px</option></field>
+      <field name="h3Size" type="list" label="Dimensione H3 (desktop)" default="28"><option value="20">20 px</option><option value="24">24 px</option><option value="28">28 px</option><option value="32">32 px</option><option value="36">36 px</option></field>
+      <field name="h4Size" type="list" label="Dimensione H4 (desktop)" default="23"><option value="18">18 px</option><option value="20">20 px</option><option value="23">23 px</option><option value="26">26 px</option><option value="30">30 px</option></field>
+      <field name="h5Size" type="list" label="Dimensione H5 (desktop)" default="19"><option value="15">15 px</option><option value="17">17 px</option><option value="19">19 px</option><option value="21">21 px</option><option value="24">24 px</option></field>
+      <field name="heroH1Size" type="list" label="Titolo Hero H1 (desktop)" default="72"><option value="48">48 px</option><option value="56">56 px</option><option value="64">64 px</option><option value="72">72 px</option><option value="80">80 px</option><option value="88">88 px</option></field>
+    </fieldset>
+    <fieldset name="navigation" label="Navigazione e mega menu">
+      <field name="megaWidth" type="list" label="Larghezza pannello mega menu" description="Dimensione dei pannelli con classe op-mega. Su mobile occupano sempre la larghezza disponibile." default="760"><option value="600">Compatto (600 px)</option><option value="760">Medio (760 px)</option><option value="960">Ampio (960 px)</option><option value="1100">Molto ampio (1100 px)</option></field>
+      <field name="megaColumns" type="list" label="Colonne del mega menu" default="3"><option value="2">2 colonne</option><option value="3">3 colonne</option><option value="4">4 colonne</option></field>
+      <field name="menuMode" type="list" label="Modalità sottomenu" description="I dropdown classici supportano più livelli; un menu con classe op-mega apre un pannello a colonne." default="hover"><option value="hover">Hover e tastiera (desktop), click (mobile)</option><option value="click">Click e tastiera (tutti i dispositivi)</option></field>
+    </fieldset>
+    <fieldset name="styleguide" label="Guida pratica · Moduli e CSS">
+      <field name="opGuide110" type="note" class="alert alert-info" label="v1.10 · Navigazione compatta" description="Sidebar: i link e i sottomenu sono compatti automaticamente nelle posizioni sidebar-left / sidebar-right; non serve CSS nel modulo. Mega menu: il pannello conserva almeno 24 px dai bordi dello schermo anche se la voce padre è l’ultima a destra. Configura colonne e larghezza in Navigazione e mega menu." />
+      <field name="opGuide0" type="note" class="alert alert-info" label="Introduzione" description="La guida è organizzata per argomenti. I moduli nativi non richiedono codice HTML; i moduli Personalizzati possono usare le classi CSS qui elencate." />
+      <field name="opGuide1" type="note" class="alert alert-info" label="① Menu orizzontale" description="Modulo Menu → posizione menu · Nascondi titolo → Sì · Mostra voci sottomenu → Sì · Livello finale → Tutti. Per il menu verticale usa sidebar-right o sidebar-left." />
+      <field name="opGuide2" type="note" class="alert alert-info" label="② Mega menu" description="Crea una voce padre e almeno due livelli di figli. Nella voce padre → Tipo link → Classe CSS collegamento: op-mega. Livello 2 = colonne e livello 3 = collegamenti. Per il dropdown classico ometti op-mega." />
+      <field name="opGuide3" type="note" class="alert alert-info" label="③ Hero" description="Modulo Personalizzato → posizione hero → Solo pagina Home. Usa p.op-eyebrow per il soprattitolo, h1 per il titolo, p.op-hero-lead per il testo e a.op-button per il link. Il logo si sceglie in Branding." />
+      <field name="opGuide4" type="note" class="alert alert-info" label="④ Contenuti editoriali" description="op-container: larghezza centrata. op-section: sezione. op-section-alt: fondo alternativo. op-split: due colonne. op-cards: griglia. op-card: card. op-quote: citazione." />
+      <field name="opGuide5" type="note" class="alert alert-info" label="⑤ Pulsanti, etichette, immagini" description="op-button: pulsante bordeaux squadrato. op-button op-button--outline: variante contorno. op-tag: etichetta. op-media: immagine. op-eyebrow: soprattitolo." />
+      <field name="opGuide6" type="note" class="alert alert-info" label="⑥ Corsi e lezioni" description="op-course-intro: apertura corso. op-course-feature: riquadro corso. op-course-feature__art e op-course-feature__body: copertina e testo. op-course-chapters: elenco lezioni. op-course-chapter: lezione. op-course-cta: invito finale." />
+      <field name="opGuide7" type="note" class="alert alert-info" label="⑦ Accesso e moduli standard" description="Login nella sidebar: icone decorative nascoste, checkbox Remember me visibile e pulsante squadrato. Non inserire classi HTML nel modulo login." />
+      <field name="opGuide8" type="note" class="alert alert-info" label="⑧ Tipografia" description="Titoli Georgia peso 400; testo Manrope 400–700. Personalizza H1–H5 nella scheda Tipografia. Evita grassetto nei titoli per mantenere lo stile di Opera+." />
+      <field name="opGuide9" type="note" class="alert alert-info" label="Esempio pronto da copiare" description="&amp;lt;p class=&amp;quot;op-eyebrow&amp;quot;&amp;gt;IL PROGETTO&amp;lt;/p&amp;gt; &amp;lt;h2&amp;gt;Scopri Opera+&amp;lt;/h2&amp;gt; &amp;lt;p class=&amp;quot;op-lead&amp;quot;&amp;gt;Un percorso di ascolto.&amp;lt;/p&amp;gt; &amp;lt;a class=&amp;quot;op-button&amp;quot; href=&amp;quot;/corsi/&amp;quot;&amp;gt;Scopri i corsi&amp;lt;/a&amp;gt;" />
+      <field name="opGuide10" type="note" class="alert alert-info" label="⑨ Menu laterale multilivello" description="Modulo Menu nella posizione sidebar-right o sidebar-left; Mostra voci sottomenu = Sì; Livello finale = Tutti. Le frecce discrete espandono ogni livello; i link mantengono la navigazione. Il ramo attivo si apre automaticamente. Non usare la classe op-mega nella sidebar." />
+      <field name="opGuide11" type="note" class="alert alert-info" label="⑩ Campo password" description="Nei moduli Login della sidebar il template nasconde il pulsante/icona della password. Il campo resta utilizzabile e i dati del modulo Joomla non vengono modificati." />
+      <field name="opGuide12" type="note" class="alert alert-info" label="⑪ Navigazione v1.9: frecce e spaziature" description="Menu orizzontale: il simbolo più è sostituito da una freccia discreta, cliccabile e ruotata quando il sottomenu è aperto. Mega menu: nessun indicatore sulle intestazioni delle colonne. Sidebar: sottomenu compatti, senza margini verticali ampi. Non occorrono classi aggiuntive nei moduli Menu." />
+    </fieldset>
+  </fields></config>
+</extension>

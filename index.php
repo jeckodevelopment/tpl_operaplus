@@ -83,16 +83,26 @@ if (!$this->getMetaData('og:image', 'property')) {
     if ($ogImage === '' && $app->input->getCmd('option') === 'com_content' && $app->input->getCmd('view') === 'article') {
         $articleId = $app->input->getInt('id');
         if ($articleId > 0) {
-            $db = $app->getContainer()->get(\Joomla\Database\DatabaseInterface::class);
-            $query = $db->getQuery(true)
-                ->select($db->quoteName('images'))
-                ->from($db->quoteName('#__content'))
-                ->where($db->quoteName('id') . ' = ' . (int) $articleId);
-            $db->setQuery($query);
-            $imagesJson = $db->loadResult();
-            if ($imagesJson) {
-                $images = json_decode((string) $imagesJson, true);
-                $ogImage = $absoluteMediaUrl($images['image_intro'] ?? $images['image_fulltext'] ?? '');
+            // Open Graph metadata must never make an article unavailable.
+            // Get the Joomla DI container from Factory, not the application.
+            try {
+                $db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
+                $query = $db->getQuery(true)
+                    ->select($db->quoteName('images'))
+                    ->from($db->quoteName('#__content'))
+                    ->where($db->quoteName('id') . ' = ' . (int) $articleId);
+                $db->setQuery($query);
+                $imagesJson = $db->loadResult();
+                if ($imagesJson) {
+                    $images = json_decode((string) $imagesJson, true);
+                    if (is_array($images)) {
+                        $ogImage = $absoluteMediaUrl(($images['image_intro'] ?? '') ?: ($images['image_fulltext'] ?? ''));
+                    }
+                }
+            } catch (\Throwable $exception) {
+                // If metadata lookup fails, keep rendering the article;
+                // the template-level default OG image is used below.
+                $ogImage = '';
             }
         }
     }

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.17.0</version>
+  <version>1.18.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>
@@ -69,6 +69,9 @@
     <fields name="params">
       <fieldset name="branding" label="TPL_OPERAPLUS_BRANDING">
         <field name="logo" type="media" label="TPL_OPERAPLUS_LOGO" directory="images" />
+        <field name="faviconFile" type="media" label="TPL_OPERAPLUS_FAVICON" description="TPL_OPERAPLUS_FAVICON_DESC" types="images,documents" preview="true" />
+        <field name="faviconPath" type="text" label="TPL_OPERAPLUS_FAVICON_PATH" description="TPL_OPERAPLUS_FAVICON_PATH_DESC" filter="string" />
+        <field name="defaultOgImage" type="media" label="TPL_OPERAPLUS_OG_IMAGE" description="TPL_OPERAPLUS_OG_IMAGE_DESC" types="images" preview="true" />
         <field name="brandText" type="text" label="TPL_OPERAPLUS_BRAND_TEXT" default="Opera+" filter="string" />
         <field name="tagline" type="text" label="TPL_OPERAPLUS_TAGLINE" default="L'opera lirica raccontata al grande pubblico" filter="string" />
         <field name="heroLogo" type="media" label="Logo dell’hero (opzionale)" description="Se non compilato, usa il logo principale del template" directory="images" />
@@ -189,6 +192,7 @@
         <field name="opLangGuideCourses" type="note" label="Stringhe dei corsi" description="TPL_OPERAPLUS_DISCOVER_COURSE = testo del pulsante di apertura della scheda corso (italiano: Scopri il corso; inglese: Explore course). TPL_OPERAPLUS_NO_COURSES = messaggio in caso di categoria corsi senza articoli pubblicati." />
         <field name="opLangGuideNavigation" type="note" label="Navigazione e accessibilità" description="TPL_OPERAPLUS_SKIP = collegamento per saltare al contenuto; TPL_OPERAPLUS_MENU = etichetta accessibile del menu principale e del comando di navigazione mobile." />
         <field name="opLangGuideAdmin" type="note" label="Etichette di amministrazione" description="TPL_OPERAPLUS_BRANDING, LOGO, BRAND_TEXT, TAGLINE, FOOTER_TEXT, APPEARANCE, ACCENT, BACKGROUND, CONTAINER, STICKY = etichette delle impostazioni del template; TPL_OPERAPLUS_XML_DESCRIPTION = descrizione del template nell'amministrazione. Consulta GUIDA_STILI.md per la tabella completa." />
+        <field name="opGuide118" type="note" class="alert alert-info" label="TPL_OPERAPLUS_SOCIAL_DOC_TITLE" description="TPL_OPERAPLUS_SOCIAL_DOC_DESC" />
       </fieldset>
     </fields>
   </config>

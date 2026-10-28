@@ -162,3 +162,11 @@ Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/
 - **Singolo articolo corso:** il titolo e il compositore sono rispettivamente `Titolo` e `Alias autore`; l'etichetta sopra il titolo mostra il nome della categoria soltanto se Joomla consente `Mostra categoria`. Non è più presente la stringa fissa «I corsi di Opera+».
 - **Mega menu:** assegna `op-mega` al link padre. Il pannello viene allineato alla finestra lasciando 32px sui desktop; usa livelli di menu 2 e 3 per le colonne.
 - **Testi dell'interfaccia:** usa le stringhe lingua `TPL_OPERAPLUS_DISCOVER_COURSE` e `TPL_OPERAPLUS_NO_COURSES` per personalizzare le etichette senza alterare il PHP.
+
+## v1.15.0 — Contrasti e componenti nativi
+
+- Hero: per il titolo `h1`, i paragrafi e `op-hero-lead` sono garantiti toni avorio chiaro anche quando il tema del corpo pagina è Chiaro. Per evidenziare una parte del titolo usa `<em>`.
+- Login: per `Remember me` il checkbox nativo e la sua etichetta hanno colori ad alto contrasto in entrambi i temi. Non occorrono classi aggiuntive.
+- Catalogo corsi: l'immagine introduttiva usa `object-fit: contain`, non viene tagliata. Per il collegamento all'articolo viene usata la stringa Joomla `COM_CONTENT_READ_MORE` (personalizzabile tramite override lingua Joomla); non è più usata `TPL_OPERAPLUS_DISCOVER_COURSE`.
+- Sidebar: sottomenu compatti con nessun margine verticale tra i livelli.
+- Mantieni i contenuti testuali nei campi Joomla: niente diciture editoriali fissate nel PHP.

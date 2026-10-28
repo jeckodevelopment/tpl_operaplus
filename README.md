@@ -1,3 +1,5 @@
+# Opera+ Joomla 6 — v1.15.0
+
 # Template Opera+ per Joomla 6 — 1.3.0
 
 Aggiornamento della v1.2.0: non rimuovere il template precedentemente installato. Installa lo ZIP da Sistema → Installa → Estensioni e svuota la cache.

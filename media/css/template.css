@@ -448,3 +448,30 @@ body.operaplus .op-course-item__composer{font-weight:700;letter-spacing:.14em;ma
 body.operaplus .op-course-item__intro{line-height:1.8;margin-bottom:1.3rem}
 body.operaplus .op-course-detail__category{text-transform:uppercase;letter-spacing:.13em}
 @media(max-width:760px){body.operaplus .op-course-item{grid-template-columns:1fr;gap:1.3rem}}
+
+/* v1.15.0 — contrast audit: keep light body and dark hero/header/footer independent. */
+body.operaplus .op-hero,body.operaplus.theme-light .op-hero{--op-text:#f8f1e9;--op-muted:#f1dad9;color:#f8f1e9!important;color-scheme:dark}
+body.operaplus .op-hero :is(h1,h2,h3,h4,h5,h6),body.operaplus.theme-light .op-hero :is(h1,h2,h3,h4,h5,h6){color:#fff5ef!important}
+body.operaplus .op-hero h1 em{color:#f3c5a7!important}
+body.operaplus .op-hero :is(p,.op-hero-lead){color:#f3e6e1!important}
+body.operaplus .op-hero :is(.op-eyebrow,.op-kicker){color:#f2c7a8!important}
+body.operaplus .op-hero .op-button{color:#fff!important;background:#632b3a!important;border-color:#b68b8f!important}
+body.operaplus .op-hero .op-button--outline{color:#fff5ef!important;background:transparent!important;border-color:#e1b8ae!important}
+body.operaplus .op-header,body.operaplus .op-footer{color:#f3ece1;color-scheme:dark}
+body.operaplus .op-header a,body.operaplus .op-footer a{color:#f3ece1}
+body.operaplus .op-prefooter{color:#30232a;color-scheme:light}
+body.operaplus.theme-light .op-sidebar :is(.form-check-label,label[for*="remember"],label[for*="Remember"],.mod-login__remember label){color:#30232a!important;opacity:1!important}
+body.operaplus.theme-dark .op-sidebar :is(.form-check-label,label[for*="remember"],label[for*="Remember"],.mod-login__remember label){color:#f8f1e9!important;opacity:1!important}
+body.operaplus .op-sidebar .form-check,body.operaplus .op-sidebar .mod-login__remember{display:flex;align-items:center;gap:.45rem}
+body.operaplus .op-sidebar input[type="checkbox"]{appearance:auto!important;accent-color:#7d344d;opacity:1!important;width:17px;height:17px;flex:none}
+/* Course covers: never crop the original artwork. */
+body.operaplus .op-course-item__visual{aspect-ratio:auto!important;min-height:0!important;overflow:visible!important;display:flex;align-items:center;justify-content:center;background:transparent!important}
+body.operaplus .op-course-item__visual img{display:block;width:100%!important;height:auto!important;max-height:620px;object-fit:contain!important;transform:none!important}
+body.operaplus .op-course-item__visual:hover img{transform:none!important}
+body.operaplus .op-course-detail__image{width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+/* Sidebar nested menu: no inherited paragraph/list block rhythm. */
+body.operaplus .op-sidebar :is(ul.menu,ul.mod-menu,ul.mod-menu__sub,li,li>ul,li>.mod-menu__sub){margin-block:0!important;padding-block:0!important;row-gap:0!important;gap:0!important}
+body.operaplus .op-sidebar li.op-side-parent>ul,body.operaplus .op-sidebar li.op-side-parent>.mod-menu__sub{margin:0 0 0 .45rem!important;padding:0 0 0 .4rem!important}
+body.operaplus .op-sidebar :is(.op-side-row,li>a,li>.op-side-row>a){margin-block:0!important;min-height:0!important;line-height:1.25!important}
+body.operaplus .op-sidebar :is(li>a,li>.op-side-row>a){padding:.19rem .45rem!important}
+body.operaplus .op-sidebar li.op-side-parent>.op-side-row>.op-side-toggle{height:22px!important}

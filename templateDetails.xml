@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.14.0</version>
+  <version>1.15.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Opera+ / Jecko Development</author>
   <authorUrl>https://opera.plus</authorUrl>
@@ -95,6 +95,7 @@
     </fieldset>
     <fieldset name="op_guide_112" label="Guida v1.12 · Pagine e moduli">
       <field name="opGuide112" type="note" class="alert alert-info" label="Aspetto pagine e navigazione" description="Tema predefinito: Chiaro. Se aggiorni uno stile già salvato, seleziona Chiaro manualmente nella scheda Aspetto. Header/hero/footer mantengono il fondo scuro. Pre-footer: modulo Personalizzato in posizione pre-footer, con titolo H2, testo P e link class op-button; sfondo avorio tenue. Nei moduli utenti Joomla (reset, remind, login, registrazione) margini e pulsanti sono automatici. Il mega menu orizzontale viene allineato dal JavaScript con 32px di margine dal bordo schermo. Vedi GUIDA_STILI.md nel pacchetto per esempi e indicazioni aggiuntive." />
+      <field name="opGuide115" type="note" class="alert alert-info" label="v1.15 · Contrasto e contenuti Joomla" description="Hero sempre con testi avorio su fondo scuro; checkbox Remember me leggibile in tema chiaro/scuro. Copertine corsi non ritagliate: l’immagine introduttiva mantiene le proporzioni. Il pulsante nella lista corsi usa la traduzione Joomla COM_CONTENT_READ_MORE, personalizzabile dalle sostituzioni lingua. Sottomenu sidebar compatti. Vedi GUIDA_STILI.md." />
     </fieldset>
   </fields></config>
 </extension>

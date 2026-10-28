@@ -3,6 +3,7 @@
 defined('_JEXEC') or die;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 $item = $this->item;
 $isCourse = strtolower((string) ($item->category_alias ?? '')) === 'corsi';
 if (!$isCourse) {
@@ -19,7 +20,9 @@ $tags = $item->tags->itemTags ?? [];
 ?>
 <article class="op-course-detail" itemscope itemtype="https://schema.org/Article">
  <header class="op-course-detail__header">
-  <p class="op-eyebrow">I CORSI DI OPERA+</p>
+  <?php if (!empty($item->category_title) && (bool) $this->params->get('show_category', 1)) : ?>
+  <p class="op-eyebrow op-course-detail__category"><?php echo $escape($item->category_title); ?></p>
+  <?php endif; ?>
   <?php if ($author !== '') : ?><p class="op-course-detail__composer"><?php echo $escape($author); ?></p><?php endif; ?>
   <h1 class="op-course-detail__title" itemprop="headline"><?php echo $escape($item->title); ?></h1>
   <?php if ($tags) : ?><div class="op-course-detail__tags" aria-label="Tag">

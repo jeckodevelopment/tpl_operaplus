@@ -425,3 +425,26 @@ body.operaplus.theme-light .op-sidebar li.active>.op-side-row{background:#efe1e7
 body.operaplus.theme-dark .op-course-detail,body.operaplus.theme-dark .op-course-detail__body{color:#f3ece1}
 body.operaplus.theme-dark .op-course-detail__title{color:#f3ece1}
 @media(max-width:760px){.op-course-detail__image{aspect-ratio:4/3}}
+
+/* v1.14: consistent vertical alignment of all primary navigation items. */
+@media (min-width:901px) {
+ body.operaplus .op-navigation>ul.mod-menu,body.operaplus .op-navigation>ul.menu,
+ body.operaplus .op-navigation ul.mod-menu:has(>li.op-has-mega),body.operaplus .op-navigation ul.menu:has(>li.op-has-mega){align-items:center!important}
+ body.operaplus .op-navigation ul.mod-menu>li,body.operaplus .op-navigation ul.menu>li{align-self:center!important;margin-top:0!important;margin-bottom:0!important;padding-top:0!important;padding-bottom:0!important}
+ body.operaplus .op-navigation ul.mod-menu>li>.op-link-row,body.operaplus .op-navigation ul.menu>li>.op-link-row{display:inline-flex!important;align-items:center!important;vertical-align:middle!important;min-height:40px!important;margin:0!important;padding:0!important;line-height:1.4!important}
+ body.operaplus .op-navigation ul.mod-menu>li>.op-link-row>a,body.operaplus .op-navigation ul.menu>li>.op-link-row>a{display:inline-flex!important;align-items:center!important;min-height:40px!important;padding-top:0!important;padding-bottom:0!important;line-height:1.4!important}
+ body.operaplus .op-navigation ul.mod-menu>li>.op-link-row>.op-submenu-toggle,body.operaplus .op-navigation ul.menu>li>.op-link-row>.op-submenu-toggle{align-self:center!important;height:40px!important}
+ body.operaplus .op-navigation li.op-has-mega>ul,body.operaplus .op-navigation li.op-has-mega>.mod-menu__sub{position:fixed!important;transform:none!important;margin:0!important;box-sizing:border-box!important;z-index:10000!important}
+}
+/* Courses catalog: generous editorial composition and image-led cards. */
+body.operaplus .op-course-index{width:100%;margin:0 auto;padding-bottom:3rem}
+body.operaplus .op-course-index__header{margin:0 0 clamp(2rem,4vw,3.5rem);max-width:820px}
+body.operaplus .op-course-index__header h1{font:400 clamp(2.2rem,3.6vw,3.4rem)/1.14 Georgia,serif!important;letter-spacing:-.035em}
+body.operaplus .op-course-index__items{gap:clamp(2.3rem,5vw,4.4rem)}
+body.operaplus .op-course-item{grid-template-columns:minmax(0,1.17fr) minmax(0,.83fr);align-items:center;gap:clamp(1.5rem,4.5vw,4.5rem);padding:0 0 clamp(2.2rem,4vw,4rem)}
+body.operaplus .op-course-item__visual{aspect-ratio:1.65;background:#412330}
+body.operaplus .op-course-item__copy h2{font:400 clamp(2rem,3.3vw,3.5rem)/1.12 Georgia,serif!important;letter-spacing:-.035em}
+body.operaplus .op-course-item__composer{font-weight:700;letter-spacing:.14em;margin-bottom:.7rem}
+body.operaplus .op-course-item__intro{line-height:1.8;margin-bottom:1.3rem}
+body.operaplus .op-course-detail__category{text-transform:uppercase;letter-spacing:.13em}
+@media(max-width:760px){body.operaplus .op-course-item{grid-template-columns:1fr;gap:1.3rem}}

@@ -156,3 +156,9 @@ Il JS corregge automaticamente la posizione dei pannelli quando la voce padre è
 ## v1.13.0 — Layout singolo corso e navigazione
 
 Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/com_content/article/default.php`: titolo, autore alias (compositore), tag, immagine articolo completa (fallback immagine introduttiva), intro e testo completo. Gli altri articoli seguono il layout Joomla standard. I moduli sidebar nel tema chiaro utilizzano testo scuro, campi leggibili e pulsanti bordeaux. Il mega menu è posizionato da un solo controller JS, relativamente al suo contenitore reale e con margini di sicurezza.
+
+## v1.14.0 · Corsi e menu
+- **Blog categoria corsi:** crea una categoria con alias `corsi` e una voce menu Blog di categoria. Immagine introduttiva, titolo, alias autore e tag vengono da Joomla; il testo iniziale deriva dalla descrizione della categoria, modificabile nel backend.
+- **Singolo articolo corso:** il titolo e il compositore sono rispettivamente `Titolo` e `Alias autore`; l'etichetta sopra il titolo mostra il nome della categoria soltanto se Joomla consente `Mostra categoria`. Non è più presente la stringa fissa «I corsi di Opera+».
+- **Mega menu:** assegna `op-mega` al link padre. Il pannello viene allineato alla finestra lasciando 32px sui desktop; usa livelli di menu 2 e 3 per le colonne.
+- **Testi dell'interfaccia:** usa le stringhe lingua `TPL_OPERAPLUS_DISCOVER_COURSE` e `TPL_OPERAPLUS_NO_COURSES` per personalizzare le etichette senza alterare il PHP.

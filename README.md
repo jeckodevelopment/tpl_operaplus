@@ -75,3 +75,9 @@ Rimossi i controlli icona adiacenti alla password nel login sidebar. Sottomenu l
 ## v1.13.0 — Layout singolo corso e navigazione
 
 Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/com_content/article/default.php`: titolo, autore alias (compositore), tag, immagine articolo completa (fallback immagine introduttiva), intro e testo completo. Gli altri articoli seguono il layout Joomla standard. I moduli sidebar nel tema chiaro utilizzano testo scuro, campi leggibili e pulsanti bordeaux. Il mega menu è posizionato da un solo controller JS, relativamente al suo contenitore reale e con margini di sicurezza.
+
+## v1.14.0
+- Removed hardcoded course eyebrow: the single-article category label comes from Joomla category metadata and respects show_category.
+- Course action/empty labels moved to Joomla language files.
+- Improved course category editorial spacing and cover proportions.
+- Horizontal menu alignment normalized; mega panel uses fixed viewport-relative positioning.

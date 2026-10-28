@@ -192,8 +192,8 @@
         <field name="opLangGuideCourses" type="note" label="Stringhe dei corsi" description="TPL_OPERAPLUS_DISCOVER_COURSE = testo del pulsante di apertura della scheda corso (italiano: Scopri il corso; inglese: Explore course). TPL_OPERAPLUS_NO_COURSES = messaggio in caso di categoria corsi senza articoli pubblicati." />
         <field name="opLangGuideNavigation" type="note" label="Navigazione e accessibilità" description="TPL_OPERAPLUS_SKIP = collegamento per saltare al contenuto; TPL_OPERAPLUS_MENU = etichetta accessibile del menu principale e del comando di navigazione mobile." />
         <field name="opLangGuideAdmin" type="note" label="Etichette di amministrazione" description="TPL_OPERAPLUS_BRANDING, LOGO, BRAND_TEXT, TAGLINE, FOOTER_TEXT, APPEARANCE, ACCENT, BACKGROUND, CONTAINER, STICKY = etichette delle impostazioni del template; TPL_OPERAPLUS_XML_DESCRIPTION = descrizione del template nell'amministrazione. Consulta GUIDA_STILI.md per la tabella completa." />
-        <field name="opGuide118" type="note" class="alert alert-info" label="TPL_OPERAPLUS_SOCIAL_DOC_TITLE" description="TPL_OPERAPLUS_SOCIAL_DOC_DESC" />
-      </fieldset>
+              <field name="opGuide118" type="note" class="alert alert-info" label="TPL_OPERAPLUS_SOCIAL_DOC_TITLE" description="TPL_OPERAPLUS_SOCIAL_DOC_DESC" />
+</fieldset>
     </fields>
   </config>
 </extension>

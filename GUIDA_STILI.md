@@ -223,3 +223,8 @@ Le pagine interne (`is-internal`) hanno ora un padding superiore ridotto a circa
 L'uso di **Immagine menu** come Open Graph può non essere desiderato se la stessa immagine è una piccola icona di navigazione: utilizza immagini di adeguata risoluzione. Il template non crea né carica immagini e non sovrascrive gli altri campi Open Graph generati da estensioni SEO.
 
 **Stringhe documentate**: `TPL_OPERAPLUS_FAVICON`, `_FAVICON_DESC`, `_FAVICON_PATH`, `_FAVICON_PATH_DESC`, `_OG_IMAGE`, `_OG_IMAGE_DESC`, `_SOCIAL_DOC_TITLE`, `_SOCIAL_DOC_DESC` (tutte con prefisso `TPL_OPERAPLUS`).
+
+## v1.18.1 — Correzione apertura singoli articoli
+- Lettura immagine Open Graph tramite `Factory::getContainer()` e database Joomla.
+- Se la ricerca della copertina genera un errore, la pagina continua a essere renderizzata e viene utilizzata l'immagine OG predefinita.
+- Nessuna modifica al contenuto degli articoli, agli override o alla grafica.

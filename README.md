@@ -1,4 +1,4 @@
-# Opera+ Joomla 6 — v1.15.0
+# Opera+ Joomla 6 — v1.18.0
 
 # Template Opera+ per Joomla 6 — 1.3.0
 
@@ -98,3 +98,6 @@ Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/
 - Descrizione `TPL_OPERAPLUS_XML_DESCRIPTION`: «Opera+ - Il template per opera.plus» (traduzione inglese nei file lingua).
 - Autore e URL: Jecko Development — https://jeckodevelopment.com.
 - `template_preview.png` e `template_thumbnail.png`: immagini d’anteprima con scritta Opera+ ricostruita graficamente in assenza del file del logo originale; non sono asset del frontend. Per il logo del sito continua a essere disponibile il parametro Logo nel backend.
+
+## v1.18.0 — Branding metadata
+Favicon e Open Graph configurabili dal backend. Vedi GUIDA_STILI.md.

@@ -203,3 +203,12 @@ Le ultime etichette sono definite nei file lingua per compatibilità; alcune imp
 Le pagine interne (`is-internal`) hanno ora un padding superiore ridotto a circa **14–24 px** (12 px su mobile), e breadcrumb più vicino al contenuto. L'homepage non viene modificata.
 
 **Regola di manutenzione:** ogni nuova costante `Text::_('...')` introdotta o modificata deve essere aggiunta sia a questa tabella, sia alla scheda «Guida · Stringhe di lingua» nel backend Joomla.
+
+
+## v1.17.0 — Backend, metadata e anteprima
+
+- Le istruzioni per classi CSS, moduli Joomla e stringhe lingua sono consolidate nell’unica scheda **Documentazione** delle opzioni dello stile.
+- Le schede **Titoli** e **Navigazione** sono state rinominate senza modificare i nomi dei parametri esistenti.
+- Descrizione `TPL_OPERAPLUS_XML_DESCRIPTION`: «Opera+ - Il template per opera.plus» (traduzione inglese nei file lingua).
+- Autore e URL: Jecko Development — https://jeckodevelopment.com.
+- `template_preview.png` e `template_thumbnail.png`: immagini d’anteprima con scritta Opera+ ricostruita graficamente in assenza del file del logo originale; non sono asset del frontend. Per il logo del sito continua a essere disponibile il parametro Logo nel backend.

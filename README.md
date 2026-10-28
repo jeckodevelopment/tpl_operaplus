@@ -89,3 +89,12 @@ Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/
 - Ripristinata la chiave `TPL_OPERAPLUS_DISCOVER_COURSE` nel pulsante del catalogo corsi.
 - Documentate tutte le costanti lingua attualmente presenti nel template, anche nel backend.
 - Compattato lo spazio superiore delle sole pagine interne.
+
+
+## v1.17.0 — Backend, metadata e anteprima
+
+- Le istruzioni per classi CSS, moduli Joomla e stringhe lingua sono consolidate nell’unica scheda **Documentazione** delle opzioni dello stile.
+- Le schede **Titoli** e **Navigazione** sono state rinominate senza modificare i nomi dei parametri esistenti.
+- Descrizione `TPL_OPERAPLUS_XML_DESCRIPTION`: «Opera+ - Il template per opera.plus» (traduzione inglese nei file lingua).
+- Autore e URL: Jecko Development — https://jeckodevelopment.com.
+- `template_preview.png` e `template_thumbnail.png`: immagini d’anteprima con scritta Opera+ ricostruita graficamente in assenza del file del logo originale; non sono asset del frontend. Per il logo del sito continua a essere disponibile il parametro Logo nel backend.

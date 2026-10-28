@@ -101,3 +101,9 @@ Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/
 
 ## v1.18.0 — Branding metadata
 Favicon e Open Graph configurabili dal backend. Vedi GUIDA_STILI.md.
+
+
+## v1.18.1 — Correzione apertura singoli articoli
+- Lettura immagine Open Graph tramite `Factory::getContainer()` e database Joomla.
+- Se la ricerca della copertina genera un errore, la pagina continua a essere renderizzata e viene utilizzata l'immagine OG predefinita.
+- Nessuna modifica al contenuto degli articoli, agli override o alla grafica.

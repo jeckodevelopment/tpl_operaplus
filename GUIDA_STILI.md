@@ -212,3 +212,14 @@ Le pagine interne (`is-internal`) hanno ora un padding superiore ridotto a circa
 - Descrizione `TPL_OPERAPLUS_XML_DESCRIPTION`: «Opera+ - Il template per opera.plus» (traduzione inglese nei file lingua).
 - Autore e URL: Jecko Development — https://jeckodevelopment.com.
 - `template_preview.png` e `template_thumbnail.png`: immagini d’anteprima con scritta Opera+ ricostruita graficamente in assenza del file del logo originale; non sono asset del frontend. Per il logo del sito continua a essere disponibile il parametro Logo nel backend.
+
+
+## v1.18.0 — Favicon e Open Graph (Branding)
+
+**Favicon**: dal selettore Media carica un PNG quadrato (48×48/96×96 px) o un SVG. Se preferisci `.ico`, caricalo nel Media Manager (se abilitato) e indica il percorso relativo in **Percorso favicon alternativo** (`images/favicon.ico`). Il selettore ha precedenza sul percorso alternativo. Il template aggiunge `<link rel="icon">` nel `<head>`.
+
+**Immagine Open Graph predefinita**: seleziona dal Media Manager una copertina 1200×630 px. Il template sceglie nell'ordine: 1) `og:image` già presente nel documento (ad esempio da plugin SEO), che non sovrascrive; 2) parametro `og_image` della voce di menu, se disponibile, o **Immagine menu** nativa; 3) **Immagine introduttiva** dell'articolo (o immagine articolo completo come riserva); 4) immagine predefinita dello stile del template. I link sono assoluti. Il nome `og_image` non è un campo nativo universale: può essere fornito da un'estensione SEO. Per una pagina di categoria senza immagine specifica è usato il fallback del template.
+
+L'uso di **Immagine menu** come Open Graph può non essere desiderato se la stessa immagine è una piccola icona di navigazione: utilizza immagini di adeguata risoluzione. Il template non crea né carica immagini e non sovrascrive gli altri campi Open Graph generati da estensioni SEO.
+
+**Stringhe documentate**: `TPL_OPERAPLUS_FAVICON`, `_FAVICON_DESC`, `_FAVICON_PATH`, `_FAVICON_PATH_DESC`, `_OG_IMAGE`, `_OG_IMAGE_DESC`, `_SOCIAL_DOC_TITLE`, `_SOCIAL_DOC_DESC` (tutte con prefisso `TPL_OPERAPLUS`).

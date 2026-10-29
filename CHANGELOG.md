@@ -1,115 +1,122 @@
-# Changelog — Opera+ Joomla 6
+# Changelog — Opera+ per Joomla 6
 
-## 1.20.1 — Correzione pacchetto di installazione
+Cronologia delle modifiche al template, dalla versione più recente alla meno recente.
 
-- Inclusa la cartella `tools/` dichiarata nel manifest ma mancante nello ZIP 1.20.0.
-- Verificata la corrispondenza tra riferimenti nel manifest e contenuti del pacchetto.
+Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
+
+## [1.20.1] — 2026-10-29
+
+- Corretto il pacchetto installabile includendo la cartella `tools/` dichiarata nel manifest.
+- Verificata la corrispondenza tra file e cartelle indicati nel manifest e contenuto dello ZIP.
 
 ## [1.20.0] — 2026-10-29
 
-- Impostato 48 px come dimensione predefinita H1 del contenuto (Hero H1 indipendente; stili salvati non alterati).
-- Riorganizzata la documentazione backend per funzionalità e casi d’uso, senza riferimenti alle versioni.
-- Riscritta GUIDA_STILI.md come manuale operativo e inventario delle classi CSS riutilizzabili.
-
+- Impostata a **48 px** la dimensione massima predefinita dell'H1 del contenuto, indipendente dall'H1 dell'hero.
+- Riorganizzata la scheda **Documentazione** del backend per funzionalità, eliminando le note di versione.
+- Riscritta `GUIDA_STILI.md` come guida operativa alle classi CSS pubbliche e alle impostazioni Joomla.
 
 ## [1.19.0] — 2026-10-29
 
-- Riorganizzato il README come documento operativo e mantenuto il changelog separato.
-- Migliorata la gestione dei controlli JavaScript del menu laterale: identificativi DOM deterministici, rimossi assegnamenti ridondanti.
-- Introdotto uno script di verifica automatica per manifest, file lingua, asset e integrità del pacchetto.
-- Consolidata la politica di modifiche conservative per evitare regressioni nella cascata CSS.
-- Nessuna modifica intenzionale al layout frontend o alle opzioni già salvate.
+- Riorganizzato il README e separato il changelog dalla documentazione d'uso.
+- Migliorati gli identificativi DOM e rimossi assegnamenti ridondanti nel JavaScript dei menu laterali.
+- Aggiunto uno script di controllo statico per manifest, traduzioni, asset e pacchetto.
+- Privilegiate modifiche conservative per ridurre il rischio di regressioni grafiche.
 
 ## [1.18.1] — 2026-10-28
 
-- Corretto l'accesso ai servizi database Joomla nel recupero dell'immagine Open Graph del singolo articolo.
-- Gestiti gli errori non essenziali dei metadati senza bloccare la pagina.
+- Corretto l'accesso al database Joomla per recuperare l'immagine Open Graph degli articoli.
+- Gestite le eccezioni del recupero metadati senza bloccare la visualizzazione delle pagine.
 
 ## [1.18.0] — 2026-10-28
 
-- Branding: favicon configurabile e immagine Open Graph predefinita.
+- Aggiunto nella scheda **Branding** il campo favicon.
+- Aggiunta l'immagine Open Graph predefinita, come fallback rispetto alle immagini specifiche di pagine e articoli.
 
-## Versioni precedenti (storico preservato)
+## [1.17.0]
 
-## v1.4.0 — Moduli Joomla e pagine corsi
-- Sidebar sinistra e destra: stile Joomla `html5` per contenitore e titolo affidabili.
-- Moduli nativi Menu (anche nidificato), Login/Logout, ricerca, articoli e controlli formulario tematizzati con CSS automatico; mantenere i moduli sulle posizioni `sidebar-right` / `sidebar-left`.
-- Il menu nella sidebar viene trasformato in un elenco editoriale senza punti, con stato attivo bordeaux.
-- Componenti di pagina per corsi: `.op-course-intro`, `.op-course-feature`, `.op-course-feature__art`, `.op-course-feature__body`, `.op-course-meta`, `.op-course-status`, `.op-course-note`, `.op-course-chapters`, `.op-course-chapter`, `.op-course-cta`, `.op-course-lessons`. Si applicano al contenuto di articoli Joomla o moduli personalizzati.
-- Il pacchetto contiene solo stili/layout, nessun articolo o modulo è creato automaticamente.
-- Non collaudato in istanza Joomla: testare su staging.
+- Riunita la documentazione del backend in un'unica scheda **Documentazione**.
+- Rinominate le schede delle impostazioni in **Titoli** e **Navigazione**.
+- Aggiornati descrizione, autore e sito dell'autore del template.
+- Aggiunti i file PNG per l'anteprima del template nell'amministrazione.
 
+## [1.16.0]
 
-## v1.5.0
-Menu orizzontale, login privo delle icone decorative nei campi, pulsanti squadrati, dimensioni H1-H5/Hero configurabili e scheda guida agli stili nel backend. Consulta GUIDA_STILI.md.
+- Ripristinata la stringa lingua `TPL_OPERAPLUS_DISCOVER_COURSE` per il collegamento al dettaglio del corso.
+- Documentate le costanti di traduzione personalizzabili.
+- Ridotta la spaziatura superiore delle pagine interne.
 
+## [1.15.0]
 
-Versione 1.6.0: navigazione dropdown multilivello e mega menu a colonne; tipografia corsi; documentazione backend e guida aggiornate.
+- Corretti i contrasti dell'hero, delle superfici chiare e del modulo Login.
+- Mostrate le copertine introduttive dei corsi senza ritaglio.
+- Compattate ulteriormente le voci dei sottomenu laterali.
+- Utilizzata temporaneamente la stringa nativa Joomla per il collegamento al corso; scelta rivista nella 1.16.0.
 
-## v1.7.0
-Correzione posizione mega menu, form login, checkbox Remember me e guida backend organizzata in sezioni.
+## [1.14.0]
 
-## v1.9.0
-Rimossi i controlli icona adiacenti alla password nel login sidebar. Sottomenu laterali con toggle indipendente, espansione multilivello e supporto per il ramo attivo. Guida backend e GUIDA_STILI aggiornate.
+- Rimossa l'etichetta editoriale fissa dal dettaglio del corso: il nome della categoria è ricavato da Joomla.
+- Portate le etichette dell'interfaccia nei file lingua.
+- Riviste proporzioni e spaziature del catalogo corsi.
+- Uniformato l'allineamento delle voci della navigazione orizzontale.
 
-## Versione 1.9.0
-- Menu orizzontale: sostituiti i simboli + con chevron discreti, senza dipendenze da font icone.
-- Menu laterale: ridotte le spaziature tra genitori e figli, su più livelli.
-- Guida nel backend aggiornata con le istruzioni di navigazione.
+## [1.13.0]
 
-## Versione 1.10.0
-- Sidebar: ulteriormente compattate righe e sottomenu, mantenendo il controllo di espansione.
-- Mega menu: margine di sicurezza 24px da entrambi i bordi e riallineamento automatico del pannello.
-- Guida agli stili aggiornata.
-- Sorgenti versionati nella repository GitHub `jeckodevelopment/tpl_operaplus`.
+- Introdotto l'override del singolo articolo per la categoria con alias `corsi`, utilizzando titolo, autore alias, immagini e tag Joomla.
+- Corretto il contrasto dei moduli nelle sidebar con tema chiaro.
+- Rivisto il posizionamento del mega menu.
+- Raffinati gli stili del pre-footer e dei componenti Joomla.
 
+## [1.12.0]
 
-### Versione 1.11.0
-- Correzione overflow del mega menu con calcolo dei margini reali.
-- Tema chiaro selezionabile per singolo stile Joomla e assegnabile alle voci di menu.
-- Override blog di categoria per `corsi`: immagine intro, titolo, autore/compositore, tag, testo e link.
-- Formattazione avvisi Joomla, breadcrumb e modulo pre-footer.
-- Aggiornamento guida amministrazione e documentazione.
+- Adottato il tema chiaro come impostazione predefinita del contenuto.
+- Aggiornati pre-footer, form e spaziature delle pagine interne.
+- Ritoccato il posizionamento del mega menu.
 
+## [1.11.0]
 
-## v1.13.0 — Fondi chiari, moduli Joomla e mega menu
-- Il tema predefinito è **Chiaro**: il contenuto della homepage e delle pagine interne è avorio; header, hero e footer restano scuri. Nelle opzioni dello stile `Tema cromatico della pagina` scegli Scuro solo dove necessario. Negli stili già esistenti il valore salvato resta invariato: seleziona manualmente Chiaro.
-- Il modulo `pre-footer` usa una fascia chiara `#eee7e0`, con titoli scuri e pulsanti bordeaux squadrati. Per la CTA usa un modulo Personalizzato con H2, paragrafo e link `class="op-button"`.
-- I componenti Joomla utenti (reset password, password dimenticata, accesso, registrazione, profilo) hanno distanze tra input e pulsanti, campi e controlli coerenti. Previsti anche form, paginazione e pulsanti standard.
-- Il mega menu desktop usa coordinate viewport: margine minimo **32px** da entrambi i lati, incluso il menu all'estrema destra. I controlli precedenti di allineamento sono stati eliminati.
-- Quando vengono aggiunte o modificate classi CSS, aggiornare sempre questa guida e quella del backend.
+- Introdotta la variante cromatica chiara assegnabile tramite gli stili Joomla.
+- Creato l'override del blog di categoria `corsi` con copertina, titolo, autore, tag e collegamento.
+- Stilizzati breadcrumb, messaggi Joomla e modulo pre-footer.
+- Migliorato il contenimento del mega menu nella finestra.
 
+## [1.10.0]
 
-## v1.13.0 — Layout singolo corso e navigazione
+- Compattati i menu delle sidebar e i livelli annidati.
+- Aggiunti margini di sicurezza nel posizionamento del mega menu.
+- Aggiornata la guida del backend e avviato il versionamento dei sorgenti su GitHub.
 
-Gli articoli della categoria con alias `corsi` utilizzano automaticamente `html/com_content/article/default.php`: titolo, autore alias (compositore), tag, immagine articolo completa (fallback immagine introduttiva), intro e testo completo. Gli altri articoli seguono il layout Joomla standard. I moduli sidebar nel tema chiaro utilizzano testo scuro, campi leggibili e pulsanti bordeaux. Il mega menu è posizionato da un solo controller JS, relativamente al suo contenitore reale e con margini di sicurezza.
+## [1.9.0]
 
-## v1.14.0
-- Removed hardcoded course eyebrow: the single-article category label comes from Joomla category metadata and respects show_category.
-- Course action/empty labels moved to Joomla language files.
-- Improved course category editorial spacing and cover proportions.
-- Horizontal menu alignment normalized; mega panel uses fixed viewport-relative positioning.
+- Sostituito il simbolo di espansione del menu orizzontale con un chevron.
+- Ridotte le distanze verticali nei menu laterali.
+- Migliorata la navigazione con livelli espandibili e ramo attivo.
+- Rimossi i controlli decorativi superflui accanto alla password nel modulo Login.
 
+## [1.8.0]
 
-## v1.16.0
-- Ripristinata la chiave `TPL_OPERAPLUS_DISCOVER_COURSE` nel pulsante del catalogo corsi.
-- Documentate tutte le costanti lingua attualmente presenti nel template, anche nel backend.
-- Compattato lo spazio superiore delle sole pagine interne.
+- Migliorata la gestione del campo password nel modulo Login.
+- Introdotti controlli separati per espandere i livelli del menu laterale, mantenendo navigabili i collegamenti padre.
 
+## [1.7.0]
 
-## v1.17.0 — Backend, metadata e anteprima
+- Corretto il posizionamento del mega menu.
+- Migliorata la leggibilità del modulo Login e della checkbox “Remember me”.
+- Riorganizzata la guida operativa nel backend.
 
-- Le istruzioni per classi CSS, moduli Joomla e stringhe lingua sono consolidate nell’unica scheda **Documentazione** delle opzioni dello stile.
-- Le schede **Titoli** e **Navigazione** sono state rinominate senza modificare i nomi dei parametri esistenti.
-- Descrizione `TPL_OPERAPLUS_XML_DESCRIPTION`: «Opera+ - Il template per opera.plus» (traduzione inglese nei file lingua).
-- Autore e URL: Jecko Development — https://jeckodevelopment.com.
-- `template_preview.png` e `template_thumbnail.png`: immagini d’anteprima con scritta Opera+ ricostruita graficamente in assenza del file del logo originale; non sono asset del frontend. Per il logo del sito continua a essere disponibile il parametro Logo nel backend.
+## [1.6.0]
 
-## v1.18.0 — Branding metadata
-Favicon e Open Graph configurabili dal backend. Vedi GUIDA_STILI.md.
+- Aggiunti dropdown multilivello e mega menu a colonne.
+- Migliorata la tipografia dei corsi e aggiornata la guida del backend.
 
+## [1.5.0]
 
-## v1.18.1 — Correzione apertura singoli articoli
-- Lettura immagine Open Graph tramite `Factory::getContainer()` e database Joomla.
-- Se la ricerca della copertina genera un errore, la pagina continua a essere renderizzata e viene utilizzata l'immagine OG predefinita.
-- Nessuna modifica al contenuto degli articoli, agli override o alla grafica.
+- Migliorati menu orizzontale, Login e pulsanti.
+- Resa configurabile la dimensione dei titoli H1–H5 e dell'hero.
+- Introdotta la guida agli stili nelle impostazioni del template.
+
+## [1.4.0]
+
+- Adottato il contenitore Joomla `html5` per i moduli delle sidebar.
+- Uniformati gli stili dei moduli nativi Menu, Login, Ricerca e delle form.
+- Aggiunti componenti editoriali riutilizzabili per corsi, lezioni e contenuti.
+- Confermato che il template non crea automaticamente articoli o moduli Joomla.

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.20.1</version>
+  <version>1.20.2</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>

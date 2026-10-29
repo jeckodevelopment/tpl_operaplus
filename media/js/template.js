@@ -95,24 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.createElement('button');
       toggle.type = 'button';
       toggle.className = 'op-side-toggle';
-      toggle.textContent = ''; // decorative chevron provided via CSS
+      // Chevron is rendered via CSS; the accessible name is in aria-label.
       const name = label.textContent.trim() || 'Sottomenu';
       toggle.setAttribute('aria-label', 'Espandi o comprimi ' + name);
-      const targetId = child.id || ('op-side-sub-' + Math.random().toString(36).slice(2));
+      const targetId = child.id || ('op-side-sub-' + index + '-' + Array.from(document.querySelectorAll('.op-sidebar ul.mod-menu, .op-sidebar ul.menu')).indexOf(root));
       child.id = targetId;
       toggle.setAttribute('aria-controls', targetId);
       const initiallyOpen = li.classList.contains('active') || li.classList.contains('current') || !!li.querySelector('li.active, li.current');
       li.classList.add('op-side-parent');
       li.classList.toggle('op-side-open', initiallyOpen);
       toggle.setAttribute('aria-expanded', String(initiallyOpen));
-      toggle.textContent = ''; // CSS chevron rotates on expansion
       row.appendChild(toggle);
       toggle.addEventListener('click', () => {
         const open = !li.classList.contains('op-side-open');
         li.classList.toggle('op-side-open', open);
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.textContent = ''; // update aria-expanded; CSS handles icon
-      });
+        });
     });
   });
 });

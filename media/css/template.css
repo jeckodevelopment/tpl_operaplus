@@ -74,7 +74,6 @@ h3{font-size:clamp(1.35rem,2vw,1.85rem)}
 @media(max-width:900px){.op-hero-grid{grid-template-columns:1fr}.op-hero-side{justify-content:flex-start}.op-hero-logo{width:min(65%,260px);max-height:180px}.op-footer-inner{grid-template-columns:1fr 1.4fr}.op-footer-extras{grid-column:span 2;text-align:left}}
 @media(max-width:600px){.op-hero{padding:2.7rem 0 3rem}.op-hero h1{font-size:clamp(2.1rem,8.5vw,3rem)}.op-hero-side{display:none}.op-footer-inner{display:flex;flex-direction:column;gap:1.65rem}.op-footer-extras{width:100%}.op-footer-bottom{margin-top:1.6rem}.op-section{padding:3rem 0}}
 
-
 /* Opera+ v1.4 — native Joomla modules and interior pages */
 .op-sidebar{padding:0;border:0;border-radius:0;background:none;display:grid;gap:1.25rem}
 .op-sidebar .moduletable,.op-sidebar .mod-custom,.op-sidebar .mod-login{min-width:0}
@@ -384,7 +383,6 @@ body.operaplus .op-content :is(.pagination,.pager) a{display:inline-flex;padding
 /* Mega panel: fixed positioning is set by JS, always within 32px of viewport. */
 @media(min-width:901px){body.operaplus .op-navigation li.op-has-mega>ul,body.operaplus .op-navigation li.op-has-mega>.mod-menu__sub{transform:none!important;margin-left:0!important;z-index:200}}
 
-
 /* v1.13 — consistent light-theme sidebar modules, including native Joomla controls */
 body.operaplus.theme-light .op-sidebar,
 body.operaplus.theme-light .op-sidebar .moduletable,
@@ -481,3 +479,38 @@ body.operaplus.is-internal .op-main{padding-top:clamp(.85rem,1.8vw,1.5rem)!impor
 body.operaplus.is-internal .op-breadcrumb{margin-bottom:.85rem!important;padding-top:.1rem!important}
 body.operaplus.is-internal .op-main .page-header:first-child,body.operaplus.is-internal .op-main .op-course-index__header:first-child{margin-top:0!important}
 @media(max-width:700px){body.operaplus.is-internal .op-main{padding-top:.75rem!important}}
+
+
+/* Joomla 6 system messages — style the native <joomla-alert> host and its children.
+   Avoid nested .alert-message panels and do not reimplement Joomla dismissal. */
+body.operaplus #system-message-container{margin:0 0 1.25rem}
+body.operaplus #system-message-container joomla-alert{
+  display:block;position:relative;box-sizing:border-box;
+  margin:0 0 .85rem;padding:.85rem 3.2rem .85rem 1.15rem!important;
+  border:1px solid #d7c8bd!important;border-left:4px solid #84445b!important;
+  border-radius:4px!important;background:#f3ede6!important;color:#46363d!important;
+  box-shadow:none!important;font:inherit;line-height:1.55;
+}
+body.operaplus #system-message-container joomla-alert[type="success"]{background:#eaf4ee!important;border-color:#b7d5c1!important;border-left-color:#32744c!important;color:#214a32!important}
+body.operaplus #system-message-container joomla-alert[type="danger"],
+body.operaplus #system-message-container joomla-alert[type="error"]{background:#f9eaea!important;border-color:#e9c5c5!important;border-left-color:#ae4c50!important;color:#722b31!important}
+body.operaplus #system-message-container joomla-alert[type="warning"]{background:#fbf1de!important;border-color:#ead5ac!important;border-left-color:#ac7429!important;color:#694819!important}
+body.operaplus #system-message-container joomla-alert[type="info"],
+body.operaplus #system-message-container joomla-alert[type="notice"]{background:#edf2f7!important;border-color:#c9d6e5!important;border-left-color:#426c91!important;color:#284e70!important}
+body.operaplus #system-message-container joomla-alert .alert-heading{margin:0 0 .2rem;padding:0;background:transparent;border:0;color:inherit}
+body.operaplus #system-message-container joomla-alert .alert-heading:has(.visually-hidden):not(:has(> :not(.visually-hidden):not(.success):not(.error):not(.warning):not(.info))){margin:0}
+body.operaplus #system-message-container joomla-alert .alert-wrapper,
+body.operaplus #system-message-container joomla-alert .alert-message{
+  margin:0!important;padding:0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;color:inherit!important;
+}
+body.operaplus #system-message-container joomla-alert .alert-message{font-size:.94rem;line-height:1.55}
+body.operaplus #system-message-container joomla-alert .joomla-alert--close{
+  position:absolute;top:.55rem;right:.65rem;display:grid;place-items:center;
+  width:2rem;height:2rem;margin:0;padding:0;border:0;border-radius:3px;
+  background:transparent;color:inherit;opacity:.8;cursor:pointer;font-size:1.35rem;line-height:1;
+}
+body.operaplus #system-message-container joomla-alert .joomla-alert--close:hover{opacity:1;background:rgba(0,0,0,.06)}
+body.operaplus #system-message-container joomla-alert .joomla-alert--close:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+/* Accessible noscript fallback (shown only when JavaScript is disabled). */
+body.operaplus #system-message-container noscript .alert{margin:0 0 .85rem;padding:.85rem 1.15rem;border-radius:4px}

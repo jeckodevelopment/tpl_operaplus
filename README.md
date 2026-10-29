@@ -1,55 +1,55 @@
 # Opera+ — Template per Joomla 6
 
-Template frontend di **Opera+**, il progetto di divulgazione dell'opera lirica disponibile su [opera.plus](https://opera.plus/). Lo sviluppo è curato da [Jecko Development](https://jeckodevelopment.com).
+Template responsive per il sito di **Opera+**, progetto di divulgazione dell’opera lirica. Sviluppato da [Jecko Development](https://jeckodevelopment.com).
 
-**Versione:** 1.18.1 · **Piattaforma:** Joomla 6 · **Stato:** sviluppo e verifica su ambiente di prova.
+**Versione:** 1.19.0 · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
 
-## Caratteristiche
+## Funzionalità
 
-- Grafica editoriale coordinata con opera.plus: bordeaux, avorio e antracite, tipografia Georgia e Manrope.
-- Layout responsive, navigazione multilivello, sidebar e moduli Joomla nativi.
-- Gestione tramite stili del template: branding, favicon, immagine Open Graph fallback, colori, titoli e navigazione.
-- Override Joomla per blog della categoria `corsi` e dettaglio corso (immagini, autore alias, tag e titolo nativi).
-- Stringhe traducibili Joomla, documentazione integrata nel backend e guida delle classi CSS.
+- Branding configurabile, favicon e immagine Open Graph di fallback.
+- Layout editoriale chiaro/scuro, hero e moduli Joomla nelle posizioni del template.
+- Navigazione multilivello e mega menu con gestione da tastiera.
+- Override nativi `com_content` per il catalogo e i dettagli dei corsi (categoria con alias `corsi`).
+- Stringhe lingua traducibili attraverso le sostituzioni lingua di Joomla.
+- Documentazione di moduli e classi direttamente nelle impostazioni del template.
 
 ## Installazione e configurazione
 
-1. Genera o scarica il pacchetto installabile del template e installalo in **Sistema → Installa → Estensioni**.
-2. Imposta Opera+ come stile predefinito oppure duplica lo stile e assegnalo alle voci di menu desiderate.
-3. Configura logo, favicon e immagine Open Graph nella scheda **Branding**.
-4. Assegna i moduli alle posizioni (ad esempio `menu`, `hero`, `sidebar-right`, `pre-footer`).
-5. Per i corsi, crea una categoria con alias `corsi` e una voce di menu **Blog di categoria**. Usa i campi nativi degli articoli per immagini, autore alias e tag.
+1. In Joomla vai in **Sistema → Installa → Estensioni** e installa il file ZIP della release.
+2. Configura lo stile del template: **Branding**, **Aspetto**, **Titoli**, **Navigazione** e **Documentazione**.
+3. Pubblica i moduli nelle posizioni previste (`menu`, `hero`, `sidebar-left`, `sidebar-right`, `pre-footer`, ecc.).
+4. Per il catalogo corsi usa una voce di menu **Blog di categoria** collegata alla categoria Joomla con alias `corsi`.
+5. Per ogni corso usa un articolo Joomla: titolo, autore alias (compositore), immagine introduttiva, tag e testo.
 
-> Installazione e funzionamento vanno sempre verificati su Joomla 6 in staging prima della pubblicazione in produzione. Le immagini di anteprima del backend non influiscono sul frontend.
+Prima di pubblicare in produzione, verifica sempre la release nell'ambiente Joomla di prova.
 
-## Struttura del progetto
+## Struttura
 
-| Percorso | Funzione |
+| Percorso | Scopo |
 |---|---|
-| `templateDetails.xml` | Manifest, posizioni e opzioni del template |
-| `index.php` | Layout principale e metadati |
-| `component.php`, `error.php`, `offline.php` | Layout specializzati |
-| `media/css/`, `media/js/` | Stili e JavaScript |
-| `html/com_content/` | Override dei layout nativi Joomla |
-| `language/it-IT/`, `language/en-GB/` | Traduzioni |
-| `GUIDA_STILI.md` | Uso di posizioni, classi e stringhe |
-| `CHANGELOG.md` | Cronologia versioni |
+| `templateDetails.xml` | Manifest, moduli e parametri dello stile |
+| `index.php` | Shell HTML, asset e metadati |
+| `html/com_content/` | Override degli articoli e del blog di categoria |
+| `media/css/template.css` | Stili del tema |
+| `media/js/template.js` | Comportamenti della navigazione |
+| `language/` | Stringhe traducibili it-IT ed en-GB |
+| `GUIDA_STILI.md` | Posizioni, classi, opzioni e stringhe di lingua |
+| `CHANGELOG.md` | Cronologia delle versioni |
+| `tools/quality_check.py` | Controlli statici della release |
 
-## Standard di sviluppo
+## Principi tecnici
 
-- **Joomla-first:** preferire API, layout, Web Asset Manager, configurazioni, moduli, stringhe lingua e override nativi prima di introdurre funzionalità proprietarie.
-- **Qualità e sicurezza:** rispettare le convenzioni Joomla/PHP; validare dati in ingresso, eseguire escaping contestuale in uscita, usare API database/query parametrizzate e considerare autorizzazioni e token CSRF quando pertinenti.
-- **Manutenibilità:** separare responsabilità, evitare testi fissi, duplicazioni CSS/JS e personalizzazioni dirette dei file core Joomla.
-- **Prestazioni:** caricare soltanto asset necessari, contenere dipendenze e JavaScript, ottimizzare immagini e ridurre query ridondanti. La misurazione delle prestazioni va effettuata su pagine reali.
-- **Accessibilità:** mantenere contrasto, focus da tastiera, semantica HTML e navigazione utilizzabile su dispositivi mobili.
-- **Documentazione:** ogni nuova classe, opzione o stringa deve comparire nella guida backend e in `GUIDA_STILI.md`; ogni modifica deve essere riportata in `CHANGELOG.md`.
-- **Release:** allineare versione nel manifest e negli asset, verificare sintassi PHP/JSON/XML e produrre ZIP installabile sincronizzato ai sorgenti GitHub. Testare in staging.
+- **Joomla-first:** preferire API, componenti, moduli, traduzioni, Web Asset Manager e override di Joomla ai meccanismi personalizzati.
+- **Sicurezza:** validare input, fare escaping in uscita in base al contesto, usare query API Joomla e non modificare file del core.
+- **Prestazioni:** evitare query e asset superflui; preservare ordine della cascata CSS e verificare i cambiamenti di navigazione sui dispositivi reali.
+- **Accessibilità:** contrasti adeguati, menu utilizzabili con tastiera, testi alternativi alle immagini.
+- **Release:** numeri di versione coerenti, changelog aggiornato, ZIP installabile e verifica su staging.
 
-## Documentazione e cronologia
+## Documentazione
 
-- [Guida agli stili e alle stringhe](GUIDA_STILI.md)
+- [Guida agli stili](GUIDA_STILI.md)
 - [Changelog](CHANGELOG.md)
 
-## Licenza e autore
+## Autore e licenza
 
-Autore: **Jecko Development** — https://jeckodevelopment.com. Il manifest riporta **GNU GPL v2 o successiva**. Verificare separatamente diritti e licenze degli eventuali asset grafici incorporati.
+**Jecko Development** — https://jeckodevelopment.com. Il manifest dichiara GNU GPL v2 o successiva; le eventuali risorse grafiche hanno licenze proprie.

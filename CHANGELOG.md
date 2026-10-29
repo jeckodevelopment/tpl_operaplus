@@ -1,5 +1,10 @@
 # Changelog — Opera+ Joomla 6
 
+## 1.20.1 — Correzione pacchetto di installazione
+
+- Inclusa la cartella `tools/` dichiarata nel manifest ma mancante nello ZIP 1.20.0.
+- Verificata la corrispondenza tra riferimenti nel manifest e contenuti del pacchetto.
+
 ## [1.20.0] — 2026-10-29
 
 - Impostato 48 px come dimensione predefinita H1 del contenuto (Hero H1 indipendente; stili salvati non alterati).

@@ -1,5 +1,12 @@
 # Changelog — Opera+ Joomla 6
 
+## [1.20.0] — 2026-10-29
+
+- Impostato 48 px come dimensione predefinita H1 del contenuto (Hero H1 indipendente; stili salvati non alterati).
+- Riorganizzata la documentazione backend per funzionalità e casi d’uso, senza riferimenti alle versioni.
+- Riscritta GUIDA_STILI.md come manuale operativo e inventario delle classi CSS riutilizzabili.
+
+
 ## [1.19.0] — 2026-10-29
 
 - Riorganizzato il README come documento operativo e mantenuto il changelog separato.
@@ -18,20 +25,6 @@
 - Branding: favicon configurabile e immagine Open Graph predefinita.
 
 ## Versioni precedenti (storico preservato)
-
-Registro storico delle modifiche del template. Le versioni sono riportate secondo le note di sviluppo esistenti; alcune note originali sono duplicate o non uniformi e vengono conservate per tracciabilità.
-
-## [1.18.1] — 2026-10-28
-
-- Correzione del recupero immagini Open Graph per non interrompere la visualizzazione dei singoli articoli.
-- Accesso al database tramite il contenitore DI Joomla e gestione delle eccezioni per la parte non essenziale dei metadati.
-
-## [1.18.0] — 2026-10-28
-
-- Campi Branding per favicon e immagine Open Graph predefinita.
-- Priorità alle immagini specifiche di articolo/menu e ai metadati già impostati.
-
-## Storico delle versioni precedenti
 
 ## v1.4.0 — Moduli Joomla e pagine corsi
 - Sidebar sinistra e destra: stile Joomla `html5` per contenitore e titolo affidabili.

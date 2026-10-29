@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.18.1</version>
+  <version>1.19.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>
@@ -18,6 +18,8 @@
     <filename>templateDetails.xml</filename>
     <filename>GUIDA_STILI.md</filename>
     <filename>README.md</filename>
+    <filename>CHANGELOG.md</filename>
+    <folder>tools</folder>
     <folder>html</folder>
     <filename>template_preview.png</filename>
     <filename>template_thumbnail.png</filename>

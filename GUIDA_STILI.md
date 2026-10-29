@@ -86,3 +86,8 @@ Per **l’elenco esatto di tutte le chiavi**, consultare `language/it-IT/tpl_ope
 ## Nota di manutenzione
 
 Documentare ogni nuova classe riutilizzabile, campo backend e stringa lingua in questa guida e nella scheda Documentazione del template. Le informazioni sulle release appartengono esclusivamente al changelog.
+
+
+## Messaggi di sistema Joomla
+
+I messaggi di sistema sono gestiti dal componente nativo Joomla tramite `<jdoc:include type="message" />` e `<joomla-alert>`. Il template applica automaticamente stili coerenti a `success`, `danger`/`error`, `warning`, `info`/`notice`. Non occorrono override o classi personalizzate per Login, Logout e altri messaggi Joomla. Il controllo di chiusura resta gestito da Joomla.

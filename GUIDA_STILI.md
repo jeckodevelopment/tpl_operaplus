@@ -224,7 +224,18 @@ L'uso di **Immagine menu** come Open Graph può non essere desiderato se la stes
 
 **Stringhe documentate**: `TPL_OPERAPLUS_FAVICON`, `_FAVICON_DESC`, `_FAVICON_PATH`, `_FAVICON_PATH_DESC`, `_OG_IMAGE`, `_OG_IMAGE_DESC`, `_SOCIAL_DOC_TITLE`, `_SOCIAL_DOC_DESC` (tutte con prefisso `TPL_OPERAPLUS`).
 
+
 ## v1.18.1 — Correzione apertura singoli articoli
 - Lettura immagine Open Graph tramite `Factory::getContainer()` e database Joomla.
 - Se la ricerca della copertina genera un errore, la pagina continua a essere renderizzata e viene utilizzata l'immagine OG predefinita.
 - Nessuna modifica al contenuto degli articoli, agli override o alla grafica.
+
+
+## v1.19.0 — Qualità, manutenzione e prestazioni
+
+- La guida alle opzioni del backend rimane la fonte operativa per gli editor del sito.
+- Usare prima le funzionalità native di Joomla (moduli, articoli, campi, lingua, override).
+- Non replicare funzioni del core e non inserire testi editoriali hardcoded.
+- Nuovi testi interfaccia: aggiornare entrambi i file lingua, questa guida e la scheda Documentazione.
+- Prima della release: eseguire `python3 tools/quality_check.py`, `php -l` sui PHP, `node --check` sugli script e verificare gli override su staging.
+- Il CSS mantiene per ora gli override storici: una riscrittura della cascata richiede test visivi comparativi prima di essere rilasciata.

@@ -4,6 +4,11 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.20.2] — 2026-10-29
+
+- Corretta la formattazione degli alert di sistema Joomla (successo, errore, avviso e informazione).
+- Eliminati i riquadri annidati e migliorato il pulsante di chiusura senza modificare il componente Joomla.
+
 ## [1.20.1] — 2026-10-29
 
 - Corretto il pacchetto installabile includendo la cartella `tools/` dichiarata nel manifest.

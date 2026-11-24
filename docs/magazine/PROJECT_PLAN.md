@@ -1,0 +1,17 @@
+# Opera+ — Template 2.0.0 / Magazine
+
+Piano approvato il 24 novembre 2026. Target Joomla 6. Milestone 2.0.0.
+## Confini
+- Tutti i layout standard e aggiuntivi 1.x restano invariati; nuovi layout alternativi opt-in, CSS isolato, asset condizionali.
+- Template: presentazione. operaplus-extensions 1.0.0: mod_operaplus_atlas, plg_fields_operaplusatlas, mod_operaplus_cta, plg_editorsxtd_operaplus_templates, servizi condivisi. JD Learn rimandato: moduli generici nel suo progetto, override futuri qui.
+- Atlas autonomo: export integrativo additivo, schema v2 e ID invariati; pipeline non bloccante, ultimo indice valido; ritratti verificati per tutti i compositori. Dipendenza jeckodevelopment/opera-atlas#833.
+## Decisioni UX
+Homepage: copertina overlay predefinita, contrasto AA indipendente dall'immagine, griglia unica 8+4 per tutte le sezioni e sidebar. mod_articles con layout magazine_cover, magazine_sidebar, magazine_grid, magazine_latest, magazine_list, magazine_portraits, magazine_dossier, magazine_ranked. Titoli sezioni configurabili, no categorie hardcoded. Recensioni: immagini identiche anche per la prima, fondo differenziato opzionale; teatro/città/data da campi facoltativi. Layout correlati sidebar, horizontal, compact; preferire moduli nativi, correlazione Atlas in fase successiva. Atlas e newsletter: conservare grafica approvata (ritratto a destra, fondo caldo, CTA bordeaux; newsletter rosata, busta in filigrana). TinyMCE: stili D/R e modelli contenuto tramite plugin. Tempo lettura automatico, 200 parole/min configurabile e disattivabile.
+## Fasi
+1. Censimento e matrice (#1).
+2. Mockup singoli UX-01–15 approvati e versionati (#2).
+3. Layout e override (#3).
+4. Integrazioni grafiche (#4), coordinate con operaplus-extensions#1.
+5. Collaudi e release (#5).
+## Governance
+PR organiche, label macro-requisito e priorità, milestone, comportamenti da testare, CI, documentazione contestuale, link ZIP per staging. Avanzamento implementativo separato dal collaudo: percentuale solo su criteri effettivamente verificati, non sulla mera apertura di issue. Nessun tag stabile prima del collaudo. La matrice è preliminare e sarà espansa a criteri atomici dopo censimento e approvazione grafica.

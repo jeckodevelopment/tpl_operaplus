@@ -55,3 +55,4 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "DOC-01","DOC","Piano progettuale","PROJECT_PLAN.md e matrice versionati","1","completato","non_eseguito"
 "DOC-02","DOC","Guida redattore","Documentazione stili, layout e moduli","1","non_avviato","non_eseguito"
 "DOC-03","DOC","Guida amministratore","Parametri, traduzioni, installazione e changelog","1","non_avviato","non_eseguito"
+"ATLAS-04","ATLAS","Occultamento contestuale","Senza entità valida nessun titolo wrapper margine o sidebar vuota; configurabile; modalità manuale preservata","4","non_avviato","non_eseguito"

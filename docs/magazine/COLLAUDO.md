@@ -20,6 +20,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Sessione 2 — 25 novembre 2026:** SET-03, SET-04 e CFG-02 tutti OK, nessuna nota, su staging RC4 / Extensions 1.0.1. Configurazione landing, navigazione e indipendenza delle impostazioni confermate. Avanzamento cumulativo 16/95 casi OK (13 su 15 della sessione 1 e 3 su 3 della sessione 2), senza KO residui. Restano i due casi tecnici della sessione 1 e le verifiche specifiche già annotate; proseguire con sessione 3.
 
+**Lotto 3A — 25 novembre 2026:** HOME-01–05 tutti OK, nessuna nota, su staging RC4 / Extensions 1.0.1. Copertina, tre notizie, griglia, asse editoriale 8+4 e gestione righe vuote/componente confermati dal collaudatore. Avanzamento cumulativo 21/95, sessione 3: 5/17. Nessun nuovo difetto; approvazioni grafiche UX e verifiche specifiche successive restano distinte.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

@@ -32,6 +32,15 @@ try {
   assert.equal(await side.evaluate(e=>e===document.activeElement),true);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  }
+ await page.setViewportSize({width:375,height:760});
+ await page.goto(url);
+ const resizeTrigger=page.locator('.op-menu-toggle');
+ await resizeTrigger.click();
+ assert.equal(await resizeTrigger.getAttribute('aria-expanded'),'true');
+ await page.setViewportSize({width:1200,height:760});
+ await page.waitForFunction(()=>document.querySelector('.op-menu-toggle').getAttribute('aria-expanded')==='false');
+ await page.setViewportSize({width:375,height:760});
+ assert.equal(await page.locator('#op-navigation').isVisible(),false);
  const nojs=await browser.newPage({javaScriptEnabled:false,viewport:{width:320,height:760}});
  await nojs.goto(url);
  assert.equal(await nojs.locator('#op-navigation').isVisible(),true);

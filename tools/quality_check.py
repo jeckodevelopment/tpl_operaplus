@@ -26,7 +26,7 @@ for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer')
     assert '.' + cls in (root / 'media/css/magazine.css').read_text(), f'Missing frontend style: {cls}'
 
 # Uncompressed runtime asset budgets; exclude third-party Joomla assets.
-for path, limit in {"media/css/template.css": 85000, "media/css/magazine.css": 35000, "media/js/template.js": 12000}.items():
+for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 29000, "media/js/template.js": 12000}.items():
     size = (root / path).stat().st_size
     assert size <= limit, f"Runtime asset budget exceeded: {path}: {size} > {limit}"
     print(f"{path}: {size}/{limit} bytes")

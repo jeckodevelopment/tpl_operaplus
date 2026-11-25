@@ -40,3 +40,11 @@ check(!$d->getMetaData('og:image','property'),'Future article must not publish s
 $item->publish_up='2026-01-01 12:00:00';$item->publish_down='2026-01-02 00:00:00';
 $d=new Doc;opSeoArticle($d,$item,$root);
 check(!$d->getMetaData('og:image','property'),'Expired article must not publish social image');
+
+check(opSeoText('<p>Opera</p><p>lirica</p><script>bad()</script>')==='Opera lirica','Paragraph boundaries');
+foreach(['images/%2e./x','https://example.invalid/a/../x','images/%5csecret','{"imagefile":[] }'] as $url){check(opSeoUrl($url,$root)==='','Unsafe decoded media '.$url);}
+check(opSeoCanonical($root,'/sub/index.php?option=com_content&view=article&id=4&Itemid=7&start=20&token=secret&session_id=secret&access_token%5B0%5D=secret&0123456789abcdef0123456789abcdef=1&ttclid=x')==='https://example.invalid/sub/index.php?option=com_content&view=article&id=4&Itemid=7&start=20','Canonical privacy and routing');
+$item->publish_down='0000-00-00 00:00:00';
+$d=new Doc;opSeoArticle($d,$item,$root);
+check($d->getMetaData('og:type','property')==='article','Legacy zero date is unset');
+echo "Additional canonical privacy, decoded URL and description tests passed.\n";

@@ -38,44 +38,35 @@ $megaWidth = in_array($megaWidth, [600, 760, 960, 1100], true) ? $megaWidth : 76
 $megaColumns = max(2, min(4, (int) $this->params->get('megaColumns', 3)));
 $menuMode = $this->params->get('menuMode', 'hover') === 'click' ? 'click' : 'hover';
 $titleSizes = [];
-foreach (['h1' => 64, 'h2' => 43, 'h3' => 28, 'h4' => 23, 'h5' => 19, 'heroH1' => 72] as $key => $fallback) {
+foreach (['h1' => 48, 'h2' => 43, 'h3' => 28, 'h4' => 23, 'h5' => 19, 'heroH1' => 72] as $key => $fallback) {
     $titleSizes[$key] = max(15, min(88, (int) $this->params->get($key . 'Size', $fallback)));
 }
 
 require_once __DIR__ . '/html/seo.php';
-$assetUrl = static function ($value): string {
-    $url = opSeoUrl($value, Uri::root());
+$siteRoot = Uri::root();
+$assetUrl = static function ($value) use ($siteRoot): string {
+    $url = opSeoUrl($value, $siteRoot);
     // Branding remains site-local; use the same validation for all image fields.
-    return $url !== '' && str_starts_with($url, Uri::root()) ? $url : '';
+    return $url !== '' && str_starts_with($url, $siteRoot) ? $url : '';
 };
 $logo = $assetUrl($this->params->get('logo', ''));
 $heroLogo = $assetUrl($this->params->get('heroLogo', '')) ?: $logo;
 $footerLogo = $assetUrl($this->params->get('footerLogo', '')) ?: $logo;
 // Branding: favicon and Open Graph. Use Joomla's document metadata API to avoid duplicates.
-$mediaFile = static function ($value): string {
-    // Joomla's media field may return an image URL with a fragment or JSON payload.
-    $value = trim((string) $value);
-    if ($value !== '' && $value[0] === '{') {
-        $data = json_decode($value, true);
-        $value = is_array($data) ? (string) ($data['imagefile'] ?? $data['file'] ?? '') : '';
-    }
-    return trim(preg_replace('/#.*$/', '', $value));
-};
-$absoluteMediaUrl = static fn($value): string => opSeoUrl($value, Uri::root());
 $faviconValue = (string) ($this->params->get('faviconFile', '') ?: $this->params->get('faviconPath', ''));
-$faviconUrl = $absoluteMediaUrl($faviconValue);
+$faviconUrl = opSeoUrl($faviconValue, $siteRoot);
 $faviconPath = parse_url($faviconUrl, PHP_URL_PATH) ?: '';
 $faviconExt = strtolower(pathinfo($faviconPath, PATHINFO_EXTENSION));
 if (!in_array($faviconExt, ['ico', 'png', 'svg', 'gif'], true)) { $faviconUrl = ''; }
 $faviconMime = ['ico' => 'image/x-icon', 'png' => 'image/png', 'svg' => 'image/svg+xml', 'gif' => 'image/gif'][$faviconExt] ?? 'image/x-icon';
-$seoMenu = $app->getMenu()->getActive();
-$seoMenuParams = $seoMenu ? $seoMenu->getParams() : null;
+$menu = $app->getMenu();
+$activeMenu = $menu->getActive();
+$defaultMenu = $menu->getDefault();
+$seoMenuParams = $activeMenu ? $activeMenu->getParams() : null;
 $seoMenuImage = $seoMenuParams ? ($seoMenuParams->get('og_image', '') ?: $seoMenuParams->get('menu_image', '')) : '';
-opSeoComplete($this, Uri::root(), Uri::getInstance()->toString(['path','query']), (string) $this->params->get('brandText','Opera+'), (string) $this->language, [$seoMenuImage, $this->params->get('defaultOgImage','')]);
+opSeoComplete($this, $siteRoot, Uri::getInstance()->toString(['path','query']), (string) $this->params->get('brandText','Opera+'), (string) $this->language, [$seoMenuImage, $this->params->get('defaultOgImage','')]);
 $hasLeftSidebar = (bool) $this->countModules('sidebar-left');
 $hasRightSidebar = (bool) $this->countModules('sidebar-right');
-$activeMenu = $app->getMenu()->getActive();
-$defaultMenu = $app->getMenu()->getDefault();
 require_once __DIR__ . '/html/magazine/context.php';
 $isHome = opMagazineLanding($activeMenu, $defaultMenu, 0, $app->getInput());
 $magazineClasses = '';
@@ -108,7 +99,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <a class="skip-link" href="<?php echo $showMain ? '#main-content' : ($this->countModules('hero') ? '#home-hero' : '#site-footer'); ?>"><?php echo Text::_('TPL_OPERAPLUS_SKIP'); ?></a>
 <?php if ($this->countModules('topbar')) : ?><div class="op-topbar"><div class="op-container"><jdoc:include type="modules" name="topbar" style="none" /></div></div><?php endif; ?>
 <header class="op-header"><div class="op-container op-header-inner">
-  <a class="op-brand" href="<?php echo Uri::root(); ?>" aria-label="<?php echo $brand; ?> – <?php echo $e(Text::_('TPL_OPERAPLUS_HOME_LABEL')); ?>">
+  <a class="op-brand" href="<?php echo $e($siteRoot); ?>" aria-label="<?php echo $brand; ?> – <?php echo $e(Text::_('TPL_OPERAPLUS_HOME_LABEL')); ?>">
     <?php if ($logo) : ?><img src="<?php echo htmlspecialchars($logo, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo $brand; ?>" /><?php else : ?><span class="op-wordmark"><?php echo $brand; ?></span><?php endif; ?>
   </a>
   <?php if ($this->countModules('header-actions')) : ?><div class="op-header-actions"><jdoc:include type="modules" name="header-actions" style="none" /></div><?php endif; ?>

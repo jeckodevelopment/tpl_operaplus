@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.2] — Audit trasversale
+
+- Canonical senza parametri sensibili e token Joomla; route e paginazione conservate. Descrizioni con separazione dei blocchi, media URL più robusti, date legacy non valorizzate.
+- Eliminato helper inutilizzato; riuso URL base, menu e parametri dei moduli. Allineato fallback H1 al manifest.
+- Ridotte ricerche DOM dei sottomenu e letture dei mega menu; reset responsivo dello stato mobile, aggiornamento caroselli accorpato per frame. Test SEO e browser aggiuntivi.
+- Nessuna modifica alle tavole approvate o al canale stabile.
+
 ## [2.0.0-rc.1] — Candidata al rilascio (staging)
 
 - ZIP riproducibile, SHA-256 e verifica contenuto; nessuno script di sviluppo nella nuova installazione.

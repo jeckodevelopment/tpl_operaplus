@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!menu || !trigger) return;
   document.body.classList.add('op-nav-ready');
   const en = document.documentElement.lang.toLowerCase().startsWith('en');
-  const small = () => window.matchMedia('(max-width: 900px)').matches;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  const small = () => mobile.matches;
   const clickMode = () => document.body.dataset.opMenuMode === 'click';
   const closeChildren = (root) => root.querySelectorAll('li.op-menu-open').forEach(li => {
     li.classList.remove('op-menu-open');
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.classList.remove('is-open');
     closeChildren(menu);
   };
+  mobile.addEventListener('change', close);
   trigger.addEventListener('click', () => {
     const open = trigger.getAttribute('aria-expanded') !== 'true';
     trigger.setAttribute('aria-expanded',String(open));
@@ -48,11 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
       event.stopPropagation();
       const open = !li.classList.contains('op-menu-open');
       li.classList.remove('op-menu-dismissed');
-      Array.from(li.parentElement.children).filter(el => el !== li).forEach(sibling => {
+      for (const sibling of li.parentElement.children) {
+        if (sibling === li) continue;
         sibling.classList.remove('op-menu-open');
         closeChildren(sibling);
-        sibling.querySelectorAll('.op-submenu-toggle').forEach(button => button.setAttribute('aria-expanded','false'));
-      });
+        sibling.querySelector(':scope > .op-link-row > .op-submenu-toggle')?.setAttribute('aria-expanded','false');
+      }
       li.classList.toggle('op-menu-open', open);
       toggle.setAttribute('aria-expanded',String(open));
     });
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Opera+ v1.8 — separate accordion controller for Joomla sidebar menus.
 document.addEventListener('DOMContentLoaded', () => {
   const en = document.documentElement.lang.toLowerCase().startsWith('en');
-  document.querySelectorAll('.op-sidebar ul.mod-menu, .op-sidebar ul.menu').forEach(root => {
+  document.querySelectorAll('.op-sidebar ul.mod-menu, .op-sidebar ul.menu').forEach((root, rootIndex) => {
     // Process only top-level menus: descendants are handled with the same controller.
     if (root.parentElement.closest('ul.mod-menu, ul.menu')) return;
     root.querySelectorAll('li').forEach((li, index) => {
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Chevron is rendered via CSS; the accessible name is in aria-label.
       const name = label.textContent.trim() || (en ? 'submenu' : 'Sottomenu');
       toggle.setAttribute('aria-label', (en ? 'Toggle ' : 'Espandi o comprimi ') + name);
-      const targetId = child.id || ('op-side-sub-' + index + '-' + Array.from(document.querySelectorAll('.op-sidebar ul.mod-menu, .op-sidebar ul.menu')).indexOf(root));
+      const targetId = child.id || ('op-side-sub-' + index + '-' + rootIndex);
       child.id = targetId;
       toggle.setAttribute('aria-controls', targetId);
       const initiallyOpen = li.classList.contains('active') || li.classList.contains('current') || !!li.querySelector('li.active, li.current');
@@ -141,18 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const panels = [...document.querySelectorAll('.op-navigation li.op-has-mega > ul, .op-navigation li.op-has-mega > .mod-menu__sub')];
   if (!panels.length) return;
-  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const desktop = window.matchMedia('(min-width: 901px)');
   function positionPanels() {
+    const viewport = document.documentElement.clientWidth;
+    const configured = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--op-mega-width')) || 760;
     panels.forEach(panel => {
-      if (!desktop()) {
+      if (!desktop.matches) {
         ['position','left','right','top','width','max-width','margin-left','transform'].forEach(k => panel.style.removeProperty(k));
         return;
       }
       const item = panel.parentElement;
       const navRect = item.querySelector(':scope > .op-link-row')?.getBoundingClientRect() || item.getBoundingClientRect();
-      const viewport = document.documentElement.clientWidth;
       const gutter = Math.min(32, Math.max(12, viewport * 0.04));
-      const configured = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--op-mega-width')) || 760;
       const width = Math.max(240, Math.min(configured, viewport - 2*gutter));
       const left = Math.max(gutter, Math.min(navRect.left + navRect.width/2 - width/2, viewport - gutter - width));
       panel.style.setProperty('position','fixed','important');
@@ -201,9 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     prev.addEventListener('click', () => move(-1, prev));
     next.addEventListener('click', () => move(1, next));
-    track.addEventListener('scroll', update, {passive:true});
-    window.addEventListener('resize', update, {passive:true});
-    if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    let scheduled = false;
+    const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(() => { scheduled = false; update(); }); } };
+    track.addEventListener('scroll', schedule, {passive:true});
+    if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(track);
+    else window.addEventListener('resize', schedule, {passive:true});
     update();
   });
 });

@@ -3,16 +3,23 @@ defined('_JEXEC') or die;
 
 function opSeoText($value, int $limit = 0): string
 {
+    $value = preg_replace('~</?(?:p|div|li|br|h[1-6]|blockquote|section|article)\b[^>]*>~i', ' ', (string) $value) ?? '';
     $text = html_entity_decode(strip_tags(preg_replace('~<(script|style)\b[^>]*>.*?</\1\s*>~is', ' ', (string) $value) ?? ''), ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $text = trim(preg_replace('/\s+/u', ' ', $text) ?? '');
     return $limit && mb_strlen($text, 'UTF-8') > $limit ? rtrim(mb_substr($text, 0, $limit - 1, 'UTF-8')) . '…' : $text;
 }
 function opSeoUrl($value, string $root): string
 {
-    $value = trim((string) $value);
+    if (!is_string($value)) {
+        return '';
+    }
+    $value = trim($value);
     if (str_starts_with($value, '{')) {
         $data = json_decode($value, true);
-        $value = is_array($data) ? (string) ($data['imagefile'] ?? $data['file'] ?? '') : '';
+        $value = is_array($data) ? ($data['imagefile'] ?? $data['file'] ?? '') : '';
+        if (!is_string($value)) {
+            return '';
+        }
     }
     $value = trim(explode('#', html_entity_decode($value, ENT_QUOTES | ENT_HTML5, 'UTF-8'), 2)[0]);
     if ($value === '' || preg_match('/[\x00-\x20\x7f\\\\<>"\x27]/', $value) || str_starts_with($value, '//')) {
@@ -20,6 +27,10 @@ function opSeoUrl($value, string $root): string
     }
     $parts = parse_url($value);
     if (!$parts || isset($parts['user']) || isset($parts['pass'])) {
+        return '';
+    }
+    $path = rawurldecode($parts['path'] ?? '');
+    if (preg_match('~(?:^|/)\.{1,2}(?:/|$)~', $path) || preg_match('/[\x00-\x1f\x7f\\\\]/', $path)) {
         return '';
     }
     if (isset($parts['scheme'])) {
@@ -46,8 +57,12 @@ function opSeoArticle($doc, $item, string $root): void
         return;
     }
     $now = gmdate('Y-m-d H:i:s');
-    if ((!empty($item->publish_up) && $item->publish_up > $now)
-        || (!empty($item->publish_down) && $item->publish_down < $now)) {
+    // Joomla may represent an unset date with NULL or the legacy zero date.
+    $up = (string) ($item->publish_up ?? '');
+    $down = (string) ($item->publish_down ?? '');
+    $unset = ['', '0000-00-00 00:00:00'];
+    if ((!in_array($up, $unset, true) && $up > $now)
+        || (!in_array($down, $unset, true) && $down < $now)) {
         return;
     }
     $images = json_decode((string) ($item->images ?? '{}'), true);
@@ -89,7 +104,11 @@ function opSeoCanonical(string $root,string $request): string
     $query = [];
     foreach (explode('&',$parts['query'] ?? '') as $pair) {
         $key = strtolower(urldecode(explode('=',$pair,2)[0]));
-        if ($pair !== '' && !str_starts_with($key,'utm_') && !in_array($key,['gclid','fbclid','msclkid','dclid'],true)) {
+        $baseKey = preg_replace('/\[.*$/', '', $key);
+        // Joomla form tokens are 32 hexadecimal characters; do not publish them.
+        $sensitive = preg_match('/^[a-f0-9]{32}$/D', $baseKey)
+            || in_array($baseKey, ['token','csrf_token','session','session_id','sessionid','sid','password','passwd','access_token','refresh_token','id_token','authorization','auth','api_key','apikey','secret','code','state','return'], true);
+        if ($pair !== '' && !$sensitive && !str_starts_with($key,'utm_') && !in_array($key,['gclid','fbclid','msclkid','dclid','ttclid','mc_cid','mc_eid'],true)) {
             $query[]=$pair;
         }
     }

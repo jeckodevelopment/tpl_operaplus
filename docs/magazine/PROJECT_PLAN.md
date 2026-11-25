@@ -21,3 +21,6 @@ Un solo template con parametro di stile `presentationMode` (standard default, ma
 
 ### Precisazione 25 novembre 2026 — stili nativi
 L'installazione crea automaticamente lo stile Magazine come record separato in Joomla, con modalità magazine, copiando il branding dello stile Standard. Non rinomina, sostituisce o modifica gli stili già presenti, non cambia il default e non assegna menu. Riconosce uno stile Magazine esistente anche rinominato; nessun duplicato in aggiornamento. La modalità rimane il discriminante tecnico interno dei due stili, non sostituisce i record Joomla.
+
+### Layout mod_articles 1.22.0
+Nomi effettivi con trattini anziché underscore: il selettore ModulelayoutField Joomla 6 esclude file con underscore. Layout editoriali alternativi; fallback core per Standard e configurazioni raggruppate/solo titoli. Le presentazioni related non implementano ancora correlazione automatica. Accettazione visiva sul sito e versionamento delle tavole definitive restano aperti.

@@ -71,3 +71,48 @@ body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li
 body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-menu-open>ul,
 body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-menu-open>.mod-menu__sub{display:flex!important}
 @media(min-width:901px){body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-has-mega.op-menu-open>ul,body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-has-mega.op-menu-open>.mod-menu__sub{display:grid!important}}
+
+/* Editorial cards: only on Magazine styles. */
+.op-magazine .op-mag-articles{display:grid;gap:20px;min-width:0;color:var(--mag-ink)}
+.op-magazine .op-mag-card{min-width:0;position:relative}
+.op-magazine .op-mag-card__visual{aspect-ratio:16/10;background:#e4d9ce;overflow:hidden;min-width:0}
+.op-magazine .op-mag-card__visual img{display:block;width:100%;height:100%;object-fit:cover}
+.op-magazine .op-mag-card__body{min-width:0;padding:12px 0 4px;overflow-wrap:anywhere}
+.op-magazine .op-mag-card__category{font:700 11px/1.4 Manrope,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mag-accent);margin:0 0 6px}
+.op-magazine .op-mag-card__title{font:500 clamp(20px,2.1vw,27px)/1.17 Georgia,serif!important;letter-spacing:-.02em;margin:0 0 7px!important;color:var(--mag-ink)!important;text-wrap:pretty}
+.op-magazine .op-mag-card__title>a{font:inherit!important;color:inherit!important;text-decoration:none}
+.op-magazine .op-mag-card__title>a:hover{text-decoration:underline;text-underline-offset:3px}
+.op-magazine .op-mag-card__category a,.op-magazine .op-mag-card__readmore{color:var(--mag-accent)!important}
+.op-magazine .op-mag-card__meta{display:flex;flex-wrap:wrap;gap:4px 10px;font:400 12px/1.5 Manrope,system-ui,sans-serif;color:var(--mag-muted)}
+.op-magazine .op-mag-card__meta span+span::before{content:'·';margin-inline-end:10px}
+.op-magazine .op-mag-card__intro{font:400 15px/1.6 Manrope,system-ui,sans-serif;color:var(--mag-muted);margin:8px 0}
+.op-magazine .op-mag-card__readmore{font:600 13px/1.4 Manrope,system-ui,sans-serif;display:inline-block;margin-top:8px}
+.op-magazine .op-mag-articles--cover .op-mag-card{display:grid;min-height:360px;background:#421724;color:#fff;isolation:isolate;overflow:hidden}
+.op-magazine .op-mag-articles--cover .op-mag-card__visual{position:absolute;inset:0;aspect-ratio:auto;z-index:-2}
+.op-magazine .op-mag-articles--cover .op-mag-card--image::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(22,9,13,.08),rgba(22,9,13,.88) 52%,#1b0b11);pointer-events:none}
+.op-magazine .op-mag-articles--cover .op-mag-card__body{align-self:end;background:linear-gradient(0deg,#1b0b11ed,#1b0b11b8 75%,transparent);padding:clamp(24px,4vw,40px);color:#fff!important}
+.op-magazine .op-mag-articles--cover .op-mag-card__title{font:500 clamp(29px,3.5vw,48px)/1.08 Georgia,serif!important;color:#fff!important}
+.op-magazine .op-mag-articles--cover .op-mag-card__category,.op-magazine .op-mag-articles--cover .op-mag-card__category a{color:#f6d4a4!important}
+.op-magazine .op-mag-articles--cover :is(.op-mag-card__meta,.op-mag-card__meta span,.op-mag-card__intro,.op-mag-card__readmore){color:#fff!important}
+.op-magazine .op-mag-articles--cover a:focus-visible{outline-color:#fff}
+.op-magazine .op-mag-articles:is(.op-mag-articles--grid,.op-mag-articles--related-horizontal,.op-mag-articles--portraits,.op-mag-articles--dossier){grid-template-columns:repeat(3,minmax(0,1fr))}
+.op-magazine .op-mag-articles.op-mag-cols-2:is(.op-mag-articles--grid,.op-mag-articles--related-horizontal,.op-mag-articles--portraits,.op-mag-articles--dossier){grid-template-columns:repeat(2,minmax(0,1fr))}
+.op-magazine .op-mag-articles.op-mag-cols-4:is(.op-mag-articles--grid,.op-mag-articles--related-horizontal,.op-mag-articles--portraits,.op-mag-articles--dossier){grid-template-columns:repeat(4,minmax(0,1fr))}
+.op-magazine .op-mag-articles--portraits .op-mag-card__visual{aspect-ratio:4/5}
+.op-magazine .op-mag-articles--dossier .op-mag-card{border-bottom:1px solid var(--mag-rule);padding-bottom:12px}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar,.op-mag-articles--list,.op-mag-articles--ranked,.op-mag-articles--topics,.op-mag-articles--related-compact){gap:0}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar,.op-mag-articles--list,.op-mag-articles--ranked,.op-mag-articles--topics,.op-mag-articles--related-compact)>.op-mag-card{display:grid;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--mag-rule)}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar,.op-mag-articles--list,.op-mag-articles--ranked,.op-mag-articles--topics,.op-mag-articles--related-compact)>.op-mag-card:first-child{padding-top:0}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar,.op-mag-articles--list,.op-mag-articles--ranked,.op-mag-articles--topics,.op-mag-articles--related-compact)>.op-mag-card:last-child{border:0}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar)>.op-mag-card--image{grid-template-columns:minmax(0,34%) minmax(0,1fr)}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar) .op-mag-card__visual{aspect-ratio:4/3}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar,.op-mag-articles--ranked,.op-mag-articles--topics,.op-mag-articles--related-compact) .op-mag-card__title{font-size:20px!important}
+.op-magazine :is(.op-mag-articles--sidebar,.op-mag-articles--latest,.op-mag-articles--related-sidebar,.op-mag-articles--list,.op-mag-articles--ranked,.op-mag-articles--topics,.op-mag-articles--related-compact) .op-mag-card__body{padding:0}
+.op-magazine .op-mag-articles--list>.op-mag-card--image{grid-template-columns:minmax(0,32%) minmax(0,1fr)}
+.op-magazine .op-mag-articles--ranked>.op-mag-card{grid-template-columns:36px minmax(0,1fr)}
+.op-magazine .op-mag-card__rank{font:500 30px/1 Georgia,serif;color:var(--mag-accent)}
+body.operaplus.op-magazine .op-mag-row__aside.op-sidebar>.moduletable:has(>.op-mag-articles){padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important}
+body.operaplus.op-magazine .op-mag-row__aside.op-sidebar .op-mag-card__title>a{color:var(--mag-ink)!important}
+body.operaplus.op-magazine .op-mag-row__aside.op-sidebar .op-mag-card__meta span{color:var(--mag-muted)!important}
+@media(max-width:720px){.op-magazine .op-mag-articles:is(.op-mag-articles--grid,.op-mag-articles--related-horizontal,.op-mag-articles--portraits,.op-mag-articles--dossier){grid-template-columns:repeat(2,minmax(0,1fr))}.op-magazine .op-mag-articles--cover .op-mag-card{min-height:320px}}
+@media(max-width:480px){.op-magazine .op-mag-articles:is(.op-mag-articles--grid,.op-mag-articles--related-horizontal,.op-mag-articles--portraits,.op-mag-articles--dossier){grid-template-columns:1fr}.op-magazine .op-mag-articles--list>.op-mag-card--image{grid-template-columns:1fr}.op-magazine .op-mag-articles--cover .op-mag-card__body{padding:20px}.op-magazine .op-mag-articles--cover .op-mag-card__title{font-size:30px!important}}

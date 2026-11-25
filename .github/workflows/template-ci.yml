@@ -24,6 +24,8 @@ jobs:
           node tools/test_editorial_chrome.mjs
           php tools/render_magazine_fixture.php
           node tools/test_magazine.mjs
+          php tools/render_article_layouts.php
+          node tools/test_article_layouts.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

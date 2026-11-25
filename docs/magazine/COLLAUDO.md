@@ -1,6 +1,6 @@
 # Piano e registro di collaudo — Opera+ Magazine
 
-**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 04 — 25 novembre 2026. Baseline operativa: template 2.0.0-rc.3 (build PR #29 `da099d7254599bb1eba7c3df524644c1e84e9fa2`, merge `fc02ae8b761f390d3fcd74102a7069ffd07d9de5`), Extensions 1.0.1 (build PR #15 `0ddc3c92d75ebfda070cd041f0d2b0d0aa35f981`, merge `31069fce95a261f4065255ab7c73b6886cd69a74`). Le indicazioni delle versioni precedenti sono storiche.
+**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 05 — 25 novembre 2026. Baseline operativa: template 2.0.0-rc.4 (build PR #32 `1b324324c7e5b97c3175638de0e81d8c81fe0798`, merge `bacfce3e433b2393fdec27f00c284b397451c6d3`), Extensions 1.0.1 (build PR #15 `0ddc3c92d75ebfda070cd041f0d2b0d0aa35f981`, merge `31069fce95a261f4065255ab7c73b6886cd69a74`). Le indicazioni delle versioni precedenti sono storiche.
 
 Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manuale o grafica. I collaudi intermedi sono rinviati su richiesta dell'utente. Confermati: installazione Extensions 1.0.0, plugin/campi, box Atlas e CTA, ritratto Verdi senza credito, stile Magazine distinto e correzione menu/login 1.21.2. Ripetere come regressione.
 
@@ -15,6 +15,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 **Lotto 1B — 25 novembre 2026:** confermati OK BASE-T01–T07 (incluso BASE-T05) e SET-02, nessuna anomalia; staging RC3 / Extensions 1.0.1. 9/15 casi sessione 1, 9/95 piano. Residui: SET-05, REL-02, BASE-T08/09/10 e BASE-INV. I test di integrità, reinstallazione e upgrade storico restano distinti.
 
 **Lotto 1C — 25 novembre 2026:** BASE-T08, SET-05 e REL-02 OK; BASE-T09 KO (schede e impostazioni template rimangono in italiano cambiando lingua amministratore), [BUG-007](https://github.com/jeckodevelopment/tpl_operaplus/issues/31). Totale RC3: 12/95 casi OK, 1 KO, 82 non conclusi; sessione 1: 12/15 OK, 1 KO, 2 residui. RC4 corregge esclusivamente localizzazione; nuova baseline e regressioni impattate dopo CI e ricollaudo. Non trasferire automaticamente gli esiti.
+
+**Ricollaudo BUG-007 — 25 novembre 2026:** RC4 installata; traduzioni inglesi Standard e Magazine, documentazione inglese, traduzioni italiane, conservazione parametri/assegnazioni e funzionamento frontend tutti OK, nessuna nota. Difetto chiuso. BASE-T09: ricollaudo mirato del solo KO segnalato; per completezza verificare separatamente override di lingua, menu, carosello e messaggi se non già provati. Le etichette REG-01/02 della scheda di ricollaudo erano locali: non equivalgono ai casi omonimi della sessione 8. I precedenti OK RC3 restano storici; modifica circoscritta ai cataloghi e manifest, regressione configurazione/frontend confermata, CI RC4 positiva. Non si presume un nuovo collaudo completo. BASE-INV e BASE-T10 restano da eseguire. Si può procedere alla sessione 2.
 
 ## Dati della sessione
 

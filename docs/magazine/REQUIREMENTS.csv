@@ -1,6 +1,6 @@
 id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_collaudo,casi_collaudo
 "BASE-01","BASE","Inventario baseline","BASELINE.md contiene tree, override, token, posizioni e scenari di regressione","1","completato","non_eseguito","BASE-INV"
-"BASE-02","BASE","Retrocompatibilità","BASE-T01–T10 superati senza variazioni involontarie","1","completato","non_superato","BASE-T01;BASE-T02;BASE-T03;BASE-T04;BASE-T05;BASE-T06;BASE-T07;BASE-T08;BASE-T09;BASE-T10;REG-01"
+"BASE-02","BASE","Retrocompatibilità","BASE-T01–T10 superati senza variazioni involontarie","1","completato","in_corso","BASE-T01;BASE-T02;BASE-T03;BASE-T04;BASE-T05;BASE-T06;BASE-T07;BASE-T08;BASE-T09;BASE-T10;REG-01"
 "UX-01","UX","Homepage","Tavola UX-01 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-01;REG-04"
 "UX-02","UX","Categoria elenco","Tavola UX-02 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-02;REG-04"
 "UX-03","UX","Categoria griglia","Tavola UX-03 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-03;REG-04"

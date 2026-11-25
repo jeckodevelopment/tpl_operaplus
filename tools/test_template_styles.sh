@@ -73,3 +73,4 @@ echo 'Latest preview upgrade, legacy test cleanup, custom files and stable-only 
 
 # Exercise the real Joomla form field filter, not the submitted hidden value.
 php "$root/tools/test_style_mode.php" "$JOOMLA_ROOT" "$standard" "$mid"
+php "$root/tools/test_admin_language.php" "$JOOMLA_ROOT"

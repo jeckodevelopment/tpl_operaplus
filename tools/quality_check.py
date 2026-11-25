@@ -9,6 +9,7 @@ version = manifest.findtext('version')
 release_date = (root / 'RELEASE_DATE').read_text().strip()
 assert date.fromisoformat(release_date).isoformat() == release_date
 assert manifest.findtext('creationDate') == release_date
+assert manifest.find("./files/folder[.='language']") is not None, 'Local catalog fallback must be installed'
 for name in ('template_preview.png', 'template_thumbnail.png'):
     image = root / 'media/images' / name
     assert image.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), name
@@ -52,6 +53,27 @@ for lang in ('it-IT', 'en-GB'):
         for key in [node.get('label'), node.get('description')] + [o.text for o in node.findall('option')]:
             if key and key.startswith('TPL_OPERAPLUS_'):
                 assert re.search(r'^' + re.escape(key) + r'=', text, re.M), f'Missing {lang}: {key}'
+
+
+# All administrator copy must resolve in both site language catalogs.
+admin_keys = set()
+for node in manifest.findall('./config//fieldset') + manifest.findall('./config//field'):
+    for attr in ('label', 'description', 'hint'):
+        key = node.get(attr)
+        if key:
+            assert re.fullmatch(r'(?:TPL_OPERAPLUS_[A-Z0-9_]+|J[A-Z0-9_]+)', key), (node.get('name'), attr, key)
+            admin_keys.add(key)
+    for option in node.findall('option'):
+        key = option.text or ''
+        if re.fullmatch(r'\d+(?: px|:\d+)', key):
+            continue
+        assert re.fullmatch(r'(?:TPL_OPERAPLUS_[A-Z0-9_]+|J[A-Z0-9_]+)', key), key
+        admin_keys.add(key)
+for lang in ('it-IT', 'en-GB'):
+    lang_text = (root / 'language' / lang / 'tpl_operaplus.ini').read_text()
+    for key in admin_keys:
+        if key.startswith('TPL_OPERAPLUS_'):
+            assert re.search(r'^' + re.escape(key) + r'=".+"$', lang_text, re.M), (lang, key)
 
 # Template-owned security boundaries: preserve native rendering and validate dynamic media.
 assert "opSeoUrl($images->image_intro" in (root / "html/com_content/category/blog.php").read_text()

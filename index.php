@@ -61,58 +61,18 @@ $mediaFile = static function ($value): string {
     }
     return trim(preg_replace('/#.*$/', '', $value));
 };
-$absoluteMediaUrl = static function ($value) use ($mediaFile): string {
-    $value = $mediaFile($value);
-    if ($value === '' || preg_match('~^(?:javascript:|data:|file:)~i', $value)) { return ''; }
-    if (preg_match('~^https?://~i', $value)) { return $value; }
-    if (str_starts_with($value, '//')) { return Uri::getInstance()->getScheme() . ':' . $value; }
-    return rtrim(Uri::root(), '/') . '/' . ltrim($value, '/');
-};
+require_once __DIR__ . '/html/seo.php';
+$absoluteMediaUrl = static fn($value): string => opSeoUrl($value, Uri::root());
 $faviconValue = (string) ($this->params->get('faviconFile', '') ?: $this->params->get('faviconPath', ''));
 $faviconUrl = $absoluteMediaUrl($faviconValue);
 $faviconPath = parse_url($faviconUrl, PHP_URL_PATH) ?: '';
 $faviconExt = strtolower(pathinfo($faviconPath, PATHINFO_EXTENSION));
 if (!in_array($faviconExt, ['ico', 'png', 'svg', 'gif'], true)) { $faviconUrl = ''; }
 $faviconMime = ['ico' => 'image/x-icon', 'png' => 'image/png', 'svg' => 'image/svg+xml', 'gif' => 'image/gif'][$faviconExt] ?? 'image/x-icon';
-$ogImage = '';
-// Preserve metadata already provided by SEO plugins or Joomla extensions.
-if (!$this->getMetaData('og:image', 'property')) {
-    $menuImage = '';
-    if ($activeMenuForSeo = $app->getMenu()->getActive()) {
-        $menuParams = $activeMenuForSeo->getParams();
-        // Explicit OG image takes priority over the native menu image.
-        $menuImage = (string) ($menuParams->get('og_image', '') ?: $menuParams->get('menu_image', ''));
-    }
-    $ogImage = $absoluteMediaUrl($menuImage);
-    if ($ogImage === '' && $app->input->getCmd('option') === 'com_content' && $app->input->getCmd('view') === 'article') {
-        $articleId = $app->input->getInt('id');
-        if ($articleId > 0) {
-            // Open Graph metadata must never make an article unavailable.
-            // Get the Joomla DI container from Factory, not the application.
-            try {
-                $db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
-                $query = $db->getQuery(true)
-                    ->select($db->quoteName('images'))
-                    ->from($db->quoteName('#__content'))
-                    ->where($db->quoteName('id') . ' = ' . (int) $articleId);
-                $db->setQuery($query);
-                $imagesJson = $db->loadResult();
-                if ($imagesJson) {
-                    $images = json_decode((string) $imagesJson, true);
-                    if (is_array($images)) {
-                        $ogImage = $absoluteMediaUrl(($images['image_intro'] ?? '') ?: ($images['image_fulltext'] ?? ''));
-                    }
-                }
-            } catch (\Throwable $exception) {
-                // If metadata lookup fails, keep rendering the article;
-                // the template-level default OG image is used below.
-                $ogImage = '';
-            }
-        }
-    }
-    if ($ogImage === '') { $ogImage = $absoluteMediaUrl($this->params->get('defaultOgImage', '')); }
-    if ($ogImage !== '') { $this->setMetaData('og:image', $ogImage, 'property'); }
-}
+$seoMenu = $app->getMenu()->getActive();
+$seoMenuParams = $seoMenu ? $seoMenu->getParams() : null;
+$seoMenuImage = $seoMenuParams ? ($seoMenuParams->get('og_image', '') ?: $seoMenuParams->get('menu_image', '')) : '';
+opSeoComplete($this, Uri::root(), Uri::getInstance()->toString(['path','query']), (string) $this->params->get('brandText','Opera+'), (string) $this->language, [$seoMenuImage, $this->params->get('defaultOgImage','')]);
 $hasSidebar = $this->countModules('sidebar-left or sidebar-right');
 $hasLeftSidebar = (bool) $this->countModules('sidebar-left');
 $hasRightSidebar = (bool) $this->countModules('sidebar-right');
@@ -134,9 +94,11 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <head>
 <jdoc:include type="metas" />
 <?php if ($faviconUrl !== '') : ?><link rel="icon" href="<?php echo $e($faviconUrl); ?>" type="<?php echo $e($faviconMime); ?>" /><?php endif; ?>
+<?php $fontMode = $this->params->get('externalFont', 'auto'); if ($fontMode === 'google' || ($fontMode === 'auto' && !$isMagazine)) : ?>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<?php endif; ?>
 <jdoc:include type="styles" />
 <jdoc:include type="scripts" />
 <style>:root{--op-accent:<?php echo $accent; ?>;--op-bg:<?php echo $background; ?>;--op-max:<?php echo $width; ?>px;--op-mega-width:<?php echo $megaWidth; ?>px;--op-mega-cols:<?php echo $megaColumns; ?>;--op-burgundy:<?php echo $burgundy; ?>;--op-ivory:<?php echo $ivory; ?>;<?php foreach (['h1','h2','h3','h4','h5','heroH1'] as $level) : ?>--op-<?php echo strtolower($level); ?>-size:<?php echo $titleSizes[$level]; ?>px;<?php endforeach; ?>}</style>

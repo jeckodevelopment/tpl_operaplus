@@ -24,3 +24,10 @@ assert editor == (root / 'media/css/editor.min.css').read_text(), 'Editor CSS va
 for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer'):
     assert 'p.' + cls in editor, f'Missing importable TinyMCE format: {cls}'
     assert '.' + cls in (root / 'media/css/magazine.css').read_text(), f'Missing frontend style: {cls}'
+
+# Uncompressed runtime asset budgets; exclude third-party Joomla assets.
+for path, limit in {"media/css/template.css": 180000, "media/css/magazine.css": 50000, "media/js/template.js": 22000}.items():
+    size = (root / path).stat().st_size
+    assert size <= limit, f"Runtime asset budget exceeded: {path}: {size} > {limit}"
+    print(f"{path}: {size}/{limit} bytes")
+assert "DatabaseInterface" not in (root / "index.php").read_text(), "SEO must not query content again"

@@ -5,7 +5,7 @@ import {resolve} from 'node:path';
 const browser=await chromium.launch();
 try{
  const page=await browser.newPage();
- for(const width of [1200,768,375]){
+ for(const width of [1200,768,375,320]){
   await page.setViewportSize({width,height:900});
   for(const theme of ['light','dark']){
    await page.goto(pathToFileURL(resolve('dist/magazine/home.html')).href);

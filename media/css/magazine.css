@@ -202,3 +202,22 @@ body.operaplus.op-magazine .op-mag-row__aside.op-sidebar .op-mag-card__meta span
 .op-magazine .op-mag-articles--mosaic>.op-mag-card:first-child .op-mag-card__title{font-size:clamp(24px,3vw,38px)!important}
 @media(max-width:720px){.op-magazine .op-mag-articles--carousel:is(.op-mag-cols-2,.op-mag-cols-3,.op-mag-cols-4){--mag-visible:2}}
 @media(max-width:480px){.op-magazine .op-mag-articles--carousel:is(.op-mag-cols-2,.op-mag-cols-3,.op-mag-cols-4){--mag-visible:1}.op-magazine .op-mag-articles--mosaic{grid-template-columns:minmax(0,1fr)}}
+
+/* Small screens: local overflow for wide article content, touch targets and focus. */
+.op-magazine .op-mag-main :is(.op-mag-card__title,.page-header,.op-mag-masthead__body,.op-mag-author__bio){overflow-wrap:anywhere}
+.op-magazine .op-mag-main :is(img,video,iframe){max-width:100%}
+.op-magazine .op-mag-article .com-content-article__body table{display:block;max-width:100%;overflow-x:auto}
+.op-magazine .op-mag-article .com-content-article__body pre{max-width:100%;overflow:auto}
+.op-magazine .op-mag-main :is(a,button,input,select,textarea):focus-visible{outline:2px solid var(--mag-accent);outline-offset:3px}
+@media(max-width:900px){
+body.operaplus.op-magazine .op-header .op-navigation.is-open{max-height:60vh;max-height:60dvh;overflow-y:auto;overscroll-behavior:contain}
+body.operaplus.op-magazine .op-header :is(.op-menu-toggle,.op-submenu-toggle),body.operaplus.op-magazine .op-sidebar .op-side-toggle{min-width:44px;min-height:44px}
+body.operaplus.op-magazine .op-header .op-navigation :is(.mod-menu__sub,ul.menu,ul.mod-menu){min-width:0;max-width:100%}
+}
+@media(max-width:480px){
+.op-magazine .op-mag-articles--cover .op-mag-card{min-height:300px}
+.op-magazine .op-mag-articles--cover .op-mag-card__body{padding:18px}
+.op-magazine .op-mag-article .op-editorial-lead{font-size:20px}
+.op-magazine .op-mag-article blockquote{font-size:20px;margin-inline:0;padding-inline:14px}
+.op-magazine .op-mag-archive .filter-search>*{max-width:100%}
+}

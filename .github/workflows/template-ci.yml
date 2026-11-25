@@ -24,6 +24,7 @@ jobs:
           node tools/test_editorial_chrome.mjs
           php tools/render_magazine_fixture.php
           node tools/test_magazine.mjs
+          php tools/test_seo.php
           php tools/test_magazine_content.php
           php tools/render_article_layouts.php
           node tools/test_article_layouts.mjs

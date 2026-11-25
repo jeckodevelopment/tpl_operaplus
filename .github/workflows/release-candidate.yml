@@ -1,0 +1,50 @@
+name: Publish release candidate
+on:
+  push:
+    branches: [main]
+    paths: ['docs/releases/2.0.0-rc.1.md']
+permissions:
+  contents: read
+concurrency:
+  group: operaplus-release-candidate
+  cancel-in-progress: false
+jobs:
+  quality:
+    uses: ./.github/workflows/template-ci.yml
+  lifecycle:
+    uses: ./.github/workflows/template-lifecycle.yml
+  publish:
+    needs: [quality, lifecycle]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: operaplus-template-installable
+          path: dist
+      - name: Verify and publish RC only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          version="$(python3 -c 'import xml.etree.ElementTree as E;print(E.parse("templateDetails.xml").getroot().findtext("version"))')"
+          test "$GITHUB_REF" = refs/heads/main
+          test "$version" = 2.0.0-rc.1
+          test -f docs/releases/2.0.0-rc.1.md
+          (cd dist && sha256sum --check "tpl_operaplus-$version.zip.sha256")
+          test -z "$(git tag -l "v$version")"
+          if gh release view "v$version" >/dev/null 2>&1; then
+            echo "RC already exists; refusing to replace immutable assets"
+            exit 1
+          fi
+          gh release create "v$version" "dist/tpl_operaplus-$version.zip" "dist/tpl_operaplus-$version.zip.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title "Opera+ Template $version — Release Candidate" --notes-file docs/releases/2.0.0-rc.1.md
+      - name: Verify public assets and empty stable feed
+        run: |
+          set -euo pipefail
+          version=2.0.0-rc.1
+          curl --fail --location --retry 5 --retry-all-errors --max-time 120 -o "$RUNNER_TEMP/rc.zip" "https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v$version/tpl_operaplus-$version.zip"
+          cmp "$RUNNER_TEMP/rc.zip" "dist/tpl_operaplus-$version.zip"
+          curl --fail --location --retry 5 --retry-all-errors --max-time 120 -o "$RUNNER_TEMP/stable.xml" https://raw.githubusercontent.com/jeckodevelopment/tpl_operaplus/main/updates/stable.xml
+          cmp updates/stable.xml "$RUNNER_TEMP/stable.xml"

@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
 permissions:
   contents: read
 jobs:
@@ -40,6 +41,9 @@ jobs:
           mkdir -p "$RUNNER_TEMP/baseline"
           git archive e542e50e129767eacc4cf125299099a493150c13 | tar -x -C "$RUNNER_TEMP/baseline"
           python3 tools/package_template.py "$RUNNER_TEMP/baseline"
+          mkdir -p "$RUNNER_TEMP/preview"
+          git archive 8905b91d7e680d9d9333feda547ea6b887187605 | tar -x -C "$RUNNER_TEMP/preview"
+          python3 tools/package_template.py "$RUNNER_TEMP/preview"
       - name: Generate disposable Joomla test credentials
         run: |
           password="CiTest-$(openssl rand -hex 16)!"

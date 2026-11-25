@@ -27,7 +27,6 @@ final class Document {
  public function getBuffer($type,$name,$attributes){$this->calls[]=$name;return $this->positions[$name];}
  public function render(bool $magazineLanding): string {
   $assetUrl=static fn($v)=>'';
-  $mediaFile=static fn($v)=>$v;
   $e=static fn($v)=>htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');
   ob_start();require __DIR__.'/../html/magazine/page.php';return ob_get_clean();
  }

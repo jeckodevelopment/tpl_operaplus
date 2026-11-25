@@ -138,7 +138,10 @@ absent 'op-mag-articles--related-sidebar'
 absent 'op-mag-articles--related-compact'
 
 # RC5 category introduction, editorial metadata and native pagination.
-# A real non-home category menu item avoids Joomla's canonical home redirect.
+# Use native non-SEF URLs on the disposable PHP server (no rewrite rules).
+sef_enabled="$(db "SELECT enabled FROM ci_extensions WHERE type='plugin' AND folder='system' AND element='sef'")"
+db "UPDATE ci_extensions SET enabled=0 WHERE type='plugin' AND folder='system' AND element='sef';"
+# Use a real non-home category menu item.
 db "INSERT INTO ci_menu (menutype,title,alias,path,link,type,published,parent_id,level,component_id,access,img,params,lft,rgt,home,language,client_id,template_style_id) SELECT menutype,'CI category','ci-category','ci-category',CONCAT('index.php?option=com_content&view=category&layout=magazine-grid&id=',$catid),'component',1,1,1,component_id,1,'',params,1000,1001,0,'*',0,$mid FROM ci_menu WHERE id=$home;"
 category_menu="$(db "SELECT id FROM ci_menu WHERE alias='ci-category' AND client_id=0")"
 for layout in grid list dossier; do
@@ -154,7 +157,7 @@ for layout in grid list dossier; do
   curl -fsSL "$url/index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid&Itemid=$category_menu" > "$page"
   contains 'op-mag-category-intro'
 done
-db "DELETE FROM ci_menu WHERE id=$category_menu;"
+db "DELETE FROM ci_menu WHERE id=$category_menu; UPDATE ci_extensions SET enabled=$sef_enabled WHERE type='plugin' AND folder='system' AND element='sef';"
 echo 'Magazine category intro toggle, metadata and pagination passed.'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"
 echo 'Native related article layouts, inherited menu assignment and landing suppression passed.'

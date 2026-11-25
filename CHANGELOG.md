@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.26.0] — Integrazioni editoriali Magazine
+
+- CSS di contenuto TinyMCE con classi selezionabili per sommario, domanda e risposta; disponibile anche nella variante `.min.css` richiesta da Joomla.
+- Riuso delle Extensions 1.0.0 per newsletter, CTA, associazioni Atlas e sei modelli HTML: nessun modulo o plugin duplicato.
+- Collaudo nativo con il pacchetto Extensions fissato al commit stabile: wrapper e sidebar vuoti, fallback manuale, tre CTA e file CSS dell'editor.
+- Riconciliazione matrice e registro collaudi, senza dichiarare concluso il collaudo visuale manuale.
+
 ## [1.25.0] — Carosello e mosaico Magazine
 
 - Due layout alternativi nativi `magazine-carousel` e `magazine-mosaic`, con selezione e filtri Joomla invariati.

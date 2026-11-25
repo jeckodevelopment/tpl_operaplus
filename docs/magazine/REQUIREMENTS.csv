@@ -1,6 +1,6 @@
 id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_collaudo,casi_collaudo
 "BASE-01","BASE","Inventario baseline","BASELINE.md contiene tree, override, token, posizioni e scenari di regressione","1","completato","non_eseguito","BASE-INV"
-"BASE-02","BASE","Retrocompatibilità","BASE-T01–T10 superati senza variazioni involontarie","1","completato","non_eseguito","BASE-T01;BASE-T02;BASE-T03;BASE-T04;BASE-T05;BASE-T06;BASE-T07;BASE-T08;BASE-T09;BASE-T10;REG-01"
+"BASE-02","BASE","Retrocompatibilità","BASE-T01–T10 superati senza variazioni involontarie","1","completato","in_corso","BASE-T01;BASE-T02;BASE-T03;BASE-T04;BASE-T05;BASE-T06;BASE-T07;BASE-T08;BASE-T09;BASE-T10;REG-01"
 "UX-01","UX","Homepage","Tavola UX-01 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-01;REG-04"
 "UX-02","UX","Categoria elenco","Tavola UX-02 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-02;REG-04"
 "UX-03","UX","Categoria griglia","Tavola UX-03 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-03;REG-04"
@@ -56,6 +56,6 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "DOC-02","DOC","Guida redattore","Documentazione stili, layout e moduli","1","completato","non_eseguito","DOC-02/03"
 "DOC-03","DOC","Guida amministratore","Parametri, traduzioni, installazione e changelog","1","completato","non_eseguito","DOC-02/03"
 "ATLAS-04","ATLAS","Occultamento contestuale","Senza entità valida nessun titolo wrapper margine o sidebar vuota; configurabile; modalità manuale preservata","4","completato","non_eseguito","INT-03;INT-07;REG-02"
-"BASE-03","BASE","Stili Joomla","Stili nativi Standard e Magazine distinti creati dall’installer se mancanti; default e assegnazioni conservati; nessun duplicato; asset condizionali","1","completato","non_eseguito","SET-01;SET-02;SET-05;REL-02"
+"BASE-03","BASE","Stili Joomla","Stili nativi Standard e Magazine distinti creati dall’installer se mancanti; default e assegnazioni conservati; nessun duplicato; asset condizionali","1","completato","non_superato","SET-01;SET-02;SET-05;REL-02"
 "MAG-10","MAG","Homepage indipendente","Voce menu dedicata; articoli con Itemid ereditato non diventano homepage; posizioni 8+4; assenza moduli mostra componente","3","completato","non_eseguito","SET-03;SET-04;HOME-04;HOME-05"
 "MAG-11","MAG","Pagina autore","Contatto pubblico collegato a utente; biografia e articoli recenti pubblicati filtrati per ID, lingua e ACL","3","completato","non_eseguito","AUT-01;AUT-02;AUT-03"

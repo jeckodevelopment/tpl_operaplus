@@ -3,7 +3,7 @@
 ## Installazione e stili
 1. Eseguire backup database e file, acquisire ZIP della versione dal workflow di qualità; installare come aggiornamento in staging, senza disinstallare il template. Installare il pacchetto Opera+ Extensions 1.0.0 separatamente, se non presente.
 2. Sistema → Stili template sito: conservare Standard e Magazine (creato automaticamente). Non cambiare il default globale. Assegnare Magazine soltanto alle voci di menu editoriali e ai menu interni pertinenti. Configurare menu homepage Magazine, fascia, branding e tema. Usare un menu dedicato; un articolo con Itemid ereditato non deve essere trattato come homepage.
-3. Impostare Contenuti Magazine: rapporto immagini 16:10 / 16:9 / 1:1; overlay classico / forte; separatori sì/no; tempo lettura e velocità; tinta prima scheda elenco. I default mantengono la grafica approvata. Per metadati, colonne, quantità, selezione e ordinamento usare i parametri nativi dei moduli e del menu.
+3. In Aspetto dello stile Magazine (senza selettore di modalità), impostare: rapporto immagini 16:10 / 16:9 / 1:1; overlay classico / forte; separatori sì/no; tempo lettura e velocità; tinta prima scheda elenco. I default mantengono la grafica approvata. Per metadati, colonne, quantità, selezione e ordinamento usare i parametri nativi dei moduli e del menu.
 4. In Aspetto scegliere font automatici (Magazine senza richieste a Google, Standard invariato), sistema o Manrope. Assegnare il tema chiaro/scuro allo stile senza cambiare il tema istituzionale.
 
 ## Composizione homepage

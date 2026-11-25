@@ -1,10 +1,23 @@
 #!/usr/bin/env python3
 """Basic static gate for the Opera+ Joomla template release; no runtime guarantees."""
 from pathlib import Path
+from datetime import date
 import json, re, sys, xml.etree.ElementTree as ET
 root = Path(__file__).resolve().parents[1]
 manifest = ET.parse(root / 'templateDetails.xml').getroot()
 version = manifest.findtext('version')
+release_date = (root / 'RELEASE_DATE').read_text().strip()
+assert date.fromisoformat(release_date).isoformat() == release_date
+assert manifest.findtext('creationDate') == release_date
+for name in ('template_preview.png', 'template_thumbnail.png'):
+    image = root / 'media/images' / name
+    assert image.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), name
+assert manifest.find(".//field[@name='presentationMode']").get('type') == 'opstylemode'
+assert manifest.find(".//fieldset[@name='magazine']") is None
+assert manifest.find(".//fieldset[@name='magazineContent']") is None
+for node in manifest.findall('.//field'):
+    if node.get('name', '').startswith('magazine'):
+        assert node.get('showon') == 'presentationMode:magazine', node.get('name')
 assets = json.loads((root / 'joomla.asset.json').read_text())
 assert assets['version'] == version, 'Manifest and Web Asset version differ'
 for f in manifest.findall('./files/filename'):
@@ -16,6 +29,7 @@ for lang in ('it-IT', 'en-GB'):
     entries = [line.split('=', 1)[0] for line in p.read_text().splitlines()
                if line.strip() and not line.lstrip().startswith((';','#')) and '=' in line]
     assert len(entries) == len(set(entries)), f'Duplicate translation keys: {p}'
+    assert 'TPL_OPERAPLUS_XML_DESCRIPTION' in entries, f'Missing style description: {p}'
 assert (root / 'CHANGELOG.md').is_file()
 print(f'Opera+ {version}: manifest, assets, language keys and changelog OK')
 # Joomla may request the .min.css form even for custom editor CSS.
@@ -34,7 +48,7 @@ assert "DatabaseInterface" not in (root / "index.php").read_text(), "SEO must no
 
 for lang in ('it-IT', 'en-GB'):
     text = (root / 'language' / lang / 'tpl_operaplus.ini').read_text()
-    for node in manifest.findall(".//fieldset[@name='magazineContent']/field"):
+    for node in [n for n in manifest.findall(".//field") if n.get("name", "").startswith("magazine")]:
         for key in [node.get('label'), node.get('description')] + [o.text for o in node.findall('option')]:
             if key and key.startswith('TPL_OPERAPLUS_'):
                 assert re.search(r'^' + re.escape(key) + r'=', text, re.M), f'Missing {lang}: {key}'

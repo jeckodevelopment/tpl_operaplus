@@ -12,6 +12,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo 25 novembre 2026:** collaudatore conferma BUG-001–006 e REG (salvataggio stili e funzionamento frontend) tutti OK, nessuna nota, dopo installazione dei pacchetti RC3/1.0.1. Riferimenti build sopra, identificati dagli artifact forniti in chat; checksum locale e browser non attestati. Chiusi i rilievi del lotto 1A. SET-01 OK per installazione/metadati; SET-02 e BASE-T05: riscontro positivo parziale, da completare con controllo esplicito di branding, default, assegnazioni e ID; SET-05, REL-02 e BASE-T10 ancora da eseguire. Nessuna approvazione stabile implicita.
 
+**Lotto 1B — 25 novembre 2026:** confermati OK BASE-T01–T07 (incluso BASE-T05) e SET-02, nessuna anomalia; staging RC3 / Extensions 1.0.1. 9/15 casi sessione 1, 9/95 piano. Residui: SET-05, REL-02, BASE-T08/09/10 e BASE-INV. I test di integrità, reinstallazione e upgrade storico restano distinti.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

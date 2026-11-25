@@ -50,3 +50,7 @@ feed = ET.parse(root / "updates/stable.xml").getroot()
 assert feed.tag == "updates"
 assert all(u.findtext("tags/tag") == "stable" and not re.search(r"(?i)(alpha|beta|rc)", u.findtext("version") or "") for u in feed.findall("update"))
 assert manifest.findtext("./updateservers/server") == "https://raw.githubusercontent.com/jeckodevelopment/tpl_operaplus/main/updates/stable.xml"
+
+# Acceptance traceability (not manual acceptance).
+import runpy
+runpy.run_path(str(root / 'tools/verify_acceptance.py'))

@@ -1,6 +1,6 @@
 # Piano e registro di collaudo — Opera+ Magazine
 
-**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 02 — 25 novembre 2026. Baseline Extensions 1.0.0, template 1.23.0 (PR #15); nuovi casi 1.24.0 (PR #16).
+**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 03 — 25 novembre 2026. Baseline operativa: template 2.0.0-rc.2 (merge #26, `3588c98f95be36e8ae629dc1e1b078b59abc9e4e`), Extensions 1.0.0. Le indicazioni delle versioni precedenti sono storiche.
 
 Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manuale o grafica. I collaudi intermedi sono rinviati su richiesta dell'utente. Confermati: installazione Extensions 1.0.0, plugin/campi, box Atlas e CTA, ritratto Verdi senza credito, stile Magazine distinto e correzione menu/login 1.21.2. Ripetere come regressione.
 
@@ -10,6 +10,30 @@ Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manu
 - Versioni Joomla/PHP, template/commit, estensioni:
 - Browser, dispositivo e viewport:
 - Esito: OK / KO / N.A. (motivato) / Bloccato; per ogni caso registrare data, URL, evidenza e issue. Non inserire credenziali o dati personali nel repository pubblico.
+
+## Ordine di esecuzione guidato
+
+**Sessione 1 — Installazione e regressioni Standard** (15 casi): REL-02, SET-01, SET-02, SET-05, BASE-T01, BASE-T02, BASE-T03, BASE-T04, BASE-T05, BASE-T06, BASE-T07, BASE-T08, BASE-T09, BASE-T10, BASE-INV.
+
+**Sessione 2 — Configurazione Magazine** (3 casi): SET-03, SET-04, CFG-02.
+
+**Sessione 3 — Homepage e moduli** (17 casi): HOME-01, HOME-02, HOME-03, HOME-04, HOME-05, MOD-01, MOD-02, MOD-03, MOD-04, MOD-05, MOD-06, MOD-07, MOD-08, MOD-09, MOD-10, MOD-11, MOD-12.
+
+**Sessione 4 — Categorie, dossier, archivio e autore** (11 casi): CAT-01, CAT-02, CAT-03, CAT-04, CAT-05, ARC-01, ARC-02, ARC-03, AUT-01, AUT-02, AUT-03.
+
+**Sessione 5 — Articoli, recensioni e interviste** (9 casi): ART-01, ART-02, ART-03, ART-04, ART-05, REV-01, REV-02, REV-03, REV-04.
+
+**Sessione 6 — Atlas, CTA e TinyMCE** (9 casi): INT-01, INT-02, INT-03, INT-04, INT-05, INT-06, INT-07, INT-08, INT-09.
+
+**Sessione 7 — Approvazione grafica, mobile e dark** (18 casi): REG-04, UX-01, UX-02, UX-03, UX-04, UX-05, UX-06, UX-07, UX-08, UX-09, UX-10, UX-11, UX-12, UX-13, UX-14, UX-15, RESP-01, DARK-01.
+
+**Sessione 8 — SEO, prestazioni, sicurezza, accessibilità** (10 casi): REG-01, REG-02, REG-03, REG-05, REG-06, SEO-01, PERF-01, SEC-01, SEC-02, A11Y-01.
+
+**Sessione 9 — Accettazione finale** (3 casi): DOC-01, DOC-02/03, REL-03.
+
+## Registrazione e gate
+
+Il [registro CSV](ESITI_COLLAUDO.csv) è la fonte degli esiti: un tentativo per caso, nuove righe per ricollaudi, storico conservato. Prima della sessione registrare versione, commit, Joomla/PHP, Extensions, dispositivo e viewport. Usare alias staging, evidenze anonimizzate; nessuna credenziale, token o URL privato. Stati `non_eseguito`, `OK`, `KO`, `NA` (motivazione e accettazione obbligatorie), `bloccato`. KO richiede issue e ricollaudo. Per UX registrare anche approvazione grafica distinta, già acquisita per UX-14/15. Aggiornare matrice requisiti dopo ogni sessione: `non_eseguito`, `in_corso`, `superato`, `non_superato`, `bloccato`; superato solo quando tutti i casi associati applicabili sono OK o NA motivato e accettato e l'approvazione UX è registrata. Riportare avanzamento manuale separato da implementazione. Dopo nuove RC rivalutare casi impattati; nessun trasferimento automatico di esiti tra versioni. Gate stabile: tutti i casi pre-rilascio conclusi, UX approvate e conformi su staging, nessun KO/blocco aperto, backup/rollback, CI verde sulla versione finale e approvazione esplicita. REL-03 comprende verifica pre-rilascio (feed non propone RC) e post-pubblicazione (ZIP/feed stabile su staging); REL-01 si chiude dopo entrambe. Nessun deploy produzione implicito.
 
 ## Prerequisiti
 
@@ -281,9 +305,9 @@ Backup file e DB; staging; amministratore, ospite e registrato; almeno due categ
 - **Stato iniziale:** Da eseguire.
 - [ ] Esito / data / evidenza / note:
 
-### REG-04 — Confronto con mockup originali UX-01–08, UX-11–15
+### REG-04 — Confronto con riferimenti UX-01–15
 
-- **Procedura:** Confrontare desktop/mobile con mockup UX-01–15 applicabili: header, fascia teatro, 8+4, proporzioni, colori, font, CTA, spazi e footer. Tavole definitive non ancora versionate: usare originali approvati e screenshot comparativi.
+- **Procedura:** Confrontare desktop/mobile con mockup UX-01–15 applicabili: header, fascia teatro, 8+4, proporzioni, colori, font, CTA, spazi e footer. Usare catalogo versionato e otto proposte HTML; registrare separatamente approvazione e confronto staging.
 - **Atteso:** Fedeltà visiva ai mockup originali, senza reinterpretazioni; approvazione esplicita..
 - **Stato iniziale:** Da eseguire.
 - [ ] Esito / data / evidenza / note:
@@ -366,9 +390,9 @@ Backup file e DB; staging; amministratore, ospite e registrato; almeno due categ
 
 Decisione, data e issue aperte:
 
-## Requisiti successivi
+## Perimetro
 
-Archivio generale degli articoli pubblicati (distinto dall'archivio nativo), eventuale pagina autore paginata completa, carosello, mosaico, CSS TinyMCE, correlazione automatica Atlas, deduplicazione, audit baseline, sicurezza, accessibilità, SEO, prestazioni, responsive, dark, packaging e rilascio stabile. Aggiornare questi casi quando implementati. Le tavole definitive restano da versionare (#2).
+Fuori perimetro 2.0.0: archivio generale distinto da quello nativo, pagina autore paginata completa, correlazione automatica Atlas e deduplicazione automatica. Carosello, mosaico, editor, SEO, accessibilità, sicurezza e packaging sono inclusi nei casi sottostanti.
 
 Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS.csv), [GUIDA_STILI.md](../../GUIDA_STILI.md), PR #11–16, [Extensions 1.0.0](https://github.com/jeckodevelopment/operaplus-extensions/releases/tag/v1.0.0).
 
@@ -394,7 +418,7 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 
 ### INT-07 — Chrome reale di Atlas e CTA
 
-- **Procedura:** Con Extensions 1.0.0 e template 1.26.0, pubblicare Atlas con Mostra titolo sì e Nascondi se vuoto sì in `magazine-sidebar`; visitare pagina senza associazioni, pagina con associazioni valide, pagina con campo non accessibile e pagina non articolo. Ripetere con altro modulo nella stessa sidebar, in posizione `sidebar-right`, con Nascondi se vuoto no e modalità manuale con riferimento valido. Provare CTA Light/Dark/Horizontal in main/aside, anche senza configurazione, con testo lungo e tema chiaro/scuro.
+- **Procedura:** Con Extensions 1.0.0 e template RC2, pubblicare Atlas con Mostra titolo sì e Nascondi se vuoto sì in `magazine-sidebar`; visitare pagina senza associazioni, pagina con associazioni valide, pagina con campo non accessibile e pagina non articolo. Ripetere con altro modulo nella stessa sidebar, in posizione `sidebar-right`, con Nascondi se vuoto no e modalità manuale con riferimento valido. Provare CTA Light/Dark/Horizontal in main/aside, anche senza configurazione, con testo lungo e tema chiaro/scuro.
 - **Atteso:** Nessun wrapper/titolo/colonna senza output in Magazine; altri moduli restano visibili, modalità manuale e messaggio esplicito conservati. CTA senza cornice doppia in sidebar, contrasto e pulsante integri.
 - [ ] Esito / data / evidenza / note:
 
@@ -444,11 +468,11 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 - **Atteso:** Joomla gestisce il caso non autorizzato; nessun campo recensione fuori dai livelli autorizzati; URL immagine non validi non renderizzati. Contenuti HTML affidati ai filtri e plugin Joomla, senza rimuoverne i meccanismi nativi.
 - [ ] Esito / data / evidenza / note:
 
-## Gate Release Candidate 2.0.0-rc.1
+## Gate Release Candidate 2.0.0-rc.2
 
 ### REL-02 — Installazione della candidata e rollback
-- **Procedura:** Scaricare lo ZIP e il file SHA-256 dalla prerelease GitHub; verificarne l'integrità prima dell'installazione. Fare backup file e DB, installare come aggiornamento di staging e ripetere SET-01–05. Controllare che gli strumenti CI non siano installati, i file personalizzati non siano rimossi, i due stili, branding, default e menu siano preservati. Registrare versione e commit.
-- **Atteso:** ZIP integro; versione 2.0.0-rc.1, nessun cambio dati o assegnazioni. In caso KO ripristinare l'intero backup.
+- **Procedura:** Scaricare lo ZIP interno e SHA-256 dall'[artifact RC2 verificato](https://github.com/jeckodevelopment/tpl_operaplus/actions/runs/45661353066/artifacts/15045765809) o dalla prerelease RC2 quando pubblicata; verificarne l'integrità prima dell'installazione. Fare backup file e DB, installare come aggiornamento di staging e ripetere SET-01–05. Controllare che gli strumenti CI non siano installati, i file personalizzati non siano rimossi, i due stili, branding, default e menu siano preservati. Registrare versione e commit.
+- **Atteso:** ZIP integro; versione 2.0.0-rc.2, nessun cambio dati o assegnazioni. In caso KO ripristinare l'intero backup.
 - [ ] Esito / data / evidenza / note:
 
 ### REL-03 — Canale stabile e prerelease
@@ -460,10 +484,10 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 Per i quindici riferimenti vedere [mockups/README.md](mockups/README.md). Gli screenshot CI sono riproducibili, ma non costituiscono tavole originali approvate. Confronto visivo e approvazione esplicita da registrare per ogni UX-01–15.
 
 ### UX — Formalizzazione dei riferimenti recuperati
-Il documento [SPECIFICHE.md](mockups/SPECIFICHE.md) elenca i quindici criteri e i riferimenti originali. Prima di registrare approvazione e confronto su staging verificare la presenza dei file PNG in Git e i relativi hash; applicare le decisioni scritte più recenti in caso di discordanza (8+4, tre notizie compatte, immagini uniformi, box approvati). UX-12 e UX-13 senza tavola originale: non dichiararli approvati sulla base della sola CI.
+Il documento [SPECIFICHE.md](mockups/SPECIFICHE.md) elenca i quindici criteri e i riferimenti originali. Prima di registrare approvazione e confronto su staging verificare la presenza dei file PNG in Git e i relativi hash; applicare le decisioni scritte più recenti in caso di discordanza (8+4, tre notizie compatte, immagini uniformi, box approvati). UX-12/13 hanno proposte HTML, non originali; nessuna approvazione presunta.
 
 ### UX — Archivio originale versionato
-I file delle 13 tavole recuperate sono consultabili nel [catalogo mockup](mockups/README.md); 10 originali conservati integralmente. `tools/verify_mockups.py` controlla l'integrità dei 23 PNG in CI. UX-14/15 formalizzati e approvati graficamente il 24 novembre; il confronto con staging resta da effettuare. Le tavole UX-01–13 richiedono approvazione definitiva (UX-12 e UX-13 ancora senza originale). Non confondere archiviazione con collaudo.
+I file delle 13 tavole recuperate sono consultabili nel [catalogo mockup](mockups/README.md); 10 originali conservati integralmente. `tools/verify_mockups.py` controlla l'integrità dei 23 PNG in CI. UX-14/15 formalizzati e approvati graficamente il 24 novembre; il confronto con staging resta da effettuare. Le tavole UX-01–13 richiedono approvazione definitiva; otto proposte integrative sono disponibili. Non confondere archiviazione con collaudo.
 
 ### UX — Revisione 01 dei riferimenti di completamento
 Aprire `mockups/boards/index.html` offline o scaricare gli screenshot dall'artifact `magazine-design-boards`. Confrontare UX-03/05/08/09/10 a 1200 px, UX-11/12 a 390 e 320 px, UX-13 a 1200 e 390 px. Verificare gerarchia, proporzioni, immagini uniformi, palette, ordine mobile e leggibilità. I prototipi sono specifiche grafiche: non sostituiscono il test funzionale su Joomla. Registrare approvazione o correzioni per ogni tavola e confrontare poi il template reale.
@@ -472,3 +496,258 @@ Aprire `mockups/boards/index.html` offline o scaricare gli screenshot dall'artif
 - **Procedura:** aprire un articolo con query di tracking e token fittizi, verificare che canonical/OG non li includano e preservino parametri di route e paginazione; controllare descrizione multiparagrafo e date nulle. Aprire menu mobile, passare a desktop e tornare a mobile; verificare stato chiuso coerente e carosello ai limiti dopo resize.
 - **Atteso:** nessun token del template nei metadati di fallback, plugin SEO preservati, layout invariato; nessuna regressione a 320 px. Misure CWV e verifiche manuali sul sito ancora da effettuare.
 - [ ] Esito / data / evidenza / note:
+
+## Casi integrativi — revisione 03
+
+### BASE-INV — Inventario
+
+- **Procedura:** Confrontare BASELINE.md, manifest, override, posizioni, token e struttura attuale.
+- **Atteso:** Differenze intenzionali documentate.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T01 — Home Standard
+
+- **Procedura:** Confrontare hero, branding, menu, moduli e footer con baseline pre-aggiornamento.
+- **Atteso:** Struttura e stile preservati.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T02 — Categoria e articolo Standard
+
+- **Procedura:** Aprire blog e articolo ordinari; alternare opzioni native, plugin e paginazione.
+- **Atteso:** Comportamento nativo preservato.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T03 — Corsi Standard
+
+- **Procedura:** Aprire catalogo alias corsi e dettaglio come ospite e registrato.
+- **Atteso:** Copertine, CTA e ACL invariati.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T04 — Sidebar Standard
+
+- **Procedura:** Provare nessuna sidebar, sinistra, destra, entrambe, moduli vuoti, desktop/mobile.
+- **Atteso:** Griglia 7+5 ove prevista, nessun margine vuoto inatteso.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T05 — Stili e temi Standard
+
+- **Procedura:** Confrontare parametri, colori, branding, default e assegnazioni prima/dopo.
+- **Atteso:** Impostazioni preservate.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T06 — Menu Standard
+
+- **Procedura:** Ripetere REG-05 su Standard, mega menu hover/click, 320/1200 px.
+- **Atteso:** Navigazione e focus coerenti.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T07 — Pagine di servizio
+
+- **Procedura:** Aprire login, recupero password, ricerca, messaggi, 404 e layout component; offline solo su staging isolato, ripristinare online.
+- **Atteso:** Azioni native e presentazione preservate.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T08 — Branding e SEO Standard
+
+- **Procedura:** Verificare favicon, logo, footer, OG fallback, plugin SEO, canonical, media non validi.
+- **Atteso:** Precedenze e fallback rispettati.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T09 — Lingue
+
+- **Procedura:** Provare IT/EN, stringhe e override, menu, carousel, messaggi.
+- **Atteso:** Traduzioni e override corretti.
+- [ ] Esito / data / evidenza / note:
+
+### BASE-T10 — Aggiornamento 1.x
+
+- **Procedura:** Ripetere SET-01/02/05 e REL-02 su copia staging 1.x; conservare ID, assegnazioni, file personalizzati.
+- **Atteso:** Nessuna perdita o duplicazione.
+- [ ] Esito / data / evidenza / note:
+
+### INT-08 — Tipi e resilienza Atlas
+
+- **Procedura:** Associare opera, compositore, teatro, festival e produzione; verificare ID e link, stagioni escluse. Simulare feed indisponibile con fixture isolata, cache valida e assente; ripristinare configurazione.
+- **Atteso:** ID stabili, tipi ammessi, cache valida o occultamento, nessun errore fatale; non alterare feed pubblico.
+- [ ] Esito / data / evidenza / note:
+
+### INT-09 — CTA configurabile
+
+- **Procedura:** Modificare titolo, testo, link, icona, filigrana, variante e campi facoltativi; provare URL non valido.
+- **Atteso:** Configurazione rispettata, link sicuro e output coerente.
+- [ ] Esito / data / evidenza / note:
+
+### DARK-01 — Copertura dark
+
+- **Procedura:** Provare tutti i layout articolo, categoria, archivio, autore e 14 moduli Articoli, Atlas, CTA e form; focus e contrasto.
+- **Atteso:** Testo, link, superfici e controlli leggibili, nessun residuo chiaro incoerente.
+- [ ] Esito / data / evidenza / note:
+
+### A11Y-01 — Accessibilità manuale
+
+- **Procedura:** Tastiera, zoom 200%, lettore di schermo disponibile, contrasto testo e controlli, titoli/landmark, alternative immagini, nomi accessibili; tutte le famiglie di layout, form e carousel. Annotare strumenti e limiti.
+- **Atteso:** Criteri WCAG AA applicabili verificati; non dedurre certificazione globale dal campione.
+- [ ] Esito / data / evidenza / note:
+
+### DOC-01 — Piano e matrice
+
+- **Procedura:** Controllare piano, matrice, tracciabilità, registri e gate rispetto al commit testato.
+- **Atteso:** Tutti i 60 ID tracciati, stati distinti.
+- [ ] Esito / data / evidenza / note:
+
+### UX-01 — Homepage
+
+- **Procedura:** Aprire UX-01 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare 8+4, copertina overlay, tre notizie compatte, sezioni e fascia teatrale.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-02 — Categoria elenco
+
+- **Procedura:** Aprire UX-02 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Miniature identiche e fondo prima voce opzionale.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-03 — Categoria griglia
+
+- **Procedura:** Aprire UX-03 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Colonne configurabili e immagini uniformi.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-04 — Articolo
+
+- **Procedura:** Aprire UX-04 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Gerarchia titolo/sommario/metadati, foto, corpo e correlati.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-05 — Longform
+
+- **Procedura:** Aprire UX-05 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Misura lettura, immagini, citazioni, indice se disponibile.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-06 — Recensione
+
+- **Procedura:** Aprire UX-06 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Scheda spettacolo facoltativa, gerarchia e Atlas.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-07 — Intervista
+
+- **Procedura:** Aprire UX-07 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Ritratto, D/R, citazioni, correlati.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-08 — Dossier
+
+- **Procedura:** Aprire UX-08 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Copertina, descrizione e raccolta.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-09 — Archivio
+
+- **Procedura:** Aprire UX-09 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Filtri nativi, lista e paginazione.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-10 — Autore
+
+- **Procedura:** Aprire UX-10 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Bio pubblica, ritratto opzionale e articoli autorizzati.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-11 — Homepage mobile
+
+- **Procedura:** Aprire UX-11 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Ordine editoriale, header, sidebar sotto main, 320/390 px.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-12 — Articolo mobile
+
+- **Procedura:** Aprire UX-12 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Reflow, immagini fluide, metadati e focus a 320/390 px.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-13 — Tema scuro
+
+- **Procedura:** Aprire UX-13 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Registrare approvazione del riferimento o correzioni; poi confronto staging. Verificare Palette, contrasto e componenti a 1200/390 px.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-14 — Box Atlas
+
+- **Procedura:** Aprire UX-14 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Approvazione grafica storica; verificare staging. Verificare Fondo caldo, marchio, ritratto a destra e CTA bordeaux.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+### UX-15 — Box CTA
+
+- **Procedura:** Aprire UX-15 dal [catalogo](mockups/README.md) e [specifiche](mockups/SPECIFICHE.md). Approvazione grafica storica; verificare staging. Verificare Fondo rosato, busta, filigrana, varianti e CTA.
+- **Atteso:** Riferimento approvato e versionato; staging conforme. Approvazione tavola distinta dal collaudo.
+- [ ] Esito / data / evidenza / note:
+
+## Tracciabilità dei requisiti
+
+La colonna `casi_collaudo` della matrice collega i requisiti ai casi; gli ID MOD-* delle procedure non coincidono necessariamente con gli ID requisito. REG-04 integra, non sostituisce, le 15 verifiche UX individuali.
+
+| Requisito | Casi |
+|---|---|
+| BASE-01 | BASE-INV |
+| BASE-02 | BASE-T01, BASE-T02, BASE-T03, BASE-T04, BASE-T05, BASE-T06, BASE-T07, BASE-T08, BASE-T09, BASE-T10, REG-01 |
+| UX-01 | UX-01, REG-04 |
+| UX-02 | UX-02, REG-04 |
+| UX-03 | UX-03, REG-04 |
+| UX-04 | UX-04, REG-04 |
+| UX-05 | UX-05, REG-04 |
+| UX-06 | UX-06, REG-04 |
+| UX-07 | UX-07, REG-04 |
+| UX-08 | UX-08, REG-04 |
+| UX-09 | UX-09, REG-04 |
+| UX-10 | UX-10, REG-04 |
+| UX-11 | UX-11, REG-04 |
+| UX-12 | UX-12, REG-04 |
+| UX-13 | UX-13, REG-04 |
+| UX-14 | UX-14, REG-04 |
+| UX-15 | UX-15, REG-04 |
+| MAG-01 | HOME-01, HOME-02, HOME-03, HOME-04, HOME-05, REG-04 |
+| MAG-02 | CAT-01, CAT-04, CFG-02 |
+| MAG-03 | CAT-02, CFG-02 |
+| MAG-04 | ARC-01, ARC-02, ARC-03 |
+| MAG-05 | CAT-03, CAT-04 |
+| MAG-06 | ART-01, REG-03 |
+| MAG-07 | ART-03 |
+| MAG-08 | ART-04, INT-06 |
+| MAG-09 | ART-05, REV-01, REV-02, REV-03, REV-04 |
+| MOD-01 | HOME-01, HOME-02, MOD-06, MOD-07, MOD-08, MOD-10 |
+| MOD-02 | MOD-11, REG-06 |
+| MOD-03 | HOME-02, MOD-02, MOD-03, MOD-06 |
+| MOD-04 | MOD-12 |
+| MOD-05 | MOD-02, MOD-07 |
+| MOD-06 | MOD-04, MOD-06 |
+| MOD-07 | MOD-05, MOD-09 |
+| MOD-08 | MOD-05, MOD-06 |
+| MOD-09 | INT-05, INT-07, INT-09 |
+| MOD-10 | INT-05, INT-07, DARK-01 |
+| MOD-11 | INT-05, INT-07, INT-09 |
+| MOD-12 | HOME-03, HOME-04, MOD-01, MOD-02, MOD-03, MOD-07, MOD-08, MOD-09 |
+| EDIT-01 | INT-06, ART-04 |
+| EDIT-02 | INT-01, ART-04 |
+| ATLAS-01 | INT-03, INT-04, UX-14 |
+| ATLAS-02 | INT-02, INT-08 |
+| ATLAS-03 | INT-03, INT-04, INT-08 |
+| CTA-01 | INT-05, INT-07, INT-09, UX-15 |
+| CFG-01 | ART-02 |
+| CFG-02 | CFG-02, HOME-03, CAT-01, MOD-09 |
+| RESP-01 | RESP-01, MOD-09, REG-06, HOME-04 |
+| DARK-01 | DARK-01, MOD-10, ARC-03, REV-04 |
+| SEO-01 | SEO-01, REG-03, REG-06, BASE-T08 |
+| A11Y-01 | A11Y-01, REG-05, MOD-11, RESP-01 |
+| PERF-01 | PERF-01, REG-06, INT-08 |
+| SEC-01 | SEC-01, SEC-02, MOD-07, CAT-05, AUT-02, REV-03, REG-06 |
+| REL-01 | REL-02, REL-03 |
+| DOC-01 | DOC-01, BASE-INV |
+| DOC-02 | DOC-02/03 |
+| DOC-03 | DOC-02/03 |
+| ATLAS-04 | INT-03, INT-07, REG-02 |
+| BASE-03 | SET-01, SET-02, SET-05, REL-02 |
+| MAG-10 | SET-03, SET-04, HOME-04, HOME-05 |
+| MAG-11 | AUT-01, AUT-02, AUT-03 |

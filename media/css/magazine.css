@@ -66,3 +66,8 @@ body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li
 body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li>.op-link-row>:is(a,.mod-menu__heading,.mod-menu__separator){font:600 16px/1.4 Georgia,serif!important;letter-spacing:0}
 body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li>:is(a,.mod-menu__heading){min-height:40px;display:inline-flex;align-items:center;padding-block:0}
 }
+
+/* Click mode: hover must not conceal an explicitly expanded menu. */
+body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-menu-open>ul,
+body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-menu-open>.mod-menu__sub{display:flex!important}
+@media(min-width:901px){body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-has-mega.op-menu-open>ul,body.operaplus.op-magazine[data-op-menu-mode="click"] .op-navigation li.op-has-mega.op-menu-open>.mod-menu__sub{display:grid!important}}

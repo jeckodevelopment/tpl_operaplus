@@ -36,3 +36,33 @@ body.operaplus.op-magazine .op-navigation{grid-column:1/-1;width:100%;margin:10p
 body.operaplus.op-magazine .op-navigation>ul,body.operaplus.op-magazine .op-navigation>.moduletable>ul{justify-content:center;flex-wrap:wrap;gap:clamp(12px,2vw,28px)}
 body.operaplus.op-magazine .op-navigation>ul>li>a,body.operaplus.op-magazine .op-navigation>.moduletable>ul>li>a{font:600 16px/1.4 Georgia,serif;padding-block:10px;display:block}
 }
+
+/* Native Joomla modules retain the Standard sidebar styling and JS controller.
+   The magazine grid owns the outer spacing, not a second panel. */
+body.operaplus.op-magazine .op-mag-row__aside.op-sidebar{padding:0;border:0;border-radius:0;background:transparent!important;box-shadow:none;gap:20px;align-self:start}
+body.operaplus.op-magazine .op-mag-row__aside.op-sidebar>.moduletable:has(> :is(.mod-login,.mod-login-logout,ul.mod-menu,ul.menu,.mod-finder))> :is(h2,h3,h4){font:600 1.03rem/1.4 Manrope,system-ui,sans-serif!important;letter-spacing:.015em;padding:0 0 .85rem;margin:0 0 1rem!important;color:var(--mag-ink)!important;border-bottom:1px solid var(--mag-rule)}
+/* Editorial cards already supply their own panels; keep their approved appearance. */
+body.operaplus.op-magazine .op-mag-row__aside.op-sidebar>.moduletable:has(> :is(.op-cta-shell,.op-atlas-module)){padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important}
+/* Explicit palette for native links, fields and controls in both themes. */
+body.operaplus.op-magazine .op-mag-main{--op-text:var(--mag-ink);--op-muted:var(--mag-muted);--op-line:var(--mag-rule);--op-accent:var(--mag-accent);color-scheme:light}
+body.operaplus.op-magazine.theme-dark .op-mag-main{color-scheme:dark}
+body.operaplus.op-magazine.theme-light .op-mag-row__aside .mod-login :is(input[type=text],input[type=password]){background:#fff!important;color:#30232a!important;border-color:#cbbdc1!important}
+body.operaplus.op-magazine.theme-light .op-mag-row__aside .mod-menu li:is(.active,.current,.alias-parent-active)>a,
+body.operaplus.op-magazine.theme-light .op-mag-row__aside .mod-menu li:is(.active,.current,.alias-parent-active)>.op-side-row>a{background:#efe1e7;color:#632b3a!important}
+body.operaplus.op-magazine .op-mag-content .op-content :is(.form-control,input[type=text],input[type=email],input[type=password],input[type=search],select,textarea){background:var(--mag-bg);color:var(--mag-ink);border:1px solid var(--mag-muted);border-radius:2px}
+body.operaplus.op-magazine .op-mag-content .op-content :is(input,textarea)::placeholder{color:var(--mag-muted)}
+body.operaplus.op-magazine .op-header{color-scheme:light}
+body.operaplus.op-magazine.theme-dark .op-header{color-scheme:dark}
+body.operaplus.op-magazine .op-header .op-navigation :is(a,.mod-menu__heading,.mod-menu__separator,.op-submenu-toggle),
+body.operaplus.op-magazine .op-header .op-menu-toggle{color:var(--mag-ink)!important}
+body.operaplus.op-magazine .op-header .op-navigation li:is(.active,.current,.alias-parent-active)>a,
+body.operaplus.op-magazine .op-header .op-navigation li:is(.active,.current,.alias-parent-active)>.op-link-row>a,
+body.operaplus.op-magazine .op-header .op-navigation a:is(:hover,:focus-visible,[aria-current=page]){color:var(--mag-accent)!important;border-bottom-color:var(--mag-accent)!important}
+body.operaplus.op-magazine .op-header .op-navigation li:is(.active,.current,.alias-parent-active)>.op-link-row>.op-submenu-toggle{color:var(--mag-accent)!important}
+body.operaplus.op-magazine .op-header .op-navigation li>.mod-menu__sub{background:var(--mag-bg);border-color:var(--mag-rule)}
+body.operaplus.op-magazine .op-header :is(a,button):focus-visible,body.operaplus.op-magazine .op-mag-main :is(a,button,input,select,textarea):focus-visible{outline-color:var(--mag-accent)}
+@media(min-width:901px){
+body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li>:is(a,.mod-menu__heading,.mod-menu__separator),
+body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li>.op-link-row>:is(a,.mod-menu__heading,.mod-menu__separator){font:600 16px/1.4 Georgia,serif!important;letter-spacing:0}
+body.operaplus.op-magazine .op-header .op-navigation :is(ul.mod-menu,ul.menu)>li>:is(a,.mod-menu__heading){min-height:40px;display:inline-flex;align-items:center;padding-block:0}
+}

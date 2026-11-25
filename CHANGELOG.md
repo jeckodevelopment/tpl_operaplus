@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.21.2] — Correzioni Magazine
+
+- Riutilizzati CSS e controller nativi del template per menu laterali e moduli login nelle colonne Magazine.
+- Ripristinato il contrasto di voci attive, sottomenu e controlli dell’header chiaro/scuro anche dopo il wrapping JavaScript.
+- Uniformati i titoli del menu superiore; mantenuti i box Atlas/CTA senza doppia cornice.
+- Test browser con markup dei moduli Joomla, stati attivi e sottomenu, login e modalità responsive.
+
 ## [1.21.1] — Anteprima Magazine
 
 - L'installer crea automaticamente uno stile nativo Joomla separato per Magazine, mantenendo gli stili Standard e quelli Magazine già esistenti.

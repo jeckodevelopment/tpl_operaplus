@@ -52,13 +52,13 @@ $magBanner = $assetUrl($mediaFile($this->params->get('magazineBanner', '')));
     <?php foreach ($magRows as [$mainPosition, $mainHtml, $asideHtml]) : ?>
         <div class="op-mag-row<?php echo $magHasAside ? '' : ' op-mag-row--full'; ?>" data-magazine-section="<?php echo $e($mainPosition); ?>">
             <?php if ($mainHtml !== '') : ?><div class="op-mag-row__main"><?php echo $mainHtml; ?></div><?php endif; ?>
-            <?php if ($asideHtml !== '') : ?><aside class="op-mag-row__aside" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_SIDEBAR')); ?>"><?php echo $asideHtml; ?></aside><?php endif; ?>
+            <?php if ($asideHtml !== '') : ?><aside class="op-mag-row__aside op-sidebar" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_SIDEBAR')); ?>"><?php echo $asideHtml; ?></aside><?php endif; ?>
         </div>
     <?php endforeach; ?>
     <?php if ($magShowComponent) : ?>
         <div class="op-mag-row op-mag-content<?php echo $magSidebar === '' ? ' op-mag-row--full' : ''; ?>">
             <div class="op-mag-row__main op-content"><jdoc:include type="component" /></div>
-            <?php if ($magSidebar !== '') : ?><aside class="op-mag-row__aside" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_SIDEBAR')); ?>"><?php echo $magSidebar; ?></aside><?php endif; ?>
+            <?php if ($magSidebar !== '') : ?><aside class="op-mag-row__aside op-sidebar" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_SIDEBAR')); ?>"><?php echo $magSidebar; ?></aside><?php endif; ?>
         </div>
     <?php endif; ?>
     <?php echo $magBottom; ?>

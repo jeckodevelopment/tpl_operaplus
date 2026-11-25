@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.21.1] — Anteprima Magazine
+
+- L'installer crea automaticamente uno stile nativo Joomla separato per Magazine, mantenendo gli stili Standard e quelli Magazine già esistenti.
+- Nessuna modifica al default del sito, alle assegnazioni menu o ai parametri salvati; le nuove installazioni e gli aggiornamenti ripetuti non duplicano gli stili.
+- Collaudo nativo di installazione e aggiornamento Joomla 6.
+
 ## [1.21.0] — Anteprima di sviluppo Magazine 2.0.0
 
 - Modalità Standard/Magazine a livello di stile Joomla, Standard predefinita.

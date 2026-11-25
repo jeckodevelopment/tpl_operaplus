@@ -18,3 +18,6 @@ PR organiche, label macro-requisito e priorità, milestone, comportamenti da tes
 
 ## Decisione architetturale 25 novembre 2026
 Un solo template con parametro di stile `presentationMode` (standard default, magazine opt-in). Menu Joomla assegnati a stili duplicati; homepage editoriale individuata tramite menu selezionato e query effettiva, non soltanto Itemid. Asset condizionali, shell comune, posizioni dedicate, griglia 8+4; override alternativi devono controllare la modalità o ricadere sul comportamento nativo. Prima fase infrastruttura e collaudo, poi layout dei moduli, categorie/articoli e confronto con le tavole approvate. Nessuna nuova reinterpretazione del mockup.
+
+### Precisazione 25 novembre 2026 — stili nativi
+L'installazione crea automaticamente lo stile Magazine come record separato in Joomla, con modalità magazine, copiando il branding dello stile Standard. Non rinomina, sostituisce o modifica gli stili già presenti, non cambia il default e non assegna menu. Riconosce uno stile Magazine esistente anche rinominato; nessun duplicato in aggiornamento. La modalità rimane il discriminante tecnico interno dei due stili, non sostituisce i record Joomla.

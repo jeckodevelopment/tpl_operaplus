@@ -394,7 +394,7 @@ body.operaplus.theme-light .op-sidebar .card {
   border-color:#e4d9dc!important;
 }
 body.operaplus.theme-light .op-sidebar :is(h2,h3,h4,h5,legend,label,p,li,span,.card-header,.moduletable-title){color:#30232a}
-body.operaplus.theme-light .op-sidebar a:not(.op-button):not(.btn){color:#632b3a!important}
+body.operaplus.theme-light .op-sidebar a:not(.op-button):not(.btn):not(.op-cta__button):not(.op-atlas-link):not(.op-atlas-credit a){color:#632b3a!important}
 body.operaplus.theme-light .op-sidebar .op-side-toggle{color:#632b3a!important}
 body.operaplus.theme-light .op-sidebar input:not([type=checkbox]):not([type=radio]){background:#fff!important;color:#30232a!important;border:1px solid #cbbdc1!important}
 body.operaplus.theme-light .op-sidebar input::placeholder{color:#81747a!important}
@@ -514,3 +514,10 @@ body.operaplus #system-message-container joomla-alert .joomla-alert--close:hover
 body.operaplus #system-message-container joomla-alert .joomla-alert--close:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 /* Accessible noscript fallback (shown only when JavaScript is disabled). */
 body.operaplus #system-message-container noscript .alert{margin:0 0 .85rem;padding:.85rem 1.15rem;border-radius:4px}
+/* Standalone editorial modules: the module already owns its panel, padding and CTA. */
+body.operaplus :is(.moduletable,.moduletable-card,.card,.op-card):has(> :is(.op-cta-shell,.op-atlas-module)),
+body.operaplus :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)){
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;min-width:0;transform:none!important;
+}
+body.operaplus :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)) > .card-body{padding:0!important;background:transparent!important;border:0!important}
+body.operaplus .op-sidebar :is(.op-cta-shell,.op-atlas-module){min-width:0}

@@ -91,3 +91,5 @@ Documentare ogni nuova classe riutilizzabile, campo backend e stringa lingua in 
 ## Messaggi di sistema Joomla
 
 I messaggi di sistema sono gestiti dal componente nativo Joomla tramite `<jdoc:include type="message" />` e `<joomla-alert>`. Il template applica automaticamente stili coerenti a `success`, `danger`/`error`, `warning`, `info`/`notice`. Non occorrono override o classi personalizzate per Login, Logout e altri messaggi Joomla. Il controllo di chiusura resta gestito da Joomla.
+### Moduli editoriali autonomi
+I contenitori con `.op-cta-shell` e `.op-atlas-module` come figli diretti (anche nel `.card-body`) non ricevono la seconda cornice del template. I moduli ordinari conservano il proprio stile. Pubblicare i box con titolo modulo nascosto. La gestione della sidebar vuota rimane un requisito separato da collaudare.

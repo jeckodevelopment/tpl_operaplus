@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.20.3] — 2026-11-25
+
+- Rimossa la cornice generica dei moduli solo quando contiene un box editoriale Opera+ CTA o Atlas.
+- Esclusi i pulsanti editoriali e i crediti Atlas dal colore forzato dei link della sidebar.
+- Invariato il chrome degli altri moduli Joomla.
+
 ## [1.20.2] — 2026-10-29
 
 - Corretta la formattazione degli alert di sistema Joomla (successo, errore, avviso e informazione).

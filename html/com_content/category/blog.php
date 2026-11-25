@@ -9,6 +9,11 @@ use Joomla\Component\Content\Site\Helper\RouteHelper;
 
 $category = $this->category ?? null;
 $isCourses = $category && strtolower((string) ($category->alias ?? '')) === 'corsi';
+if (!$isCourses && Factory::getApplication()->getTemplate(true)->params->get('presentationMode', 'standard') === 'magazine') {
+    $opContentMode = 'grid';
+    require __DIR__ . '/_magazine.php';
+    return;
+}
 if (!$isCourses) {
     // Delegate untouched non-course categories to Joomla's native blog layout.
     $coreLayout = JPATH_SITE . '/components/com_content/tmpl/category/blog.php';

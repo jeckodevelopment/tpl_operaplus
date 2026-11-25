@@ -6,6 +6,11 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 $item = $this->item;
 $isCourse = strtolower((string) ($item->category_alias ?? '')) === 'corsi';
+if (!$isCourse && \Joomla\CMS\Factory::getApplication()->getTemplate(true)->params->get('presentationMode', 'standard') === 'magazine') {
+    $opContentMode = 'article';
+    require __DIR__ . '/_magazine.php';
+    return;
+}
 if (!$isCourse) {
     $core = JPATH_SITE . '/components/com_content/tmpl/article/default.php';
     if (is_file($core)) { include $core; return; }

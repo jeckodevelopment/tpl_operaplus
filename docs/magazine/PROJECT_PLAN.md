@@ -24,3 +24,6 @@ L'installazione crea automaticamente lo stile Magazine come record separato in J
 
 ### Layout mod_articles 1.22.0
 Nomi effettivi con trattini anziché underscore: il selettore ModulelayoutField Joomla 6 esclude file con underscore. Layout editoriali alternativi; fallback core per Standard e configurazioni raggruppate/solo titoli. Le presentazioni related non implementano ancora correlazione automatica. Accettazione visiva sul sito e versionamento delle tavole definitive restano aperti.
+
+### 1.24.0 — archivio, autore, recensione e collaudo
+Il registro ufficiale è [COLLAUDO.md](COLLAUDO.md), aggiornato in ogni PR insieme alla matrice; nessun Word parallelo. Archivio nativo limitato agli articoli archiviati; eventuale archivio generale degli articoli pubblicati resta distinto. Autore basato sul contatto collegato all'utente, con ultimi articoli filtrati da ArticlesModel, non su un profilo utente pubblico. Scheda recensione basata su campi Joomla facoltativi con prefisso review-, ACL e auto-display disabilitato; riferimenti Atlas già disponibili.

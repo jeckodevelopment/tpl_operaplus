@@ -103,7 +103,7 @@ contains 'magazine.css'
 catid="$(db "SELECT id FROM ci_categories WHERE extension='com_content' AND published=1 AND access=1 ORDER BY id LIMIT 1")"
 author="$(db "SELECT id FROM ci_users ORDER BY id LIMIT 1")"
 [[ "$catid" =~ ^[0-9]+$ && "$author" =~ ^[0-9]+$ ]]
-db "INSERT INTO ci_content (title,alias,introtext,fulltext,state,catid,created,created_by,modified,publish_up,images,urls,attribs,metadesc,access,metadata,language) VALUES ('CI SEO article','ci-seo-article','<p>CI public body</p>','',1,$catid,UTC_TIMESTAMP(),$author,UTC_TIMESTAMP(),UTC_TIMESTAMP(),JSON_OBJECT('image_fulltext','images/article.jpg','image_intro','images/intro.jpg','image_fulltext_alt','CI portrait'),'{}','{}','CI editorial description',1,'{}','*');"
+db "INSERT INTO ci_content (title,alias,introtext,\`fulltext\`,state,catid,created,created_by,modified,publish_up,images,urls,attribs,metadesc,access,metadata,language) VALUES ('CI SEO article','ci-seo-article','<p>CI public body</p>','',1,$catid,UTC_TIMESTAMP(),$author,UTC_TIMESTAMP(),UTC_TIMESTAMP(),JSON_OBJECT('image_fulltext','images/article.jpg','image_intro','images/intro.jpg','image_fulltext_alt','CI portrait'),'{}','{}','CI editorial description',1,'{}','*');"
 article="$(db "SELECT id FROM ci_content WHERE alias='ci-seo-article'")"
 home="$(db "SELECT id FROM ci_menu WHERE client_id=0 AND home=1 LIMIT 1")"
 curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home&utm_source=ci" > "$page"

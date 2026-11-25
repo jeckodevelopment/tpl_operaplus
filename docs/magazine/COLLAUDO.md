@@ -4,6 +4,12 @@
 
 Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manuale o grafica. I collaudi intermedi sono rinviati su richiesta dell'utente. Confermati: installazione Extensions 1.0.0, plugin/campi, box Atlas e CTA, ritratto Verdi senza credito, stile Magazine distinto e correzione menu/login 1.21.2. Ripetere come regressione.
 
+## Lotto 1A — esiti 25 novembre 2026
+
+Ambiente staging, Joomla 6.2.1 / PHP 8.5.13, Extensions 1.0.0. Inizialmente RC1 effettiva: SET-01, SET-02, BASE-T05 dichiarati OK nelle verifiche funzionali; versione errata rispetto alla baseline (BUG-001). Aggiornamento RC2: versione corretta, ma BUG-002 (data), BUG-004 (anteprima), BUG-005 (descrizione in entrambi gli stili), BUG-006 (selettore modalità) confermati, oltre a BUG-003 (date delle estensioni). [Issue #28](https://github.com/jeckodevelopment/tpl_operaplus/issues/28) e [PR Extensions #15](https://github.com/jeckodevelopment/operaplus-extensions/pull/15). Commit dei pacchetti installati non attestato dal collaudatore: non attribuire arbitrariamente un commit. Non trasferire gli OK RC1 a RC2 o RC3.
+
+RC3 candidata correttiva: ripetere SET-01 (versione e date dei sei manifest Extensions e template; anteprima in Template sito), SET-02 (descrizione IT/EN in entrambi gli stili, nessun selettore, opzioni editoriali solo in Aspetto Magazine; rinominare/duplicare/salvare verificando tipo e assegnazioni), BASE-T05, SET-05 e REL-02. Baseline ufficiale da riallineare dopo CI e disponibilità dei pacchetti; nessun esito manuale RC3 anticipato.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

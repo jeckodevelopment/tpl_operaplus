@@ -2,7 +2,7 @@
 
 Template responsive per il sito di **Opera+**, progetto di divulgazione dell’opera lirica. Sviluppato da [Jecko Development](https://jeckodevelopment.com).
 
-**Versione:** 2.0.0-rc.2 (Release Candidate, solo staging) · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
+**Versione:** 2.0.0-rc.3 (Release Candidate, solo staging) · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
 
 ## Funzionalità
 
@@ -16,7 +16,7 @@ Template responsive per il sito di **Opera+**, progetto di divulgazione dell’o
 ## Installazione e configurazione
 
 1. In Joomla vai in **Sistema → Installa → Estensioni** e installa il file ZIP della release.
-2. Configura lo stile del template: **Branding**, **Aspetto**, **Titoli**, **Navigazione** e **Documentazione**.
+2. Configura separatamente gli stili nativi Standard e Magazine; il tipo non è modificabile da un selettore. Le opzioni editoriali appaiono in Aspetto solo nello stile Magazine. Schede comuni: **Branding**, **Aspetto**, **Titoli**, **Navigazione** e **Documentazione**.
 3. Pubblica i moduli nelle posizioni previste (`menu`, `hero`, `sidebar-left`, `sidebar-right`, `pre-footer`, ecc.).
 4. Per il catalogo corsi usa una voce di menu **Blog di categoria** collegata alla categoria Joomla con alias `corsi`.
 5. Per ogni corso usa un articolo Joomla: titolo, autore alias (compositore), immagine introduttiva, tag e testo.

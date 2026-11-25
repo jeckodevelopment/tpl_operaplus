@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.3] — 2026-11-25 (collaudo 1A)
+
+- Data di release coerente e verificata dalla CI; descrizione tradotta anche nella modifica degli stili, anteprima e miniatura backend dai riferimenti editoriali versionati.
+- Rimosso il selettore di modalità e i tab editoriali globali; opzioni Magazine in Aspetto solo per lo stile Magazine. Il filtro del campo tecnico conserva il tipo già registrato, senza dipendere dal titolo.
+- Registrati i rilievi manuali RC1/RC2; ricollaudo RC3 necessario, nessun rilascio stabile o deploy.
+
 ## [2.0.0-rc.2] — Audit trasversale
 
 - Canonical senza parametri sensibili e token Joomla; route e paginazione conservate. Descrizioni con separazione dei blocchi, media URL più robusti, date legacy non valorizzate.

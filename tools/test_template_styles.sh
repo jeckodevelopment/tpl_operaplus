@@ -12,6 +12,10 @@ global_defaults(){ db "SELECT id,home FROM ci_template_styles WHERE home<>'0' OR
 defaults="$(global_defaults)"
 install "$root/dist/tpl_operaplus-$version.zip"
 test ! -e "$JOOMLA_ROOT/templates/operaplus/tools/render_article_layouts.php"
+test -f "$JOOMLA_ROOT/media/templates/site/operaplus/images/template_preview.png"
+test -f "$JOOMLA_ROOT/media/templates/site/operaplus/images/template_thumbnail.png"
+test "$(db "SELECT JSON_UNQUOTE(JSON_EXTRACT(manifest_cache,'$.creationDate')) FROM ci_extensions WHERE element='operaplus' AND type='template'")" = "$(cat RELEASE_DATE)"
+test -f "$JOOMLA_ROOT/templates/operaplus/field/opstylemode.php"
 test "$(styles | wc -l)" = 2
 [[ "$(magazine)" =~ ^[0-9]+$ ]]
 test "$(global_defaults)" = "$defaults"
@@ -66,3 +70,6 @@ test ! -e "$JOOMLA_ROOT/templates/operaplus/tools/test_seo.php"
 test -f "$JOOMLA_ROOT/templates/operaplus/tools/site-owned.txt"
 test "$(db "SELECT COUNT(*) FROM ci_update_sites s JOIN ci_update_sites_extensions se ON s.update_site_id=se.update_site_id JOIN ci_extensions e ON e.extension_id=se.extension_id WHERE e.element='operaplus' AND e.type='template' AND s.location='https://raw.githubusercontent.com/jeckodevelopment/tpl_operaplus/main/updates/stable.xml'")" = 1
 echo 'Latest preview upgrade, legacy test cleanup, custom files and stable-only update site passed.'
+
+# Exercise the real Joomla form field filter, not the submitted hidden value.
+php "$root/tools/test_style_mode.php" "$JOOMLA_ROOT" "$standard" "$mid"

@@ -22,6 +22,13 @@ jobs:
           npm install --no-save --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium
           node tools/test_editorial_chrome.mjs
+          php tools/render_magazine_fixture.php
+          node tools/test_magazine.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: magazine-structure-visuals
+          path: dist/magazine/*.png
       - name: Build installable template
         run: |
           python3 - <<'PY'

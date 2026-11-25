@@ -1,0 +1,38 @@
+/* Magazine only. The 1.x shell and its 7+5 editorial grid are untouched. */
+body.operaplus.op-magazine{--mag-bg:#faf8f5;--mag-ink:#241c1d;--mag-muted:#665b58;--mag-accent:#632b3a;--mag-rule:#d9cec4;--mag-gap:clamp(16px,2.3vw,28px);background:var(--mag-bg);color:var(--mag-ink)}
+body.operaplus.op-magazine.theme-dark{--mag-bg:#171316;--mag-ink:#f4ece4;--mag-muted:#cdbcb3;--mag-accent:#e4b9a5;--mag-rule:#56444a}
+.op-magazine .op-mag-masthead{position:relative;isolation:isolate;overflow:hidden;background:#421724;color:#fff}
+.op-magazine .op-mag-masthead__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right;z-index:-2}
+.op-magazine .op-mag-masthead::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#32111cf5 0%,#4d1724e8 45%,#32111c80 100%);z-index:-1}
+.op-magazine .op-mag-masthead__body{padding-block:22px 25px}
+.op-magazine .op-mag-masthead h1{font:600 clamp(36px,4.2vw,60px)/1.04 Georgia,serif!important;letter-spacing:-.025em;color:#fff!important;margin:0 0 8px!important}
+.op-magazine .op-mag-masthead p{font:italic clamp(16px,1.65vw,22px)/1.4 Georgia,serif;color:#fff!important;margin:0;display:flex;align-items:center;gap:12px}
+.op-magazine .op-mag-masthead p::before{content:"";width:42px;flex:none;border-top:2px solid #d8ab72}
+.op-magazine .op-mag-main{padding:24px 0 48px;min-height:25vh;background:var(--mag-bg);color:var(--mag-ink)}
+.op-magazine .op-mag-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:var(--mag-gap);align-items:start;padding-block:22px;border-bottom:1px solid var(--mag-rule)}
+.op-magazine .op-mag-row:first-of-type{padding-top:0}
+.op-magazine .op-mag-row:last-child{border-bottom:0}
+.op-magazine .op-mag-row--full{grid-template-columns:minmax(0,1fr)}
+.op-magazine .op-mag-row__main{min-width:0;grid-column:1}
+.op-magazine .op-mag-row__aside{min-width:0;grid-column:2;display:grid;gap:20px}
+.op-magazine .op-mag-row--full .op-mag-row__aside{grid-column:1}
+.op-magazine .op-mag-row__main>.moduletable,.op-magazine .op-mag-row__aside>.moduletable{min-width:0}
+.op-magazine .op-mag-row__main>.moduletable>h2,.op-magazine .op-mag-row__main>.moduletable>h3{font:600 clamp(23px,2.5vw,32px)/1.2 Georgia,serif!important;color:var(--mag-ink)!important;display:flex;align-items:center;gap:16px;margin:0 0 16px!important}
+.op-magazine .op-mag-row__main>.moduletable>h2::after,.op-magazine .op-mag-row__main>.moduletable>h3::after{content:"";flex:1;border-top:1px solid #b78e63}
+.op-magazine .op-mag-row__aside>.moduletable>h2,.op-magazine .op-mag-row__aside>.moduletable>h3{font:600 21px/1.25 Georgia,serif!important;color:var(--mag-ink)!important;margin:0 0 12px!important}
+.op-magazine .op-mag-content .op-content{max-width:none}
+.op-magazine .op-mag-content .op-content a{color:var(--mag-accent)}
+@media(max-width:900px){.op-magazine .op-mag-row{grid-template-columns:minmax(0,1fr)}.op-magazine .op-mag-row__aside{grid-column:1}.op-magazine .op-mag-masthead__body{padding-block:20px}.op-magazine .op-mag-main{padding-block:18px 36px}}
+
+/* The mockup's light masthead and separate navigation row, scoped to Magazine. */
+body.operaplus.op-magazine .op-header{background:var(--mag-bg);color:var(--mag-ink);--op-text:var(--mag-ink);--op-panel:var(--mag-bg);--op-line:var(--mag-rule);border-color:var(--mag-rule);backdrop-filter:none}
+body.operaplus.op-magazine .op-header a,body.operaplus.op-magazine .op-header .op-menu-toggle{color:var(--mag-ink)}
+body.operaplus.op-magazine .op-header .op-navigation :is(.current,.active)>a,body.operaplus.op-magazine .op-header .op-navigation a:hover{color:var(--mag-accent)}
+body.operaplus.op-magazine .op-header .op-navigation li ul{background:var(--mag-bg);color:var(--mag-ink);border-color:var(--mag-rule);--op-text:var(--mag-ink);--op-panel:var(--mag-bg);--op-line:var(--mag-rule)}
+@media(min-width:901px){
+body.operaplus.op-magazine .op-header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0;min-height:0;padding-top:12px}
+body.operaplus.op-magazine .op-header-actions{grid-column:2;grid-row:1}
+body.operaplus.op-magazine .op-navigation{grid-column:1/-1;width:100%;margin:10px 0 0;border-top:1px solid var(--mag-rule)}
+body.operaplus.op-magazine .op-navigation>ul,body.operaplus.op-magazine .op-navigation>.moduletable>ul{justify-content:center;flex-wrap:wrap;gap:clamp(12px,2vw,28px)}
+body.operaplus.op-magazine .op-navigation>ul>li>a,body.operaplus.op-magazine .op-navigation>.moduletable>ul>li>a{font:600 16px/1.4 Georgia,serif;padding-block:10px;display:block}
+}

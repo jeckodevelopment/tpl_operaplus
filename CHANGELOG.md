@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.21.0] — Anteprima di sviluppo Magazine 2.0.0
+
+- Modalità Standard/Magazine a livello di stile Joomla, Standard predefinita.
+- Homepage Magazine indipendente dalla home istituzionale, fascia editoriale configurabile e griglia 8+4 con posizioni dedicate.
+- CSS Magazine condizionale; sidebar del magazine determinata dal contenuto effettivamente renderizzato.
+- Nessuna modifica agli override di articoli/corsi/categorie esistenti. Accettazione visiva definitiva e nuovi layout moduli nella milestone 2.0.0.
+
 ## [1.20.3] — 2026-11-25
 
 - Rimossa la cornice generica dei moduli solo quando contiene un box editoriale Opera+ CTA o Atlas.

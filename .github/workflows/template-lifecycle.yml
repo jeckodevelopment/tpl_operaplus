@@ -60,3 +60,15 @@ jobs:
           JOOMLA_ROOT: ${{ runner.temp }}/joomla
           MYSQL_PWD: ci-test-password
         run: bash tools/test_template_styles.sh
+      - name: Checkout stable editorial extensions
+        uses: actions/checkout@v4
+        with:
+          repository: jeckodevelopment/operaplus-extensions
+          ref: 74e2bd02c4383ace61af0b56908d8797574d1b15
+          path: .ci-extensions
+          persist-credentials: false
+      - name: Verify real Magazine integration with stable extensions
+        env:
+          JOOMLA_ROOT: ${{ runner.temp }}/joomla
+          MYSQL_PWD: ci-test-password
+        run: bash tools/test_editorial_integration.sh

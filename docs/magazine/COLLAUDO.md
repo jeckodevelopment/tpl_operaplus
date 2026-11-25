@@ -372,14 +372,28 @@ Archivio generale degli articoli pubblicati (distinto dall'archivio nativo), eve
 
 Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS.csv), [GUIDA_STILI.md](../../GUIDA_STILI.md), PR #11–16, [Extensions 1.0.0](https://github.com/jeckodevelopment/operaplus-extensions/releases/tag/v1.0.0).
 
-### MOD-06 — Carosello manuale (1.25.0)
+### MOD-11 — Carosello manuale (1.25.0)
 
 - **Procedura:** Configurare un modulo Articoli `magazine-carousel` con 5 elementi e 2–4 colonne. Verificare clic e tastiera sui pulsanti, scorrimento touch, nessun autoplay, inizio/fine, due istanze sulla stessa pagina; ripetere con JS disattivato e con un solo articolo. Provare tema chiaro/scuro e viewport 375/768/1200 px. Ripetere su Standard e con raggruppamenti.
 - **Atteso:** Nessun articolo escluso, controlli localizzati e indipendenti, niente overflow della pagina; fallback core invariato.
 - [ ] Esito / data / evidenza / note:
 
-### MOD-07 — Mosaico editoriale (1.25.0)
+### MOD-12 — Mosaico editoriale (1.25.0)
 
 - **Procedura:** Configurare `magazine-mosaic` con cinque articoli, alcuni senza immagini, titoli lunghi, categorie e date; ripetere con un articolo, lista vuota, Standard, mobile e dark.
 - **Atteso:** Prima scheda larga e successive a due colonne su desktop; su mobile una colonna, nessuna card vuota e ordine nativo preservato.
+- [ ] Esito / data / evidenza / note:
+
+## Integrazioni — versione 1.26.0
+
+### INT-06 — CSS e formati TinyMCE
+
+- **Procedura:** Aprire il set TinyMCE dei redattori, abilitare CSS template oppure indicare l'URL HTTPS di `media/templates/site/operaplus/css/editor.css`; verificare che il file sia caricato nell'iframe editor. Applicare singolarmente `op-editorial-lead`, `op-interview-question`, `op-interview-answer` dal menu stili a tre paragrafi, salvare, riaprire e verificare il sorgente HTML e la pagina Magazine. Ripetere in articolo Standard per confermare assenza di regressioni; usare anche i sei modelli del plugin.
+- **Atteso:** Classi conservate, gerarchia sommario/domanda/risposta coerente, normale editing e nessun cambio automatico al set.
+- [ ] Esito / data / evidenza / note:
+
+### INT-07 — Chrome reale di Atlas e CTA
+
+- **Procedura:** Con Extensions 1.0.0 e template 1.26.0, pubblicare Atlas con Mostra titolo sì e Nascondi se vuoto sì in `magazine-sidebar`; visitare pagina senza associazioni, pagina con associazioni valide, pagina con campo non accessibile e pagina non articolo. Ripetere con altro modulo nella stessa sidebar, in posizione `sidebar-right`, con Nascondi se vuoto no e modalità manuale con riferimento valido. Provare CTA Light/Dark/Horizontal in main/aside, anche senza configurazione, con testo lungo e tema chiaro/scuro.
+- **Atteso:** Nessun wrapper/titolo/colonna senza output in Magazine; altri moduli restano visibili, modalità manuale e messaggio esplicito conservati. CTA senza cornice doppia in sidebar, contrasto e pulsante integri.
 - [ ] Esito / data / evidenza / note:

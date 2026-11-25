@@ -30,3 +30,6 @@ Il registro ufficiale è [COLLAUDO.md](COLLAUDO.md), aggiornato in ogni PR insie
 
 ### 1.25.0 — layout moduli residui
 Carosello manuale progressivamente migliorato con controlli tastiera, senza autoplay; mosaico editoriale con prima scheda larga. Riuso di `mod_articles`, filtri e fallback esistenti. Restano aperti il confronto con le tavole definitive e l’accettazione visiva; la scheda recensione conserva immagini uniformi nel layout elenco.
+
+### 1.26.0 — integrazione Extensions stabile
+I requisiti MOD-09–11, CTA-01, EDIT-02 e ATLAS-01–03 sono implementati dalle Extensions 1.0.0 (commit `74e2bd02c4383ace61af0b56908d8797574d1b15`); il template non ne replica il codice. EDIT-01 aggiunge CSS TinyMCE e istruzioni di configurazione. ATLAS-04 usa il renderer nativo html5 e la misura dell'output nel Magazine, con test nativo su Joomla 6. Standard mantiene la struttura preesistente. MAG-01 riconciliato con la shell e i layout già implementati. Nessuna accettazione visiva dichiarata e nessuna modifica ai dati del sito.

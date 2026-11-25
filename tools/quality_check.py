@@ -18,3 +18,9 @@ for lang in ('it-IT', 'en-GB'):
     assert len(entries) == len(set(entries)), f'Duplicate translation keys: {p}'
 assert (root / 'CHANGELOG.md').is_file()
 print(f'Opera+ {version}: manifest, assets, language keys and changelog OK')
+# Joomla may request the .min.css form even for custom editor CSS.
+editor = (root / 'media/css/editor.css').read_text()
+assert editor == (root / 'media/css/editor.min.css').read_text(), 'Editor CSS variants differ'
+for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer'):
+    assert 'p.' + cls in editor, f'Missing importable TinyMCE format: {cls}'
+    assert '.' + cls in (root / 'media/css/magazine.css').read_text(), f'Missing frontend style: {cls}'

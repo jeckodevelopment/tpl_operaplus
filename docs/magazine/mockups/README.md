@@ -1,27 +1,18 @@
-# Riferimenti grafici Magazine
+# Riferimenti grafici Magazine — formalizzazione 25 novembre 2026
 
-Conservare qui le tavole definitive approvate, una pagina per immagine. UX-01 homepage; 02 categoria elenco; 03 categoria griglia; 04 articolo; 05 longform; 06 recensione; 07 intervista; 08 dossier; 09 archivio; 10 autore; 11 homepage mobile; 12 articolo mobile; 13 dark; 14 modulo Atlas; 15 CTA. Le tavole concettuali non approvate non costituiscono specifica definitiva. Registrare versione, issue e criteri di accettazione per ogni tavola.
+Riferimento #2, baseline tecnica 2.0.0-rc.1. Recuperati dalla conversazione di progettazione del 24 novembre **10 PNG originali** e predisposti 13 estratti separati, senza ridisegnare i mockup. Le immagini binarie sono state recuperate in un archivio esterno, **non ancora caricate nel repository**; l'inventario e le impronte sono versionati qui. Il connettore GitHub non accetta direttamente i file binari del workspace. Non dichiarare un file presente in Git prima di verificarlo.
 
-## Inventario per la RC
+## Regola di precedenza
+Le decisioni scritte approvate prevalgono sui dettagli divergenti delle bozze (in particolare asse unico 8+4, tre notizie laterali compatte, immagini recensioni uniformi, fondo del primo opzionale, box Atlas e Newsletter). R08 è riferimento esplicito dei box approvati; R10 consolida quattro pagine, ma non prova l'approvazione individuale delle altre tavole. I mockup sono riferimenti di design, non fonti di dati editoriali o fotografie da pubblicare sul sito. Le fixture CI non sono mockup originali.
 
-Al 25 novembre 2026 il repository non contiene i file originali delle tavole. Il piano conserva le decisioni grafiche concordate, ma non prova l'approvazione della singola immagine. Le fixture generate da CI (artifact `magazine-structure-visuals`) verificano rendering, non sostituiscono i mockup originali. Non segnare completato il criterio UX senza file e conferma.
+## Inventario e criteri
+Consulta [SPECIFICHE.md](SPECIFICHE.md) per tutti i 15 criteri. Il file [originals-manifest.json](originals-manifest.json) registra filename, data UTC, risoluzione e SHA-256 degli originali recuperati. Destinazione dei PNG: `originals/`; estratti non alterati: `extracts/`. Conservare anche i compositi integrali. Nessuna immagine nel pacchetto installabile.
 
-| ID | Tavola | Originale versionato | Approvazione documentata |
-|---|---|---|---|
-| UX-01 | Homepage | Da acquisire | Da registrare |
-| UX-02 | Categoria elenco | Da acquisire | Da registrare |
-| UX-03 | Categoria griglia | Da acquisire | Da registrare |
-| UX-04 | Articolo | Da acquisire | Da registrare |
-| UX-05 | Longform | Da acquisire | Da registrare |
-| UX-06 | Recensione | Da acquisire | Da registrare |
-| UX-07 | Intervista | Da acquisire | Da registrare |
-| UX-08 | Dossier | Da acquisire | Da registrare |
-| UX-09 | Archivio | Da acquisire | Da registrare |
-| UX-10 | Autore | Da acquisire | Da registrare |
-| UX-11 | Homepage mobile | Da acquisire | Da registrare |
-| UX-12 | Articolo mobile | Da acquisire | Da registrare |
-| UX-13 | Dark | Da acquisire | Da registrare |
-| UX-14 | Box Atlas | Da acquisire | Da registrare |
-| UX-15 | Box CTA | Da acquisire | Da registrare |
+| Stato | Numero |
+|---|---:|
+| Riferimenti visivi recuperati (inclusi estratti parziali) | 13 |
+| Tavole senza originale reperito | 2 (UX-12, UX-13) |
+| Box con approvazione grafica esplicita | 2 (UX-14, UX-15) |
+| Criteri con file binario verificato in Git | 0 |
 
-Archiviare i file originali come `UX-01-homepage.png` ecc., annotare provenienza, commit, issue e data di approvazione. Non inventare riferimenti né pubblicare fotografie non autorizzate.
+Per chiudere UX-01–15: archiviare i PNG originali con verifica SHA-256; completare i riferimenti parziali e mancanti, registrare la singola approvazione; confronto con staging nel COLLAUDO (separato). Nessuna nuova versione o deploy per questa formalizzazione.

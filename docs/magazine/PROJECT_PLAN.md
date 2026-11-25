@@ -45,3 +45,6 @@ BASE-02, A11Y-01 e SEC-01: navigazione senza JS, focus/Escape contestuale, riduz
 
 ### 2.0.0-rc.1 — candidata al rilascio
 Packaging riproducibile con SHA-256, esclusione strumenti di sviluppo e pulizia mirata in aggiornamento 1.29.0, CI riutilizzabile, pubblicazione GitHub esclusivamente prerelease. REL-01 passa in corso: canale stabile registrato ma vuoto, prova staging e tag stabile subordinati ad accettazione esplicita. Le 15 tavole UX restano aperte finché i riferimenti grafici originali non saranno archiviati e verificati; non sono sostituite dalle fixture CI. Il registro distingue collaudo manuale da implementazione.
+
+### Formalizzazione grafica 25 novembre 2026
+Ritrovati dieci originali della progettazione, 13 riferimenti/estratti e due tavole mancanti (articolo mobile/dark). Specifiche grafiche, provenienza, hash e precedenza delle decisioni approvate in `docs/magazine/mockups/`. I file PNG sono ancora da caricare in Git; nessun criterio UX completato anticipatamente. UX-01–15 passano in corso per la formalizzazione testuale. Collaudo visuale e rilascio stabile separati; RC invariata.

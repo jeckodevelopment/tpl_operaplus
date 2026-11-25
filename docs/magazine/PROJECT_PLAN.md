@@ -27,3 +27,6 @@ Nomi effettivi con trattini anziché underscore: il selettore ModulelayoutField 
 
 ### 1.24.0 — archivio, autore, recensione e collaudo
 Il registro ufficiale è [COLLAUDO.md](COLLAUDO.md), aggiornato in ogni PR insieme alla matrice; nessun Word parallelo. Archivio nativo limitato agli articoli archiviati; eventuale archivio generale degli articoli pubblicati resta distinto. Autore basato sul contatto collegato all'utente, con ultimi articoli filtrati da ArticlesModel, non su un profilo utente pubblico. Scheda recensione basata su campi Joomla facoltativi con prefisso review-, ACL e auto-display disabilitato; riferimenti Atlas già disponibili.
+
+### 1.25.0 — layout moduli residui
+Carosello manuale progressivamente migliorato con controlli tastiera, senza autoplay; mosaico editoriale con prima scheda larga. Riuso di `mod_articles`, filtri e fallback esistenti. Restano aperti il confronto con le tavole definitive e l’accettazione visiva; la scheda recensione conserva immagini uniformi nel layout elenco.

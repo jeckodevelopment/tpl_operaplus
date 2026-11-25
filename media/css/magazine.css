@@ -185,3 +185,20 @@ body.operaplus.op-magazine .op-mag-row__aside.op-sidebar .op-mag-card__meta span
 .op-magazine .op-mag-review dt{color:var(--mag-muted);font-weight:700}
 .op-magazine .op-mag-review dd{margin:0;color:var(--mag-ink);overflow-wrap:anywhere}
 @media(max-width:560px){.op-magazine .op-mag-author__header:has(.op-mag-author__portrait){grid-template-columns:1fr}.op-magazine .op-mag-author__portrait{max-width:180px}.op-magazine .op-mag-archive .filter-search{align-items:stretch}.op-magazine .op-mag-review dl{grid-template-columns:1fr;gap:4px}.op-magazine .op-mag-review dd{margin-bottom:10px}}
+
+/* Alternative editorial layouts, isolated from Standard and existing cards. */
+.op-magazine .op-mag-carousel{min-width:0}
+.op-magazine .op-mag-carousel__controls:not([hidden]){display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px}
+.op-magazine .op-mag-carousel__controls button{border:1px solid var(--mag-accent);color:var(--mag-accent);background:var(--mag-bg);min-width:44px;min-height:44px;font-size:22px;cursor:pointer}
+.op-magazine .op-mag-carousel__controls button[aria-disabled=true]{opacity:.65;cursor:default}
+.op-magazine .op-mag-articles--carousel{--mag-visible:3;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - (var(--mag-visible) - 1)*20px)/var(--mag-visible));overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding-block:4px 12px}
+.op-magazine .op-mag-articles--carousel.op-mag-cols-2{--mag-visible:2}
+.op-magazine .op-mag-articles--carousel.op-mag-cols-4{--mag-visible:4}
+.op-magazine .op-mag-articles--carousel>.op-mag-card{scroll-snap-align:start}
+.op-magazine .op-mag-articles--carousel:focus-visible{outline:2px solid var(--mag-accent);outline-offset:-2px}
+.op-magazine .op-mag-articles--mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}
+.op-magazine .op-mag-articles--mosaic>.op-mag-card:first-child{grid-column:1/-1}
+.op-magazine .op-mag-articles--mosaic>.op-mag-card:first-child .op-mag-card__visual{aspect-ratio:21/9}
+.op-magazine .op-mag-articles--mosaic>.op-mag-card:first-child .op-mag-card__title{font-size:clamp(24px,3vw,38px)!important}
+@media(max-width:720px){.op-magazine .op-mag-articles--carousel:is(.op-mag-cols-2,.op-mag-cols-3,.op-mag-cols-4){--mag-visible:2}}
+@media(max-width:480px){.op-magazine .op-mag-articles--carousel:is(.op-mag-cols-2,.op-mag-cols-3,.op-mag-cols-4){--mag-visible:1}.op-magazine .op-mag-articles--mosaic{grid-template-columns:minmax(0,1fr)}}

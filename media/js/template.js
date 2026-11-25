@@ -150,3 +150,35 @@ document.addEventListener('DOMContentLoaded', () => {
     panel.parentElement.addEventListener('focusin',positionPanels);
   });
 });
+// Magazine article carousel: progressive enhancement, never autoplay.
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.op-magazine [data-op-mag-carousel]').forEach(root => {
+    const track = root.querySelector('.op-mag-articles--carousel');
+    const controls = root.querySelector('.op-mag-carousel__controls');
+    const prev = root.querySelector('[data-op-mag-prev]');
+    const next = root.querySelector('[data-op-mag-next]');
+    if (!track || !controls || !prev || !next) return;
+    const update = () => {
+      const max = Math.max(0, track.scrollWidth - track.clientWidth);
+      const offset = Math.abs(track.scrollLeft);
+      controls.hidden = max <= 1;
+      prev.setAttribute('aria-disabled', String(offset <= 1));
+      next.setAttribute('aria-disabled', String(offset >= max - 1));
+    };
+    const move = (direction, button) => {
+      if (button.getAttribute('aria-disabled') === 'true') return;
+      const card = track.querySelector('.op-mag-card');
+      if (!card) return;
+      const css = getComputedStyle(track);
+      const step = card.getBoundingClientRect().width + (parseFloat(css.columnGap) || 0);
+      track.scrollBy({left: direction * (css.direction === 'rtl' ? -1 : 1) * step, behavior: 'instant'});
+      update();
+    };
+    prev.addEventListener('click', () => move(-1, prev));
+    next.addEventListener('click', () => move(1, next));
+    track.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update, {passive:true});
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    update();
+  });
+});

@@ -31,6 +31,23 @@ jobs:
           php tools/test_magazine_content.php
           php tools/render_article_layouts.php
           node tools/test_article_layouts.mjs
+          node tools/test_design_boards.mjs
+      - name: Archive offline design gallery
+        run: |
+          python3 - <<'PY'
+          import pathlib, zipfile
+          root=pathlib.Path('docs/magazine/mockups')
+          with zipfile.ZipFile('dist/magazine-design-gallery.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in sorted(root.rglob('*')):
+                  if p.is_file(): z.write(p,'mockups/'+p.relative_to(root).as_posix())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: magazine-design-boards
+          path: |
+            dist/design-boards/*.png
+            dist/magazine-design-gallery.zip
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,5 +64,5 @@ jobs:
         with:
           name: operaplus-template-installable
           path: |
-            dist/*.zip
+            dist/tpl_operaplus-*.zip
             dist/*.sha256

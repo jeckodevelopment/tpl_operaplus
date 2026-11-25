@@ -4,23 +4,27 @@ Baseline tecnica **2.0.0-rc.1**. Riferimento #2. Le dieci immagini originali del
 
 Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie laterali compatte, immagini recensioni uniformi, fondo del primo opzionale, box Atlas e Newsletter approvati. Nessuna di queste immagini è inclusa nello ZIP del template o pubblicata come contenuto editoriale.
 
+## Galleria di revisione
+
+[Apri l'indice delle 15 tavole](boards/index.html) (HTML offline; per anteprime PNG usare l'artifact `magazine-design-boards` della CI). Le 8 nuove tavole completano le aree parziali o mancanti: sono proposte distinte dagli originali, in attesa di approvazione.
+
 ## Tavole UX
 
 | ID | Tavola | Riferimento | Stato formalizzazione |
 |---|---|---|---|
 | UX-01 | Homepage | [PNG](extracts/UX-01-homepage.png) | Archiviata, approvazione da registrare |
 | UX-02 | Categoria elenco | [PNG](extracts/UX-02-categoria-elenco.png) | Archiviata, approvazione da registrare |
-| UX-03 | Categoria griglia | [PNG](extracts/UX-03-categoria-griglia.png) | Parziale, archiviata |
+| UX-03 | Categoria griglia | [PNG ](extracts/UX-03-categoria-griglia.png) · [HTML](boards/UX-03.html) | Proposta completa, da approvare |
 | UX-04 | Articolo | [PNG](extracts/UX-04-articolo.png) | Archiviata, approvazione da registrare |
-| UX-05 | Longform | [PNG](extracts/UX-05-longform.png) | Parziale, archiviata |
+| UX-05 | Longform | [PNG ](extracts/UX-05-longform.png) · [HTML](boards/UX-05.html) | Proposta completa, da approvare |
 | UX-06 | Recensione | [PNG](extracts/UX-06-recensione.png) | Archiviata, approvazione da registrare |
 | UX-07 | Intervista | [PNG](extracts/UX-07-intervista.png) | Archiviata, approvazione da registrare |
-| UX-08 | Dossier | [PNG](extracts/UX-08-dossier.png) | Parziale, archiviata |
-| UX-09 | Archivio | [PNG](extracts/UX-09-archivio.png) | Parziale, archiviata |
-| UX-10 | Autore | [PNG](extracts/UX-10-autore.png) | Parziale, archiviata |
-| UX-11 | Homepage mobile | [PNG](extracts/UX-11-homepage-mobile.png) | Parziale, archiviata |
-| UX-12 | Articolo mobile | — | Da predisporre |
-| UX-13 | Dark | — | Da predisporre |
+| UX-08 | Dossier | [PNG ](extracts/UX-08-dossier.png) · [HTML](boards/UX-08.html) | Proposta completa, da approvare |
+| UX-09 | Archivio | [PNG ](extracts/UX-09-archivio.png) · [HTML](boards/UX-09.html) | Proposta completa, da approvare |
+| UX-10 | Autore | [PNG ](extracts/UX-10-autore.png) · [HTML](boards/UX-10.html) | Proposta completa, da approvare |
+| UX-11 | Homepage mobile | [PNG ](extracts/UX-11-homepage-mobile.png) · [HTML](boards/UX-11.html) | Proposta completa, da approvare |
+| UX-12 | Articolo mobile | [HTML](boards/UX-12.html) | Proposta completa, da approvare |
+| UX-13 | Dark | [HTML](boards/UX-13.html) | Proposta completa, da approvare |
 | UX-14 | Box Atlas | [PNG](extracts/UX-14-atlas.png) | Approvata e archiviata |
 | UX-15 | Box CTA | [PNG](extracts/UX-15-cta.png) | Approvata e archiviata |
 
@@ -41,4 +45,4 @@ Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie lateral
 
 [Specifiche e criteri](SPECIFICHE.md) · [Manifest con SHA-256, sorgenti e ritagli](manifest.json) · [Provenienza originali](originals-manifest.json).
 
-13 riferimenti archiviati, 2 mancanti (UX-12 e UX-13). 2 requisiti UX completati (14/15); 13 in corso. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.
+13 riferimenti originali archiviati; 8 tavole HTML di completamento predisposte, comprese UX-12 e UX-13 precedentemente mancanti. Tutti i 15 criteri hanno ora un riferimento visivo. 2 requisiti UX completati (14/15); 13 in corso. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.

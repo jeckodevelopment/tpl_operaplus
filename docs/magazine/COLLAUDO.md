@@ -464,3 +464,6 @@ Il documento [SPECIFICHE.md](mockups/SPECIFICHE.md) elenca i quindici criteri e 
 
 ### UX — Archivio originale versionato
 I file delle 13 tavole recuperate sono consultabili nel [catalogo mockup](mockups/README.md); 10 originali conservati integralmente. `tools/verify_mockups.py` controlla l'integrità dei 23 PNG in CI. UX-14/15 formalizzati e approvati graficamente il 24 novembre; il confronto con staging resta da effettuare. Le tavole UX-01–13 richiedono approvazione definitiva (UX-12 e UX-13 ancora senza originale). Non confondere archiviazione con collaudo.
+
+### UX — Revisione 01 dei riferimenti di completamento
+Aprire `mockups/boards/index.html` offline o scaricare gli screenshot dall'artifact `magazine-design-boards`. Confrontare UX-03/05/08/09/10 a 1200 px, UX-11/12 a 390 e 320 px, UX-13 a 1200 e 390 px. Verificare gerarchia, proporzioni, immagini uniformi, palette, ordine mobile e leggibilità. I prototipi sono specifiche grafiche: non sostituiscono il test funzionale su Joomla. Registrare approvazione o correzioni per ogni tavola e confrontare poi il template reale.

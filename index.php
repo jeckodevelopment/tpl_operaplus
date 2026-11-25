@@ -8,6 +8,10 @@ use Joomla\CMS\Uri\Uri;
 $app = Factory::getApplication();
 $wa = $this->getWebAssetManager();
 $wa->useStyle('template.operaplus')->useScript('template.operaplus');
+$isMagazine = $this->params->get('presentationMode', 'standard') === 'magazine';
+if ($isMagazine) {
+    $wa->useStyle('template.operaplus.magazine');
+}
 $brand = htmlspecialchars((string) $this->params->get('brandText', 'Opera+'), ENT_QUOTES, 'UTF-8');
 $tagline = htmlspecialchars((string) $this->params->get('tagline', "L'opera lirica raccontata al grande pubblico"), ENT_QUOTES, 'UTF-8');
 $e = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -117,7 +121,12 @@ $defaultMenu = $app->getMenu()->getDefault();
 $isHome = $activeMenu && $defaultMenu && $activeMenu->id === $defaultMenu->id;
 $pageTheme = $this->params->get('pageTheme', 'light') === 'light' ? 'light' : 'dark';
 $showHomeComponent = (bool) $this->params->get('showHomeComponent', 0);
-$showMain = !$isHome || $showHomeComponent || (bool) $this->countModules('breadcrumb or main-top or sidebar-left or sidebar-right or main-bottom');
+$magazineLanding = false;
+if ($isMagazine) {
+    require_once __DIR__ . '/html/magazine/context.php';
+    $magazineLanding = opMagazineLanding($activeMenu, $defaultMenu, (int) $this->params->get('magazineHomeMenu', 0), $app->getInput());
+}
+$showMain = $isMagazine || !$isHome || $showHomeComponent || (bool) $this->countModules('breadcrumb or main-top or sidebar-left or sidebar-right or main-bottom');
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 ?>
 <!doctype html>
@@ -132,7 +141,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <jdoc:include type="scripts" />
 <style>:root{--op-accent:<?php echo $accent; ?>;--op-bg:<?php echo $background; ?>;--op-max:<?php echo $width; ?>px;--op-mega-width:<?php echo $megaWidth; ?>px;--op-mega-cols:<?php echo $megaColumns; ?>;--op-burgundy:<?php echo $burgundy; ?>;--op-ivory:<?php echo $ivory; ?>;<?php foreach (['h1','h2','h3','h4','h5','heroH1'] as $level) : ?>--op-<?php echo strtolower($level); ?>-size:<?php echo $titleSizes[$level]; ?>px;<?php endforeach; ?>}</style>
 </head>
-<body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus <?php echo $isHome ? 'is-home' : 'is-internal'; ?> theme-<?php echo $pageTheme; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
+<body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus<?php echo $isMagazine ? ' op-magazine' : ''; ?> <?php echo $isHome ? 'is-home' : 'is-internal'; ?> theme-<?php echo $pageTheme; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
 <a class="skip-link" href="<?php echo $showMain ? '#main-content' : ($this->countModules('hero') ? '#home-hero' : '#site-footer'); ?>"><?php echo Text::_('TPL_OPERAPLUS_SKIP'); ?></a>
 <?php if ($this->countModules('topbar')) : ?><div class="op-topbar"><div class="op-container"><jdoc:include type="modules" name="topbar" style="none" /></div></div><?php endif; ?>
 <header class="op-header"><div class="op-container op-header-inner">
@@ -146,7 +155,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
   <?php endif; ?>
 </div></header>
 <?php if ($this->countModules('announcement')) : ?><div class="op-announcement"><div class="op-container"><jdoc:include type="modules" name="announcement" style="none" /></div></div><?php endif; ?>
-<?php if ($isHome && $this->countModules('hero')) : ?>
+<?php if (!$isMagazine && $isHome && $this->countModules('hero')) : ?>
 <section id="home-hero" class="op-hero" aria-label="Presentazione Opera+">
   <div class="op-container op-hero-grid">
     <div class="op-hero-content"><jdoc:include type="modules" name="hero" style="none" /></div>
@@ -159,7 +168,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
   </div>
 </section>
 <?php endif; ?>
-<?php if ($isHome) : ?>
+<?php if (!$isMagazine && $isHome) : ?>
 <?php if ($this->countModules('intro')) : ?><section class="op-section"><div class="op-container"><jdoc:include type="modules" name="intro" style="card" /></div></section><?php endif; ?>
 <?php if ($this->countModules('content-highlights')) : ?><section class="op-section op-highlights"><div class="op-container"><jdoc:include type="modules" name="content-highlights" style="none" /></div></section><?php endif; ?>
 <?php if ($this->countModules('mission')) : ?><section class="op-section op-mission" id="progetto"><div class="op-container"><jdoc:include type="modules" name="mission" style="none" /></div></section><?php endif; ?>
@@ -171,7 +180,9 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <?php if ($this->countModules('association')) : ?><section class="op-section op-association" id="associazione"><div class="op-container"><jdoc:include type="modules" name="association" style="none" /></div></section><?php endif; ?>
 <?php if ($this->countModules('contacts')) : ?><section class="op-section op-contacts" id="contatti"><div class="op-container"><jdoc:include type="modules" name="contacts" style="none" /></div></section><?php endif; ?>
 <?php endif; ?>
-<?php if ($showMain) : ?>
+<?php if ($isMagazine) : ?>
+<?php require __DIR__ . '/html/magazine/page.php'; ?>
+<?php elseif ($showMain) : ?>
 <main id="main-content" class="op-main"><div class="op-container">
 <?php if ($this->countModules('breadcrumb')) : ?><div class="op-breadcrumb"><jdoc:include type="modules" name="breadcrumb" style="none" /></div><?php endif; ?>
 <?php if ($this->countModules('main-top')) : ?><jdoc:include type="modules" name="main-top" style="card" /><?php endif; ?>

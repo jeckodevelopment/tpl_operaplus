@@ -15,3 +15,6 @@ Homepage: copertina overlay predefinita, contrasto AA indipendente dall'immagine
 5. Collaudi e release (#5).
 ## Governance
 PR organiche, label macro-requisito e priorità, milestone, comportamenti da testare, CI, documentazione contestuale, link ZIP per staging. Avanzamento implementativo separato dal collaudo: percentuale solo su criteri effettivamente verificati, non sulla mera apertura di issue. Nessun tag stabile prima del collaudo. La matrice è preliminare e sarà espansa a criteri atomici dopo censimento e approvazione grafica.
+
+## Decisione architetturale 25 novembre 2026
+Un solo template con parametro di stile `presentationMode` (standard default, magazine opt-in). Menu Joomla assegnati a stili duplicati; homepage editoriale individuata tramite menu selezionato e query effettiva, non soltanto Itemid. Asset condizionali, shell comune, posizioni dedicate, griglia 8+4; override alternativi devono controllare la modalità o ricadere sul comportamento nativo. Prima fase infrastruttura e collaudo, poi layout dei moduli, categorie/articoli e confronto con le tavole approvate. Nessuna nuova reinterpretazione del mockup.

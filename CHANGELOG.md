@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.5] — 2026-11-26 (collaudo 4A)
+
+- Griglia, elenco e dossier Magazine rispettano la scelta del testo introduttivo; metadati editoriali compatti con opzioni e link nativi preservati.
+- Paginazione Magazine: numero corrente bianco su bordeaux, controlli separati e icone indipendenti dal font, anche in tema scuro. Standard e corsi conservano il fallback.
+- BUG-009–011: ricollaudo manuale CAT-01–04 necessario; nessuna pubblicazione stabile.
+
 ## [2.0.0-rc.4] — 2026-11-25 (collaudo 1C)
 
 - Tradotte integralmente le etichette, le opzioni, le descrizioni e la documentazione integrata dell'editor stili in italiano e inglese; corretti i testi italiani residui nel catalogo inglese (BUG-007). Valori dei parametri e layout invariati. Controlli statici e caricamento nativo dei cataloghi in CI.

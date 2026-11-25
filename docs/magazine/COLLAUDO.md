@@ -28,6 +28,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 3C — 25 novembre 2026:** MOD-06–10 e conferma integrativa MOD-05 tutti OK, nessuna nota. Confermata anche la configurazione delle copie dei moduli sidebar nella homepage. RC4 / Extensions 1.0.1. Sessione 3 completata: 17/17; avanzamento cumulativo 33/95 casi OK, nessun KO residuo noto. Restano BASE-INV e BASE-T10 e gli altri casi delle sessioni 4–9; approvazione grafica distinta. Nessuna modifica runtime.
 
+**Lotto 4A — 26 novembre 2026:** CAT-01–04 KO, CAT-05 OK su RC4. BUG-009 intro sempre visibile, BUG-010 metadati elenco/dossier difformi, BUG-011 contrasto e icone paginazione. [Issue #39](https://github.com/jeckodevelopment/tpl_operaplus/issues/39). 34/95 OK, 4 KO, 57 non conclusi. RC5 candidata correttiva: ricollaudare CAT-01–04 e CAT-05 come regressione; non trasferire automaticamente gli esiti. Approvazione grafica distinta.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

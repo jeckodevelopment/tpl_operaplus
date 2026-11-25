@@ -397,3 +397,20 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 - **Procedura:** Con Extensions 1.0.0 e template 1.26.0, pubblicare Atlas con Mostra titolo sì e Nascondi se vuoto sì in `magazine-sidebar`; visitare pagina senza associazioni, pagina con associazioni valide, pagina con campo non accessibile e pagina non articolo. Ripetere con altro modulo nella stessa sidebar, in posizione `sidebar-right`, con Nascondi se vuoto no e modalità manuale con riferimento valido. Provare CTA Light/Dark/Horizontal in main/aside, anche senza configurazione, con testo lungo e tema chiaro/scuro.
 - **Atteso:** Nessun wrapper/titolo/colonna senza output in Magazine; altri moduli restano visibili, modalità manuale e messaggio esplicito conservati. CTA senza cornice doppia in sidebar, contrasto e pulsante integri.
 - [ ] Esito / data / evidenza / note:
+
+## Consolidamento SEO, responsive e prestazioni — 1.27.0
+
+### SEO-01 — Metadati e condivisione
+- **Procedura:** Verificare sorgente HTML di home, categoria paginata, articolo e articolo con Itemid ereditato, con e senza plugin SEO. Impostare immagini articolo/menu/fallback diverse, titoli e descrizioni, provare articolo riservato, immagini non valide, URL con UTM e filtri/lingua. Verificare anteprima social con immagine 1200×630.
+- **Atteso:** Una canonical, OG title/description/type/site_name/url/locale/image quando disponibili; articolo con foto propria, URL assoluti validi, nessun dato privato in pagina ospite. Plugin e robots preservati.
+- [ ] Esito / data / evidenza / note:
+
+### PERF-01 — Asset e Core Web Vitals
+- **Procedura:** Network su Standard e Magazine, tema chiaro/scuro; verificare CSS Magazine solo nel suo stile, JS defer, modalità font, immagini lazy sotto la piega e priorità copertina. Lighthouse mobile su home/categoria/articolo con cache fredda e rete limitata; registrare LCP, CLS, INP da dati reali quando disponibili, senza attribuire al template costi di moduli terzi.
+- **Atteso:** Nessuna nuova libreria, budget asset CI, nessuna query SEO articolo aggiuntiva, niente font remoti in Magazine automatico. Obiettivo CWV LCP ≤2,5 s, CLS ≤0,1, INP ≤200 ms; esiti reali da misurare.
+- [ ] Esito / data / evidenza / note:
+
+### RESP-01 — Mobile 320–430 px e zoom
+- **Procedura:** Provare 320, 375, 390, 430 px e zoom 200%; titoli lunghi, menu multilivello, login, carousel, tabelle e iframe editoriali; touch, tastiera, dark.
+- **Atteso:** Nessuno scorrimento orizzontale della pagina, scorrimento locale per tabelle/caroselli, menu aperto scorrevole, controlli principali 44 px, focus visibile. Verificare sul dispositivo reale.
+- [ ] Esito / data / evidenza / note:

@@ -69,3 +69,48 @@ for css in editor.css editor.min.css; do
   curl -fsS "$url/media/templates/site/operaplus/css/$css" | grep -Fq 'p.op-interview-question'
 done
 echo 'Native Magazine integration: hidden chrome, empty and manual Atlas, mixed sidebar, CTA variants and editor CSS passed.'
+
+# Real Joomla head output and asset isolation.
+db "UPDATE ci_template_styles SET params=JSON_SET(params,'$.defaultOgImage','images/fallback.jpg','$.externalFont','auto') WHERE id=$mid;"
+curl -fsS "$url/index.php?utm_source=ci" > "$page"
+assert_head(){
+  python3 - "$page" "$1" "$2" <<'PY'
+from html.parser import HTMLParser
+import sys
+class Head(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.meta={}; self.canonical=[]
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs)
+        if tag=='meta' and 'property' in a:
+            self.meta.setdefault(a['property'],[]).append(a.get('content',''))
+        if tag=='link' and a.get('rel')=='canonical':
+            self.canonical.append(a.get('href'))
+h=Head(); h.feed(open(sys.argv[1]).read())
+assert len(h.canonical)==1 and 'utm_source' not in h.canonical[0],h.canonical
+for key in ('og:title','og:type','og:site_name','og:url','og:image'):
+    assert len(h.meta.get(key,[]))==1 and h.meta[key][0],(key,h.meta)
+assert h.meta['og:type']==[sys.argv[2]],h.meta
+assert h.meta['og:image'][0].endswith(sys.argv[3]),h.meta
+if sys.argv[2]=='article':
+    assert h.meta['og:description']==['CI editorial description'],h.meta
+PY
+}
+assert_head website /images/fallback.jpg
+absent 'fonts.googleapis.com'
+contains 'magazine.css'
+# Build a public article in the disposable database.
+catid="$(db "SELECT id FROM ci_categories WHERE extension='com_content' AND published=1 AND access=1 ORDER BY id LIMIT 1")"
+author="$(db "SELECT id FROM ci_users ORDER BY id LIMIT 1")"
+[[ "$catid" =~ ^[0-9]+$ && "$author" =~ ^[0-9]+$ ]]
+db "INSERT INTO ci_content (title,alias,introtext,fulltext,state,catid,created,created_by,modified,publish_up,images,urls,attribs,metadesc,access,metadata,language) VALUES ('CI SEO article','ci-seo-article','<p>CI public body</p>','',1,$catid,UTC_TIMESTAMP(),$author,UTC_TIMESTAMP(),UTC_TIMESTAMP(),JSON_OBJECT('image_fulltext','images/article.jpg','image_intro','images/intro.jpg','image_fulltext_alt','CI portrait'),'{}','{}','CI editorial description',1,'{}','*');"
+article="$(db "SELECT id FROM ci_content WHERE alias='ci-seo-article'")"
+home="$(db "SELECT id FROM ci_menu WHERE client_id=0 AND home=1 LIMIT 1")"
+curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home&utm_source=ci" > "$page"
+contains 'CI public body'
+assert_head article /images/article.jpg
+standard="$(db "SELECT id FROM ci_template_styles WHERE template='operaplus' AND id<>$mid LIMIT 1")"
+db "UPDATE ci_menu SET template_style_id=$standard WHERE client_id=0 AND home=1;"
+curl -fsS "$url/index.php" > "$page"
+absent 'magazine.css'
+echo 'Native SEO head, article image priority, canonical, font and asset isolation passed.'

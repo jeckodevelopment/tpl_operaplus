@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.27.0] — SEO, mobile e prestazioni
+
+- Open Graph e Twitter Card tramite API documento Joomla; precedenza immagine articolo, poi menu e fallback, rispetto dei metadati esistenti.
+- Eliminata la query SQL dell'immagine articolo; URL validati e canonical esistente conservato oppure fallback con soli parametri di tracking rimossi.
+- Font di sistema predefiniti nel Magazine, opzione Manrope e Standard invariato in modalità automatica. Nessuna nuova libreria.
+- Reflow a 320 px, controlli touch, menu mobile scorrevole, contenuti multimediali e tabelle contenuti localmente; test e budget asset.
+
 ## [1.26.0] — Integrazioni editoriali Magazine
 
 - CSS di contenuto TinyMCE con classi selezionabili per sommario, domanda e risposta; disponibile anche nella variante `.min.css` richiesta da Joomla.

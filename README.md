@@ -2,7 +2,7 @@
 
 Template responsive per il sito di **Opera+**, progetto di divulgazione dell’opera lirica. Sviluppato da [Jecko Development](https://jeckodevelopment.com).
 
-**Versione:** 1.26.0 (anteprima Magazine) · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
+**Versione:** 1.27.0 (anteprima Magazine) · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
 
 ## Funzionalità
 

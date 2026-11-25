@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.23.0] — Pagine editoriali Magazine
+
+- Layout alternativi nativi per categorie griglia, elenco e dossier; articolo, approfondimento, intervista e recensione. Riuso del rendering Joomla, metadati, plugin, paginazione e ACL.
+- Tempo di lettura Unicode configurabile (200 parole/minuto), solo per articoli accessibili. Tipografia editoriale e classi dei modelli TinyMCE.
+- Gli override dei corsi e la modalità Standard sono conservati. Scheda spettacolo dedicata, archivio e pagina autore restano da completare.
+
 ## [1.22.0] — Layout moduli Magazine
 
 - Dodici layout alternativi per mod_articles: copertina overlay, notizie laterali, griglia, ultimi articoli, elenco, ritratti, dossier, numerato, temi e tre presentazioni di contenuti correlati selezionati con filtri nativi.

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.22.0</version>
+  <version>1.23.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>
@@ -133,6 +133,11 @@
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>
+      </fieldset>
+      <fieldset name="magazineContent" label="TPL_OPERAPLUS_MAG_CONTENT">
+        <field name="magazineReadingTime" type="radio" label="TPL_OPERAPLUS_MAG_READING_TIME" default="1"><option value="1">JYES</option><option value="0">JNO</option></field>
+        <field name="magazineReadingSpeed" type="number" label="TPL_OPERAPLUS_MAG_READING_SPEED" default="200" min="50" max="1000" step="10" filter="integer" />
+        <field name="magazineTintFirst" type="radio" label="TPL_OPERAPLUS_MAG_TINT_FIRST" default="0"><option value="1">JYES</option><option value="0">JNO</option></field>
       </fieldset>
       <fieldset name="typography" label="Titoli">
         <field name="h1Size" type="list" label="Dimensione H1 (desktop)" default="48">

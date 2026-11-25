@@ -458,3 +458,6 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 
 ### UX — Originali grafici
 Per i quindici riferimenti vedere [mockups/README.md](mockups/README.md). Gli screenshot CI sono riproducibili, ma non costituiscono tavole originali approvate. Confronto visivo e approvazione esplicita da registrare per ogni UX-01–15.
+
+### UX — Formalizzazione dei riferimenti recuperati
+Il documento [SPECIFICHE.md](mockups/SPECIFICHE.md) elenca i quindici criteri e i riferimenti originali. Prima di registrare approvazione e confronto su staging verificare la presenza dei file PNG in Git e i relativi hash; applicare le decisioni scritte più recenti in caso di discordanza (8+4, tre notizie compatte, immagini uniformi, box approvati). UX-12 e UX-13 senza tavola originale: non dichiararli approvati sulla base della sola CI.

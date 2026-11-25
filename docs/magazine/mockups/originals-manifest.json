@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-24",
+  "timezone": "UTC",
+  "status": "recovered_not_committed",
+  "originals": [
+    {
+      "file": "originals/R01-articolo.png",
+      "created": "2026-11-24T19:41:40Z",
+      "title": "La Traviata: ieri e oggi",
+      "sha256": "5aea59880057d286a5d9f57eef1e57a1b2b5ad4dd4d907007d5b9f89242e9a54",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "file": "originals/R02-home.png",
+      "created": "2026-11-24T19:41:45Z",
+      "title": "Eleganza operistica: Magazine Opera+",
+      "sha256": "7f9cd6135ddfecb4a0a68a4c51f410399522e2701379ff17abc1a2f235f279df",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "originals/R03-intervista.png",
+      "created": "2026-11-24T19:41:47Z",
+      "title": "Intervista a Daniele Gatti su Opera+",
+      "sha256": "a4e720ff01210ab16e33bb11c0cfd639e74f9a08d64c148f448e5c03516a4f44",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "file": "originals/R04-recensioni.png",
+      "created": "2026-11-24T19:41:49Z",
+      "title": "Recensioni d’Opera tra Palchi e Teatri",
+      "sha256": "27f2289e7a107c49d40872055fb0cd1ce2a51b137a3e7fcd24df9877b6013f4f",
+      "width": 1219,
+      "height": 1290
+    },
+    {
+      "file": "originals/R05-presentazione.png",
+      "created": "2026-11-24T20:06:08Z",
+      "title": "Presentazione editoriale del Magazine Opera+",
+      "sha256": "dae0167e7f18f6783b3053f33ec1d8df40fe2577b62d9e775857398e53f4155f",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "originals/R06-home-completa.png",
+      "created": "2026-11-24T20:06:14Z",
+      "title": "Opera+ Magazine: Storie d’opera e musica lirica",
+      "sha256": "3cc8647edf389614fe8f8cabaca117085a89f2fbda55004345ec5667055d172f",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "file": "originals/R07-tavola-risposte.png",
+      "created": "2026-11-24T20:06:11Z",
+      "title": "Mockup editoriale Opera+ in italiano",
+      "sha256": "7d0c6e68a84f93aa4dda2687abfea0ca6780502cc7b147c22cc2b1aee6e6da2d",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "originals/R08-home-recensioni.png",
+      "created": "2026-11-24T20:18:59Z",
+      "title": "Doppia pagina Opera+: Magazine e Recensioni",
+      "sha256": "491bc822aa99f14157aff56428b5ec024e26015ca8b28dc7845edc2652925dbb",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "originals/R09-tavola-estesa.png",
+      "created": "2026-11-24T20:35:44Z",
+      "title": "Tavola editoriale del magazine Opera+",
+      "sha256": "7cf91ac8a01d0c3bebce39c0ff771da6276d77a8425dd51a0294c4d7386e381f",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "originals/R10-consolidamento.png",
+      "created": "2026-11-24T21:08:15Z",
+      "title": "Mockup editoriali Opera+ in stile burgundy e crema",
+      "sha256": "c43d5ff982101ae836e7b250a099b9767c643db542ead59fe112bc840abd3451",
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "references": [
+    {
+      "id": "UX-01",
+      "name": "Homepage",
+      "source": "R10, R08, R06",
+      "status": "recuperato"
+    },
+    {
+      "id": "UX-02",
+      "name": "Categoria elenco",
+      "source": "R10, R08, R04",
+      "status": "recuperato"
+    },
+    {
+      "id": "UX-03",
+      "name": "Categoria griglia",
+      "source": "R05",
+      "status": "parziale"
+    },
+    {
+      "id": "UX-04",
+      "name": "Articolo",
+      "source": "R01, R07",
+      "status": "recuperato"
+    },
+    {
+      "id": "UX-05",
+      "name": "Longform",
+      "source": "R05, R07, R01",
+      "status": "parziale"
+    },
+    {
+      "id": "UX-06",
+      "name": "Recensione",
+      "source": "R10, R09",
+      "status": "recuperato"
+    },
+    {
+      "id": "UX-07",
+      "name": "Intervista",
+      "source": "R10, R09, R03",
+      "status": "recuperato"
+    },
+    {
+      "id": "UX-08",
+      "name": "Dossier",
+      "source": "R09",
+      "status": "parziale"
+    },
+    {
+      "id": "UX-09",
+      "name": "Archivio",
+      "source": "R09",
+      "status": "parziale"
+    },
+    {
+      "id": "UX-10",
+      "name": "Autore",
+      "source": "R09",
+      "status": "parziale"
+    },
+    {
+      "id": "UX-11",
+      "name": "Homepage mobile",
+      "source": "R09",
+      "status": "parziale"
+    },
+    {
+      "id": "UX-12",
+      "name": "Articolo mobile",
+      "source": "—",
+      "status": "mancante"
+    },
+    {
+      "id": "UX-13",
+      "name": "Dark",
+      "source": "—",
+      "status": "mancante"
+    },
+    {
+      "id": "UX-14",
+      "name": "Box Atlas",
+      "source": "R08, R10",
+      "status": "approvato_recuperato"
+    },
+    {
+      "id": "UX-15",
+      "name": "Box CTA",
+      "source": "R08, R10, R02",
+      "status": "approvato_recuperato"
+    }
+  ],
+  "missing": [
+    "UX-12",
+    "UX-13"
+  ]
+}

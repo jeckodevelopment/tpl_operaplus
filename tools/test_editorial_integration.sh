@@ -138,23 +138,23 @@ absent 'op-mag-articles--related-sidebar'
 absent 'op-mag-articles--related-compact'
 
 # RC5 category introduction, editorial metadata and native pagination.
-old_home_params="$(db "SELECT HEX(params) FROM ci_menu WHERE id=$home")"
-old_home_link="$(db "SELECT HEX(link) FROM ci_menu WHERE id=$home")"
+# A real non-home category menu item avoids Joomla's canonical home redirect.
+db "INSERT INTO ci_menu (menutype,title,alias,path,link,type,published,parent_id,level,component_id,access,params,lft,rgt,home,language,client_id,template_style_id) SELECT menutype,'CI category','ci-category','ci-category',CONCAT('index.php?option=com_content&view=category&layout=magazine-grid&id=',$catid),'component',1,1,1,component_id,1,params,1000,1001,0,'*',0,$mid FROM ci_menu WHERE id=$home;"
+category_menu="$(db "SELECT id FROM ci_menu WHERE alias='ci-category' AND client_id=0")"
 for layout in grid list dossier; do
-  db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid' WHERE id=$home;"
-  db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_intro',0,'$.show_author',1,'$.show_category',1,'$.show_publish_date',1,'$.num_leading_articles',0,'$.num_intro_articles',1,'$.num_links',0,'$.show_pagination',1) WHERE id=$home;"
-  curl -fsSL "$url/index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid&Itemid=$home" > "$page"
+  db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid',params=JSON_SET(params,'$.show_intro',0,'$.show_author',1,'$.show_category',1,'$.show_publish_date',1,'$.num_leading_articles',0,'$.num_intro_articles',1,'$.num_links',0,'$.show_pagination',1) WHERE id=$category_menu;"
+  curl -fsSL "$url/index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid&Itemid=$category_menu" > "$page"
   contains "op-mag-category--$layout"
   contains 'op-mag-category-info'
   absent 'op-mag-category-intro'
   contains 'pagination__wrapper'
   contains 'icon-angle-double-left'
   contains 'icon-angle-double-right'
-  db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_intro',1) WHERE id=$home;"
-  curl -fsSL "$url/index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid&Itemid=$home" > "$page"
+  db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_intro',1) WHERE id=$category_menu;"
+  curl -fsSL "$url/index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid&Itemid=$category_menu" > "$page"
   contains 'op-mag-category-intro'
 done
-db "UPDATE ci_menu SET params=UNHEX('$old_home_params'),link=UNHEX('$old_home_link') WHERE id=$home;"
+db "DELETE FROM ci_menu WHERE id=$category_menu;"
 echo 'Magazine category intro toggle, metadata and pagination passed.'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"
 echo 'Native related article layouts, inherited menu assignment and landing suppression passed.'

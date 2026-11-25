@@ -6,7 +6,7 @@ function check($condition,$label){if(!$condition)throw new RuntimeException($lab
 check(opMagazineReadingMinutes('')===0,'Empty reading time');
 check(opMagazineReadingMinutes(str_repeat('opera ',200))===1,'200 words');
 check(opMagazineReadingMinutes(str_repeat('città ',201))===2,'Unicode ceil');
-check(opMagazineReadingMinutes("<p>L’opera è qui.</p><script>ignored text</script>",3)===1,'HTML and scripts');
+check(opMagazineReadingMinutes('<p>'.str_repeat('opera ',50).'</p><script>'.str_repeat('ignored ',300).'</script>',50)===1,'HTML and scripts');
 check(opMagazineReadingMinutes(str_repeat('opera ',201),400)===1,'Configured speed');
 foreach(['article'=>['article','longform','interview','review'],'category'=>['grid','list','dossier']] as $view=>$modes){
  foreach($modes as $mode){

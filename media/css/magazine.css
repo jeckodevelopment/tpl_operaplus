@@ -128,17 +128,17 @@ body.operaplus.op-magazine .op-mag-row__aside.op-sidebar .op-mag-card__meta span
 .op-magazine .op-mag-category--cols-4 .blog-items{grid-template-columns:repeat(4,minmax(0,1fr))}
 .op-magazine .op-mag-category .blog-items.items-leading{grid-template-columns:1fr}
 .op-magazine .op-mag-category .blog-item{min-width:0;width:auto!important;display:block!important;margin:0!important;break-inside:avoid;border-bottom:1px solid var(--mag-rule);padding-bottom:18px}
-.op-magazine .op-mag-category .blog-item figure{float:none!important;margin:0 0 12px!important;max-width:none;width:100%;aspect-ratio:16/10;overflow:hidden}
-.op-magazine .op-mag-category .blog-item figure img{width:100%;height:100%;object-fit:cover;display:block}
+.op-magazine .op-mag-category .blog-item>figure{float:none!important;margin:0 0 12px!important;max-width:none;width:100%;aspect-ratio:16/10;overflow:hidden}
+.op-magazine .op-mag-category .blog-item>figure img{width:100%;height:100%;object-fit:cover;display:block}
 .op-magazine .op-mag-category .blog-item h2{font:500 clamp(21px,2.3vw,29px)/1.2 Georgia,serif!important;margin:0 0 9px!important}
 .op-magazine .op-mag-category .blog-item h2 a{color:var(--mag-ink)!important;text-decoration:none}
 .op-magazine .op-mag-category .blog-item h2 a:hover{text-decoration:underline}
 .op-magazine .op-mag-category--list .blog-items{grid-template-columns:1fr!important;gap:0}
 .op-magazine .op-mag-category--list .blog-item{display:grid!important;grid-template-columns:minmax(0,30%) minmax(0,1fr);gap:20px;padding:20px 0}
 .op-magazine .op-mag-category--list .blog-item:not(:has(>figure)){grid-template-columns:1fr}
-.op-magazine .op-mag-category--list .blog-item figure{margin:0!important;aspect-ratio:16/10}
+.op-magazine .op-mag-category--list .blog-item>figure{margin:0!important;aspect-ratio:16/10}
 .op-magazine .op-mag-category--list .blog-item .item-content{min-width:0}
-.op-magazine .op-mag-category--tint .blog-items:first-of-type .blog-item:first-child{background:color-mix(in srgb,var(--mag-accent) 7%,var(--mag-bg));padding:16px}
+.op-magazine .op-mag-category--tint .blog-items:not(.blog-items ~ .blog-items) .blog-item:first-child{background:color-mix(in srgb,var(--mag-accent) 7%,var(--mag-bg))}
 .op-magazine .op-mag-category--dossier .blog-item{border-top:2px solid var(--mag-accent);padding-top:12px}
 .op-magazine :is(.op-mag-article,.op-mag-category) .article-info{font:400 13px/1.5 Manrope,system-ui,sans-serif;color:var(--mag-muted);margin:12px 0 18px}
 .op-magazine :is(.op-mag-article,.op-mag-category) .article-info :is(dt,dd){margin:0 12px 4px 0;display:inline-block;color:var(--mag-muted)}

@@ -36,6 +36,15 @@ try{
    assert.equal(await mosaic.count(),3);
    const sizes=await mosaic.evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().width));
    assert.ok(width<=480?Math.abs(sizes[0]-sizes[1])<2:sizes[0]>sizes[1]*1.9);
+   const visual=page.locator('[data-case=grid] .op-mag-card__visual').first();
+   assert.equal(await visual.evaluate(e=>getComputedStyle(e).aspectRatio),'16 / 10');
+   await page.evaluate(()=>document.body.classList.add('op-mag-ratio-square','op-mag-overlay-strong','op-mag-no-separators'));
+   assert.equal(await visual.evaluate(e=>getComputedStyle(e).aspectRatio),'1 / 1');
+   assert.equal(await page.locator('[data-case=portraits] .op-mag-card__visual').first().evaluate(e=>getComputedStyle(e).aspectRatio),'4 / 5');
+   assert.equal(await page.locator('[data-case=list] .op-mag-card').first().evaluate(e=>getComputedStyle(e).borderBottomColor),'rgba(0, 0, 0, 0)');
+   await page.evaluate(()=>{document.body.classList.remove('op-mag-ratio-square');document.body.classList.add('op-mag-ratio-wide')});
+   assert.equal(await visual.evaluate(e=>getComputedStyle(e).aspectRatio),'16 / 9');
+   await page.evaluate(()=>document.body.classList.remove('op-mag-ratio-wide','op-mag-overlay-strong','op-mag-no-separators'));
    await page.screenshot({path:'dist/magazine/articles-'+width+'-'+theme+'.png',fullPage:true});
   }
  }

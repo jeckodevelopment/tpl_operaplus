@@ -414,3 +414,20 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 - **Procedura:** Provare 320, 375, 390, 430 px e zoom 200%; titoli lunghi, menu multilivello, login, carousel, tabelle e iframe editoriali; touch, tastiera, dark.
 - **Atteso:** Nessuno scorrimento orizzontale della pagina, scorrimento locale per tabelle/caroselli, menu aperto scorrevole, controlli principali 44 px, focus visibile. Verificare sul dispositivo reale.
 - [ ] Esito / data / evidenza / note:
+
+## Configurazione e consolidamento — 1.28.0
+
+### CFG-02 — Parametri per stile
+- **Procedura:** Duplicare lo stile Magazine di test. Provare 16:10, 16:9, 1:1 su griglia, elenco, categoria, dossier e carosello; overlay classico/forte con immagine chiara e testo lungo; separatori sì/no. Verificare miniature, ritratti e mosaico, titoli, colonne e metadati nativi. Ripetere in tema scuro e a 320 px, verificare che Standard sia identico.
+- **Atteso:** Parametri indipendenti per stile, proporzioni uniformi e overlay leggibile; nessuna modifica a foto originali o filtri. Default identico alla 1.27.0.
+- [ ] Esito / data / evidenza / note:
+
+### SEC-01 — ACL e pubblicazione
+- **Procedura:** Creare articolo corso con testo completo riservato e immagine privata, provare guest con show_noauth sì/no, utente autorizzato, URL diretta con Itemid ereditato; ripetere articolo Magazine, finestre pubblicazione future/scadute e campo Atlas non accessibile. Testare URL immagini non HTTP(S) e parametri di stile non validi in ambiente di prova.
+- **Atteso:** Nessuna esposizione del testo completo o della copertina riservata agli ospiti; fallback Joomla; nessuna immagine OG da contenuto non accessibile/non pubblicato; parametri invalidi tornano ai default. Nessun bypass dei controlli nativi.
+- [ ] Esito / data / evidenza / note:
+
+### DOC-02/03 — Guide operative
+- **Procedura:** Redattore e amministratore seguono le rispettive guide su staging; preparare homepage, articolo, recensione e CTA, verificare permessi, template style, metadati e ritorno a Standard.
+- **Atteso:** Guida ripetibile senza modifica dei file core, del default globale o delle assegnazioni già esistenti.
+- [ ] Esito / data / evidenza / note:

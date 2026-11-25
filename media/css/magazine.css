@@ -221,3 +221,12 @@ body.operaplus.op-magazine .op-header .op-navigation :is(.mod-menu__sub,ul.menu,
 .op-magazine .op-mag-article blockquote{font-size:20px;margin-inline:0;padding-inline:14px}
 .op-magazine .op-mag-archive .filter-search>*{max-width:100%}
 }
+
+/* Opt-in style parameters. Defaults retain the approved 16:10 crop and overlay. */
+.op-magazine.op-mag-ratio-wide{--mag-card-ratio:16/9}
+.op-magazine.op-mag-ratio-square{--mag-card-ratio:1/1}
+.op-magazine:is(.op-mag-ratio-wide,.op-mag-ratio-square) :is(.op-mag-articles--grid,.op-mag-articles--list,.op-mag-articles--dossier,.op-mag-articles--carousel,.op-mag-articles--related-horizontal) .op-mag-card__visual,
+.op-magazine:is(.op-mag-ratio-wide,.op-mag-ratio-square) .op-mag-category .blog-item>figure{aspect-ratio:var(--mag-card-ratio)}
+.op-magazine.op-mag-overlay-strong .op-mag-articles--cover .op-mag-card--image::after{background:linear-gradient(180deg,rgba(22,9,13,.32),rgba(22,9,13,.94) 52%,#1b0b11)}
+.op-magazine.op-mag-no-separators :is(.op-mag-row,.op-mag-card,.op-mag-category .blog-item,.op-mag-author__article){border-bottom-color:transparent}
+.op-magazine.op-mag-no-separators .op-mag-row__main>.moduletable>:is(h2,h3)::after{visibility:hidden}

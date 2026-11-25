@@ -114,3 +114,26 @@ db "UPDATE ci_menu SET template_style_id=$standard WHERE client_id=0 AND home=1;
 curl -fsS "$url/index.php" > "$page"
 absent 'magazine.css'
 echo 'Native SEO head, article image priority, canonical, font and asset isolation passed.'
+
+# Exercise style options through the actual installed template and test inherited home Itemid.
+db "UPDATE ci_menu SET template_style_id=$mid WHERE client_id=0 AND home=1; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineImageRatio','wide','$.magazineOverlay','strong','$.magazineSeparators',0) WHERE id=$mid;"
+curl -fsS "$url/index.php" > "$page"
+contains 'op-mag-ratio-wide op-mag-overlay-strong op-mag-no-separators'
+db "UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineImageRatio','invalid','$.magazineOverlay','invalid') WHERE id=$mid;"
+curl -fsS "$url/index.php" > "$page"
+contains 'op-mag-ratio-classic op-mag-overlay-classic'
+db "UPDATE ci_menu SET template_style_id=$standard WHERE client_id=0 AND home=1;"
+curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home" > "$page"
+contains 'CI public body'
+absent 'op-mag-ratio-'
+assert_head article /images/article.jpg
+# Courses use their existing custom layout only for authorized viewers.
+db "UPDATE ci_categories SET alias='corsi' WHERE id=$catid; UPDATE ci_content SET \`fulltext\`='<p>CI PRIVATE FULLTEXT MARKER</p>',attribs=JSON_OBJECT('show_noauth',1,'show_readmore',1) WHERE id=$article;"
+curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home" > "$page"
+contains 'op-course-detail'
+contains 'CI PRIVATE FULLTEXT MARKER'
+db "UPDATE ci_content SET access=2 WHERE id=$article;"
+curl -sS -L "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home" > "$page"
+absent 'CI PRIVATE FULLTEXT MARKER'
+absent 'og:image" content="http://127.0.0.1:8080/images/article.jpg'
+echo 'Native style options, inherited Itemid and course ACL regression passed.'

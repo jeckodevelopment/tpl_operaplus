@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.27.0</version>
+  <version>1.28.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>
@@ -138,6 +138,9 @@
       <fieldset name="magazineContent" label="TPL_OPERAPLUS_MAG_CONTENT">
         <field name="magazineReadingTime" type="radio" label="TPL_OPERAPLUS_MAG_READING_TIME" default="1"><option value="1">JYES</option><option value="0">JNO</option></field>
         <field name="magazineReadingSpeed" type="number" label="TPL_OPERAPLUS_MAG_READING_SPEED" default="200" min="50" max="1000" step="10" filter="integer" />
+        <field name="magazineImageRatio" type="list" label="TPL_OPERAPLUS_MAG_RATIO" description="TPL_OPERAPLUS_MAG_RATIO_DESC" default="classic" validate="options"><option value="classic">16:10</option><option value="wide">16:9</option><option value="square">1:1</option></field>
+        <field name="magazineOverlay" type="list" label="TPL_OPERAPLUS_MAG_OVERLAY" default="classic" validate="options"><option value="classic">TPL_OPERAPLUS_MAG_OVERLAY_CLASSIC</option><option value="strong">TPL_OPERAPLUS_MAG_OVERLAY_STRONG</option></field>
+        <field name="magazineSeparators" type="radio" label="TPL_OPERAPLUS_MAG_SEPARATORS" default="1" validate="options"><option value="1">JYES</option><option value="0">JNO</option></field>
         <field name="magazineTintFirst" type="radio" label="TPL_OPERAPLUS_MAG_TINT_FIRST" default="0"><option value="1">JYES</option><option value="0">JNO</option></field>
       </fieldset>
       <fieldset name="typography" label="Titoli">

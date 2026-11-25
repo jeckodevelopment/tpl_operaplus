@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.28.0] — Configurazione editoriale e consolidamento
+
+- Proporzioni 16:10, 16:9 o 1:1 per le immagini editoriali, overlay classico o più marcato e separatori configurabili; default invariati.
+- Corretto il fallback dei corsi non accessibili al layout nativo Joomla, validazione URL copertina e finestre di pubblicazione dei metadati articolo.
+- Evitato il doppio calcolo SEO degli articoli Magazine; riconoscimento homepage basato sulla route reale anche in Standard.
+- Budget degli asset più stringenti, test configurazione e guide amministratore/redattore.
+
 ## [1.27.0] — SEO, mobile e prestazioni
 
 - Open Graph e Twitter Card tramite API documento Joomla; precedenza immagine articolo, poi menu e fallback, rispetto dei metadati esistenti.

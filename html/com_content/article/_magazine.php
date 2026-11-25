@@ -4,8 +4,6 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
-require_once __DIR__ . '/../../seo.php';
-opSeoArticle($this->getDocument(), $this->item, \Joomla\CMS\Uri\Uri::root());
 $opStyle = Factory::getApplication()->getTemplate(true)->params;
 $opOriginalLayout = $this->getLayout();
 $opMode = in_array($opContentMode, ['article', 'longform', 'interview', 'review'], true) ? $opContentMode : 'article';
@@ -17,6 +15,8 @@ try {
         require __DIR__ . '/default.php';
         return;
     }
+    require_once __DIR__ . '/../../seo.php';
+    opSeoArticle($this->getDocument(), $this->item, \Joomla\CMS\Uri\Uri::root());
     require_once __DIR__ . '/../../magazine/content.php';
     $opEvent = $this->item->event;
     $opAfterTitle = $opEvent->afterDisplayTitle ?? '';

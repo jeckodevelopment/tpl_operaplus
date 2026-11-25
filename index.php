@@ -73,17 +73,19 @@ $seoMenu = $app->getMenu()->getActive();
 $seoMenuParams = $seoMenu ? $seoMenu->getParams() : null;
 $seoMenuImage = $seoMenuParams ? ($seoMenuParams->get('og_image', '') ?: $seoMenuParams->get('menu_image', '')) : '';
 opSeoComplete($this, Uri::root(), Uri::getInstance()->toString(['path','query']), (string) $this->params->get('brandText','Opera+'), (string) $this->language, [$seoMenuImage, $this->params->get('defaultOgImage','')]);
-$hasSidebar = $this->countModules('sidebar-left or sidebar-right');
 $hasLeftSidebar = (bool) $this->countModules('sidebar-left');
 $hasRightSidebar = (bool) $this->countModules('sidebar-right');
 $activeMenu = $app->getMenu()->getActive();
 $defaultMenu = $app->getMenu()->getDefault();
-$isHome = $activeMenu && $defaultMenu && $activeMenu->id === $defaultMenu->id;
+require_once __DIR__ . '/html/magazine/context.php';
+$isHome = opMagazineLanding($activeMenu, $defaultMenu, 0, $app->getInput());
+$magazineClasses = '';
 $pageTheme = $this->params->get('pageTheme', 'light') === 'light' ? 'light' : 'dark';
 $showHomeComponent = (bool) $this->params->get('showHomeComponent', 0);
 $magazineLanding = false;
 if ($isMagazine) {
-    require_once __DIR__ . '/html/magazine/context.php';
+    require_once __DIR__ . '/html/magazine/options.php';
+    $magazineClasses = opMagazineClasses($this->params);
     $magazineLanding = opMagazineLanding($activeMenu, $defaultMenu, (int) $this->params->get('magazineHomeMenu', 0), $app->getInput());
 }
 $showMain = $isMagazine || !$isHome || $showHomeComponent || (bool) $this->countModules('breadcrumb or main-top or sidebar-left or sidebar-right or main-bottom');
@@ -103,7 +105,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <jdoc:include type="scripts" />
 <style>:root{--op-accent:<?php echo $accent; ?>;--op-bg:<?php echo $background; ?>;--op-max:<?php echo $width; ?>px;--op-mega-width:<?php echo $megaWidth; ?>px;--op-mega-cols:<?php echo $megaColumns; ?>;--op-burgundy:<?php echo $burgundy; ?>;--op-ivory:<?php echo $ivory; ?>;<?php foreach (['h1','h2','h3','h4','h5','heroH1'] as $level) : ?>--op-<?php echo strtolower($level); ?>-size:<?php echo $titleSizes[$level]; ?>px;<?php endforeach; ?>}</style>
 </head>
-<body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus<?php echo $isMagazine ? ' op-magazine' : ''; ?> <?php echo $isHome ? 'is-home' : 'is-internal'; ?> theme-<?php echo $pageTheme; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
+<body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus<?php echo $isMagazine ? ' op-magazine ' . $magazineClasses : ''; ?> <?php echo $isHome ? 'is-home' : 'is-internal'; ?> theme-<?php echo $pageTheme; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
 <a class="skip-link" href="<?php echo $showMain ? '#main-content' : ($this->countModules('hero') ? '#home-hero' : '#site-footer'); ?>"><?php echo Text::_('TPL_OPERAPLUS_SKIP'); ?></a>
 <?php if ($this->countModules('topbar')) : ?><div class="op-topbar"><div class="op-container"><jdoc:include type="modules" name="topbar" style="none" /></div></div><?php endif; ?>
 <header class="op-header"><div class="op-container op-header-inner">

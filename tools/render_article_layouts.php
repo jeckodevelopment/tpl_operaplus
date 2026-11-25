@@ -29,6 +29,10 @@ $list=[];
 foreach(['Una serata a teatro','La musica e la città','Intervista al direttore'] as $i=>$title){
  $list[]=(object)['title'=>$title,'link'=>'#article-'.$i,'imageSrc'=>'/fixture.svg','images'=>json_encode(['image_intro_alt'=>'Teatro']),'displayCategoryTitle'=>'Recensioni','displayCategoryLink'=>'#category','displayDate'=>'25 novembre 2026','displayAuthorName'=>'Redazione','displayIntrotext'=>'<p>Un approfondimento sul mondo dell’opera.</p>','event'=>(object)[]];
 }
+require_once __DIR__.'/../html/magazine/options.php';
+check(opMagazineClasses(new Params([]))==='op-mag-ratio-classic op-mag-overlay-classic','Default style changed');
+check(opMagazineClasses(new Params(['magazineImageRatio'=>'wide','magazineOverlay'=>'strong','magazineSeparators'=>0]))==='op-mag-ratio-wide op-mag-overlay-strong op-mag-no-separators','Configured style classes');
+check(opMagazineClasses(new Params(['magazineImageRatio'=>'<script>','magazineOverlay'=>'bad']))==='op-mag-ratio-classic op-mag-overlay-classic','Invalid style enums');
 $layouts=['cover','sidebar','grid','latest','list','portraits','dossier','ranked','topics','related-sidebar','related-horizontal','related-compact','carousel','mosaic'];
 $html='';
 foreach($layouts as $layout){

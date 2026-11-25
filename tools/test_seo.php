@@ -32,3 +32,11 @@ check(count($d->links)===1&&$d->getMetaData('og:url','property')==='https://exam
 $d=new Doc;$item->params=new class{public function get($k,$d){return false;}};opSeoArticle($d,$item,$root);opSeoComplete($d,$root,'/sub/article','Opera+','it-IT',['images/fallback.jpg']);
 check($d->getMetaData('og:type','property')==='website'&&$d->getMetaData('og:image','property')===$root.'images/fallback.jpg','Restricted article');
 echo "SEO metadata, URLs, canonical, permissions and plugin preservation passed.\n";
+
+$item->params=new class{public function get($k,$d){return true;}};
+$item->publish_up='2099-01-01 00:00:00';
+$d=new Doc;opSeoArticle($d,$item,$root);
+check(!$d->getMetaData('og:image','property'),'Future article must not publish social image');
+$item->publish_up='2026-01-01 12:00:00';$item->publish_down='2026-01-02 00:00:00';
+$d=new Doc;opSeoArticle($d,$item,$root);
+check(!$d->getMetaData('og:image','property'),'Expired article must not publish social image');

@@ -230,3 +230,26 @@ body.operaplus.op-magazine .op-header .op-navigation :is(.mod-menu__sub,ul.menu,
 .op-magazine.op-mag-overlay-strong .op-mag-articles--cover .op-mag-card--image::after{background:linear-gradient(180deg,rgba(22,9,13,.32),rgba(22,9,13,.94) 52%,#1b0b11)}
 .op-magazine.op-mag-no-separators :is(.op-mag-row,.op-mag-card,.op-mag-category .blog-item,.op-mag-author__article){border-bottom-color:transparent}
 .op-magazine.op-mag-no-separators .op-mag-row__main>.moduletable>:is(h2,h3)::after{visibility:hidden}
+
+
+/* RC5: native category information in the same editorial vocabulary as cards. */
+.op-magazine .op-mag-category-info{margin:8px 0 12px;min-width:0}
+.op-magazine .op-mag-category-info .op-mag-card__meta{column-gap:10px;row-gap:4px}
+.op-magazine .op-mag-category-info .op-mag-card__meta>span{min-width:0}
+.op-magazine .op-mag-category-info .op-mag-card__meta>span+span::before{content:'·';margin-inline-end:10px}
+.op-magazine .op-mag-category-info a{color:inherit;text-decoration:none}
+.op-magazine .op-mag-category-info a:hover{text-decoration:underline}
+.op-magazine .op-mag-category-intro{font:400 15px/1.6 Manrope,system-ui,sans-serif;color:var(--mag-muted)}
+/* Joomla's native pagination uses icon-font spans; render these four glyphs
+   without requiring an icon font, and keep every control in its own hit area. */
+body.operaplus.op-magazine .op-mag-main .pagination{display:flex;flex-wrap:wrap;align-items:center;gap:6px;list-style:none;padding:0;margin-block:18px}
+body.operaplus.op-magazine .op-mag-main .pagination>li{display:block;margin:0;padding:0}
+body.operaplus.op-magazine .op-mag-main .pagination .page-link{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--mag-rule);border-radius:3px;background:var(--mag-bg);color:var(--mag-ink);font:600 14px/1.2 system-ui,sans-serif;text-decoration:none}
+body.operaplus.op-magazine .op-mag-main .pagination :is(.active>.page-link,.page-link[aria-current]){background:#632b3a;color:#fff!important;border-color:#632b3a}
+body.operaplus.op-magazine .op-mag-main .pagination a.page-link:not([aria-current]):hover{border-color:var(--mag-accent);color:var(--mag-accent)}
+body.operaplus.op-magazine .op-mag-main .pagination .disabled>.page-link{color:var(--mag-muted);background:transparent;cursor:default}
+body.operaplus.op-magazine .op-mag-main .pagination .page-link [class*="icon-angle"]{display:inline-block;font:700 20px/1 system-ui,sans-serif;width:auto;text-align:center}
+body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-double-left::before{content:'«'}
+body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-left::before{content:'‹'}
+body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-right::before{content:'›'}
+body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-double-right::before{content:'»'}

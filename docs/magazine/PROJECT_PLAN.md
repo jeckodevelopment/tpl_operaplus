@@ -51,3 +51,6 @@ Ritrovati dieci originali della progettazione, 13 riferimenti/estratti e due tav
 
 ### Archivio grafico — 25 novembre 2026
 I 10 originali e i 13 estratti sono stati caricati dall'utente e organizzati in `docs/magazine/mockups/originals/` e `extracts/`. Identità dei blob verificata rispetto all'archivio locale; verifica SHA-256 automatica in CI. UX-14 e UX-15 completati per approvazione grafica già documentata e archiviazione; i collaudi manuali restano non eseguiti. UX-01–13 rimangono in corso: cinque tavole con riferimento recuperato, sei parziali, due mancanti. Nessun cambio della RC o del pacchetto.
+
+### Completamento tavole grafiche — revisione 01
+Otto tavole HTML/CSS autonome, UX-03, 05, 08–13, completano i riferimenti parziali o mancanti senza modificare gli originali PNG. Indice unico per tutte le 15 tavole, fonti e viewport documentati. La CI verifica la galleria, gli asset locali e il reflow; genera PNG e archivio offline. Cinque originali completi in attesa di registrazione dell'approvazione; due già approvati. Nessuna modifica runtime, nessuna nuova approvazione presunta: matrice 46/60 invariata fino a conferma esplicita. Collaudo manuale distinto.

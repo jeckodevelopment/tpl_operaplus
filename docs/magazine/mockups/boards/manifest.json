@@ -1,0 +1,71 @@
+{
+  "revision": 1,
+  "date": "2026-11-25",
+  "status": "proposed",
+  "boards": [
+    {
+      "id": "UX-03",
+      "file": "UX-03.html",
+      "title": "Categoria griglia",
+      "source": "R05 · UX-03",
+      "viewport": 1200,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-05",
+      "file": "UX-05.html",
+      "title": "Longform",
+      "source": "R05, R07, R01",
+      "viewport": 1200,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-08",
+      "file": "UX-08.html",
+      "title": "Dossier",
+      "source": "R09 · UX-08",
+      "viewport": 1200,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-09",
+      "file": "UX-09.html",
+      "title": "Archivio",
+      "source": "R09 · UX-09",
+      "viewport": 1200,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-10",
+      "file": "UX-10.html",
+      "title": "Autore",
+      "source": "R09 · UX-10",
+      "viewport": 1200,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-11",
+      "file": "UX-11.html",
+      "title": "Homepage mobile",
+      "source": "R09 · UX-11",
+      "viewport": 390,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-12",
+      "file": "UX-12.html",
+      "title": "Articolo mobile",
+      "source": "Nuova tavola: derivata da R01, R05 e specifiche responsive",
+      "viewport": 390,
+      "status": "da_approvare"
+    },
+    {
+      "id": "UX-13",
+      "file": "UX-13.html",
+      "title": "Tema scuro",
+      "source": "Nuova tavola: derivata da UX-01 e token dark del template",
+      "viewport": 1200,
+      "status": "da_approvare"
+    }
+  ]
+}

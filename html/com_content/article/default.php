@@ -5,6 +5,8 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 $item = $this->item;
+require_once __DIR__ . '/../../seo.php';
+opSeoArticle($this->getDocument(), $item, \Joomla\CMS\Uri\Uri::root());
 $isCourse = strtolower((string) ($item->category_alias ?? '')) === 'corsi';
 if (!$isCourse && \Joomla\CMS\Factory::getApplication()->getTemplate(true)->params->get('presentationMode', 'standard') === 'magazine') {
     $opContentMode = 'article';

@@ -33,3 +33,6 @@ Carosello manuale progressivamente migliorato con controlli tastiera, senza auto
 
 ### 1.26.0 — integrazione Extensions stabile
 I requisiti MOD-09–11, CTA-01, EDIT-02 e ATLAS-01–03 sono implementati dalle Extensions 1.0.0 (commit `74e2bd02c4383ace61af0b56908d8797574d1b15`); il template non ne replica il codice. EDIT-01 aggiunge CSS TinyMCE e istruzioni di configurazione. ATLAS-04 usa il renderer nativo html5 e la misura dell'output nel Magazine, con test nativo su Joomla 6. Standard mantiene la struttura preesistente. MAG-01 riconciliato con la shell e i layout già implementati. Nessuna accettazione visiva dichiarata e nessuna modifica ai dati del sito.
+
+### 1.27.0 — consolidamento SEO e mobile
+Metadati con API documento Joomla, dati articolo già disponibili (nessun SQL aggiuntivo), canonical esistente preservato, fallback tracking-only, font remoti facoltativi e reflow a 320 px. Budget asset locali e test CI nativi. I requisiti trasversali restano in verifica: non si certificano WCAG, Core Web Vitals o retrocompatibilità integrale con sole fixture.

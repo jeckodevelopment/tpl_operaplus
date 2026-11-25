@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.26.0</version>
+  <version>1.27.0</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>
@@ -102,6 +102,7 @@
         <field name="footerText" type="textarea" label="Footer - claim finale" default="Opera+ · L’opera lirica raccontata al grande pubblico" filter="string" />
       </fieldset>
       <fieldset name="appearance" label="TPL_OPERAPLUS_APPEARANCE">
+        <field name="externalFont" type="list" label="TPL_OPERAPLUS_FONT_MODE" description="TPL_OPERAPLUS_FONT_MODE_DESC" default="auto" validate="options"><option value="auto">TPL_OPERAPLUS_FONT_AUTO</option><option value="system">TPL_OPERAPLUS_FONT_SYSTEM</option><option value="google">TPL_OPERAPLUS_FONT_GOOGLE</option></field>
         <field name="pageTheme" type="list" label="Tema cromatico della pagina" description="Duplica lo stile del template e assegna Tema chiaro ai menu delle pagine interne, lasciando scuro per la homepage." default="light">
           <option value="dark">Scuro · homepage</option>
           <option value="light">Chiaro · pagine interne</option>

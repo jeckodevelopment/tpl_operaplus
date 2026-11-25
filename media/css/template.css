@@ -515,9 +515,9 @@ body.operaplus #system-message-container joomla-alert .joomla-alert--close:focus
 /* Accessible noscript fallback (shown only when JavaScript is disabled). */
 body.operaplus #system-message-container noscript .alert{margin:0 0 .85rem;padding:.85rem 1.15rem;border-radius:4px}
 /* Standalone editorial modules: the module already owns its panel, padding and CTA. */
-body.operaplus :is(.moduletable,.moduletable-card,.card,.op-card):has(> :is(.op-cta-shell,.op-atlas-module)),
-body.operaplus :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)){
+body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.card,.op-card):has(> :is(.op-cta-shell,.op-atlas-module)),
+body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)){
   background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;min-width:0;transform:none!important;
 }
-body.operaplus :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)) > .card-body{padding:0!important;background:transparent!important;border:0!important}
+body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)) > .card-body{padding:0!important;background:transparent!important;border:0!important}
 body.operaplus .op-sidebar :is(.op-cta-shell,.op-atlas-module){min-width:0}

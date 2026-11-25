@@ -18,6 +18,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo BUG-007 — 25 novembre 2026:** RC4 installata; traduzioni inglesi Standard e Magazine, documentazione inglese, traduzioni italiane, conservazione parametri/assegnazioni e funzionamento frontend tutti OK, nessuna nota. Difetto chiuso. BASE-T09: ricollaudo mirato del solo KO segnalato; per completezza verificare separatamente override di lingua, menu, carosello e messaggi se non già provati. Le etichette REG-01/02 della scheda di ricollaudo erano locali: non equivalgono ai casi omonimi della sessione 8. I precedenti OK RC3 restano storici; modifica circoscritta ai cataloghi e manifest, regressione configurazione/frontend confermata, CI RC4 positiva. Non si presume un nuovo collaudo completo. BASE-INV e BASE-T10 restano da eseguire. Si può procedere alla sessione 2.
 
+**Sessione 2 — 25 novembre 2026:** SET-03, SET-04 e CFG-02 tutti OK, nessuna nota, su staging RC4 / Extensions 1.0.1. Configurazione landing, navigazione e indipendenza delle impostazioni confermate. Avanzamento cumulativo 16/95 casi OK (13 su 15 della sessione 1 e 3 su 3 della sessione 2), senza KO residui. Restano i due casi tecnici della sessione 1 e le verifiche specifiche già annotate; proseguire con sessione 3.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

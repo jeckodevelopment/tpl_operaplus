@@ -109,6 +109,36 @@ home="$(db "SELECT id FROM ci_menu WHERE client_id=0 AND home=1 LIMIT 1")"
 curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home&utm_source=ci" > "$page"
 contains 'CI public body'
 assert_head article /images/article.jpg
+
+# BUG-008: native Articles modules in both related layouts, using the inherited
+# landing Itemid and two public articles in the same category.
+db "INSERT INTO ci_content (title,alias,introtext,\`fulltext\`,state,catid,created,created_by,modified,publish_up,images,urls,attribs,metadesc,access,metadata,language) VALUES ('CI related sibling','ci-related-sibling','<p>CI related intro</p>','',1,$catid,UTC_TIMESTAMP(),$author,UTC_TIMESTAMP(),UTC_TIMESTAMP(),JSON_OBJECT('image_intro','images/related.jpg'),'{}','{}','',1,'{}','*');"
+db "UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',$home,'$.magazineShowComponent',0) WHERE id=$mid;"
+db "INSERT INTO ci_modules (title,position,published,module,access,showtitle,content,params,client_id,language) VALUES ('CI landing marker','magazine-cover',1,'mod_custom',1,0,'<p>CI landing marker</p>','{}',0,'*'); INSERT INTO ci_modules_menu (moduleid,menuid) VALUES (LAST_INSERT_ID(),$home);"
+for layout in related-sidebar related-compact related-horizontal; do
+  pos=magazine-sidebar
+  if [[ "$layout" == related-horizontal ]]; then pos=main-bottom; fi
+  db "INSERT INTO ci_modules (title,position,published,module,access,showtitle,params,client_id,language) VALUES ('CI $layout','$pos',1,'mod_articles',1,1,JSON_OBJECT('layout','operaplus:magazine-$layout','mode','normal','catid',JSON_ARRAY($catid),'count',3,'category_filtering_type',1,'exclude_current',1,'item_title',1,'link_titles',1,'img_intro_full','intro','cache',0),0,'*'); INSERT INTO ci_modules_menu (moduleid,menuid) VALUES (LAST_INSERT_ID(),$home);"
+done
+curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home" > "$page"
+contains 'CI public body'
+contains 'op-mag-row__aside'
+contains 'CI related sibling'
+for layout in related-sidebar related-compact related-horizontal; do contains "op-mag-articles--$layout"; done
+absent 'CI landing marker'
+# Native dynamic mode must work too on the article route; exclusion stays enabled.
+db "UPDATE ci_modules SET params=JSON_SET(params,'$.mode','dynamic','$.show_on_article_page',1) WHERE title IN ('CI related-sidebar','CI related-compact');"
+curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home" > "$page"
+contains 'op-mag-articles--related-sidebar'
+contains 'op-mag-articles--related-compact'
+# On the landing, the component/sidebar may be intentionally hidden.
+curl -fsS "$url/index.php?Itemid=$home" > "$page"
+contains 'CI landing marker'
+absent 'op-mag-articles--related-sidebar'
+absent 'op-mag-articles--related-compact'
+db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"
+echo 'Native related article layouts, inherited menu assignment and landing suppression passed.'
+
 standard="$(db "SELECT id FROM ci_template_styles WHERE template='operaplus' AND id<>$mid LIMIT 1")"
 db "UPDATE ci_menu SET template_style_id=$standard WHERE client_id=0 AND home=1;"
 curl -fsS "$url/index.php" > "$page"

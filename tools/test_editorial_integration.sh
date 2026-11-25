@@ -139,7 +139,7 @@ absent 'op-mag-articles--related-compact'
 
 # RC5 category introduction, editorial metadata and native pagination.
 # A real non-home category menu item avoids Joomla's canonical home redirect.
-db "INSERT INTO ci_menu (menutype,title,alias,path,link,type,published,parent_id,level,component_id,access,params,lft,rgt,home,language,client_id,template_style_id) SELECT menutype,'CI category','ci-category','ci-category',CONCAT('index.php?option=com_content&view=category&layout=magazine-grid&id=',$catid),'component',1,1,1,component_id,1,params,1000,1001,0,'*',0,$mid FROM ci_menu WHERE id=$home;"
+db "INSERT INTO ci_menu (menutype,title,alias,path,link,type,published,parent_id,level,component_id,access,img,params,lft,rgt,home,language,client_id,template_style_id) SELECT menutype,'CI category','ci-category','ci-category',CONCAT('index.php?option=com_content&view=category&layout=magazine-grid&id=',$catid),'component',1,1,1,component_id,1,'',params,1000,1001,0,'*',0,$mid FROM ci_menu WHERE id=$home;"
 category_menu="$(db "SELECT id FROM ci_menu WHERE alias='ci-category' AND client_id=0")"
 for layout in grid list dossier; do
   db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid',params=JSON_SET(params,'$.show_intro',0,'$.show_author',1,'$.show_category',1,'$.show_publish_date',1,'$.num_leading_articles',0,'$.num_intro_articles',1,'$.num_links',0,'$.show_pagination',1) WHERE id=$category_menu;"

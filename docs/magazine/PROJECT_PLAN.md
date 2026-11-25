@@ -57,3 +57,6 @@ Otto tavole HTML/CSS autonome, UX-03, 05, 08–13, completano i riferimenti parz
 
 ### 2.0.0-rc.2 — audit trasversale
 Consolidamento SEO/SEC/PERF/A11Y: canonical privacy, URL media, date legacy, descrizioni, eliminazione helper e letture ripetute, stato menu e resize, caroselli. Regressioni automatiche; nessuna modifica alla grafica, matrice e approvazioni manuali invariate. RC2 separata, RC1 immutabile.
+
+### Piano collaudo RC2 — revisione 03
+60 requisiti collegati a 95 casi in nove sessioni, registro ESITI_COLLAUDO.csv con tentativi, controllo CI di copertura. Nessuna prova manuale eseguita; due approvazioni grafiche storiche distinte. Matrice 46/60 invariata. Gate stabile e ricollaudo definiti in COLLAUDO.md.

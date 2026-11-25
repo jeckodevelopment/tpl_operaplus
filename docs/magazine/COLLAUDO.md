@@ -26,6 +26,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo BUG-008 — 25 novembre 2026:** il modulo Test Sidebar duplicato da Recensioni è visibile nella posizione magazine-sidebar; cambiando soltanto layout, related-sidebar e related-compact risultano entrambi visibili. Ricreando i due moduli dalla configurazione funzionante, il collaudatore conferma entrambi visibili contemporaneamente nelle pagine interne. La mancata visualizzazione nella landing con componente nascosto è intenzionale (posizioni homepage dedicate); per eventuali copie in homepage usare magazine-insights-aside o magazine-latest-aside. Problema risolto mediante riconfigurazione; parametro originale responsabile non identificato. CI nativa PR #36 verde per tutti e tre i layout, filtri normali/dinamici, Itemid ereditato e soppressione sidebar landing. MOD-04 e MOD-05 OK per ricollaudo mirato dei KO segnalati; la variante orizzontale non era stata segnalata come difettosa e va confermata individualmente nel lotto 3C. Avanzamento 28/95, sessione 3: 12/17; nessun KO residuo noto. Nessuna nuova versione necessaria.
 
+**Lotto 3C — 25 novembre 2026:** MOD-06–10 e conferma integrativa MOD-05 tutti OK, nessuna nota. Confermata anche la configurazione delle copie dei moduli sidebar nella homepage. RC4 / Extensions 1.0.1. Sessione 3 completata: 17/17; avanzamento cumulativo 33/95 casi OK, nessun KO residuo noto. Restano BASE-INV e BASE-T10 e gli altri casi delle sessioni 4–9; approvazione grafica distinta. Nessuna modifica runtime.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

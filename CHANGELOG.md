@@ -9,6 +9,7 @@ Le date sono riportate solo quando documentate con certezza. Per installazione e
 - Rimossa la cornice generica dei moduli solo quando contiene un box editoriale Opera+ CTA o Atlas.
 - Esclusi i pulsanti editoriali e i crediti Atlas dal colore forzato dei link della sidebar.
 - Invariato il chrome degli altri moduli Joomla.
+- Aggiunto collaudo browser del chrome e generazione automatica dello ZIP; rimosse dal manifest due immagini di anteprima non presenti nel repository.
 
 ## [1.20.2] — 2026-10-29
 

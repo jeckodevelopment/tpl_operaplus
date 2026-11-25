@@ -21,8 +21,6 @@
     <filename>CHANGELOG.md</filename>
     <folder>tools</folder>
     <folder>html</folder>
-    <filename>template_preview.png</filename>
-    <filename>template_thumbnail.png</filename>
   </files>
   <media destination="templates/site/operaplus" folder="media">
     <folder>css</folder>

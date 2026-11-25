@@ -132,7 +132,7 @@ curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$ho
 contains 'op-mag-articles--related-sidebar'
 contains 'op-mag-articles--related-compact'
 # On the landing, the component/sidebar may be intentionally hidden.
-curl -fsS "$url/index.php?Itemid=$home" > "$page"
+curl -fsSL "$url/index.php?Itemid=$home" > "$page"
 contains 'CI landing marker'
 absent 'op-mag-articles--related-sidebar'
 absent 'op-mag-articles--related-compact'

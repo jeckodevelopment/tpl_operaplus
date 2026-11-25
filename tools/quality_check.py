@@ -9,6 +9,7 @@ version = manifest.findtext('version')
 release_date = (root / 'RELEASE_DATE').read_text().strip()
 assert date.fromisoformat(release_date).isoformat() == release_date
 assert manifest.findtext('creationDate') == release_date
+assert manifest.find("./files/folder[.='language']") is not None, 'Local catalog fallback must be installed'
 for name in ('template_preview.png', 'template_thumbnail.png'):
     image = root / 'media/images' / name
     assert image.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), name

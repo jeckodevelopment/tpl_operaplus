@@ -23,6 +23,7 @@
     <filename>CHANGELOG.md</filename>
     <folder>html</folder>
     <folder>field</folder>
+    <folder>language</folder>
   </files>
   <media destination="templates/site/operaplus" folder="media">
     <folder>css</folder>

@@ -10,8 +10,16 @@ use Joomla\CMS\Language\Language;
 $xml = simplexml_load_file(JPATH_SITE . '/templates/operaplus/templateDetails.xml');
 foreach (['it-IT', 'en-GB'] as $tag) {
     $lang = Language::getInstance($tag);
-    if (!$lang->load('tpl_operaplus', JPATH_SITE, $tag, true, false)) {
+    // Joomla skips global language copies when the core language pack is absent.
+    // Keep local catalogs installed too and exercise the native style model fallback.
+    if (!$lang->load('tpl_operaplus', JPATH_SITE, $tag, true, false)
+        && !$lang->load('tpl_operaplus', JPATH_SITE . '/templates/operaplus', $tag, true, false)) {
         throw new RuntimeException('Cannot load ' . $tag);
+    }
+    foreach (['tpl_operaplus.ini', 'tpl_operaplus.sys.ini'] as $file) {
+        if (!is_file(JPATH_SITE . '/templates/operaplus/language/' . $tag . '/' . $file)) {
+            throw new RuntimeException('Missing installed local catalog: ' . $tag . '/' . $file);
+        }
     }
     $expected = $tag === 'en-GB' ? 'Headings' : 'Titoli';
     if ($lang->_('TPL_OPERAPLUS_ADMIN_TYPOGRAPHY') !== $expected) {

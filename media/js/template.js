@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const trigger = document.querySelector('.op-menu-toggle');
   const menu = document.getElementById('op-navigation');
   if (!menu || !trigger) return;
+  document.body.classList.add('op-nav-ready');
+  const en = document.documentElement.lang.toLowerCase().startsWith('en');
   const small = () => window.matchMedia('(max-width: 900px)').matches;
   const clickMode = () => document.body.dataset.opMenuMode === 'click';
   const closeChildren = (root) => root.querySelectorAll('li.op-menu-open').forEach(li => {
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.type = 'button';
     toggle.className = 'op-submenu-toggle';
     toggle.textContent = ''; // decorative chevron provided via CSS
-    toggle.setAttribute('aria-label', 'Apri o chiudi ' + (anchor.textContent.trim() || 'sottomenu'));
+    toggle.setAttribute('aria-label', (en ? 'Toggle ' : 'Apri o chiudi ') + (anchor.textContent.trim() || (en ? 'submenu' : 'sottomenu')));
     toggle.setAttribute('aria-expanded', 'false');
     const id = submenu.id || 'op-submenu-' + index;
     submenu.id = id;
@@ -45,13 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', (event) => {
       event.stopPropagation();
       const open = !li.classList.contains('op-menu-open');
+      li.classList.remove('op-menu-dismissed');
       Array.from(li.parentElement.children).filter(el => el !== li).forEach(sibling => {
         sibling.classList.remove('op-menu-open');
+        closeChildren(sibling);
         sibling.querySelectorAll('.op-submenu-toggle').forEach(button => button.setAttribute('aria-expanded','false'));
       });
       li.classList.toggle('op-menu-open', open);
       toggle.setAttribute('aria-expanded',String(open));
     });
+    li.addEventListener('mouseleave', () => li.classList.remove('op-menu-dismissed'));
+    li.addEventListener('focusout', event => { if (!li.contains(event.relatedTarget)) li.classList.remove('op-menu-dismissed'); });
     anchor.addEventListener('click', (event) => {
       if (anchor.tagName === 'BUTTON') {
         // Joomla's native toggler may otherwise interfere with template toggles.
@@ -63,13 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      const focused = document.activeElement.closest('li.op-menu-open');
-      if (focused) {
-        focused.classList.remove('op-menu-open');
-        focused.querySelector(':scope > .op-link-row > .op-submenu-toggle')?.setAttribute('aria-expanded','false');
-        focused.querySelector(':scope > .op-link-row > a')?.focus();
-      } else { close(); trigger.focus(); }
+    if (event.key !== 'Escape' || (!menu.contains(document.activeElement) && document.activeElement !== trigger)) return;
+    const focused = document.activeElement.closest('li.op-menu-open') || document.activeElement.closest('li:has(> .op-link-row > .op-submenu-toggle:not([hidden]))');
+    const button = focused?.querySelector(':scope > .op-link-row > .op-submenu-toggle');
+    const panel = focused?.querySelector(':scope > ul, :scope > .mod-menu__sub');
+    if (button && panel && getComputedStyle(panel).display !== 'none') {
+      event.preventDefault();
+      focused.classList.remove('op-menu-open');
+      focused.classList.add('op-menu-dismissed');
+      closeChildren(focused);
+      button.setAttribute('aria-expanded','false');
+      button.focus();
+    } else if (small() && menu.classList.contains('is-open')) {
+      event.preventDefault();
+      close();
+      trigger.focus();
     }
   });
   document.addEventListener('click', event => {
@@ -80,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Opera+ v1.8 — separate accordion controller for Joomla sidebar menus.
 document.addEventListener('DOMContentLoaded', () => {
+  const en = document.documentElement.lang.toLowerCase().startsWith('en');
   document.querySelectorAll('.op-sidebar ul.mod-menu, .op-sidebar ul.menu').forEach(root => {
     // Process only top-level menus: descendants are handled with the same controller.
     if (root.parentElement.closest('ul.mod-menu, ul.menu')) return;
@@ -96,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.type = 'button';
       toggle.className = 'op-side-toggle';
       // Chevron is rendered via CSS; the accessible name is in aria-label.
-      const name = label.textContent.trim() || 'Sottomenu';
-      toggle.setAttribute('aria-label', 'Espandi o comprimi ' + name);
+      const name = label.textContent.trim() || (en ? 'submenu' : 'Sottomenu');
+      toggle.setAttribute('aria-label', (en ? 'Toggle ' : 'Espandi o comprimi ') + name);
       const targetId = child.id || ('op-side-sub-' + index + '-' + Array.from(document.querySelectorAll('.op-sidebar ul.mod-menu, .op-sidebar ul.menu')).indexOf(root));
       child.id = targetId;
       toggle.setAttribute('aria-controls', targetId);
@@ -110,7 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const open = !li.classList.contains('op-side-open');
         li.classList.toggle('op-side-open', open);
         toggle.setAttribute('aria-expanded', String(open));
-        });
+      });
+      li.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !li.classList.contains('op-side-open') || (!child.contains(event.target) && event.target !== toggle)) return;
+        event.stopPropagation(); event.preventDefault();
+        li.classList.remove('op-side-open');
+        toggle.setAttribute('aria-expanded','false');
+        toggle.focus();
+      });
     });
   });
 });
@@ -118,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // v1.14: single viewport-fixed mega panel positioner, independent of ancestors.
 document.addEventListener('DOMContentLoaded', () => {
   const panels = [...document.querySelectorAll('.op-navigation li.op-has-mega > ul, .op-navigation li.op-has-mega > .mod-menu__sub')];
+  if (!panels.length) return;
   const desktop = () => window.matchMedia('(min-width: 901px)').matches;
   function positionPanels() {
     panels.forEach(panel => {
@@ -143,8 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   positionPanels();
-  window.addEventListener('resize',positionPanels,{passive:true});
-  window.addEventListener('scroll',positionPanels,{passive:true});
+  let pending = false;
+  const schedule = () => { if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; positionPanels(); }); } };
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('scroll',schedule,{passive:true});
   panels.forEach(panel=>{
     panel.parentElement.addEventListener('mouseenter',positionPanels);
     panel.parentElement.addEventListener('focusin',positionPanels);

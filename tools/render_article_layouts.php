@@ -52,7 +52,7 @@ check(!str_contains(render('grid',$list,'magazine',['link_titles'=>0]),'href="#a
 check(!str_contains(render('grid',$list,'magazine',['img_intro_full'=>'none']),'<img'),'Disabled images ignored');
 $html.='<section data-case="no-image">'.$bad.'</section>';
 $css=file_get_contents(__DIR__.'/../media/css/template.css').file_get_contents(__DIR__.'/../media/css/magazine.css');
-$html=str_replace('src="/fixture.svg"','src="fixture.svg"',$html);
+$html=str_replace('src="https://example.invalid/fixture.svg"','src="fixture.svg"',$html);
 file_put_contents(__DIR__.'/../dist/magazine/articles.html','<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><style>'.$css.'section[data-case]{max-width:900px;margin:20px auto;padding:0 16px}section[data-case="sidebar"]{max-width:360px}</style><body class="operaplus op-magazine theme-light"><main class="op-mag-main">'.$html.'</main><script>'.file_get_contents(__DIR__.'/../media/js/template.js').'</script></body></html>');
 echo "Native article layouts: rendering, fallback, options and URL escaping passed.\n";
 }

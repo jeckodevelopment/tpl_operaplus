@@ -39,3 +39,6 @@ Metadati con API documento Joomla, dati articolo già disponibili (nessun SQL ag
 
 ### 1.28.0 — chiusura configurazione e consolidamento
 CFG-02: rapporti immagini, overlay e separatori per stile, metadati e colonne nativi. Default grafici invariati. Corretto il fallback ACL dei corsi, pubblicazione OG e doppia elaborazione SEO; riconoscimento route home Standard. Budget locali più stretti. DOC-02 e DOC-03: guide operative distinte, collaudo separato. RESP-01, DARK-01, SEO-01 e PERF-01: implementazione verificata in CI con i limiti descritti nel registro; accettazione manuale, misure reali e compatibilità plugin rimangono non eseguite. BASE-02, A11Y-01 e SEC-01 restano in corso fino alla copertura delle verifiche residue. REL-01 e tavole UX restano aperti; nessun rilascio stabile anticipato.
+
+### 1.29.0 — consolidamento tecnico
+BASE-02, A11Y-01 e SEC-01: navigazione senza JS, focus/Escape contestuale, riduzione lavoro mega menu, validazione URL immagini e ACL catalogo/campi recensione, verifiche browser e regressioni Standard su Joomla 6. La chiusura implementativa riguarda il codice di proprietà del template; il collaudo manuale resta distinto. WCAG AA globale, contrasto dei contenuti redazionali/estensioni e lettori di schermo non sono certificati dalla CI. REL-01 e versionamento delle tavole originali rimangono distinti.

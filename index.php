@@ -42,13 +42,13 @@ foreach (['h1' => 64, 'h2' => 43, 'h3' => 28, 'h4' => 23, 'h5' => 19, 'heroH1' =
     $titleSizes[$key] = max(15, min(88, (int) $this->params->get($key . 'Size', $fallback)));
 }
 
-$logo = (string) $this->params->get('logo', '');
-$logo = preg_replace('/#.*$/', '', $logo);
-$logo = $logo && !preg_match('~^(?:https?:)?//~i', $logo) ? Uri::root() . ltrim($logo, '/') : '';
-$assetUrl = static function ($value) {
-    $value = preg_replace('/#.*$/', '', (string) $value);
-    return $value && !preg_match('~^(?:https?:)?//~i', $value) ? Uri::root() . ltrim($value, '/') : '';
+require_once __DIR__ . '/html/seo.php';
+$assetUrl = static function ($value): string {
+    $url = opSeoUrl($value, Uri::root());
+    // Branding remains site-local; use the same validation for all image fields.
+    return $url !== '' && str_starts_with($url, Uri::root()) ? $url : '';
 };
+$logo = $assetUrl($this->params->get('logo', ''));
 $heroLogo = $assetUrl($this->params->get('heroLogo', '')) ?: $logo;
 $footerLogo = $assetUrl($this->params->get('footerLogo', '')) ?: $logo;
 // Branding: favicon and Open Graph. Use Joomla's document metadata API to avoid duplicates.
@@ -61,7 +61,6 @@ $mediaFile = static function ($value): string {
     }
     return trim(preg_replace('/#.*$/', '', $value));
 };
-require_once __DIR__ . '/html/seo.php';
 $absoluteMediaUrl = static fn($value): string => opSeoUrl($value, Uri::root());
 $faviconValue = (string) ($this->params->get('faviconFile', '') ?: $this->params->get('faviconPath', ''));
 $faviconUrl = $absoluteMediaUrl($faviconValue);
@@ -109,7 +108,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <a class="skip-link" href="<?php echo $showMain ? '#main-content' : ($this->countModules('hero') ? '#home-hero' : '#site-footer'); ?>"><?php echo Text::_('TPL_OPERAPLUS_SKIP'); ?></a>
 <?php if ($this->countModules('topbar')) : ?><div class="op-topbar"><div class="op-container"><jdoc:include type="modules" name="topbar" style="none" /></div></div><?php endif; ?>
 <header class="op-header"><div class="op-container op-header-inner">
-  <a class="op-brand" href="<?php echo Uri::root(); ?>" aria-label="<?php echo $brand; ?> – Home">
+  <a class="op-brand" href="<?php echo Uri::root(); ?>" aria-label="<?php echo $brand; ?> – <?php echo $e(Text::_('TPL_OPERAPLUS_HOME_LABEL')); ?>">
     <?php if ($logo) : ?><img src="<?php echo htmlspecialchars($logo, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo $brand; ?>" /><?php else : ?><span class="op-wordmark"><?php echo $brand; ?></span><?php endif; ?>
   </a>
   <?php if ($this->countModules('header-actions')) : ?><div class="op-header-actions"><jdoc:include type="modules" name="header-actions" style="none" /></div><?php endif; ?>

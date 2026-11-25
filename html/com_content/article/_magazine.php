@@ -29,7 +29,8 @@ try {
     if ($opMode === 'review' && $this->item->params->get('access-view')) {
         require_once __DIR__ . '/../../magazine/review.php';
         $fields = \Joomla\Component\Fields\Administrator\Helper\FieldsHelper::getFields('com_content.article', $this->item, false);
-        $rows = opMagazineReviewRows($fields ?: []);
+        $levels = Factory::getApplication()->getIdentity()->getAuthorisedViewLevels();
+        $rows = opMagazineReviewRows(array_values(array_filter($fields ?: [], static fn ($field) => in_array((int) ($field->access ?? 0), $levels, true))));
         if ($rows) {
             $e = static fn ($v): string => htmlspecialchars((string) $v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
             $panel = '<section class="op-mag-review" aria-label="' . $e(Text::_('TPL_OPERAPLUS_MAG_REVIEW_FACTS')) . '"><h2>' . $e(Text::_('TPL_OPERAPLUS_MAG_REVIEW_FACTS')) . '</h2><dl>';

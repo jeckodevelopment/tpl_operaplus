@@ -21,6 +21,14 @@ if (!$isCourses) {
 }
 $escape = static fn($s) => htmlspecialchars((string) $s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $articles = array_merge((array) ($this->lead_items ?? []), (array) ($this->intro_items ?? []));
+// Core owns the login-link and teaser behavior when unauthorized items are listed.
+foreach ($articles as $item) {
+    if (empty($item->params) || !$item->params->get('access-view', false)) {
+        require JPATH_SITE . '/components/com_content/tmpl/category/blog.php';
+        return;
+    }
+}
+require_once __DIR__ . '/../../seo.php';
 ?>
 <section class="op-course-index" aria-label="<?php echo $escape($this->category->title ?? 'Corsi'); ?>">
   <header class="op-course-index__header">
@@ -31,7 +39,7 @@ $articles = array_merge((array) ($this->lead_items ?? []), (array) ($this->intro
   <div class="op-course-index__items">
   <?php foreach ($articles as $item) :
       $images = json_decode((string) ($item->images ?? '{}')) ?: new stdClass();
-      $image = (string) ($images->image_intro ?? '');
+      $image = opSeoUrl($images->image_intro ?? '', \Joomla\CMS\Uri\Uri::root());
       $alt = (string) ($images->image_intro_alt ?? $item->title);
       $composer = trim((string) ($item->created_by_alias ?? ''));
       if ($composer === '' && !empty($item->author)) { $composer = (string) $item->author; }
@@ -53,5 +61,5 @@ $articles = array_merge((array) ($this->lead_items ?? []), (array) ($this->intro
   <?php endforeach; ?>
   </div>
   <?php else : ?><p><?php echo $escape(Text::_('TPL_OPERAPLUS_NO_COURSES')); ?></p><?php endif; ?>
-  <?php if (!empty($this->pagination) && $this->pagination->pagesTotal > 1) : ?><nav class="op-pagination" aria-label="Pagine dei corsi"><?php echo $this->pagination->getPagesLinks(); ?></nav><?php endif; ?>
+  <?php if (!empty($this->pagination) && $this->pagination->pagesTotal > 1) : ?><nav class="op-pagination" aria-label="<?php echo $escape(Text::_('TPL_OPERAPLUS_COURSE_PAGES')); ?>"><?php echo $this->pagination->getPagesLinks(); ?></nav><?php endif; ?>
 </section>

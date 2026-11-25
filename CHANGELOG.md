@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.29.0] — Retrocompatibilità, accessibilità e sicurezza
+
+- Escape contestuale, ripristino del focus, menu mobile utilizzabile senza JavaScript, controlli tradotti IT/EN e skip link visibile anche con header sticky.
+- Ridotto il lavoro del posizionatore mega menu: nessun listener se non ci sono pannelli; resize/scroll accorpati per frame.
+- Validazione uniforme degli URL immagini, fallback nativo del catalogo corsi per utenti non autorizzati, ACL esplicita dei campi recensione e nomi accessibili dei link Leggi tutto.
+- Test automatici browser e Joomla reale; registro di regressione e collaudo manuale aggiornati.
+
 ## [1.28.0] — Configurazione editoriale e consolidamento
 
 - Proporzioni 16:10, 16:9 o 1:1 per le immagini editoriali, overlay classico o più marcato e separatori configurabili; default invariati.

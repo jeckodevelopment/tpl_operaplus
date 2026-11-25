@@ -62,10 +62,7 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
     if (!$noImage && in_array($imageMode, ['intro', 'full'], true) && !empty($item->imageSrc)) {
         $images = json_decode((string) ($item->images ?? '{}'), true);
         $images = is_array($images) ? $images : [];
-        $image = $safeUrl(HTMLHelper::cleanImageURL(html_entity_decode((string) $item->imageSrc, ENT_QUOTES, 'UTF-8'))->url);
-        if ($image !== '' && !preg_match('~^(?:https?://|/)~i', $image)) {
-            $image = Uri::root() . ltrim($image, '/');
-        }
+        $image = opSeoUrl(HTMLHelper::cleanImageURL(html_entity_decode((string) $item->imageSrc, ENT_QUOTES, 'UTF-8'))->url, Uri::root());
         $alt = $plain($images[$imageMode === 'intro' ? 'image_intro_alt' : 'image_fulltext_alt'] ?? '');
     }
     $category = $plain($item->displayCategoryTitle ?? '');
@@ -90,7 +87,7 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
             <?php if ($intro !== '') : ?><p class="op-mag-card__intro"><?php echo $e($intro); ?></p><?php endif; ?>
             <?php if ($params->get('show_tags', 0) && !empty($item->tags->itemTags)) : ?><?php echo LayoutHelper::render('joomla.content.tags', $item->tags->itemTags); ?><?php endif; ?>
             <?php echo $item->event->afterDisplayContent ?? ''; ?>
-            <?php if ($link !== '' && $params->get('show_readmore', 0)) : ?><a class="op-mag-card__readmore" href="<?php echo $e($link); ?>"><?php echo $e($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')); ?><span aria-hidden="true"> →</span></a><?php endif; ?>
+            <?php if ($link !== '' && $params->get('show_readmore', 0)) : ?><a class="op-mag-card__readmore" href="<?php echo $e($link); ?>" aria-label="<?php echo $e(($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')) . ': ' . $title); ?>"><?php echo $e($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')); ?><span aria-hidden="true"> →</span></a><?php endif; ?>
         </div>
     </article>
 <?php endforeach; ?>

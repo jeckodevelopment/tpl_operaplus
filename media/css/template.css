@@ -521,3 +521,15 @@ body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.
 }
 body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)) > .card-body{padding:0!important;background:transparent!important;border:0!important}
 body.operaplus .op-sidebar :is(.op-cta-shell,.op-atlas-module){min-width:0}
+
+/* Progressive navigation: without JS mobile users still have access to all links. */
+body.operaplus.op-nav-ready .op-navigation li.op-menu-dismissed:not(.op-menu-open)>:is(ul,.mod-menu__sub){display:none!important}
+body.operaplus .skip-link:focus{position:fixed;top:1rem}
+body.operaplus :is(main,section,footer)[id]{scroll-margin-top:110px}
+@media(max-width:900px){
+body.operaplus:not(.op-nav-ready) .op-header .op-menu-toggle{display:none!important}
+body.operaplus:not(.op-nav-ready) .op-header .op-navigation{display:block!important;width:100%}
+body.operaplus:not(.op-nav-ready) .op-header .op-navigation li>:is(ul,.mod-menu__sub){display:flex!important;position:static!important;transform:none!important;min-width:0!important;max-width:100%!important;flex-direction:column}
+body.operaplus:not(.op-nav-ready) .op-header{position:static}
+body.operaplus .op-menu-toggle{min-height:44px;min-width:44px}
+}

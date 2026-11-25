@@ -54,3 +54,6 @@ I 10 originali e i 13 estratti sono stati caricati dall'utente e organizzati in 
 
 ### Completamento tavole grafiche — revisione 01
 Otto tavole HTML/CSS autonome, UX-03, 05, 08–13, completano i riferimenti parziali o mancanti senza modificare gli originali PNG. Indice unico per tutte le 15 tavole, fonti e viewport documentati. La CI verifica la galleria, gli asset locali e il reflow; genera PNG e archivio offline. Cinque originali completi in attesa di registrazione dell'approvazione; due già approvati. Nessuna modifica runtime, nessuna nuova approvazione presunta: matrice 46/60 invariata fino a conferma esplicita. Collaudo manuale distinto.
+
+### 2.0.0-rc.2 — audit trasversale
+Consolidamento SEO/SEC/PERF/A11Y: canonical privacy, URL media, date legacy, descrizioni, eliminazione helper e letture ripetute, stato menu e resize, caroselli. Regressioni automatiche; nessuna modifica alla grafica, matrice e approvazioni manuali invariate. RC2 separata, RC1 immutabile.

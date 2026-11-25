@@ -34,7 +34,7 @@ $magTop = $position('main-top');
 $magBottom = $position('main-bottom');
 $magTitle = (string) $this->params->get('magazineTitle', 'Magazine');
 $magSubtitle = (string) $this->params->get('magazineSubtitle', '');
-$magBanner = $assetUrl($mediaFile($this->params->get('magazineBanner', '')));
+$magBanner = $assetUrl($this->params->get('magazineBanner', ''));
 ?>
 <?php if ($magazineLanding) : ?>
 <header class="op-mag-masthead">

@@ -467,3 +467,8 @@ I file delle 13 tavole recuperate sono consultabili nel [catalogo mockup](mockup
 
 ### UX — Revisione 01 dei riferimenti di completamento
 Aprire `mockups/boards/index.html` offline o scaricare gli screenshot dall'artifact `magazine-design-boards`. Confrontare UX-03/05/08/09/10 a 1200 px, UX-11/12 a 390 e 320 px, UX-13 a 1200 e 390 px. Verificare gerarchia, proporzioni, immagini uniformi, palette, ordine mobile e leggibilità. I prototipi sono specifiche grafiche: non sostituiscono il test funzionale su Joomla. Registrare approvazione o correzioni per ogni tavola e confrontare poi il template reale.
+
+### REG-06 — Canonical privacy e transizioni responsive (RC2)
+- **Procedura:** aprire un articolo con query di tracking e token fittizi, verificare che canonical/OG non li includano e preservino parametri di route e paginazione; controllare descrizione multiparagrafo e date nulle. Aprire menu mobile, passare a desktop e tornare a mobile; verificare stato chiuso coerente e carosello ai limiti dopo resize.
+- **Atteso:** nessun token del template nei metadati di fallback, plugin SEO preservati, layout invariato; nessuna regressione a 320 px. Misure CWV e verifiche manuali sul sito ancora da effettuare.
+- [ ] Esito / data / evidenza / note:

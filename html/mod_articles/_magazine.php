@@ -41,6 +41,12 @@ if (!in_array($heading, ['h2', 'h3', 'h4', 'h5', 'h6'], true)) {
     $heading = 'h3';
 }
 $items = $mode === 'cover' ? array_slice($list, 0, 1) : $list;
+$imageMode = $params->get('img_intro_full', 'none');
+$showIntro = (bool) $params->get('show_introtext', 0);
+$linkTitles = (bool) $params->get('link_titles', 1);
+$showReadmore = (bool) $params->get('show_readmore', 0);
+$showTags = (bool) $params->get('show_tags', 0);
+$siteRoot = Uri::root();
 $noImage = in_array($mode, ['ranked', 'topics', 'related-compact'], true);
 $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-sidebar', 'related-compact'], true);
 ?>
@@ -55,21 +61,20 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
 <?php foreach (array_values($items) as $index => $item) :
     $link = $safeUrl($item->link ?? '');
     $title = $plain($item->title ?? '');
-    $linked = $link !== '' && (bool) $params->get('link_titles', 1);
+    $linked = $link !== '' && $linkTitles;
     $image = '';
     $alt = '';
-    $imageMode = $params->get('img_intro_full', 'none');
     if (!$noImage && in_array($imageMode, ['intro', 'full'], true) && !empty($item->imageSrc)) {
         $images = json_decode((string) ($item->images ?? '{}'), true);
         $images = is_array($images) ? $images : [];
-        $image = opSeoUrl(HTMLHelper::cleanImageURL(html_entity_decode((string) $item->imageSrc, ENT_QUOTES, 'UTF-8'))->url, Uri::root());
+        $image = opSeoUrl(HTMLHelper::cleanImageURL(html_entity_decode((string) $item->imageSrc, ENT_QUOTES, 'UTF-8'))->url, $siteRoot);
         $alt = $plain($images[$imageMode === 'intro' ? 'image_intro_alt' : 'image_fulltext_alt'] ?? '');
     }
     $category = $plain($item->displayCategoryTitle ?? '');
     $categoryLink = $safeUrl($item->displayCategoryLink ?? '');
     $date = $plain($item->displayDate ?? '');
     $author = $plain($item->displayAuthorName ?? '');
-    $intro = !$compact && $params->get('show_introtext', 0) ? $plain($item->displayIntrotext ?? '') : '';
+    $intro = !$compact && $showIntro ? $plain($item->displayIntrotext ?? '') : '';
     ?>
     <article class="op-mag-card<?php echo $image !== '' ? ' op-mag-card--image' : ' op-mag-card--no-image'; ?>" itemscope itemtype="https://schema.org/Article">
         <?php if ($mode === 'ranked') : ?><span class="op-mag-card__rank" aria-hidden="true"><?php echo $index + 1; ?></span><?php endif; ?>
@@ -85,9 +90,9 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
             <?php echo $item->event->afterDisplayTitle ?? ''; ?>
             <?php echo $item->event->beforeDisplayContent ?? ''; ?>
             <?php if ($intro !== '') : ?><p class="op-mag-card__intro"><?php echo $e($intro); ?></p><?php endif; ?>
-            <?php if ($params->get('show_tags', 0) && !empty($item->tags->itemTags)) : ?><?php echo LayoutHelper::render('joomla.content.tags', $item->tags->itemTags); ?><?php endif; ?>
+            <?php if ($showTags && !empty($item->tags->itemTags)) : ?><?php echo LayoutHelper::render('joomla.content.tags', $item->tags->itemTags); ?><?php endif; ?>
             <?php echo $item->event->afterDisplayContent ?? ''; ?>
-            <?php if ($link !== '' && $params->get('show_readmore', 0)) : ?><a class="op-mag-card__readmore" href="<?php echo $e($link); ?>" aria-label="<?php echo $e(($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')) . ': ' . $title); ?>"><?php echo $e($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')); ?><span aria-hidden="true"> →</span></a><?php endif; ?>
+            <?php if ($link !== '' && $showReadmore) : ?><a class="op-mag-card__readmore" href="<?php echo $e($link); ?>" aria-label="<?php echo $e(($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')) . ': ' . $title); ?>"><?php echo $e($plain($item->displayReadmore ?? '') ?: Text::_('JGLOBAL_READ_MORE')); ?><span aria-hidden="true"> →</span></a><?php endif; ?>
         </div>
     </article>
 <?php endforeach; ?>

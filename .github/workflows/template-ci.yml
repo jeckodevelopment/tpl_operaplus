@@ -17,6 +17,7 @@ jobs:
           php-version: '8.3'
           coverage: none
       - run: python3 tools/quality_check.py
+      - run: python3 tools/verify_mockups.py
       - run: find . -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Editorial chrome browser regression
         run: |

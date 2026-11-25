@@ -1,18 +1,44 @@
-# Riferimenti grafici Magazine — formalizzazione 25 novembre 2026
+# Riferimenti grafici Magazine — archivio ufficiale
 
-Riferimento #2, baseline tecnica 2.0.0-rc.1. Recuperati dalla conversazione di progettazione del 24 novembre **10 PNG originali** e predisposti 13 estratti separati, senza ridisegnare i mockup. Le immagini binarie sono state recuperate in un archivio esterno, **non ancora caricate nel repository**; l'inventario e le impronte sono versionati qui. Il connettore GitHub non accetta direttamente i file binari del workspace. Non dichiarare un file presente in Git prima di verificarlo.
+Baseline tecnica **2.0.0-rc.1**. Riferimento #2. Le dieci immagini originali del 24 novembre 2026 e i tredici estratti sono conservati senza alterazioni in `originals/` e `extracts/`. Integrità verificata tramite SHA-256 in CI e confronto dei blob Git con l'archivio di origine. Gli estratti sono ritagli delle tavole, non nuove proposte.
 
-## Regola di precedenza
-Le decisioni scritte approvate prevalgono sui dettagli divergenti delle bozze (in particolare asse unico 8+4, tre notizie laterali compatte, immagini recensioni uniformi, fondo del primo opzionale, box Atlas e Newsletter). R08 è riferimento esplicito dei box approvati; R10 consolida quattro pagine, ma non prova l'approvazione individuale delle altre tavole. I mockup sono riferimenti di design, non fonti di dati editoriali o fotografie da pubblicare sul sito. Le fixture CI non sono mockup originali.
+Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie laterali compatte, immagini recensioni uniformi, fondo del primo opzionale, box Atlas e Newsletter approvati. Nessuna di queste immagini è inclusa nello ZIP del template o pubblicata come contenuto editoriale.
 
-## Inventario e criteri
-Consulta [SPECIFICHE.md](SPECIFICHE.md) per tutti i 15 criteri. Il file [originals-manifest.json](originals-manifest.json) registra filename, data UTC, risoluzione e SHA-256 degli originali recuperati. Destinazione dei PNG: `originals/`; estratti non alterati: `extracts/`. Conservare anche i compositi integrali. Nessuna immagine nel pacchetto installabile.
+## Tavole UX
 
-| Stato | Numero |
-|---|---:|
-| Riferimenti visivi recuperati (inclusi estratti parziali) | 13 |
-| Tavole senza originale reperito | 2 (UX-12, UX-13) |
-| Box con approvazione grafica esplicita | 2 (UX-14, UX-15) |
-| Criteri con file binario verificato in Git | 0 |
+| ID | Tavola | Riferimento | Stato formalizzazione |
+|---|---|---|---|
+| UX-01 | Homepage | [PNG](extracts/UX-01-homepage.png) | Archiviata, approvazione da registrare |
+| UX-02 | Categoria elenco | [PNG](extracts/UX-02-categoria-elenco.png) | Archiviata, approvazione da registrare |
+| UX-03 | Categoria griglia | [PNG](extracts/UX-03-categoria-griglia.png) | Parziale, archiviata |
+| UX-04 | Articolo | [PNG](extracts/UX-04-articolo.png) | Archiviata, approvazione da registrare |
+| UX-05 | Longform | [PNG](extracts/UX-05-longform.png) | Parziale, archiviata |
+| UX-06 | Recensione | [PNG](extracts/UX-06-recensione.png) | Archiviata, approvazione da registrare |
+| UX-07 | Intervista | [PNG](extracts/UX-07-intervista.png) | Archiviata, approvazione da registrare |
+| UX-08 | Dossier | [PNG](extracts/UX-08-dossier.png) | Parziale, archiviata |
+| UX-09 | Archivio | [PNG](extracts/UX-09-archivio.png) | Parziale, archiviata |
+| UX-10 | Autore | [PNG](extracts/UX-10-autore.png) | Parziale, archiviata |
+| UX-11 | Homepage mobile | [PNG](extracts/UX-11-homepage-mobile.png) | Parziale, archiviata |
+| UX-12 | Articolo mobile | — | Da predisporre |
+| UX-13 | Dark | — | Da predisporre |
+| UX-14 | Box Atlas | [PNG](extracts/UX-14-atlas.png) | Approvata e archiviata |
+| UX-15 | Box CTA | [PNG](extracts/UX-15-cta.png) | Approvata e archiviata |
 
-Per chiudere UX-01–15: archiviare i PNG originali con verifica SHA-256; completare i riferimenti parziali e mancanti, registrare la singola approvazione; confronto con staging nel COLLAUDO (separato). Nessuna nuova versione o deploy per questa formalizzazione.
+## Originali integrali
+
+- [La Traviata: ieri e oggi](originals/R01-articolo.png)
+- [Eleganza operistica: Magazine Opera+](originals/R02-home.png)
+- [Intervista a Daniele Gatti su Opera+](originals/R03-intervista.png)
+- [Recensioni d’Opera tra Palchi e Teatri](originals/R04-recensioni.png)
+- [Presentazione editoriale del Magazine Opera+](originals/R05-presentazione.png)
+- [Opera+ Magazine: Storie d’opera e musica lirica](originals/R06-home-completa.png)
+- [Mockup editoriale Opera+ in italiano](originals/R07-tavola-risposte.png)
+- [Doppia pagina Opera+: Magazine e Recensioni](originals/R08-home-recensioni.png)
+- [Tavola editoriale del magazine Opera+](originals/R09-tavola-estesa.png)
+- [Mockup editoriali Opera+ in stile burgundy e crema](originals/R10-consolidamento.png)
+
+## Verifica
+
+[Specifiche e criteri](SPECIFICHE.md) · [Manifest con SHA-256, sorgenti e ritagli](manifest.json) · [Provenienza originali](originals-manifest.json).
+
+13 riferimenti archiviati, 2 mancanti (UX-12 e UX-13). 2 requisiti UX completati (14/15); 13 in corso. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.

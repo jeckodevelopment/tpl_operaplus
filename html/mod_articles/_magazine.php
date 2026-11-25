@@ -43,7 +43,14 @@ $items = $mode === 'cover' ? array_slice($list, 0, 1) : $list;
 $noImage = in_array($mode, ['ranked', 'topics', 'related-compact'], true);
 $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-sidebar', 'related-compact'], true);
 ?>
-<div class="op-mag-articles op-mag-articles--<?php echo $e($mode); ?> op-mag-cols-<?php echo $columns; ?>">
+<?php if ($mode === 'carousel') : ?>
+<div class="op-mag-carousel" data-op-mag-carousel>
+    <div class="op-mag-carousel__controls" hidden>
+        <button type="button" data-op-mag-prev aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_CAROUSEL_PREV')); ?>">&#8592;</button>
+        <button type="button" data-op-mag-next aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_CAROUSEL_NEXT')); ?>">&#8594;</button>
+    </div>
+<?php endif; ?>
+<div <?php if ($mode === 'carousel') : ?>tabindex="0" role="region" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_CAROUSEL')); ?>" <?php endif; ?>class="op-mag-articles op-mag-articles--<?php echo $e($mode); ?> op-mag-cols-<?php echo $columns; ?>">
 <?php foreach (array_values($items) as $index => $item) :
     $link = $safeUrl($item->link ?? '');
     $title = $plain($item->title ?? '');
@@ -86,3 +93,5 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
     </article>
 <?php endforeach; ?>
 </div>
+
+<?php if ($mode === 'carousel') : ?></div><?php endif; ?>

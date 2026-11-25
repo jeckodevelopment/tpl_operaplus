@@ -20,6 +20,22 @@ try{
    assert.equal(columns,width<=480?1:width<=720?2:3);
    assert.equal(await page.locator('[data-case=no-image] img').count(),0);
    assert.ok(await page.locator('[data-case=no-image] .op-mag-card__title').isVisible());
+   const carousel=page.locator('[data-case=carousel]');
+   const track=carousel.locator('.op-mag-articles');
+   const next=carousel.locator('[data-op-mag-next]');
+   const prev=carousel.locator('[data-op-mag-prev]');
+   assert.equal(await track.locator('.op-mag-card').count(),3);
+   assert.ok(await next.isVisible());
+   assert.equal(await prev.getAttribute('aria-disabled'),'true');
+   await next.focus(); await page.keyboard.press('Enter');
+   await page.waitForFunction(()=>document.querySelector('[data-case=carousel] .op-mag-articles').scrollLeft>0);
+   assert.equal(await prev.getAttribute('aria-disabled'),'false');
+   await prev.click();
+   await page.waitForFunction(()=>document.querySelector('[data-case=carousel] .op-mag-articles').scrollLeft===0);
+   const mosaic=page.locator('[data-case=mosaic] .op-mag-card');
+   assert.equal(await mosaic.count(),3);
+   const sizes=await mosaic.evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().width));
+   assert.ok(width<=480?Math.abs(sizes[0]-sizes[1])<2:sizes[0]>sizes[1]*1.9);
    await page.screenshot({path:'dist/magazine/articles-'+width+'-'+theme+'.png',fullPage:true});
   }
  }

@@ -29,15 +29,16 @@ $list=[];
 foreach(['Una serata a teatro','La musica e la città','Intervista al direttore'] as $i=>$title){
  $list[]=(object)['title'=>$title,'link'=>'#article-'.$i,'imageSrc'=>'/fixture.svg','images'=>json_encode(['image_intro_alt'=>'Teatro']),'displayCategoryTitle'=>'Recensioni','displayCategoryLink'=>'#category','displayDate'=>'25 novembre 2026','displayAuthorName'=>'Redazione','displayIntrotext'=>'<p>Un approfondimento sul mondo dell’opera.</p>','event'=>(object)[]];
 }
-$layouts=['cover','sidebar','grid','latest','list','portraits','dossier','ranked','topics','related-sidebar','related-horizontal','related-compact'];
+$layouts=['cover','sidebar','grid','latest','list','portraits','dossier','ranked','topics','related-sidebar','related-horizontal','related-compact','carousel','mosaic'];
 $html='';
 foreach($layouts as $layout){
- $out=render($layout,$list);
+ $out=render($layout,$list,'magazine',$layout==='carousel'?['layout_columns'=>2]:[]);
  check(substr_count($out,'itemscope')===($layout==='cover'?1:3),'Card count '.$layout);
  check(str_contains($out,'25 novembre 2026'),'Metadata absent '.$layout);
  check(render($layout,$list,'standard')==='NATIVE-DEFAULT','Standard fallback');
  check(render($layout,$list,'magazine',[],true)==='NATIVE-DEFAULT','Grouped fallback');
  check(render($layout,[])==='','Empty layout');
+ if($layout==='carousel'){check(str_contains($out,'data-op-mag-prev')&&str_contains($out,'tabindex="0"'),'Carousel controls missing');}
  $html.='<section data-case="'.$layout.'"><h2>'.$layout.'</h2>'.$out.'</section>';
 }
 $unsafe=clone $list[0];$unsafe->title='<script>unsafe</script> & title';$unsafe->link='javascript:alert(1)';$unsafe->imageSrc='https://example.invalid@evil.invalid/x';$unsafe->displayCategoryLink='//evil.invalid/x';
@@ -48,6 +49,6 @@ check(!str_contains(render('grid',$list,'magazine',['img_intro_full'=>'none']),'
 $html.='<section data-case="no-image">'.$bad.'</section>';
 $css=file_get_contents(__DIR__.'/../media/css/template.css').file_get_contents(__DIR__.'/../media/css/magazine.css');
 $html=str_replace('src="/fixture.svg"','src="fixture.svg"',$html);
-file_put_contents(__DIR__.'/../dist/magazine/articles.html','<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><style>'.$css.'section[data-case]{max-width:900px;margin:20px auto;padding:0 16px}section[data-case="sidebar"]{max-width:360px}</style><body class="operaplus op-magazine theme-light"><main class="op-mag-main">'.$html.'</main></body></html>');
+file_put_contents(__DIR__.'/../dist/magazine/articles.html','<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><style>'.$css.'section[data-case]{max-width:900px;margin:20px auto;padding:0 16px}section[data-case="sidebar"]{max-width:360px}</style><body class="operaplus op-magazine theme-light"><main class="op-mag-main">'.$html.'</main><script>'.file_get_contents(__DIR__.'/../media/js/template.js').'</script></body></html>');
 echo "Native article layouts: rendering, fallback, options and URL escaping passed.\n";
 }

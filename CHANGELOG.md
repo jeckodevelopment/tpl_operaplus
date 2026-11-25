@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.25.0] — Carosello e mosaico Magazine
+
+- Due layout alternativi nativi `magazine-carousel` e `magazine-mosaic`, con selezione e filtri Joomla invariati.
+- Carosello a scorrimento manuale, pulsanti accessibili, nessun autoplay e fallback utilizzabile senza JavaScript; mosaico con prima scheda a tutta larghezza.
+- Test di rendering, fallback e browser su desktop, tablet e mobile, chiaro e scuro.
+
 ## [1.24.0] — Archivio, autore e recensioni
 
 - Layout Magazine per archivio nativo Joomla (articoli archiviati), ricerca, filtri mensili/annuali e paginazione.

@@ -371,3 +371,15 @@ Decisione, data e issue aperte:
 Archivio generale degli articoli pubblicati (distinto dall'archivio nativo), eventuale pagina autore paginata completa, carosello, mosaico, CSS TinyMCE, correlazione automatica Atlas, deduplicazione, audit baseline, sicurezza, accessibilità, SEO, prestazioni, responsive, dark, packaging e rilascio stabile. Aggiornare questi casi quando implementati. Le tavole definitive restano da versionare (#2).
 
 Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS.csv), [GUIDA_STILI.md](../../GUIDA_STILI.md), PR #11–16, [Extensions 1.0.0](https://github.com/jeckodevelopment/operaplus-extensions/releases/tag/v1.0.0).
+
+### MOD-06 — Carosello manuale (1.25.0)
+
+- **Procedura:** Configurare un modulo Articoli `magazine-carousel` con 5 elementi e 2–4 colonne. Verificare clic e tastiera sui pulsanti, scorrimento touch, nessun autoplay, inizio/fine, due istanze sulla stessa pagina; ripetere con JS disattivato e con un solo articolo. Provare tema chiaro/scuro e viewport 375/768/1200 px. Ripetere su Standard e con raggruppamenti.
+- **Atteso:** Nessun articolo escluso, controlli localizzati e indipendenti, niente overflow della pagina; fallback core invariato.
+- [ ] Esito / data / evidenza / note:
+
+### MOD-07 — Mosaico editoriale (1.25.0)
+
+- **Procedura:** Configurare `magazine-mosaic` con cinque articoli, alcuni senza immagini, titoli lunghi, categorie e date; ripetere con un articolo, lista vuota, Standard, mobile e dark.
+- **Atteso:** Prima scheda larga e successive a due colonne su desktop; su mobile una colonna, nessuna card vuota e ordine nativo preservato.
+- [ ] Esito / data / evidenza / note:

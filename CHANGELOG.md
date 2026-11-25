@@ -4,6 +4,13 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.24.0] — Archivio, autore e recensioni
+
+- Layout Magazine per archivio nativo Joomla (articoli archiviati), ricerca, filtri mensili/annuali e paginazione.
+- Layout autore basato sui contatti Joomla collegati a utenti: biografia pubblica, ritratto, ruolo e articoli recenti filtrati dal modello nativo. Nessuna esposizione dei dati privati del profilo.
+- Scheda spettacolo con dodici campi personalizzati facoltativi, data della recita distinta dalla pubblicazione e rispetto dei livelli di accesso.
+- Il piano di collaudo Markdown nel repository diventa il registro ufficiale.
+
 ## [1.23.0] — Pagine editoriali Magazine
 
 - Layout alternativi nativi per categorie griglia, elenco e dossier; articolo, approfondimento, intervista e recensione. Riuso del rendering Joomla, metadati, plugin, paginazione e ACL.

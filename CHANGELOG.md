@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [1.22.0] — Layout moduli Magazine
+
+- Dodici layout alternativi per mod_articles: copertina overlay, notizie laterali, griglia, ultimi articoli, elenco, ritratti, dossier, numerato, temi e tre presentazioni di contenuti correlati selezionati con filtri nativi.
+- Nomi con trattino per compatibilità con Joomla 6. Fallback core su Standard, raggruppamenti e solo titoli.
+- Test di rendering e responsive, senza modificare i moduli ordinari.
+
 ## [1.21.2] — Correzioni Magazine
 
 - Riutilizzati CSS e controller nativi del template per menu laterali e moduli login nelle colonne Magazine.

@@ -1,0 +1,62 @@
+name: Joomla native template styles
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lifecycle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      database:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: ci-root-password
+          MYSQL_DATABASE: joomla_test
+          MYSQL_USER: joomla_test
+          MYSQL_PASSWORD: ci-test-password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mysqli, pdo_mysql, mbstring, xml, zip, intl, gd, curl
+          coverage: none
+      - name: Build current and baseline template packages
+        run: |
+          python3 tools/package_template.py
+          mkdir -p "$RUNNER_TEMP/baseline"
+          git archive e542e50e129767eacc4cf125299099a493150c13 | tar -x -C "$RUNNER_TEMP/baseline"
+          python3 tools/package_template.py "$RUNNER_TEMP/baseline"
+      - name: Generate disposable Joomla test credentials
+        run: |
+          password="CiTest-$(openssl rand -hex 16)!"
+          echo "::add-mask::$password"
+          echo "JOOMLA_TEST_USER=ciadmin" >> "$GITHUB_ENV"
+          echo "JOOMLA_TEST_PASSWORD=$password" >> "$GITHUB_ENV"
+      - name: Install official Joomla 6.0.0
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --max-time 180 -o "$RUNNER_TEMP/joomla.zip" https://github.com/joomla/joomla-cms/releases/download/6.0.0/Joomla_6.0.0-Stable-Full_Package.zip
+          echo "cbf61cbb5e0eacd9db1aed0da93a532d6accbb7d54c36662f3f7432a3e4b573d  $RUNNER_TEMP/joomla.zip" | sha256sum --check
+          mkdir -p "$RUNNER_TEMP/joomla"
+          unzip -q "$RUNNER_TEMP/joomla.zip" -d "$RUNNER_TEMP/joomla"
+          cd "$RUNNER_TEMP/joomla"
+          php installation/joomla.php install --no-interaction --site-name="OperaPlus CI" --admin-user="CI Administrator" --admin-username="$JOOMLA_TEST_USER" --admin-password="$JOOMLA_TEST_PASSWORD" --admin-email=ci@example.invalid --db-type=mysqli --db-host=127.0.0.1 --db-user=joomla_test --db-pass=ci-test-password --db-name=joomla_test --db-prefix=ci_ --db-encryption=0 --public-folder=""
+      - name: Verify fresh install, upgrade and idempotent style creation
+        env:
+          JOOMLA_ROOT: ${{ runner.temp }}/joomla
+          MYSQL_PWD: ci-test-password
+        run: bash tools/test_template_styles.sh

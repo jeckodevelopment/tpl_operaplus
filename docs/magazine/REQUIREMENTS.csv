@@ -56,5 +56,5 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "DOC-02","DOC","Guida redattore","Documentazione stili, layout e moduli","1","non_avviato","non_eseguito"
 "DOC-03","DOC","Guida amministratore","Parametri, traduzioni, installazione e changelog","1","non_avviato","non_eseguito"
 "ATLAS-04","ATLAS","Occultamento contestuale","Senza entità valida nessun titolo wrapper margine o sidebar vuota; configurabile; modalità manuale preservata","4","non_avviato","non_eseguito"
-"BASE-03","BASE","Stili Joomla","Standard predefinito; modalità Magazine opt-in per stile e assegnazione menu; asset condizionali","1","completato","non_eseguito"
+"BASE-03","BASE","Stili Joomla","Stili nativi Standard e Magazine distinti creati dall’installer se mancanti; default e assegnazioni conservati; nessun duplicato; asset condizionali","1","completato","non_eseguito"
 "MAG-10","MAG","Homepage indipendente","Voce menu dedicata; articoli con Itemid ereditato non diventano homepage; posizioni 8+4; assenza moduli mostra componente","3","completato","non_eseguito"

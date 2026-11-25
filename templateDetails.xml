@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <extension type="template" client="site" method="upgrade">
   <name>operaplus</name>
-  <version>1.21.0</version>
+  <version>1.21.1</version>
   <creationDate>2026-10-28</creationDate>
   <author>Jecko Development</author>
   <authorUrl>https://jeckodevelopment.com</authorUrl>
@@ -9,7 +9,9 @@
   <license>GNU General Public License version 2 or later</license>
   <description>TPL_OPERAPLUS_XML_DESCRIPTION</description>
   <inheritable>1</inheritable>
+  <scriptfile>script.php</scriptfile>
   <files>
+    <filename>script.php</filename>
     <filename>index.php</filename>
     <filename>component.php</filename>
     <filename>error.php</filename>

@@ -42,3 +42,6 @@ CFG-02: rapporti immagini, overlay e separatori per stile, metadati e colonne na
 
 ### 1.29.0 — consolidamento tecnico
 BASE-02, A11Y-01 e SEC-01: navigazione senza JS, focus/Escape contestuale, riduzione lavoro mega menu, validazione URL immagini e ACL catalogo/campi recensione, verifiche browser e regressioni Standard su Joomla 6. La chiusura implementativa riguarda il codice di proprietà del template; il collaudo manuale resta distinto. WCAG AA globale, contrasto dei contenuti redazionali/estensioni e lettori di schermo non sono certificati dalla CI. REL-01 e versionamento delle tavole originali rimangono distinti.
+
+### 2.0.0-rc.1 — candidata al rilascio
+Packaging riproducibile con SHA-256, esclusione strumenti di sviluppo e pulizia mirata in aggiornamento 1.29.0, CI riutilizzabile, pubblicazione GitHub esclusivamente prerelease. REL-01 passa in corso: canale stabile registrato ma vuoto, prova staging e tag stabile subordinati ad accettazione esplicita. Le 15 tavole UX restano aperte finché i riferimenti grafici originali non saranno archiviati e verificati; non sono sostituite dalle fixture CI. Il registro distingue collaudo manuale da implementazione.

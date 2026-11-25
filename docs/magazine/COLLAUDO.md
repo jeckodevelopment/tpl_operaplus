@@ -443,3 +443,18 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 - **Procedura:** Catalogo corsi con articoli pubblici e riservati, show_noauth sì/no, utente guest e registrato. Verificare teaser/login nativi e assenza di testo riservato. Recensione con campi pubblici e riservati; provare URL immagine validi, protocollo non ammesso, riferimenti traversal, media field con frammento Joomla. Verificare branding, foto e link in entrambe le modalità.
 - **Atteso:** Joomla gestisce il caso non autorizzato; nessun campo recensione fuori dai livelli autorizzati; URL immagine non validi non renderizzati. Contenuti HTML affidati ai filtri e plugin Joomla, senza rimuoverne i meccanismi nativi.
 - [ ] Esito / data / evidenza / note:
+
+## Gate Release Candidate 2.0.0-rc.1
+
+### REL-02 — Installazione della candidata e rollback
+- **Procedura:** Scaricare lo ZIP e il file SHA-256 dalla prerelease GitHub; verificarne l'integrità prima dell'installazione. Fare backup file e DB, installare come aggiornamento di staging e ripetere SET-01–05. Controllare che gli strumenti CI non siano installati, i file personalizzati non siano rimossi, i due stili, branding, default e menu siano preservati. Registrare versione e commit.
+- **Atteso:** ZIP integro; versione 2.0.0-rc.1, nessun cambio dati o assegnazioni. In caso KO ripristinare l'intero backup.
+- [ ] Esito / data / evidenza / note:
+
+### REL-03 — Canale stabile e prerelease
+- **Procedura:** Verificare Sistema → Aggiorna → Siti di aggiornamento, il feed stabile e il download GitHub. La candidata si installa solo manualmente; il feed non deve proporre RC. Dopo approvazione esplicita della 2.0.0 verificare feed stabile, URL ZIP immutabile, SHA-256 e aggiornamento Joomla su staging prima della produzione.
+- **Atteso:** Nessuna RC pubblicata come stabile, nessun deployment automatico.
+- [ ] Esito / data / evidenza / note:
+
+### UX — Originali grafici
+Per i quindici riferimenti vedere [mockups/README.md](mockups/README.md). Gli screenshot CI sono riproducibili, ma non costituiscono tavole originali approvate. Confronto visivo e approvazione esplicita da registrare per ogni UX-01–15.

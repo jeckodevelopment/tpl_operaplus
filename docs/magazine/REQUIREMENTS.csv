@@ -51,7 +51,7 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "A11Y-01","A11Y","Accessibilità","WCAG AA contrasto, tastiera e semantica","5","completato","non_eseguito"
 "PERF-01","PERF","Prestazioni","Asset condizionali, cache, niente query superflue","5","completato","non_eseguito"
 "SEC-01","SEC","Sicurezza","ACL, escaping, validazione URL, controlli statici","5","completato","non_eseguito"
-"REL-01","REL","Rilascio","CI, ZIP verificato, update server, staging e tag finale","5","non_avviato","non_eseguito"
+"REL-01","REL","Rilascio","CI, ZIP verificato, update server, staging e tag finale","5","in_corso","non_eseguito"
 "DOC-01","DOC","Piano progettuale","PROJECT_PLAN.md e matrice versionati","1","completato","non_eseguito"
 "DOC-02","DOC","Guida redattore","Documentazione stili, layout e moduli","1","completato","non_eseguito"
 "DOC-03","DOC","Guida amministratore","Parametri, traduzioni, installazione e changelog","1","completato","non_eseguito"

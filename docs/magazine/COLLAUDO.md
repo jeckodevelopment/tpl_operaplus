@@ -1,6 +1,6 @@
 # Piano e registro di collaudo — Opera+ Magazine
 
-**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 03 — 25 novembre 2026. Baseline operativa: template 2.0.0-rc.2 (merge #26, `3588c98f95be36e8ae629dc1e1b078b59abc9e4e`), Extensions 1.0.0. Le indicazioni delle versioni precedenti sono storiche.
+**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 04 — 25 novembre 2026. Baseline operativa: template 2.0.0-rc.3 (build PR #29 `da099d7254599bb1eba7c3df524644c1e84e9fa2`, merge `fc02ae8b761f390d3fcd74102a7069ffd07d9de5`), Extensions 1.0.1 (build PR #15 `0ddc3c92d75ebfda070cd041f0d2b0d0aa35f981`, merge `31069fce95a261f4065255ab7c73b6886cd69a74`). Le indicazioni delle versioni precedenti sono storiche.
 
 Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manuale o grafica. I collaudi intermedi sono rinviati su richiesta dell'utente. Confermati: installazione Extensions 1.0.0, plugin/campi, box Atlas e CTA, ritratto Verdi senza credito, stile Magazine distinto e correzione menu/login 1.21.2. Ripetere come regressione.
 
@@ -8,7 +8,11 @@ Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manu
 
 Ambiente staging, Joomla 6.2.1 / PHP 8.5.13, Extensions 1.0.0. Inizialmente RC1 effettiva: SET-01, SET-02, BASE-T05 dichiarati OK nelle verifiche funzionali; versione errata rispetto alla baseline (BUG-001). Aggiornamento RC2: versione corretta, ma BUG-002 (data), BUG-004 (anteprima), BUG-005 (descrizione in entrambi gli stili), BUG-006 (selettore modalità) confermati, oltre a BUG-003 (date delle estensioni). [Issue #28](https://github.com/jeckodevelopment/tpl_operaplus/issues/28) e [PR Extensions #15](https://github.com/jeckodevelopment/operaplus-extensions/pull/15). Commit dei pacchetti installati non attestato dal collaudatore: non attribuire arbitrariamente un commit. Non trasferire gli OK RC1 a RC2 o RC3.
 
-RC3 candidata correttiva: ripetere SET-01 (versione e date dei sei manifest Extensions e template; anteprima in Template sito), SET-02 (descrizione IT/EN in entrambi gli stili, nessun selettore, opzioni editoriali solo in Aspetto Magazine; rinominare/duplicare/salvare verificando tipo e assegnazioni), BASE-T05, SET-05 e REL-02. Baseline ufficiale da riallineare dopo CI e disponibilità dei pacchetti; nessun esito manuale RC3 anticipato.
+Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Extensions e template; anteprima in Template sito), SET-02 (descrizione IT/EN in entrambi gli stili, nessun selettore, opzioni editoriali solo in Aspetto Magazine; rinominare/duplicare/salvare verificando tipo e assegnazioni), BASE-T05, SET-05 e REL-02. 
+
+**Ricollaudo 25 novembre 2026:** collaudatore conferma BUG-001–006 e REG (salvataggio stili e funzionamento frontend) tutti OK, nessuna nota, dopo installazione dei pacchetti RC3/1.0.1. Riferimenti build sopra, identificati dagli artifact forniti in chat; checksum locale e browser non attestati. Chiusi i rilievi del lotto 1A. SET-01 OK per installazione/metadati; SET-02 e BASE-T05: riscontro positivo parziale, da completare con controllo esplicito di branding, default, assegnazioni e ID; SET-05, REL-02 e BASE-T10 ancora da eseguire. Nessuna approvazione stabile implicita.
+
+**Lotto 1B — 25 novembre 2026:** confermati OK BASE-T01–T07 (incluso BASE-T05) e SET-02, nessuna anomalia; staging RC3 / Extensions 1.0.1. 9/15 casi sessione 1, 9/95 piano. Residui: SET-05, REL-02, BASE-T08/09/10 e BASE-INV. I test di integrità, reinstallazione e upgrade storico restano distinti.
 
 ## Dati della sessione
 
@@ -477,8 +481,8 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 ## Gate Release Candidate 2.0.0-rc.2
 
 ### REL-02 — Installazione della candidata e rollback
-- **Procedura:** Scaricare lo ZIP interno e SHA-256 dall'[artifact RC2 verificato](https://github.com/jeckodevelopment/tpl_operaplus/actions/runs/45661353066/artifacts/15045765809) o dalla prerelease RC2 quando pubblicata; verificarne l'integrità prima dell'installazione. Fare backup file e DB, installare come aggiornamento di staging e ripetere SET-01–05. Controllare che gli strumenti CI non siano installati, i file personalizzati non siano rimossi, i due stili, branding, default e menu siano preservati. Registrare versione e commit.
-- **Atteso:** ZIP integro; versione 2.0.0-rc.2, nessun cambio dati o assegnazioni. In caso KO ripristinare l'intero backup.
+- **Procedura:** Scaricare lo ZIP interno e SHA-256 dall'[artifact RC3 verificato](https://github.com/jeckodevelopment/tpl_operaplus/actions/runs/45687762495/artifacts/15057396971); verificarne l'integrità prima dell'installazione. Fare backup file e DB, installare come aggiornamento di staging e ripetere SET-01–05. Controllare che gli strumenti CI non siano installati, i file personalizzati non siano rimossi, i due stili, branding, default e menu siano preservati. Registrare versione e commit.
+- **Atteso:** ZIP integro; versione 2.0.0-rc.3, nessun cambio dati o assegnazioni. In caso KO ripristinare l'intero backup.
 - [ ] Esito / data / evidenza / note:
 
 ### REL-03 — Canale stabile e prerelease

@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.4] — 2026-11-25 (collaudo 1C)
+
+- Tradotte integralmente le etichette, le opzioni, le descrizioni e la documentazione integrata dell'editor stili in italiano e inglese; corretti i testi italiani residui nel catalogo inglese (BUG-007). Valori dei parametri e layout invariati. Controlli statici e caricamento nativo dei cataloghi in CI.
+
 ## [2.0.0-rc.3] — 2026-11-25 (collaudo 1A)
 
 - Data di release coerente e verificata dalla CI; descrizione tradotta anche nella modifica degli stili, anteprima e miniatura backend dai riferimenti editoriali versionati.

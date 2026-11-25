@@ -14,6 +14,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 1B — 25 novembre 2026:** confermati OK BASE-T01–T07 (incluso BASE-T05) e SET-02, nessuna anomalia; staging RC3 / Extensions 1.0.1. 9/15 casi sessione 1, 9/95 piano. Residui: SET-05, REL-02, BASE-T08/09/10 e BASE-INV. I test di integrità, reinstallazione e upgrade storico restano distinti.
 
+**Lotto 1C — 25 novembre 2026:** BASE-T08, SET-05 e REL-02 OK; BASE-T09 KO (schede e impostazioni template rimangono in italiano cambiando lingua amministratore), [BUG-007](https://github.com/jeckodevelopment/tpl_operaplus/issues/31). Totale RC3: 12/95 casi OK, 1 KO, 82 non conclusi; sessione 1: 12/15 OK, 1 KO, 2 residui. RC4 corregge esclusivamente localizzazione; nuova baseline e regressioni impattate dopo CI e ricollaudo. Non trasferire automaticamente gli esiti.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

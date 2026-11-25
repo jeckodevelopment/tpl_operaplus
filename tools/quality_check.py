@@ -53,6 +53,42 @@ for lang in ('it-IT', 'en-GB'):
             if key and key.startswith('TPL_OPERAPLUS_'):
                 assert re.search(r'^' + re.escape(key) + r'=', text, re.M), f'Missing {lang}: {key}'
 
+
+# All administrator copy must resolve in both site language catalogs.
+admin_keys = set()
+for node in manifest.findall('./config//fieldset') + manifest.findall('./config//field'):
+    for attr in ('label', 'description', 'hint'):
+        key = node.get(attr)
+        if key:
+            assert re.fullmatch(r'(?:TPL_OPERAPLUS_[A-Z0-9_]+|J[A-Z0-9_]+)', key), (node.get('name'), attr, key)
+            admin_keys.add(key)
+    for option in node.findall('option'):
+        key = option.text or ''
+        if re.fullmatch(r'\d+(?: px|:\d+)', key):
+            continue
+        assert re.fullmatch(r'(?:TPL_OPERAPLUS_[A-Z0-9_]+|J[A-Z0-9_]+)', key), key
+        admin_keys.add(key)
+for lang in ('it-IT', 'en-GB'):
+    lang_text = (root / 'language' / lang / 'tpl_operaplus.ini').read_text()
+    for key in admin_keys:
+        if key.startswith('TPL_OPERAPLUS_'):
+            assert re.search(r'^' + re.escape(key) + r'=".+" preserve native rendering and validate dynamic media.
+assert "opSeoUrl($images->image_intro" in (root / "html/com_content/category/blog.php").read_text()
+assert "getAuthorisedViewLevels()" in (root / "html/com_content/article/_magazine.php").read_text()
+assert "opSeoUrl(" in (root / "html/mod_articles/_magazine.php").read_text()
+
+# A stable-only feed must never advertise a pre-release.
+assert all(n.text != "tools" for n in manifest.findall("./files/*"))
+feed = ET.parse(root / "updates/stable.xml").getroot()
+assert feed.tag == "updates"
+assert all(u.findtext("tags/tag") == "stable" and not re.search(r"(?i)(alpha|beta|rc)", u.findtext("version") or "") for u in feed.findall("update"))
+assert manifest.findtext("./updateservers/server") == "https://raw.githubusercontent.com/jeckodevelopment/tpl_operaplus/main/updates/stable.xml"
+
+# Acceptance traceability (not manual acceptance).
+import runpy
+runpy.run_path(str(root / 'tools/verify_acceptance.py'))
+, lang_text, re.M), (lang, key)
+
 # Template-owned security boundaries: preserve native rendering and validate dynamic media.
 assert "opSeoUrl($images->image_intro" in (root / "html/com_content/category/blog.php").read_text()
 assert "getAuthorisedViewLevels()" in (root / "html/com_content/article/_magazine.php").read_text()

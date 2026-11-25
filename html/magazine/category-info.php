@@ -56,7 +56,7 @@ function opMagazineCategoryInfo($item, $params, string $position): string
             $details[] = $date($item->modified, 'COM_CONTENT_LAST_UPDATED');
         }
         if ($params->get('show_hits')) {
-            $details[] = $e(Text::sprintf('JGLOBAL_HITS', (int) $item->hits));
+            $details[] = $e(Text::sprintf('COM_CONTENT_ARTICLE_HITS', (int) $item->hits));
         }
     }
     $categories = array_filter($categories);

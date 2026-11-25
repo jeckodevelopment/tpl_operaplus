@@ -30,6 +30,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 4A — 26 novembre 2026:** CAT-01–04 KO, CAT-05 OK su RC4. BUG-009 intro sempre visibile, BUG-010 metadati elenco/dossier difformi, BUG-011 contrasto e icone paginazione. [Issue #39](https://github.com/jeckodevelopment/tpl_operaplus/issues/39). 34/95 OK, 4 KO, 57 non conclusi. RC5 candidata correttiva: ricollaudare CAT-01–04 e CAT-05 come regressione; non trasferire automaticamente gli esiti. Approvazione grafica distinta.
 
+**Ricollaudo lotto 4A — 26 novembre 2026:** RC5, Extensions 1.0.1. CAT-01/02/03/05 OK; CAT-04 KO residuo: paginazione delle categorie OK, contrasto dei link precedente/successivo nel singolo articolo insufficiente. [Issue #39](https://github.com/jeckodevelopment/tpl_operaplus/issues/39). 37/95 casi OK, 1 KO, 57 non conclusi. RC6 interviene esclusivamente sul plugin nativo pagenavigation tramite CSS Magazine, senza alterare routing o paginazione categorie. Ricollaudo CAT-04 mirato e verifica regressione della paginazione; approvazione grafica generale separata.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

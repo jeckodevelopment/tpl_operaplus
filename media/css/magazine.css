@@ -23,3 +23,16 @@ body.operaplus.op-magazine.theme-dark{--mag-bg:#171316;--mag-ink:#f4ece4;--mag-m
 .op-magazine .op-mag-content .op-content{max-width:none}
 .op-magazine .op-mag-content .op-content a{color:var(--mag-accent)}
 @media(max-width:900px){.op-magazine .op-mag-row{grid-template-columns:minmax(0,1fr)}.op-magazine .op-mag-row__aside{grid-column:1}.op-magazine .op-mag-masthead__body{padding-block:20px}.op-magazine .op-mag-main{padding-block:18px 36px}}
+
+/* The mockup's light masthead and separate navigation row, scoped to Magazine. */
+body.operaplus.op-magazine .op-header{background:var(--mag-bg);color:var(--mag-ink);--op-text:var(--mag-ink);--op-panel:var(--mag-bg);--op-line:var(--mag-rule);border-color:var(--mag-rule);backdrop-filter:none}
+body.operaplus.op-magazine .op-header a,body.operaplus.op-magazine .op-header .op-menu-toggle{color:var(--mag-ink)}
+body.operaplus.op-magazine .op-header .op-navigation :is(.current,.active)>a,body.operaplus.op-magazine .op-header .op-navigation a:hover{color:var(--mag-accent)}
+body.operaplus.op-magazine .op-header .op-navigation li ul{background:var(--mag-bg);color:var(--mag-ink);border-color:var(--mag-rule);--op-text:var(--mag-ink);--op-panel:var(--mag-bg);--op-line:var(--mag-rule)}
+@media(min-width:901px){
+body.operaplus.op-magazine .op-header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0;min-height:0;padding-top:12px}
+body.operaplus.op-magazine .op-header-actions{grid-column:2;grid-row:1}
+body.operaplus.op-magazine .op-navigation{grid-column:1/-1;width:100%;margin:10px 0 0;border-top:1px solid var(--mag-rule)}
+body.operaplus.op-magazine .op-navigation>ul,body.operaplus.op-magazine .op-navigation>.moduletable>ul{justify-content:center;flex-wrap:wrap;gap:clamp(12px,2vw,28px)}
+body.operaplus.op-magazine .op-navigation>ul>li>a,body.operaplus.op-magazine .op-navigation>.moduletable>ul>li>a{font:600 16px/1.4 Georgia,serif;padding-block:10px;display:block}
+}

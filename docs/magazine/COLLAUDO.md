@@ -461,3 +461,6 @@ Per i quindici riferimenti vedere [mockups/README.md](mockups/README.md). Gli sc
 
 ### UX — Formalizzazione dei riferimenti recuperati
 Il documento [SPECIFICHE.md](mockups/SPECIFICHE.md) elenca i quindici criteri e i riferimenti originali. Prima di registrare approvazione e confronto su staging verificare la presenza dei file PNG in Git e i relativi hash; applicare le decisioni scritte più recenti in caso di discordanza (8+4, tre notizie compatte, immagini uniformi, box approvati). UX-12 e UX-13 senza tavola originale: non dichiararli approvati sulla base della sola CI.
+
+### UX — Archivio originale versionato
+I file delle 13 tavole recuperate sono consultabili nel [catalogo mockup](mockups/README.md); 10 originali conservati integralmente. `tools/verify_mockups.py` controlla l'integrità dei 23 PNG in CI. UX-14/15 formalizzati e approvati graficamente il 24 novembre; il confronto con staging resta da effettuare. Le tavole UX-01–13 richiedono approvazione definitiva (UX-12 e UX-13 ancora senza originale). Non confondere archiviazione con collaudo.

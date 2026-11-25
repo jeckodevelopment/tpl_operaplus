@@ -3,52 +3,62 @@
     {
       "file": "originals/R01-articolo.png",
       "sha256": "5aea59880057d286a5d9f57eef1e57a1b2b5ad4dd4d907007d5b9f89242e9a54",
-      "size": 2122023
+      "size": 2122023,
+      "git_blob_sha": "c4590ac3a7dafd928ead136f358457efc0544fe8"
     },
     {
       "file": "originals/R02-home.png",
       "sha256": "7f9cd6135ddfecb4a0a68a4c51f410399522e2701379ff17abc1a2f235f279df",
-      "size": 2089236
+      "size": 2089236,
+      "git_blob_sha": "17013d9fc9a6b018be1ff5a0ae3277d1e397d887"
     },
     {
       "file": "originals/R03-intervista.png",
       "sha256": "a4e720ff01210ab16e33bb11c0cfd639e74f9a08d64c148f448e5c03516a4f44",
-      "size": 2025158
+      "size": 2025158,
+      "git_blob_sha": "2650c39f21f3e8526345e25bef6e80e83839eaca"
     },
     {
       "file": "originals/R04-recensioni.png",
       "sha256": "27f2289e7a107c49d40872055fb0cd1ce2a51b137a3e7fcd24df9877b6013f4f",
-      "size": 2018688
+      "size": 2018688,
+      "git_blob_sha": "a2e2027b68281d038847c65abfc43b3f8cd7ff96"
     },
     {
       "file": "originals/R05-presentazione.png",
       "sha256": "dae0167e7f18f6783b3053f33ec1d8df40fe2577b62d9e775857398e53f4155f",
-      "size": 2322581
+      "size": 2322581,
+      "git_blob_sha": "9b684e970ddb449e6b1b76ba188320438524171e"
     },
     {
       "file": "originals/R06-home-completa.png",
       "sha256": "3cc8647edf389614fe8f8cabaca117085a89f2fbda55004345ec5667055d172f",
-      "size": 2068396
+      "size": 2068396,
+      "git_blob_sha": "63c97d3bd6396fcb02b4557c2790a264b3b0e44c"
     },
     {
       "file": "originals/R07-tavola-risposte.png",
       "sha256": "7d0c6e68a84f93aa4dda2687abfea0ca6780502cc7b147c22cc2b1aee6e6da2d",
-      "size": 2227190
+      "size": 2227190,
+      "git_blob_sha": "00bd6e4fbe4852c39fe056ff648caf0f775ce696"
     },
     {
       "file": "originals/R08-home-recensioni.png",
       "sha256": "491bc822aa99f14157aff56428b5ec024e26015ca8b28dc7845edc2652925dbb",
-      "size": 2172208
+      "size": 2172208,
+      "git_blob_sha": "89df475bab8d9ff16d532cd9b6a9fd77dcc90d88"
     },
     {
       "file": "originals/R09-tavola-estesa.png",
       "sha256": "7cf91ac8a01d0c3bebce39c0ff771da6276d77a8425dd51a0294c4d7386e381f",
-      "size": 2236733
+      "size": 2236733,
+      "git_blob_sha": "2cb5dab530d17fdf9ad8cfed94ecf8d30022db66"
     },
     {
       "file": "originals/R10-consolidamento.png",
       "sha256": "c43d5ff982101ae836e7b250a099b9767c643db542ead59fe112bc840abd3451",
-      "size": 2213843
+      "size": 2213843,
+      "git_blob_sha": "8a8356bf9d6abac936d54e4a4d1e41eeb598e272"
     }
   ],
   "extracts": [
@@ -62,7 +72,9 @@
         446,
         922
       ],
-      "sha256": "f7030d4848137f6f7e007f013bdfa457b525c9264be9c887aa105f7c071a452b"
+      "sha256": "f7030d4848137f6f7e007f013bdfa457b525c9264be9c887aa105f7c071a452b",
+      "git_blob_sha": "0242ac6c9e51c5d31b687090cd9df714363eb77a",
+      "size": 591081
     },
     {
       "id": "UX-02",
@@ -74,7 +86,9 @@
         830,
         922
       ],
-      "sha256": "de1ed839cf4b9c41d4d237a50e14a985a8550cf54ee1cda22a9f537530cc3317"
+      "sha256": "de1ed839cf4b9c41d4d237a50e14a985a8550cf54ee1cda22a9f537530cc3317",
+      "git_blob_sha": "e6682c08b36eb6735f26b0fab04409c7257d7c12",
+      "size": 451976
     },
     {
       "id": "UX-03",
@@ -86,14 +100,18 @@
         985,
         528
       ],
-      "sha256": "62d43d50f92ec6d45bbb1d51f5f722335f1624f69913ee1a1162a3d1de04a5f7"
+      "sha256": "62d43d50f92ec6d45bbb1d51f5f722335f1624f69913ee1a1162a3d1de04a5f7",
+      "git_blob_sha": "0ad161a444a6fe6d94a50d71f294a8c3820695de",
+      "size": 311170
     },
     {
       "id": "UX-04",
       "file": "extracts/UX-04-articolo.png",
       "source": "originals/R01-articolo.png",
       "crop": null,
-      "sha256": "5aea59880057d286a5d9f57eef1e57a1b2b5ad4dd4d907007d5b9f89242e9a54"
+      "sha256": "5aea59880057d286a5d9f57eef1e57a1b2b5ad4dd4d907007d5b9f89242e9a54",
+      "git_blob_sha": "c4590ac3a7dafd928ead136f358457efc0544fe8",
+      "size": 2122023
     },
     {
       "id": "UX-05",
@@ -105,7 +123,9 @@
         1517,
         527
       ],
-      "sha256": "9823759e3ff6d6ab2c9312caf2e25f78d129011a8547cd891e3b0f4ae50d6446"
+      "sha256": "9823759e3ff6d6ab2c9312caf2e25f78d129011a8547cd891e3b0f4ae50d6446",
+      "git_blob_sha": "a7f7cc1d255a2854c7783eafd533faeac2e2eb12",
+      "size": 347115
     },
     {
       "id": "UX-06",
@@ -117,7 +137,9 @@
         1179,
         922
       ],
-      "sha256": "6f8e1acbbf12bf6dfcbc43c721e16331e6ce2fd3086ea95f17b8ba7b5f36f9df"
+      "sha256": "6f8e1acbbf12bf6dfcbc43c721e16331e6ce2fd3086ea95f17b8ba7b5f36f9df",
+      "git_blob_sha": "acf523480065ef0589d27f476485185adfb168c2",
+      "size": 400852
     },
     {
       "id": "UX-07",
@@ -129,7 +151,9 @@
         1528,
         922
       ],
-      "sha256": "dd35b0bdc109f75c4854af72f1ac00d62bd3750d8db18a321c67ae377236aeda"
+      "sha256": "dd35b0bdc109f75c4854af72f1ac00d62bd3750d8db18a321c67ae377236aeda",
+      "git_blob_sha": "35992133d6cd856939ec3e88b186ca02e9a9dc51",
+      "size": 422440
     },
     {
       "id": "UX-08",
@@ -141,7 +165,9 @@
         341,
         1018
       ],
-      "sha256": "68b1f768efc8ea30d5927498c0de9aa8099aad9bfb1552fcc063b7d272f37bf8"
+      "sha256": "68b1f768efc8ea30d5927498c0de9aa8099aad9bfb1552fcc063b7d272f37bf8",
+      "git_blob_sha": "43b7242180acbb24c6fb3be4ecc21deacf0f41f2",
+      "size": 161038
     },
     {
       "id": "UX-09",
@@ -153,7 +179,9 @@
         695,
         1018
       ],
-      "sha256": "ec39d91cd1cb2758aa277e98bed420c9b6240571d5dc83cca06e280eb6a64de0"
+      "sha256": "ec39d91cd1cb2758aa277e98bed420c9b6240571d5dc83cca06e280eb6a64de0",
+      "git_blob_sha": "afc82532cb048c540513e2e1f6f77c2c7fe68e12",
+      "size": 129269
     },
     {
       "id": "UX-10",
@@ -165,7 +193,9 @@
         1036,
         1018
       ],
-      "sha256": "cbb33f6acd9db4a7ac31f39488d7217a4faca158ac9174688a7822e2ded24d04"
+      "sha256": "cbb33f6acd9db4a7ac31f39488d7217a4faca158ac9174688a7822e2ded24d04",
+      "git_blob_sha": "d126a06373646363d8919b81d10752f0b9cb0aab",
+      "size": 142023
     },
     {
       "id": "UX-11",
@@ -177,7 +207,9 @@
         1218,
         1020
       ],
-      "sha256": "daeb85dc046a3423f008208b05bdc019e9125d0a3a60aa0ca054bd4c2f13df8d"
+      "sha256": "daeb85dc046a3423f008208b05bdc019e9125d0a3a60aa0ca054bd4c2f13df8d",
+      "git_blob_sha": "348a79391f592917085f5053f7cc33ce480570a1",
+      "size": 81255
     },
     {
       "id": "UX-14",
@@ -189,7 +221,9 @@
         743,
         776
       ],
-      "sha256": "79b98d6f01d85b08c1f007cbf92d282dc82a694ee904fe33e58bd159177dcb2e"
+      "sha256": "79b98d6f01d85b08c1f007cbf92d282dc82a694ee904fe33e58bd159177dcb2e",
+      "git_blob_sha": "829670d4718ecd46a27b7233eef9bb9c15e791a9",
+      "size": 50028
     },
     {
       "id": "UX-15",
@@ -201,7 +235,9 @@
         738,
         582
       ],
-      "sha256": "9f072fe235d517e1a5a3297ee877b1c0c260f1fbc744800802299f61d10f9579"
+      "sha256": "9f072fe235d517e1a5a3297ee877b1c0c260f1fbc744800802299f61d10f9579",
+      "git_blob_sha": "4badca54d50df84d2dcbc191ef7d014947141a16",
+      "size": 43950
     }
   ],
   "missing": [

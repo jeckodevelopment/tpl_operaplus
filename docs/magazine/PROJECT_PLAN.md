@@ -48,3 +48,6 @@ Packaging riproducibile con SHA-256, esclusione strumenti di sviluppo e pulizia 
 
 ### Formalizzazione grafica 25 novembre 2026
 Ritrovati dieci originali della progettazione, 13 riferimenti/estratti e due tavole mancanti (articolo mobile/dark). Specifiche grafiche, provenienza, hash e precedenza delle decisioni approvate in `docs/magazine/mockups/`. I file PNG sono ancora da caricare in Git; nessun criterio UX completato anticipatamente. UX-01–15 passano in corso per la formalizzazione testuale. Collaudo visuale e rilascio stabile separati; RC invariata.
+
+### Archivio grafico — 25 novembre 2026
+I 10 originali e i 13 estratti sono stati caricati dall'utente e organizzati in `docs/magazine/mockups/originals/` e `extracts/`. Identità dei blob verificata rispetto all'archivio locale; verifica SHA-256 automatica in CI. UX-14 e UX-15 completati per approvazione grafica già documentata e archiviazione; i collaudi manuali restano non eseguiti. UX-01–13 rimangono in corso: cinque tavole con riferimento recuperato, sei parziali, due mancanti. Nessun cambio della RC o del pacchetto.

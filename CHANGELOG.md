@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.6] — 2026-11-26 (ricollaudo 4A)
+
+- Navigazione precedente/successivo del singolo articolo Magazine: testo bianco su bordeaux, frecce indipendenti dal font delle icone, focus visibile e disposizione responsive; paginazione categorie invariata. Test browser chiaro/scuro, link lunghi, tastiera e viewport mobile. Ricollaudo manuale CAT-04 necessario.
+
 ## [2.0.0-rc.5] — 2026-11-26 (collaudo 4A)
 
 - Griglia, elenco e dossier Magazine rispettano la scelta del testo introduttivo; metadati editoriali compatti con opzioni e link nativi preservati.

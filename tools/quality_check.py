@@ -41,8 +41,8 @@ for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer')
     assert '.' + cls in (root / 'media/css/magazine.css').read_text(), f'Missing frontend style: {cls}'
 
 # Uncompressed runtime asset budgets; exclude third-party Joomla assets.
-# RC5: allow at most 3 KB for scoped native pagination and category metadata CSS.
-for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 32000, "media/js/template.js": 12000}.items():
+# RC5/RC6: allow at most 4 KB for scoped category metadata and native navigation CSS.
+for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 33000, "media/js/template.js": 12000}.items():
     size = (root / path).stat().st_size
     assert size <= limit, f"Runtime asset budget exceeded: {path}: {size} > {limit}"
     print(f"{path}: {size}/{limit} bytes")

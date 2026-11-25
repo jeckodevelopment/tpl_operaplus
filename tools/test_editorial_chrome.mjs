@@ -16,4 +16,24 @@ try {
   assert.ok(ordinary.padding>0&&ordinary.border>0,'Ordinary module chrome lost');
  }
  console.log('Editorial chrome: standalone panels, button contrast and ordinary module regression passed.');
+
+ // Actual native Joomla pagenavigation markup, including the two label modes.
+ await page.setContent(`<style>${readFileSync('media/css/template.css','utf8')}\n${readFileSync('media/css/magazine.css','utf8')}</style><body class="operaplus op-magazine theme-light"><main class="op-mag-main"><div class="op-mag-content"><div class="op-content"><article class="op-mag-article"><nav class="pagenavigation"><span class="pagination ms-0"><a class="btn btn-sm btn-secondary previous" href="#previous" rel="prev"><span class="visually-hidden">Previous article</span><span class="icon-chevron-left" aria-hidden="true"></span> <span aria-hidden="true">Precedente</span></a><a class="btn btn-sm btn-secondary next" href="#next" rel="next"><span class="visually-hidden">Next article</span><span aria-hidden="true">Successivo — titolo particolarmente lungo di un articolo del Magazine</span> <span class="icon-chevron-right" aria-hidden="true"></span></a></span></nav></article><nav class="pagination__wrapper"><ul class="pagination"><li class="page-item active"><a aria-current="true" href="#" class="page-link">2</a></li></ul></nav></div></div></main></body>`);
+ for(const theme of ['light','dark']){
+  await page.evaluate(theme=>{document.body.classList.toggle('theme-light',theme==='light');document.body.classList.toggle('theme-dark',theme==='dark')},theme);
+  for(const width of [1200,375,320]){
+   await page.setViewportSize({width,height:900});
+   for(const selector of ['.pagenavigation .previous','.pagenavigation .next']){
+    const a=page.locator(selector);
+    const style=await a.evaluate(el=>{const s=getComputedStyle(el);return {fg:s.color,bg:s.backgroundColor,h:el.getBoundingClientRect().height,right:el.getBoundingClientRect().right}});
+    assert.equal(style.fg,'rgb(255, 255, 255)');assert.equal(style.bg,'rgb(99, 43, 58)');assert.ok(style.h>=44&&style.right<=width,'Navigation clips or is too small');
+    await a.focus();assert.equal(await a.evaluate(el=>getComputedStyle(el).color),'rgb(255, 255, 255)');
+    await a.blur();await a.hover();assert.equal(await a.evaluate(el=>getComputedStyle(el).color),'rgb(255, 255, 255)');
+    await page.mouse.move(0,0);
+   }
+   for(const side of ['left','right'])assert.notEqual(await page.locator('.icon-chevron-'+side).evaluate(el=>getComputedStyle(el,'::before').content),'none');
+   assert.equal(await page.locator('.page-link').evaluate(el=>getComputedStyle(el).color),'rgb(255, 255, 255)');
+  }
+ }
+ console.log('Native article previous/next markup: contrast, arrows, responsive size and category pagination regression passed.');
 } finally {await browser.close();}

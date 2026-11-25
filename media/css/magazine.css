@@ -253,3 +253,12 @@ body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-double-left::bef
 body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-left::before{content:'‹'}
 body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-right::before{content:'›'}
 body.operaplus.op-magazine .op-mag-main .pagination .icon-angle-double-right::before{content:'»'}
+
+
+/* RC6: the native pagenavigation plugin uses btn-secondary, not page-link. */
+.op-magazine .op-mag-article .pagenavigation .pagination{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+body.operaplus.op-magazine .op-mag-article .pagenavigation a.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;min-width:0;min-height:44px;padding:9px 14px;background:#632b3a;color:#fff!important;border:1px solid #632b3a;border-radius:3px!important;font:600 14px/1.4 system-ui,sans-serif;overflow-wrap:anywhere;text-decoration:none}
+body.operaplus.op-magazine .op-mag-article .pagenavigation a.btn:is(:hover,:focus-visible){background:#4e2431;border-color:#4e2431;color:#fff!important}
+.op-magazine .op-mag-article .pagenavigation [class*="icon-chevron-"]{flex:none;font:700 20px/1 system-ui,sans-serif}
+.op-magazine .op-mag-article .pagenavigation .icon-chevron-left::before{content:'‹'}
+.op-magazine .op-mag-article .pagenavigation .icon-chevron-right::before{content:'›'}

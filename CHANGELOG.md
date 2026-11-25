@@ -4,6 +4,12 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.1] — Candidata al rilascio (staging)
+
+- ZIP riproducibile, SHA-256 e verifica contenuto; nessuno script di sviluppo nella nuova installazione.
+- Migrazione 1.29.0: rimozione dei soli script di test precedentemente installati, conservazione di file personalizzati e stili.
+- Canale aggiornamento stabile distinto e inizialmente vuoto; prerelease GitHub con due suite CI obbligatorie, senza pubblicazione stabile o deploy.
+
 ## [1.29.0] — Retrocompatibilità, accessibilità e sicurezza
 
 - Escape contestuale, ripristino del focus, menu mobile utilizzabile senza JavaScript, controlli tradotti IT/EN e skip link visibile anche con header sticky.

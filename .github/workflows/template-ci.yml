@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
 permissions:
   contents: read
 jobs:
@@ -35,8 +36,15 @@ jobs:
           name: magazine-structure-visuals
           path: dist/magazine/*.png
       - name: Build installable template
-        run: python3 tools/package_template.py
+        run: |
+          python3 tools/package_template.py
+          cp dist/tpl_operaplus-*.zip "$RUNNER_TEMP/first-package.zip"
+          python3 tools/package_template.py
+          cmp "$RUNNER_TEMP/first-package.zip" dist/tpl_operaplus-*.zip
+          (cd dist && sha256sum --check *.sha256)
       - uses: actions/upload-artifact@v4
         with:
           name: operaplus-template-installable
-          path: dist/*.zip
+          path: |
+            dist/*.zip
+            dist/*.sha256

@@ -21,6 +21,23 @@ return new class implements InstallerScriptInterface {
             return true;
         }
 
+        // Earlier previews accidentally installed developer scripts into the public
+        // template directory. Remove only the known shipped files, never user files.
+        $legacyTools = JPATH_SITE . '/templates/operaplus/tools';
+        if (is_dir($legacyTools) && !is_link($legacyTools)) {
+            foreach ([
+                'package_template.py', 'quality_check.py', 'render_article_layouts.php',
+                'render_magazine_fixture.php', 'test_article_layouts.mjs',
+                'test_editorial_chrome.mjs', 'test_editorial_integration.sh',
+                'test_magazine.mjs', 'test_magazine_content.php',
+                'test_navigation_accessibility.mjs', 'test_seo.php', 'test_template_styles.sh',
+            ] as $name) {
+                $path = $legacyTools . '/' . $name;
+                if ((is_file($path) || is_link($path)) && !unlink($path)) {
+                    throw new \RuntimeException('Cannot remove obsolete template test file: ' . $name);
+                }
+            }
+        }
         $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->createQuery()
             ->select('*')

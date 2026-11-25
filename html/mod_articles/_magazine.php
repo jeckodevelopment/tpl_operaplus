@@ -18,7 +18,8 @@ if (empty($list)) {
     return;
 }
 $e = static fn ($value): string => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$plain = static fn ($value): string => trim(html_entity_decode(strip_tags((string) $value), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+require_once __DIR__ . '/../seo.php';
+$plain = static fn ($value): string => opSeoText($value);
 $safeUrl = static function ($value): string {
     $url = trim(html_entity_decode((string) $value, ENT_QUOTES | ENT_HTML5, 'UTF-8'));
     if ($url === '' || preg_match('/[\x00-\x20\x7f\\\\]/', $url) || str_starts_with($url, '//')) {
@@ -59,7 +60,8 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
     $alt = '';
     $imageMode = $params->get('img_intro_full', 'none');
     if (!$noImage && in_array($imageMode, ['intro', 'full'], true) && !empty($item->imageSrc)) {
-        $images = json_decode((string) ($item->images ?? '{}'), true) ?: [];
+        $images = json_decode((string) ($item->images ?? '{}'), true);
+        $images = is_array($images) ? $images : [];
         $image = $safeUrl(HTMLHelper::cleanImageURL(html_entity_decode((string) $item->imageSrc, ENT_QUOTES, 'UTF-8'))->url);
         if ($image !== '' && !preg_match('~^(?:https?://|/)~i', $image)) {
             $image = Uri::root() . ltrim($image, '/');
@@ -76,12 +78,12 @@ $compact = in_array($mode, ['sidebar', 'latest', 'ranked', 'topics', 'related-si
         <?php if ($mode === 'ranked') : ?><span class="op-mag-card__rank" aria-hidden="true"><?php echo $index + 1; ?></span><?php endif; ?>
         <?php if ($image !== '') : ?>
         <div class="op-mag-card__visual">
-            <img src="<?php echo $e($image); ?>" alt="<?php echo $e($alt); ?>" <?php echo $mode === 'cover' ? 'fetchpriority="high"' : 'loading="lazy"'; ?> decoding="async">
+            <img itemprop="image" src="<?php echo $e($image); ?>" alt="<?php echo $e($alt); ?>" <?php echo $mode === 'cover' ? 'fetchpriority="high"' : 'loading="lazy"'; ?> decoding="async">
         </div>
         <?php endif; ?>
         <div class="op-mag-card__body">
             <?php if ($category !== '') : ?><div class="op-mag-card__category"><?php if ($categoryLink !== '') : ?><a href="<?php echo $e($categoryLink); ?>"><?php echo $e($category); ?></a><?php else : echo $e($category); endif; ?></div><?php endif; ?>
-            <<?php echo $heading; ?> class="op-mag-card__title" itemprop="headline"><?php if ($linked) : ?><a href="<?php echo $e($link); ?>" class="<?php echo !empty($item->active) ? 'active' : ''; ?>"><?php echo $e($title); ?></a><?php else : echo $e($title); endif; ?></<?php echo $heading; ?>>
+            <<?php echo $heading; ?> class="op-mag-card__title" itemprop="headline"><?php if ($linked) : ?><a itemprop="url" href="<?php echo $e($link); ?>" class="<?php echo !empty($item->active) ? 'active' : ''; ?>"><?php echo $e($title); ?></a><?php else : echo $e($title); endif; ?></<?php echo $heading; ?>>
             <?php if ($author !== '' || $date !== '' || !empty($item->displayHits)) : ?><div class="op-mag-card__meta"><?php if ($author !== '') : ?><span><?php echo $e($author); ?></span><?php endif; ?><?php if ($date !== '') : ?><span><?php echo $e($date); ?></span><?php endif; ?><?php if (!empty($item->displayHits)) : ?><span><?php echo $e(Text::_('JGLOBAL_HITS')); ?>: <?php echo (int) $item->displayHits; ?></span><?php endif; ?></div><?php endif; ?>
             <?php echo $item->event->afterDisplayTitle ?? ''; ?>
             <?php echo $item->event->beforeDisplayContent ?? ''; ?>

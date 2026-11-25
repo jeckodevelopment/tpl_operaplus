@@ -45,6 +45,11 @@ function opSeoArticle($doc, $item, string $root): void
     if (empty($item->params) || !$item->params->get('access-view', false) || (int) ($item->state ?? 0) !== 1) {
         return;
     }
+    $now = gmdate('Y-m-d H:i:s');
+    if ((!empty($item->publish_up) && $item->publish_up > $now)
+        || (!empty($item->publish_down) && $item->publish_down < $now)) {
+        return;
+    }
     $images = json_decode((string) ($item->images ?? '{}'), true);
     $images = is_array($images) ? $images : [];
     if (!$doc->getMetaData('og:image','property')) {

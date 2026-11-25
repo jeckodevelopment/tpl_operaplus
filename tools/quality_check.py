@@ -26,8 +26,15 @@ for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer')
     assert '.' + cls in (root / 'media/css/magazine.css').read_text(), f'Missing frontend style: {cls}'
 
 # Uncompressed runtime asset budgets; exclude third-party Joomla assets.
-for path, limit in {"media/css/template.css": 180000, "media/css/magazine.css": 50000, "media/js/template.js": 22000}.items():
+for path, limit in {"media/css/template.css": 85000, "media/css/magazine.css": 35000, "media/js/template.js": 12000}.items():
     size = (root / path).stat().st_size
     assert size <= limit, f"Runtime asset budget exceeded: {path}: {size} > {limit}"
     print(f"{path}: {size}/{limit} bytes")
 assert "DatabaseInterface" not in (root / "index.php").read_text(), "SEO must not query content again"
+
+for lang in ('it-IT', 'en-GB'):
+    text = (root / 'language' / lang / 'tpl_operaplus.ini').read_text()
+    for node in manifest.findall(".//fieldset[@name='magazineContent']/field"):
+        for key in [node.get('label'), node.get('description')] + [o.text for o in node.findall('option')]:
+            if key and key.startswith('TPL_OPERAPLUS_'):
+                assert re.search(r'^' + re.escape(key) + r'=', text, re.M), f'Missing {lang}: {key}'

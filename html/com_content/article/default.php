@@ -5,21 +5,22 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 $item = $this->item;
-require_once __DIR__ . '/../../seo.php';
-opSeoArticle($this->getDocument(), $item, \Joomla\CMS\Uri\Uri::root());
 $isCourse = strtolower((string) ($item->category_alias ?? '')) === 'corsi';
 if (!$isCourse && \Joomla\CMS\Factory::getApplication()->getTemplate(true)->params->get('presentationMode', 'standard') === 'magazine') {
     $opContentMode = 'article';
     require __DIR__ . '/_magazine.php';
     return;
 }
-if (!$isCourse) {
+require_once __DIR__ . '/../../seo.php';
+opSeoArticle($this->getDocument(), $item, \Joomla\CMS\Uri\Uri::root());
+if (!$isCourse || !$item->params->get('access-view', false)) {
     $core = JPATH_SITE . '/components/com_content/tmpl/article/default.php';
-    if (is_file($core)) { include $core; return; }
+    require $core;
+    return;
 }
 $escape = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $images = json_decode((string) ($item->images ?? '{}')) ?: new stdClass();
-$cover = (string) (($images->image_fulltext ?? '') ?: ($images->image_intro ?? ''));
+$cover = opSeoUrl(($images->image_fulltext ?? '') ?: ($images->image_intro ?? ''), \Joomla\CMS\Uri\Uri::root());
 $alt = (string) (($images->image_fulltext_alt ?? '') ?: ($images->image_intro_alt ?? $item->title));
 $author = trim((string) ($item->created_by_alias ?? ''));
 if ($author === '') { $author = trim((string) ($item->author ?? '')); }

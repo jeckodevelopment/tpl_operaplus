@@ -137,3 +137,32 @@ curl -sS -L "$url/index.php?option=com_content&view=article&id=$article&Itemid=$
 absent 'CI PRIVATE FULLTEXT MARKER'
 absent 'og:image" content="http://127.0.0.1:8080/images/article.jpg'
 echo 'Native style options, inherited Itemid and course ACL regression passed.'
+
+# Standard shell: verify optional modules and the native category fallback on the disposable site.
+db "UPDATE ci_content SET access=1 WHERE id=$article; UPDATE ci_template_styles SET params=JSON_SET(params,'$.showHomeComponent',1,'$.externalFont','system') WHERE id=$standard;"
+for position in hero sidebar-left sidebar-right; do
+  db "INSERT INTO ci_modules (title,position,published,module,access,showtitle,content,params,client_id,language) VALUES ('CI Standard $position','$position',1,'mod_custom',1,0,'<p>CI Standard $position marker</p>','{}',0,'*'); INSERT INTO ci_modules_menu (moduleid,menuid) VALUES (LAST_INSERT_ID(),0);"
+done
+curl -fsS "$url/index.php" > "$page"
+contains 'CI Standard hero marker'
+contains 'CI Standard sidebar-left marker'
+contains 'CI Standard sidebar-right marker'
+contains 'has-both-sidebars'
+absent 'magazine.css'
+absent 'fonts.googleapis.com'
+curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home" > "$page"
+contains 'op-course-detail'
+absent 'CI Standard hero marker'
+contains 'CI Standard sidebar-left marker'
+contains 'CI Standard sidebar-right marker'
+# Category retains course rendering when public; unsafe image is discarded.
+db "UPDATE ci_content SET images=JSON_OBJECT('image_intro','javascript:alert(1)') WHERE id=$article;"
+curl -fsS "$url/index.php?option=com_content&view=category&layout=blog&id=$catid&Itemid=$home" > "$page"
+contains 'op-course-index'
+contains 'CI SEO article'
+absent 'javascript:alert(1)'
+# Core category handles unauthorized articles, including login routing and teaser settings.
+db "UPDATE ci_content SET access=2 WHERE id=$article;"
+curl -fsS "$url/index.php?option=com_content&view=category&layout=blog&id=$catid&Itemid=$home" > "$page"
+absent 'CI PRIVATE FULLTEXT MARKER'
+echo 'Native Standard home, sidebars, inherited Itemid, course catalog image and ACL regression passed.'

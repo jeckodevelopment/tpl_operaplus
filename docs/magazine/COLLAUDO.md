@@ -431,3 +431,15 @@ Riferimenti: [PROJECT_PLAN.md](PROJECT_PLAN.md), [REQUIREMENTS.csv](REQUIREMENTS
 - **Procedura:** Redattore e amministratore seguono le rispettive guide su staging; preparare homepage, articolo, recensione e CTA, verificare permessi, template style, metadati e ritorno a Standard.
 - **Atteso:** Guida ripetibile senza modifica dei file core, del default globale o delle assegnazioni già esistenti.
 - [ ] Esito / data / evidenza / note:
+
+## Consolidamento tecnico — 1.29.0
+
+### REG-05 — Menu e focus
+- **Procedura:** Standard e Magazine, IT/EN, desktop e mobile, hover/click, mega menu, menu laterale. Aprire con tastiera, spostarsi su un link figlio, premere Esc, verificare ritorno al controllo; premere Esc in un campo login, senza spostamento del focus. Disabilitare JS e verificare raggiungibilità dei link mobili. Provare sticky header e skip link, zoom 200%, lettore di schermo e contrasto sul sito reale.
+- **Atteso:** Menu navigabili, focus visibile, nessun salto involontario, etichette coerenti con lingua; nessuna regressione dei contenuti Standard. Non confondere test browser con certificazione WCAG.
+- [ ] Esito / data / evidenza / note:
+
+### SEC-02 — ACL e URL immagini
+- **Procedura:** Catalogo corsi con articoli pubblici e riservati, show_noauth sì/no, utente guest e registrato. Verificare teaser/login nativi e assenza di testo riservato. Recensione con campi pubblici e riservati; provare URL immagine validi, protocollo non ammesso, riferimenti traversal, media field con frammento Joomla. Verificare branding, foto e link in entrambe le modalità.
+- **Atteso:** Joomla gestisce il caso non autorizzato; nessun campo recensione fuori dai livelli autorizzati; URL immagine non validi non renderizzati. Contenuti HTML affidati ai filtri e plugin Joomla, senza rimuoverne i meccanismi nativi.
+- [ ] Esito / data / evidenza / note:

@@ -38,3 +38,8 @@ for lang in ('it-IT', 'en-GB'):
         for key in [node.get('label'), node.get('description')] + [o.text for o in node.findall('option')]:
             if key and key.startswith('TPL_OPERAPLUS_'):
                 assert re.search(r'^' + re.escape(key) + r'=', text, re.M), f'Missing {lang}: {key}'
+
+# Template-owned security boundaries: preserve native rendering and validate dynamic media.
+assert "opSeoUrl($images->image_intro" in (root / "html/com_content/category/blog.php").read_text()
+assert "getAuthorisedViewLevels()" in (root / "html/com_content/article/_magazine.php").read_text()
+assert "opSeoUrl(" in (root / "html/mod_articles/_magazine.php").read_text()

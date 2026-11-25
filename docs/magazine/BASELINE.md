@@ -27,3 +27,6 @@ Rilevazione statica 24 novembre 2026, Joomla 6. Riferimento pre-progetto: commit
 
 ## Nota packaging e CI
 Il tree osservato non contiene .github/workflows né template_preview.png/template_thumbnail.png, benché queste immagini siano dichiarate nel manifest. Verificare prima di affermare che quality_check.py passa o che il repository è installabile direttamente. Nessuna rimozione del manifest o correzione funzionale in questa fase. Il rilascio dovrà disporre di CI e pacchetto verificato.
+
+## Evidenze automatiche fino a 1.29.0
+La baseline resta il riferimento storico. `template-lifecycle.yml` verifica installazione, aggiornamento e preservazione stili/menu su Joomla reale; `test_editorial_integration.sh` verifica home/hero Standard, articolo con Itemid ereditato, sidebar, ACL e SEO; i test browser verificano struttura responsive, chrome, tastiera, focus e fallback senza JS. Il registro COLLAUDO conserva i dieci scenari BASE-T01–T10 per il confronto visuale sul sito, incluse ricerca, offline ed errori. Nessuna dichiarazione di pixel-perfect o collaudo manuale già effettuato.

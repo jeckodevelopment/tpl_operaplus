@@ -87,6 +87,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 8A — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. REG-01/02/03 tutti OK dichiarati, nessuna nota. 83/95 OK, 12 non eseguiti, nessun KO noto; sessione 8: 3/10. Evidenze tecniche complementari della RC12: workflow qualità 45908193421, lifecycle 45908193420, entrambi positivi. La matrice nativa usa il commit Extensions 1.0.2 precedente all'ultimo commit di test del plugin; non confondere CI con esiti manuali. Budget asset rispettati (template.css 77434/78000 byte, magazine.css 39938/41000, template.js 11404/12000); CWV reali e anteprima social sullo staging restano da verificare. Passaggio a lotto 8B SEO-01/PERF-01/REG-06. Nessuna approvazione stabile implicita.
 
+**Lotto 8B — 27 novembre 2026:** RC12 / Extensions 1.0.2. SEO-01 e REG-06 OK; PERF-01 KO. Lighthouse dichiarato: Performance 51, Accessibility 98, Best Practices 100, SEO 100; FCP 1,1 s, LCP 10,7 s, TBT 0 ms, CLS 0,906, Speed Index 1,1 s. Audit LCP successivamente fornito: TTFB 260 ms, resource load delay 20 ms, resource load duration 110 ms, element render delay 120 ms (somma 510 ms, non riconciliata con 10,7 s). URL, viewport, elemento LCP e attribuzione shift non forniti. [Issue #67](https://github.com/jeckodevelopment/tpl_operaplus/issues/67). 85/95 OK, 1 KO, 9 non eseguiti. RC13: correzione circoscritta a menu mobile prima dell'inizializzazione; nessuna modifica speculativa priorità immagini. Ripetere Lighthouse stessa pagina e profilo, registrare LCP element e layout shift culprits. Nessuna modifica Extensions.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

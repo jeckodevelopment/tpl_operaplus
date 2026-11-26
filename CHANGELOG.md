@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.13] — 2026-11-27 (stabilità del rendering)
+
+- Evita la visualizzazione transitoria del menu mobile esteso nei browser con supporto alla media query scripting; preserva la navigazione senza JS. Nessuna variazione grafica intenzionale dopo l'inizializzazione. Issue #67: misurazione Lighthouse e attribuzione CLS/LCP sullo staging ancora necessarie.
+
 ## [2.0.0-rc.12] — 2026-11-26 (ricollaudo grafico 7B)
 
 - Breadcrumb dopo titolo e sottotitolo, quando presenti. Byline Magazine esplicita con autore, data senza prefissi e tempo di lettura, separatori e filetto; rispetto delle opzioni Joomla e fallback nativo Standard. Archivio, longform e scheda spettacolo invariati.

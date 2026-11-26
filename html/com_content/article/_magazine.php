@@ -21,10 +21,18 @@ try {
     $opEvent = $this->item->event;
     $opAfterTitle = $opEvent->afterDisplayTitle ?? '';
     $opArticleText = $this->item->text;
+    $opOriginalMinutes = $this->item->opMagazineReadingMinutes ?? null;
+    $opMinutes = 0;
     if ($this->item->params->get('access-view') && $opStyle->get('magazineReadingTime', 1)) {
         $opMinutes = opMagazineReadingMinutes((string) ($this->item->text ?? ''), (int) $opStyle->get('magazineReadingSpeed', 200));
         if ($opMinutes > 0) {
-            $opEvent->afterDisplayTitle = $opAfterTitle . '<p class="op-mag-reading-time">' . htmlspecialchars(Text::plural('TPL_OPERAPLUS_MAG_READING_MINUTES', $opMinutes), ENT_QUOTES, 'UTF-8') . '</p>';
+            $p = $this->item->params;
+            $hasInfo = $p->get('show_modify_date') || $p->get('show_publish_date') || $p->get('show_create_date') || $p->get('show_hits') || $p->get('show_category') || $p->get('show_parent_category') || $p->get('show_author') || (\Joomla\CMS\Language\Associations::isEnabled() && $p->get('show_associations'));
+            if ($hasInfo) {
+                $this->item->opMagazineReadingMinutes = $opMinutes;
+            } else {
+                $opEvent->afterDisplayTitle = $opAfterTitle . '<p class="op-mag-reading-time">' . htmlspecialchars(Text::plural('TPL_OPERAPLUS_MAG_READING_MINUTES', $opMinutes), ENT_QUOTES, 'UTF-8') . '</p>';
+            }
         }
     }
     if ($opMode === 'review' && $this->item->params->get('access-view')) {
@@ -40,9 +48,8 @@ try {
                 $panel .= $name === 'date' ? '<time datetime="' . $e($value) . '">' . $e($value) . '</time>' : nl2br($e($value), false);
                 $panel .= '</dd>';
             }
-            // Joomla renders full_image before com-content-article__body.
-            // Insert only into the authorised review body, leaving native plugin events intact.
-            $this->item->text = $panel . '</dl></section>' . $opArticleText;
+            // Append to the authorised body, before native after-content events and related modules.
+            $this->item->text = $opArticleText . $panel . '</dl></section>';
         }
     }
     require_once __DIR__ . '/../../magazine/context.php';
@@ -64,6 +71,8 @@ try {
     } finally {
         $opEvent->afterDisplayTitle = $opAfterTitle;
         $this->item->text = $opArticleText;
+        if ($opOriginalMinutes === null) { unset($this->item->opMagazineReadingMinutes); }
+        else { $this->item->opMagazineReadingMinutes = $opOriginalMinutes; }
         $this->params = $opOriginalViewParams;
         $this->item->params = $opOriginalItemParams;
     }

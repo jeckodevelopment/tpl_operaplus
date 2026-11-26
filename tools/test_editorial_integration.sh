@@ -236,9 +236,9 @@ class Order(HTMLParser):
     def handle_data(self, data):
         if 'CI public body' in data: self.order.append('body')
 p=Order(); p.feed(open(sys.argv[1]).read())
-assert p.order.count('panel')==1 and 'image' in p.order and 'body' in p.order and p.order.index('image')<p.order.index('panel')<p.order.index('body'),p.order
+assert p.order.count('panel')==1 and 'image' in p.order and 'body' in p.order and p.order.index('image')<p.order.index('body')<p.order.index('panel'),p.order
 PY
-# Without a full image the panel still precedes the text, and empty values omit it.
+# Without a full image the panel still follows the text, and empty values omit it.
 db "UPDATE ci_content SET images=JSON_REMOVE(images,'$.image_fulltext') WHERE id=$article;"
 curl -fsSL "$reviewurl" > "$page"
 contains 'CI performance venue'
@@ -247,7 +247,7 @@ db "DELETE FROM ci_fields_values WHERE field_id=$reviewfield; DELETE FROM ci_fie
 curl -fsSL "$reviewurl" > "$page"
 absent 'class="op-mag-review"'
 contains 'CI public body'
-echo 'Native Magazine review: cover before fact sheet before article body; empty field omission passed.'
+echo 'Native Magazine review: cover before article body before fact sheet; empty field omission passed.'
 
 # RC10: actual menu heading and inherited Itemid isolation.
 db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-list&id=$catid',params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI editorial heading','$.op_masthead_image','images/menu-banner.jpg','$.op_masthead_subtitle','CI menu subtitle','$.op_masthead_height','normal') WHERE id=$category_menu;"
@@ -276,6 +276,55 @@ contains 'CI editorial review heading'
 contains 'CI SEO article'
 contains 'CI public body'
 echo 'Native menu heading: direct category/article, per-menu fields, fallback, off and inherited Itemid passed.'
+
+# RC11: real native breadcrumb, reading time in metadata, archive filters and thumbnails.
+db "INSERT INTO ci_modules (title,position,published,module,access,showtitle,params,client_id,language) VALUES ('CI breadcrumb','breadcrumb',1,'mod_breadcrumbs',1,0,JSON_OBJECT('showHere',0,'showHome',1,'showLast',1,'cache',0),0,'*'); INSERT INTO ci_modules_menu (moduleid,menuid) VALUES (LAST_INSERT_ID(),$category_menu);"
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',0,'$.show_author',1,'$.show_publish_date',1,'$.info_block_position',0) WHERE id=$category_menu; UPDATE ci_content SET attribs=JSON_SET(attribs,'$.show_author',1,'$.show_publish_date',1,'$.info_block_position',0) WHERE id=$article;"
+curl -fsSL "$reviewurl" > "$page"
+contains 'op-mag-masthead--breadcrumb-only'
+contains 'op-mag-masthead__breadcrumb'
+contains 'images/fallback-banner.jpg'
+contains 'mod-breadcrumbs'
+contains 'op-mag-reading-time'
+python3 - "$page" <<'PY'
+import re,sys
+s=open(sys.argv[1]).read()
+assert re.search(r'<dl class="article-info[^"]*"[^>]*>[\s\S]*?<dd class="op-mag-reading-time">',s), 'Reading time not integrated in native metadata'
+assert s.count('class="op-mag-reading-time"')==1
+assert s.index('op-mag-masthead__breadcrumb') < s.index('id="main-content"')
+PY
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI combined heading') WHERE id=$category_menu;"
+curl -fsSL "$reviewurl" > "$page"
+contains 'op-mag-masthead--internal'
+contains 'op-mag-masthead__breadcrumb'
+absent 'op-mag-masthead--breadcrumb-only'
+db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title='CI breadcrumb'); DELETE FROM ci_modules WHERE title='CI breadcrumb';"
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',0) WHERE id=$category_menu;"
+curl -fsSL "$reviewurl" > "$page"
+absent 'op-mag-masthead--breadcrumb-only'
+# Archive fixtures are separate from published articles; retain native filtering and ACL.
+for kind in pictured plain restricted; do
+  access=1; img="{}"
+  if [[ "$kind" == pictured ]]; then img='{"image_intro":"images/archive-thumb.jpg"}'; fi
+  if [[ "$kind" == restricted ]]; then access=2; img='{"image_intro":"images/private-archive.jpg"}'; fi
+  db "INSERT INTO ci_content (title,alias,introtext,\`fulltext\`,state,catid,created,created_by,modified,publish_up,images,urls,attribs,metadesc,access,metadata,language) VALUES ('CI archived $kind','ci-archive-$kind','<p>CI archive intro</p>','',2,$catid,UTC_TIMESTAMP(),$author,UTC_TIMESTAMP(),UTC_TIMESTAMP(),'$img','{}','{}','',$access,'{}','*');"
+done
+db "UPDATE ci_menu SET link='index.php?option=com_content&view=archive&layout=magazine-archive',params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI archive heading','$.show_category',1,'$.show_publish_date',1,'$.show_intro',1,'$.show_noauth',0,'$.filter_field','title','$.link_titles',1,'$.display_num',10) WHERE id=$category_menu;"
+archiveurl="$url/index.php?option=com_content&view=archive&layout=magazine-archive&Itemid=$category_menu"
+curl -fsSL "$archiveurl" > "$page"
+contains 'op-mag-archive__item--image'
+contains 'images/archive-thumb.jpg'
+contains 'CI archived pictured'
+contains 'CI archived plain'
+contains 'op-mag-category-info'
+contains 'com-content-archive__filters'
+absent 'images/private-archive.jpg'
+absent 'CI archived restricted'
+curl -fsSL "$archiveurl&filter-search=pictured" > "$page"
+contains 'CI archived pictured'
+absent 'CI archived plain'
+db "DELETE FROM ci_content WHERE alias IN ('ci-archive-pictured','ci-archive-plain','ci-archive-restricted');"
+echo 'Native RC11 breadcrumb, metadata byline, archive images and filter passed.'
 db "DELETE FROM ci_menu WHERE id=$category_menu; UPDATE ci_extensions SET enabled=$sef_enabled WHERE type='plugin' AND folder='system' AND element='sef';"
 echo 'Magazine category intro toggle, metadata and pagination passed.'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"

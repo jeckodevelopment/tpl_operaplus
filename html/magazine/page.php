@@ -35,7 +35,7 @@ $magBottom = $position('main-bottom');
 $magTitle = (string) $this->params->get('magazineTitle', 'Magazine');
 $magSubtitle = (string) $this->params->get('magazineSubtitle', '');
 $magBanner = $assetUrl($this->params->get('magazineBanner', ''));
-$magInternal = !$magazineLanding ? \Joomla\CMS\Factory::getApplication()->get('operaplus.menuMasthead', null) : null;
+$magInternal = !$magazineLanding ? ($app ?? null)?->get('operaplus.menuMasthead', null) : null;
 if ($magInternal) {
     $magTitle = $magInternal['title'];
     $magSubtitle = $magInternal['subtitle'];

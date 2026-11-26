@@ -9,7 +9,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Pagina composita; precedenza alla griglia 8+4 richiesta.
 - Criteri: Asse verticale 8+4 per tutte le righe; masthead teatrale; copertina con overlay e testo bianco leggibile; 3 notizie compatte; sezioni e titoli configurabili; sidebar allineata; CTA e Atlas coerenti.
 - Requisiti/test correlati: HOME-01–05; MOD-01–12.
-- Stato del riferimento: `recuperato`; approvazione definitiva da registrare; collaudo manuale da eseguire.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026 e confronto staging RC9 OK. REG-04 generale ancora aperto.
 
 ## UX-02 — Categoria elenco
 
@@ -18,7 +18,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: R10 e R08 prevalgono sulle proporzioni diseguali di R04.
 - Criteri: Miniature uniformi, prima con fondo facoltativo senza ingrandimento; categoria, titolo, estratto, teatro/città/data ove disponibili; paginazione nativa e sidebar opzionale.
 - Requisiti/test correlati: MAG-03; BASE-T02.
-- Stato del riferimento: `recuperato`; approvazione definitiva da registrare; collaudo manuale da eseguire.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026 e confronto staging RC9 OK. REG-04 generale ancora aperto.
 
 ## UX-03 — Categoria griglia
 
@@ -27,8 +27,8 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Riquadro parziale, non nuova approvazione.
 - Criteri: Schede uniformi, colonne configurabili e responsive, metadati nativi; eventuale primo fondo non cambia dimensioni; non introdurre filtri non previsti da Joomla.
 - Requisiti/test correlati: MAG-02; CFG-02.
-- Proposta di completamento: [UX-03 HTML](boards/UX-03.html), revisione 01; non ancora approvata.
-- Stato del riferimento: `parziale`; approvazione definitiva da registrare; collaudo manuale da eseguire.
+- Proposta di completamento: [UX-03 HTML](boards/UX-03.html), revisione 01; approvata il 26/11/2026.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026 e confronto staging RC9 OK. REG-04 generale ancora aperto.
 
 ## UX-04 — Articolo
 
@@ -74,8 +74,8 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Riquadro parziale.
 - Criteri: Copertina tematica, titolo e descrizione, raccolta coerente di articoli; nessun contenuto fisso; schede uniformi.
 - Requisiti/test correlati: MAG-05.
-- Proposta di completamento: [UX-08 HTML](boards/UX-08.html), revisione 01; non ancora approvata.
-- Stato del riferimento: `parziale`; approvazione definitiva da registrare; collaudo manuale da eseguire.
+- Proposta di completamento: [UX-08 HTML](boards/UX-08.html), revisione 01; approvata il 26/11/2026.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026 e confronto staging RC9 OK. REG-04 generale ancora aperto.
 
 ## UX-09 — Archivio
 

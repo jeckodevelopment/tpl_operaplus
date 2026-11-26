@@ -24,7 +24,7 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "MAG-06","MAG","Article","Titolo, metadati, immagini, crediti facoltativi","3","completato","in_corso","ART-01;REG-03"
 "MAG-07","MAG","Longform","Lettura estesa e indice ove disponibile","3","completato","superato","ART-03"
 "MAG-08","MAG","Interview","Stili D/R accessibili e citazioni","3","completato","in_corso","ART-04;INT-06"
-"MAG-09","MAG","Review","Scheda spettacolo con campi facoltativi","3","completato","in_corso","ART-05;REV-01;REV-02;REV-03;REV-04"
+"MAG-09","MAG","Review","Scheda spettacolo con campi facoltativi","3","completato","superato","ART-05;REV-01;REV-02;REV-03;REV-04"
 "MOD-01","MOD","Featured","magazine_cover e magazine_sidebar; overlay leggibile e selezioni native","3","completato","superato","HOME-01;HOME-02;MOD-06;MOD-07;MOD-08;MOD-10"
 "MOD-02","MOD","Carousel","Controlli accessibili, nessun autoplay obbligatorio","3","completato","in_corso","MOD-11;REG-06"
 "MOD-03","MOD","Compact","Elenco compatto riutilizzabile","3","completato","superato","HOME-02;MOD-02;MOD-03;MOD-06"

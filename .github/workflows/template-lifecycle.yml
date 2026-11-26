@@ -22,7 +22,7 @@ jobs:
             checksum_tool: sha256sum
           - joomla: '6.2.1'
             php: '8.5.13'
-            extensions_ref: 31069fce95a261f4065255ab7c73b6886cd69a74
+            extensions_ref: 5b9ec833957be6a48e66db2f959faaa5a266f323
             checksum: 7dc3d9adfef1816c11cf10fc5ec26abd33fa9779
             checksum_tool: sha1sum
     services:

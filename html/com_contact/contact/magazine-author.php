@@ -24,6 +24,8 @@ $contact = $this->item;
 if (!$contact->params->get('access-view')) {
     throw new \RuntimeException(Text::_('JERROR_ALERTNOAUTHOR'), 403);
 }
+require_once __DIR__ . '/../../magazine/context.php';
+$opMasthead = opMagazineRegisterMasthead($app);
 $e = static fn ($v): string => htmlspecialchars((string) $v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 // Resolve the explicit option from the actual contact menu. Inherited values
 // use Joomla's merged contact parameters, not another component's settings.
@@ -69,7 +71,7 @@ if ((int) $contact->user_id > 0 && $showArticles) {
         <?php endif; ?>
         <div class="op-mag-author__bio">
             <p class="op-mag-card__category"><?php echo $e(Text::_('TPL_OPERAPLUS_MAG_AUTHOR_LABEL')); ?></p>
-            <h1><?php echo $e($contact->name); ?></h1>
+            <?php if (!$opMasthead) : ?><h1><?php echo $e($contact->name); ?></h1><?php elseif ($opMasthead['title'] !== trim((string) $contact->name)) : ?><h2><?php echo $e($contact->name); ?></h2><?php endif; ?>
             <?php if ($contact->params->get('show_position') && $contact->con_position) : ?><p class="op-mag-author__role"><?php echo $e($contact->con_position); ?></p><?php endif; ?>
             <?php if ($contact->params->get('show_misc') && $contact->misc) : ?><div><?php echo $contact->misc; ?></div><?php endif; ?>
         </div>

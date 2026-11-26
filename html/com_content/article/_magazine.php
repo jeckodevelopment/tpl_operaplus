@@ -45,12 +45,27 @@ try {
             $this->item->text = $panel . '</dl></section>' . $opArticleText;
         }
     }
-    echo '<div class="op-mag-article op-mag-article--' . $opMode . '">';
+    require_once __DIR__ . '/../../magazine/context.php';
+    $opMasthead = opMagazineRegisterMasthead(Factory::getApplication());
+    $opOriginalViewParams = $this->params;
+    $opOriginalItemParams = $this->item->params;
+    if ($opMasthead) {
+        $this->params = clone $this->params;
+        $this->params->set('show_page_heading', 1);
+        $this->params->set('page_heading', $opMasthead['title']);
+        if (trim((string) $this->item->title) === $opMasthead['title']) {
+            $this->item->params = clone $this->item->params;
+            $this->item->params->set('show_title', 0);
+        }
+    }
+    echo '<div class="op-mag-article op-mag-article--' . $opMode . ($opMasthead ? ' op-mag-has-masthead' : '') . '">';
     try {
         require JPATH_SITE . '/components/com_content/tmpl/article/default.php';
     } finally {
         $opEvent->afterDisplayTitle = $opAfterTitle;
         $this->item->text = $opArticleText;
+        $this->params = $opOriginalViewParams;
+        $this->item->params = $opOriginalItemParams;
     }
     echo '</div>';
 } finally {

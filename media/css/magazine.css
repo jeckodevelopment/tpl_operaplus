@@ -288,3 +288,11 @@ body.operaplus.op-magazine .op-mag-article--review .fields-container .field-entr
 body.operaplus.op-magazine .op-mag-category .blog-item .fields-container>.field-entry{display:block;list-style:none;margin:0;padding:0;font:400 13px/1.5 Manrope,system-ui,sans-serif;color:var(--mag-ink)!important;overflow-wrap:anywhere;min-width:0;max-width:100%}
 .op-magazine .op-mag-category .blog-item .fields-container>.field-entry .field-label{font-weight:600;color:var(--mag-muted)}
 .op-magazine .op-mag-category .blog-item .fields-container>.field-entry .field-value{color:var(--mag-ink)}
+
+/* Native page heading is presented once in the internal Magazine masthead. */
+.op-magazine .op-mag-has-masthead>.com-content-category-blog>.page-header:has(>h1),
+.op-magazine .op-mag-has-masthead>.com-content-article>.page-header:has(>h1),
+.op-magazine .op-mag-has-masthead>.com-content-archive>.page-header:has(>h1){display:none}
+.op-magazine .op-mag-masthead--compact .op-mag-masthead__body{padding-block:16px 19px}
+.op-magazine .op-mag-masthead--compact h1{font-size:clamp(29px,3.3vw,46px)!important}
+.op-magazine .op-mag-masthead--compact p{font-size:clamp(15px,1.5vw,19px)}

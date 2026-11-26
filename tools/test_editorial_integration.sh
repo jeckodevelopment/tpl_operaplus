@@ -157,6 +157,61 @@ for layout in grid list dossier; do
   curl -fsSL "$url/index.php?option=com_content&view=category&layout=magazine-$layout&id=$catid&Itemid=$category_menu" > "$page"
   contains 'op-mag-category-intro'
 done
+
+# RC7: real native contact menu, associated user, author identity and ACL.
+contactcat="$(db "SELECT id FROM ci_categories WHERE extension='com_contact' AND published=1 AND access=1 LIMIT 1")"
+contactcomponent="$(db "SELECT extension_id FROM ci_extensions WHERE type='component' AND element='com_contact'")"
+db "INSERT INTO ci_contact_details (name,alias,con_position,misc,email_to,published,params,user_id,catid,access,language,created,modified,metadesc,metadata) VALUES ('CI author profile','ci-author-profile','CI editor','CI public biography','ci-private@example.invalid',1,JSON_OBJECT('show_articles',0),$author,$contactcat,1,'*',UTC_TIMESTAMP(),UTC_TIMESTAMP(),'','{}');"
+contact="$(db "SELECT id FROM ci_contact_details WHERE alias='ci-author-profile'")"
+db "INSERT INTO ci_menu (menutype,title,alias,path,link,type,published,parent_id,level,component_id,access,img,params,lft,rgt,home,language,client_id,template_style_id) SELECT menutype,'CI author','ci-author','ci-author',CONCAT('index.php?option=com_contact&view=contact&layout=magazine-author&id=',$contact),'component',1,1,1,$contactcomponent,1,'',JSON_OBJECT('show_articles',1,'articles_display_num',5,'show_misc',1,'show_position',1,'show_email',1),1002,1003,0,'*',0,$mid FROM ci_menu WHERE id=$home;"
+authormenu="$(db "SELECT id FROM ci_menu WHERE alias='ci-author' AND client_id=0")"
+# Two existing published articles share the author. Add inaccessible/future/other-ID fixtures.
+for kind in private future expired unpublished foreign; do
+  state=1; access=1; creator="$author"; up="UTC_TIMESTAMP()"; down=NULL
+  case "$kind" in
+    private) access=2;;
+    future) up="DATE_ADD(UTC_TIMESTAMP(), INTERVAL 2 DAY)";;
+    expired) down="DATE_SUB(UTC_TIMESTAMP(), INTERVAL 2 DAY)";;
+    unpublished) state=0;;
+    foreign) creator=0;;
+  esac
+  db "INSERT INTO ci_content (title,alias,introtext,\`fulltext\`,state,catid,created,created_by,created_by_alias,modified,publish_up,publish_down,images,urls,attribs,metadesc,access,metadata,language) VALUES ('CI excluded $kind','ci-author-$kind','CI excluded body','',$state,$catid,UTC_TIMESTAMP(),$creator,'CI author profile',UTC_TIMESTAMP(),$up,$down,'{}','{}','{}','',$access,'{}','*');"
+done
+authorurl="$url/index.php?option=com_contact&view=contact&layout=magazine-author&id=$contact&Itemid=$authormenu"
+curl -fsSL "$authorurl" > "$page"
+contains 'op-mag-author__articles'
+contains 'op-mag-author__article"'
+contains 'CI public biography'
+contains 'CI SEO article'
+contains 'CI related sibling'
+absent 'ci-private@example.invalid'
+for kind in private future expired unpublished foreign; do absent "CI excluded $kind"; done
+# Link must contain the actual article ID, not an empty slug.
+python3 - "$page" "$article" <<'PY'
+from html.parser import HTMLParser
+from urllib.parse import urlparse, parse_qs
+import sys
+class Links(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.href=None; self.matches=[]
+    def handle_starttag(self, tag, attrs):
+        if tag=='a': self.href=dict(attrs).get('href')
+    def handle_data(self, data):
+        if data.strip()=='CI SEO article' and self.href: self.matches.append(self.href)
+    def handle_endtag(self, tag):
+        if tag=='a': self.href=None
+p=Links(); p.feed(open(sys.argv[1]).read())
+assert any(parse_qs(urlparse(link).query).get('id',[''])[0].split(':')[0]==sys.argv[2] or 'ci-seo-article' in link for link in p.matches),p.matches
+PY
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_articles',0) WHERE id=$authormenu;"
+curl -fsSL "$authorurl" > "$page"
+absent 'op-mag-author__articles'
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_articles',1) WHERE id=$authormenu; UPDATE ci_contact_details SET user_id=0 WHERE id=$contact;"
+curl -fsSL "$authorurl" > "$page"
+contains 'op-mag-author__articles'
+absent 'op-mag-author__article"'
+db "DELETE FROM ci_menu WHERE id=$authormenu; DELETE FROM ci_contact_details WHERE id=$contact; DELETE FROM ci_content WHERE alias IN ('ci-author-private','ci-author-future','ci-author-expired','ci-author-unpublished','ci-author-foreign');"
+echo 'Native Magazine author: explicit menu choice, linked identity, publication and ACL, article route and empty states passed.'
 db "DELETE FROM ci_menu WHERE id=$category_menu; UPDATE ci_extensions SET enabled=$sef_enabled WHERE type='plugin' AND folder='system' AND element='sef';"
 echo 'Magazine category intro toggle, metadata and pagination passed.'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"

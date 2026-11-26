@@ -36,6 +36,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 4B — 26 novembre 2026:** RC6, Extensions 1.0.1. ARC-01/02/03 OK, nessuna nota. Sessione 4: 8/11, avanzamento cumulativo 41/95 casi OK; nessun KO residuo noto. Passaggio a lotto 4C AUT-01–03. Approvazione grafica delle tavole distinta dal collaudo funzionale.
 
+**Lotto 4C — 26 novembre 2026:** RC6, Extensions 1.0.1. AUT-01/02/03 KO: grafica profilo corretta, elenco articoli non visibile. [BUG-012, issue #44](https://github.com/jeckodevelopment/tpl_operaplus/issues/44). 41/95 OK, 3 KO, 51 non conclusi. RC7: isolare parametri Contenuti, rispettare scelta esplicita del menu contatto, costruire route da ID/alias; test nativo con contatto, articoli pubblici, riservati, futuri e altro autore, opzione elenco disattivata e utente scollegato. Causa esatta sullo staging non confermata, ricollaudo richiesto.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

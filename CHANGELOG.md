@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.7] — 2026-11-26 (collaudo 4C)
+
+- Scheda autore Magazine: opzione articoli esplicita della voce di menu, recupero tramite modello Contenuti con parametri globali isolati e collegamenti nativi costruiti dall'identità dell'articolo. Conservati filtri autore, ACL, stato, lingua e pubblicazione; profilo grafico invariato. BUG-012 in ricollaudo manuale.
+
 ## [2.0.0-rc.6] — 2026-11-26 (ricollaudo 4A)
 
 - Navigazione precedente/successivo del singolo articolo Magazine: testo bianco su bordeaux, frecce indipendenti dal font delle icone, focus visibile e disposizione responsive; paginazione categorie invariata. Test browser chiaro/scuro, link lunghi, tastiera e viewport mobile. Ricollaudo manuale CAT-04 necessario.

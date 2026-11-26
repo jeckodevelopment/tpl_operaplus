@@ -20,7 +20,7 @@ Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie lateral
 | UX-06 | Recensione | [PNG](extracts/UX-06-recensione.png) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
 | UX-07 | Intervista | [PNG](extracts/UX-07-intervista.png) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
 | UX-08 | Dossier | [PNG ](extracts/UX-08-dossier.png) · [HTML](boards/UX-08.html) | Approvata 26/11/2026; staging RC9 OK |
-| UX-09 | Archivio | [PNG ](extracts/UX-09-archivio.png) · [HTML](boards/UX-09.html) | Approvata 26/11/2026; staging RC10 KO, ricollaudo mirato RC11 |
+| UX-09 | Archivio | [PNG ](extracts/UX-09-archivio.png) · [HTML](boards/UX-09.html) | Approvata 26/11/2026; staging RC11 OK al ricollaudo |
 | UX-10 | Autore | [PNG ](extracts/UX-10-autore.png) · [HTML](boards/UX-10.html) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
 | UX-11 | Homepage mobile | [PNG ](extracts/UX-11-homepage-mobile.png) · [HTML](boards/UX-11.html) | Proposta completa, da approvare |
 | UX-12 | Articolo mobile | [HTML](boards/UX-12.html) | Proposta completa, da approvare |

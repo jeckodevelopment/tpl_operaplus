@@ -85,7 +85,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Criteri: Titolo, ricerca/filtri nativi effettivamente disponibili, elenco con immagine e metadati, paginazione; distinguere archivio nativo da catalogo generale.
 - Requisiti/test correlati: MAG-04.
 - Proposta di completamento: [UX-09 HTML](boards/UX-09.html), revisione 01; approvata il 26/11/2026.
-- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 KO. Ricollaudo mirato RC11 aperto; REG-04 generale ancora aperto.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC11 OK al ricollaudo del 26/11/2026; REG-04 generale ancora aperto.
 
 ## UX-10 — Autore
 

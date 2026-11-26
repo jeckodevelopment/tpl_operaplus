@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.12] — 2026-11-26 (ricollaudo grafico 7B)
+
+- Breadcrumb dopo titolo e sottotitolo, quando presenti. Byline Magazine esplicita con autore, data senza prefissi e tempo di lettura, separatori e filetto; rispetto delle opzioni Joomla e fallback nativo Standard. Archivio, longform e scheda spettacolo invariati.
+
 ## [2.0.0-rc.11] — 2026-11-26 (collaudo grafico 7B)
 
 - Breadcrumb nativo nella fascia sfumata anche senza intestazione; metadati e tempo di lettura in byline editoriale; scheda spettacolo a fine testo; archivio con immagini, lista e filtri coerenti. Longform e Standard invariati. Ricollaudo mirato richiesto, issue #60.

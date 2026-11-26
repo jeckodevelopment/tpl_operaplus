@@ -77,6 +77,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 7B — 26 novembre 2026:** RC10 / Extensions 1.0.2. Tutti i sei riferimenti approvati (incluse proposte HTML UX-05/09/10); UX-04/05/06/07/10 OK, UX-09 KO. Precisazioni successive: breadcrumb in fascia sfumata anche senza intestazione, metadati articolo da allineare, scheda spettacolo a fine testo (supera precedente scelta RC9), archivio difforme; longform attuale accettato. [Issue #60](https://github.com/jeckodevelopment/tpl_operaplus/issues/60). 71/95 OK dichiarati, 1 KO, 23 non eseguiti; ricollaudo mirato RC11 aperto, senza alterare esiti storici. Estensione fascia RC10 confermata.
 
+**Ricollaudo lotto 7B — 26 novembre 2026:** RC11 / Extensions 1.0.2. BUG-017 OK con richiesta ulteriore: breadcrumb sotto titolo/sottotitolo; BUG-018 KO (metadati non conformi); BUG-019, UX-09, REG-LONGFORM, REG-STANDARD OK. Archivio formalmente superato; 72/95 OK dichiarati, 23 non eseguiti, nessun KO di caso originario; rilievo trasversale BUG-018 e rifinitura breadcrumb ancora aperti, REG-04 non eseguito. RC12 sostituisce il markup metadati con byline dedicata, conserva opzioni e posizioni native, sposta il breadcrumb sotto intestazione. [Issue #60](https://github.com/jeckodevelopment/tpl_operaplus/issues/60). Ricollaudo mirato necessario; nessuna nuova versione Extensions.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

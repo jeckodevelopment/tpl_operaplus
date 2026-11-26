@@ -44,6 +44,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 5A — 26 novembre 2026:** RC7 / Extensions 1.0.1. ART-01/02/03 OK, ART-04/05 KO; riscontrato anche difetto collaterale Leggi tutto nella categoria (riaprire verifica CAT-04 mirata senza annullare storico). [BUG-013–015, issue #48](https://github.com/jeckodevelopment/tpl_operaplus/issues/48). 47/95 OK dichiarati, 2 KO, 46 non eseguiti; verifica regressione aggiuntiva Leggi tutto aperta. RC8: CSS circoscritto Magazine, D/R anche nell'editor, campi automatici Joomla distinti dalla scheda strutturata REV-01–04. Precisazione del collaudatore: BUG-015 riguarda soprattutto il campo Teatro nelle viste categoria, reso come elenco puntato non stilizzato. RC8 estende la correzione ai campi automatici delle anteprime (metadati compatti, nessun punto elenco, senza alterare gli elenchi del testo). Ricollaudo ART-04/05, campo Teatro nella categoria, Leggi tutto, controllo longform. Approvazione grafica definitiva distinta.
 
+**Ricollaudo lotto 5A — 26 novembre 2026:** RC8 / Extensions 1.0.1. BUG-013, ART-04, ART-05 e REG-LONGFORM tutti OK, nessuna nota. Confermate le correzioni della PR #49; BUG-013–015 risolti nella configurazione verificata. ART-01/03 già OK su RC7, registrata regressione mirata su RC8; ART-02 non interessato. Lotto 5A 5/5, complessivo 49/95 OK, 46 non eseguiti, nessun KO noto. Approvazione grafica complessiva separata. Passaggio al lotto 5B REV-01–04 su RC8.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

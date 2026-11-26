@@ -46,6 +46,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo lotto 5A — 26 novembre 2026:** RC8 / Extensions 1.0.1. BUG-013, ART-04, ART-05 e REG-LONGFORM tutti OK, nessuna nota. Confermate le correzioni della PR #49; BUG-013–015 risolti nella configurazione verificata. ART-01/03 già OK su RC7, registrata regressione mirata su RC8; ART-02 non interessato. Lotto 5A 5/5, complessivo 49/95 OK, 46 non eseguiti, nessun KO noto. Approvazione grafica complessiva separata. Passaggio al lotto 5B REV-01–04 su RC8.
 
+**Lotto 5B — 26 novembre 2026:** RC8 / Extensions 1.0.1. REV-01/02/03/04 OK dichiarati; nota: scheda spettacolo prima dell'immagine completa. [BUG-016, issue #51](https://github.com/jeckodevelopment/tpl_operaplus/issues/51); RC9 sposta la scheda all'inizio del corpo, dopo la copertina, senza alterare gli eventi nativi. 53/95 casi OK dichiarati, 42 non eseguiti; sessione 5 9/9 funzionale, chiusura grafica mirata sospesa fino al ricollaudo del posizionamento. Approvazione grafica generale separata.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

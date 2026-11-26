@@ -20,6 +20,7 @@ try {
     require_once __DIR__ . '/../../magazine/content.php';
     $opEvent = $this->item->event;
     $opAfterTitle = $opEvent->afterDisplayTitle ?? '';
+    $opArticleText = $this->item->text;
     if ($this->item->params->get('access-view') && $opStyle->get('magazineReadingTime', 1)) {
         $opMinutes = opMagazineReadingMinutes((string) ($this->item->text ?? ''), (int) $opStyle->get('magazineReadingSpeed', 200));
         if ($opMinutes > 0) {
@@ -39,7 +40,9 @@ try {
                 $panel .= $name === 'date' ? '<time datetime="' . $e($value) . '">' . $e($value) . '</time>' : nl2br($e($value), false);
                 $panel .= '</dd>';
             }
-            $opEvent->afterDisplayTitle .= $panel . '</dl></section>';
+            // Joomla renders full_image before com-content-article__body.
+            // Insert only into the authorised review body, leaving native plugin events intact.
+            $this->item->text = $panel . '</dl></section>' . $opArticleText;
         }
     }
     echo '<div class="op-mag-article op-mag-article--' . $opMode . '">';
@@ -47,6 +50,7 @@ try {
         require JPATH_SITE . '/components/com_content/tmpl/article/default.php';
     } finally {
         $opEvent->afterDisplayTitle = $opAfterTitle;
+        $this->item->text = $opArticleText;
     }
     echo '</div>';
 } finally {

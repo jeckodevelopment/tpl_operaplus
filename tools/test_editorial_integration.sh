@@ -213,6 +213,41 @@ contains 'op-mag-author__articles'
 absent 'op-mag-author__article"'
 db "DELETE FROM ci_menu WHERE id=$authormenu; DELETE FROM ci_contact_details WHERE id=$contact; DELETE FROM ci_content WHERE alias IN ('ci-author-private','ci-author-future','ci-author-expired','ci-author-unpublished','ci-author-foreign');"
 echo 'Native Magazine author: explicit menu choice, linked identity, publication and ACL, article route and empty states passed.'
+
+# RC9: real Joomla review fields, image and body ordering.
+db "INSERT INTO ci_fields (context,title,name,label,type,description,state,params,fieldparams,language,created_time,modified_time,access) VALUES ('com_content.article','CI performance theatre','review-theatre','Theatre','text','',1,JSON_OBJECT('display',0),'{}','*',UTC_TIMESTAMP(),UTC_TIMESTAMP(),1);"
+reviewfield="$(db "SELECT id FROM ci_fields WHERE name='review-theatre' AND context='com_content.article'")"
+db "INSERT INTO ci_fields_categories (field_id,category_id) VALUES ($reviewfield,$catid); INSERT INTO ci_fields_values (field_id,item_id,value) VALUES ($reviewfield,'$article','CI performance venue');"
+db "UPDATE ci_menu SET link='index.php?option=com_content&view=article&layout=magazine-review&id=$article',params=JSON_SET(params,'$.show_title',1) WHERE id=$category_menu;"
+reviewurl="$url/index.php?option=com_content&view=article&layout=magazine-review&id=$article&Itemid=$category_menu"
+curl -fsSL "$reviewurl" > "$page"
+contains 'op-mag-article--review'
+contains 'CI performance venue'
+python3 - "$page" <<'PY'
+import sys
+from html.parser import HTMLParser
+class Order(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.order=[]
+    def handle_starttag(self, tag, attrs):
+        a=dict(attrs)
+        if tag=='img' and 'images/article.jpg' in a.get('src',''): self.order.append('image')
+        if tag=='section' and 'op-mag-review' in a.get('class','').split(): self.order.append('panel')
+    def handle_data(self, data):
+        if 'CI public body' in data: self.order.append('body')
+p=Order(); p.feed(open(sys.argv[1]).read())
+assert p.order.count('panel')==1 and 'image' in p.order and 'body' in p.order and p.order.index('image')<p.order.index('panel')<p.order.index('body'),p.order
+PY
+# Without a full image the panel still precedes the text, and empty values omit it.
+db "UPDATE ci_content SET images=JSON_REMOVE(images,'$.image_fulltext') WHERE id=$article;"
+curl -fsSL "$reviewurl" > "$page"
+contains 'CI performance venue'
+contains 'CI public body'
+db "DELETE FROM ci_fields_values WHERE field_id=$reviewfield; DELETE FROM ci_fields_categories WHERE field_id=$reviewfield; DELETE FROM ci_fields WHERE id=$reviewfield; UPDATE ci_content SET images=JSON_SET(images,'$.image_fulltext','images/article.jpg') WHERE id=$article;"
+curl -fsSL "$reviewurl" > "$page"
+absent 'class="op-mag-review"'
+contains 'CI public body'
+echo 'Native Magazine review: cover before fact sheet before article body; empty field omission passed.'
 db "DELETE FROM ci_menu WHERE id=$category_menu; UPDATE ci_extensions SET enabled=$sef_enabled WHERE type='plugin' AND folder='system' AND element='sef';"
 echo 'Magazine category intro toggle, metadata and pagination passed.'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"

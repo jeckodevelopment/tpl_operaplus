@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.9] — 2026-11-26 (collaudo 5B)
+
+- Recensione Magazine: scheda spettacolo dopo l'immagine completa, prima del testo. In assenza di immagine resta all'inizio del corpo. Eventi Joomla, testo originale, tempo di lettura e controlli ACL preservati. BUG-016: conferma grafica mirata richiesta.
+
 ## [2.0.0-rc.8] — 2026-11-26 (collaudo 5A)
 
 - Magazine: contrasto Leggi tutto nativo, marcatori editoriali D/R e gerarchia dell'intervista anche nell'editor, campi automatici Joomla della recensione con etichette e valori leggibili; nelle categorie, Teatro e altri campi diventano metadati compatti senza punti elenco. Nessun cambiamento alla navigazione longform, ai campi strutturati o allo stile Standard. BUG-013–015: ricollaudo manuale richiesto.

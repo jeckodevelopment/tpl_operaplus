@@ -37,7 +37,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Tavola singola R01 con revisioni successive ai box.
 - Criteri: Gerarchia categoria, titolo, sommario, autore/data/tempo; immagine ampia con credito facoltativo; corpo leggibile, correlati opzionali; nessun elemento fittizio obbligatorio.
 - Requisiti/test correlati: MAG-06; SEO-01.
-- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo mirato RC11 aperto; REG-04 generale ancora aperto.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo differenziale RC11/RC12 OK, issue #60 risolta; REG-04 generale ancora aperto.
 
 ## UX-05 — Longform
 
@@ -47,7 +47,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Criteri: Misura di lettura, titoli serif, citazioni, immagini ampie; indice solo se disponibile; sidebar correlati facoltativa.
 - Requisiti/test correlati: MAG-07.
 - Proposta di completamento: [UX-05 HTML](boards/UX-05.html), revisione 01; approvata il 26/11/2026.
-- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo mirato RC11 aperto; REG-04 generale ancora aperto.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo differenziale RC11/RC12 OK, issue #60 risolta; REG-04 generale ancora aperto.
 
 ## UX-06 — Recensione
 
@@ -56,7 +56,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Tavola composita.
 - Criteri: Titolo, sommario, autore, data e tempo, copertina, testo, scheda spettacolo facoltativa con dati disponibili; box Atlas coerente; dati recita distinti dalla pubblicazione.
 - Requisiti/test correlati: MAG-09; ATLAS-01–04.
-- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo mirato RC11 aperto; REG-04 generale ancora aperto.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo differenziale RC11/RC12 OK, issue #60 risolta; REG-04 generale ancora aperto.
 
 ## UX-07 — Intervista
 
@@ -65,7 +65,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: R10 prevale; R03 riferimento esteso.
 - Criteri: Ritratto/immagine ampia, domande/risposte D/R semanticamente leggibili; citazione evidenziata; correlati orizzontali in fondo, sidebar se configurata.
 - Requisiti/test correlati: MAG-08; EDIT-01–02.
-- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo mirato RC11 aperto; REG-04 generale ancora aperto.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo differenziale RC11/RC12 OK, issue #60 risolta; REG-04 generale ancora aperto.
 
 ## UX-08 — Dossier
 
@@ -95,7 +95,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Criteri: Ritratto opzionale, nome e biografia pubblica, elenco dei soli articoli autorizzati; niente dati privati; layout responsive.
 - Requisiti/test correlati: MAG-11.
 - Proposta di completamento: [UX-10 HTML](boards/UX-10.html), revisione 01; approvata il 26/11/2026.
-- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo mirato RC11 aperto; REG-04 generale ancora aperto.
+- Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026, staging RC10 OK. Ricollaudo differenziale RC11/RC12 OK, issue #60 risolta; REG-04 generale ancora aperto.
 
 ## UX-11 — Homepage mobile
 

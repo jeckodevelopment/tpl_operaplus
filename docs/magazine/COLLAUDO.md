@@ -1,6 +1,6 @@
 # Piano e registro di collaudo — Opera+ Magazine
 
-**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 05 — 25 novembre 2026. Baseline operativa: template 2.0.0-rc.4 (build PR #32 `1b324324c7e5b97c3175638de0e81d8c81fe0798`, merge `bacfce3e433b2393fdec27f00c284b397451c6d3`), Extensions 1.0.1 (build PR #15 `0ddc3c92d75ebfda070cd041f0d2b0d0aa35f981`, merge `31069fce95a261f4065255ab7c73b6886cd69a74`). Le indicazioni delle versioni precedenti sono storiche.
+**Fonte ufficiale:** questo file Markdown versionato, mantenuto con ogni PR. Sostituisce il Word della revisione 01; nessun documento parallelo. Revisione 06 — 26 novembre 2026. Baseline operativa: template 2.0.0-rc.10 (build PR #58 `2ee2a30a9c664292b75d8a8775d5baee530cf3e4`, merge `4f271f4b1e6f56ef1a698da15ffeb0719cc1105d`), Extensions 1.0.2 (build PR #16 `6d2aaecc63796f6a0510a37d7913f242ea66dfed`, merge `fbb700ce7bbad97e5d82fc81e9afc6f2709620f3`). Le indicazioni delle versioni precedenti sono storiche.
 
 Le CI verificano il comportamento tecnico, non equivalgono all'accettazione manuale o grafica. I collaudi intermedi sono rinviati su richiesta dell'utente. Confermati: installazione Extensions 1.0.0, plugin/campi, box Atlas e CTA, ritratto Verdi senza credito, stile Magazine distinto e correzione menu/login 1.21.2. Ripetere come regressione.
 
@@ -61,6 +61,19 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 **Lotto 7A — 26 novembre 2026:** RC9 / Extensions 1.0.1. UX-01/02/03/08 OK e riferimenti grafici esplicitamente approvati (comprese proposte HTML di completamento UX-03/08). Nota: richiesta di chiarimento sulla fascia sfumata nelle pagine interne; attualmente solo landing per specifica SET-03, non è un KO. Eventuale estensione configurabile da concordare. 66/95 OK, 29 non eseguiti. REG-04 generale ancora aperto; passaggio a lotto 7B.
 
 **Estensione concordata 26/11/2026 — RC10:** fascia interna su intestazione nativa Joomla, titolo personalizzato/fallback menu; plugin amministrativo facoltativo Extensions 1.0.2 per immagine, sottotitolo e altezza. SET-03 conserva il comportamento landing; regressione mirata UX-01/02/03/08 e REG-04: sì/no, immagine personalizzata/fallback, titolo singolo, dettaglio ereditato, Standard, articolo, archivio e autore. Esiti storici conservati; verifica differenziale RC10 richiesta.
+
+**Collaudo aggiuntivo fascia editoriale — 26 novembre 2026:** RC10 / Extensions 1.0.2, staging Joomla 6.2.1 / PHP 8.5.13. Tutti e sei gli esiti dichiarati OK, nessuna nota. Riferimenti: [Template PR #58](https://github.com/jeckodevelopment/tpl_operaplus/pull/58), [Extensions PR #16](https://github.com/jeckodevelopment/operaplus-extensions/pull/16). CI positiva: [template nativo](https://github.com/jeckodevelopment/tpl_operaplus/actions/runs/45904597824), [qualità e pacchetto](https://github.com/jeckodevelopment/tpl_operaplus/actions/runs/45904597816), [plugin e lifecycle](https://github.com/jeckodevelopment/operaplus-extensions/actions/runs/45904433528).
+
+| Verifica aggiuntiva | Esito |
+|---|---|
+| FASCIA-01 — Attivazione/disattivazione nativa | OK |
+| FASCIA-02 — Titolo personalizzato senza duplicazioni | OK |
+| FASCIA-03 — Immagine, sottotitolo e altezza | OK |
+| FASCIA-04 — Homepage invariata | OK |
+| FASCIA-05 — Nessuna fascia ereditata negli articoli | OK |
+| FASCIA-06 — Stile Standard invariato | OK |
+
+Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alterare i 95 casi del CSV. Conferma differenziale limitata alla fascia e alle regressioni dichiarate, non nuova esecuzione integrale dei casi storici. Avanzamento 66/95 OK, 29 non eseguiti, nessun KO noto. Passaggio al lotto 7B UX-04/05/06/07/09/10; REG-04 ancora da completare.
 
 ## Dati della sessione
 

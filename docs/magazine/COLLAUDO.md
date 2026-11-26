@@ -52,6 +52,10 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 6A — 26 novembre 2026:** RC9 / Extensions 1.0.1. INT-02/03/04/08 OK dichiarati, nessuna nota. INT-08: test tecnico isolato aggiunto alla matrice CI (cinque tipi, esclusione stagioni, feed indisponibile con cache valida/assente e cooldown), senza chiamate di rete; chiusura subordinata alla CI. 57/95 OK manuali, 38 non eseguiti. Passaggio al lotto 6B CTA e sidebar.
 
+**Conferma tecnica lotto 6A — 26 novembre 2026:** PR #54 integrata; CI 45897632853, passo Verify isolated Atlas feed resilience positivo su entrambe le combinazioni Joomla, inclusa 6.2.1 / PHP 8.5.13 / Extensions 1.0.1. INT-08 completo; nessun intervento sul feed pubblico.
+
+**Lotto 6B — 26 novembre 2026:** RC9 / Extensions 1.0.1. INT-05/07/09 tutti OK dichiarati, nessuna nota. 60/95 OK, 35 non eseguiti, nessun KO noto. Sessione 6: 7/9; restano INT-01 e INT-06. Approvazione grafica generale separata.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

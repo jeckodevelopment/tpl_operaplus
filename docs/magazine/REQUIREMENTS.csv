@@ -19,7 +19,7 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "MAG-01","MAG","Editorial","Griglia unica 8+4, moduli facoltativi, copertina overlay","3","completato","in_corso","HOME-01;HOME-02;HOME-03;HOME-04;HOME-05;REG-04"
 "MAG-02","MAG","Grid","Colonne configurabili e immagini uniformi","3","completato","superato","CAT-01;CAT-04;CFG-02"
 "MAG-03","MAG","List","Immagini identiche, primo fondo opzionale","3","completato","superato","CAT-02;CFG-02"
-"MAG-04","MAG","Archive","Archivio nativo Joomla: articoli archiviati, ricerca e filtri coerenti con ACL e paginazione","3","completato","non_eseguito","ARC-01;ARC-02;ARC-03"
+"MAG-04","MAG","Archive","Archivio nativo Joomla: articoli archiviati, ricerca e filtri coerenti con ACL e paginazione","3","completato","superato","ARC-01;ARC-02;ARC-03"
 "MAG-05","MAG","Dossier","Raccolta tematica configurabile","3","completato","superato","CAT-03;CAT-04"
 "MAG-06","MAG","Article","Titolo, metadati, immagini, crediti facoltativi","3","completato","non_eseguito","ART-01;REG-03"
 "MAG-07","MAG","Longform","Lettura estesa e indice ove disponibile","3","completato","non_eseguito","ART-03"

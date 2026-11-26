@@ -9,7 +9,7 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "UX-06","UX","Recensione","Tavola UX-06 approvata e versionata; criteri specifici documentati","2","completato","in_corso","UX-06;REG-04"
 "UX-07","UX","Intervista","Tavola UX-07 approvata e versionata; criteri specifici documentati","2","completato","in_corso","UX-07;REG-04"
 "UX-08","UX","Dossier","Tavola UX-08 approvata e versionata; criteri specifici documentati","2","completato","in_corso","UX-08;REG-04"
-"UX-09","UX","Archivio","Tavola UX-09 approvata e versionata; criteri specifici documentati","2","completato","non_superato","UX-09;REG-04"
+"UX-09","UX","Archivio","Tavola UX-09 approvata e versionata; criteri specifici documentati","2","completato","in_corso","UX-09;REG-04"
 "UX-10","UX","Autore","Tavola UX-10 approvata e versionata; criteri specifici documentati","2","completato","in_corso","UX-10;REG-04"
 "UX-11","UX","Homepage mobile","Tavola UX-11 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-11;REG-04"
 "UX-12","UX","Articolo mobile","Tavola UX-12 approvata e versionata; criteri specifici documentati","2","in_corso","non_eseguito","UX-12;REG-04"

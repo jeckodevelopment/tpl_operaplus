@@ -299,20 +299,22 @@ body.operaplus.op-magazine .op-mag-category .blog-item .fields-container>.field-
 
 /* RC11: breadcrumb shares the theatrical masthead, with or without page heading. */
 .op-magazine .op-mag-masthead--breadcrumb-only .op-mag-masthead__body{padding-block:13px}
-body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb{padding:0!important;margin:0 0 12px!important;border:0}
+body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb{padding:0!important;margin:12px 0 0!important;border:0}
 body.operaplus.op-magazine .op-mag-masthead--breadcrumb-only .op-breadcrumb{margin:0!important}
 body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb :is(li,a,span){font:400 15px/1.5 Georgia,serif;color:#fff!important;letter-spacing:0;overflow-wrap:anywhere}
 body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb li+li:before{content:'›';color:#e9c69e!important}
 body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb a:hover{text-decoration:underline}
 body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb a:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.op-magazine .op-mag-article .com-content-article>.article-info,.op-magazine .op-mag-article .com-content-article>.op-mag-reading-time{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 0 14px;margin:8px 0 18px;border-bottom:1px solid var(--mag-rule);font:400 13px/1.55 Manrope,system-ui,sans-serif;color:var(--mag-muted)!important}
-.op-magazine .op-mag-article .article-info :is(dt,dd){margin:0;font:inherit;color:inherit!important}
-.op-magazine .op-mag-article .article-info dt{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
-.op-magazine .op-mag-article .article-info dd+dd:before{content:'·';margin-inline-end:10px;color:var(--mag-accent)}
-.op-magazine .op-mag-article .article-info .createdby{font-weight:600}
-.op-magazine .op-mag-article .article-info a{color:var(--mag-ink)!important;text-decoration:none}
-.op-magazine .op-mag-article .article-info a:hover{text-decoration:underline}
-.op-magazine .op-mag-article .article-info dd.op-mag-reading-time{display:inline-block;padding:0;border:0}
+/* RC12: explicit editorial byline, not restyled Joomla definition list. */
+body.operaplus.op-magazine .op-mag-article .op-mag-article-meta{margin:8px 0 18px}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline,body.operaplus.op-magazine .op-mag-article .op-mag-byline--standalone{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:10px 0 16px;margin:0;border-bottom:1px solid var(--mag-rule);font:400 14px/1.5 Manrope,system-ui,sans-serif!important;color:var(--mag-muted)!important}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline__item{display:inline-flex;align-items:baseline;gap:10px;min-width:0;max-width:100%;overflow-wrap:anywhere}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline__item+.op-mag-byline__item:before{content:'·';color:#b78e63;font-weight:700;flex:none}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline :is(span,time,a){font:inherit;color:inherit!important;margin:0;padding:0;letter-spacing:normal;text-decoration:none}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline .op-mag-byline__author{font-weight:600;color:var(--mag-accent)!important}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline a:hover{text-decoration:underline}
+body.operaplus.op-magazine .op-mag-article .op-mag-byline .op-mag-reading-time{display:inline;font:inherit!important;color:inherit!important}
+
 .op-magazine .op-mag-archive .filter-search{align-items:end;gap:12px;margin-bottom:12px;border:1px solid var(--mag-rule);border-radius:4px}
 .op-magazine .op-mag-archive .filter-search>.mb-2{flex:1 1 100%}
 .op-magazine .op-mag-archive .filter-search input{width:100%}

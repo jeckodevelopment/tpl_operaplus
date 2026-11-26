@@ -46,11 +46,11 @@ if ($magInternal) {
 <header class="op-mag-masthead<?php echo $magInternal ? ' op-mag-masthead--internal op-mag-masthead--' . $magInternal['height'] : (!$magazineLanding ? ' op-mag-masthead--breadcrumb-only' : ''); ?>">
     <?php if ($magBanner !== '') : ?><img class="op-mag-masthead__image" src="<?php echo $e($magBanner); ?>" alt="" fetchpriority="high"><?php endif; ?>
     <div class="op-container op-mag-masthead__body">
-        <?php if ($magBreadcrumb !== '') : ?><div class="op-breadcrumb op-mag-masthead__breadcrumb"><?php echo $magBreadcrumb; ?></div><?php endif; ?>
         <?php if ($magazineLanding || $magInternal) : ?>
         <h1><?php echo $e($magTitle); ?></h1>
         <?php if ($magSubtitle !== '') : ?><p><?php echo $e($magSubtitle); ?></p><?php endif; ?>
         <?php endif; ?>
+        <?php if ($magBreadcrumb !== '') : ?><div class="op-breadcrumb op-mag-masthead__breadcrumb"><?php echo $magBreadcrumb; ?></div><?php endif; ?>
     </div>
 </header>
 <?php endif; ?>

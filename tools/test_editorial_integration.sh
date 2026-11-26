@@ -289,15 +289,23 @@ contains 'op-mag-reading-time'
 python3 - "$page" <<'PY'
 import re,sys
 s=open(sys.argv[1]).read()
-assert re.search(r'<dl class="article-info[^"]*"[^>]*>[\s\S]*?<dd class="op-mag-reading-time">',s), 'Reading time not integrated in native metadata'
+assert re.search(r'<div class="op-mag-byline"[^>]*>[\s\S]*?<span class="op-mag-reading-time">',s), 'Reading time not integrated in editorial metadata'
+byline=s.split('<div class="op-mag-byline"',1)[1].split('</div>',1)[0]
+assert 'op-mag-byline__author' in byline and 'op-mag-byline__date' in byline and '<time datetime=' in byline, byline
+assert 'icon-' not in byline and 'Written by' not in byline and 'Published:' not in byline, byline
 assert s.count('class="op-mag-reading-time"')==1
 assert s.index('op-mag-masthead__breadcrumb') < s.index('id="main-content"')
 PY
-db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI combined heading') WHERE id=$category_menu;"
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI combined heading','$.op_masthead_subtitle','CI combined subtitle') WHERE id=$category_menu;"
 curl -fsSL "$reviewurl" > "$page"
 contains 'op-mag-masthead--internal'
 contains 'op-mag-masthead__breadcrumb'
 absent 'op-mag-masthead--breadcrumb-only'
+python3 - "$page" <<'PY'
+import sys
+s=open(sys.argv[1]).read().split('<header class="op-mag-masthead',1)[1].split('</header>',1)[0]
+assert s.index('<h1>') < s.index('CI combined subtitle') < s.index('op-mag-masthead__breadcrumb'), s
+PY
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title='CI breadcrumb'); DELETE FROM ci_modules WHERE title='CI breadcrumb';"
 db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',0) WHERE id=$category_menu;"
 curl -fsSL "$reviewurl" > "$page"

@@ -22,6 +22,8 @@ try {
     $opAfterTitle = $opEvent->afterDisplayTitle ?? '';
     $opArticleText = $this->item->text;
     $opOriginalMinutes = $this->item->opMagazineReadingMinutes ?? null;
+    $opOriginalByline = $this->item->opMagazineArticleByline ?? null;
+    $this->item->opMagazineArticleByline = true;
     $opMinutes = 0;
     if ($this->item->params->get('access-view') && $opStyle->get('magazineReadingTime', 1)) {
         $opMinutes = opMagazineReadingMinutes((string) ($this->item->text ?? ''), (int) $opStyle->get('magazineReadingSpeed', 200));
@@ -31,7 +33,7 @@ try {
             if ($hasInfo) {
                 $this->item->opMagazineReadingMinutes = $opMinutes;
             } else {
-                $opEvent->afterDisplayTitle = $opAfterTitle . '<p class="op-mag-reading-time">' . htmlspecialchars(Text::plural('TPL_OPERAPLUS_MAG_READING_MINUTES', $opMinutes), ENT_QUOTES, 'UTF-8') . '</p>';
+                $opEvent->afterDisplayTitle = $opAfterTitle . '<p class="op-mag-reading-time op-mag-byline--standalone">' . htmlspecialchars(Text::plural('TPL_OPERAPLUS_MAG_READING_MINUTES', $opMinutes), ENT_QUOTES, 'UTF-8') . '</p>';
             }
         }
     }
@@ -73,6 +75,8 @@ try {
         $this->item->text = $opArticleText;
         if ($opOriginalMinutes === null) { unset($this->item->opMagazineReadingMinutes); }
         else { $this->item->opMagazineReadingMinutes = $opOriginalMinutes; }
+        if ($opOriginalByline === null) { unset($this->item->opMagazineArticleByline); }
+        else { $this->item->opMagazineArticleByline = $opOriginalByline; }
         $this->params = $opOriginalViewParams;
         $this->item->params = $opOriginalItemParams;
     }

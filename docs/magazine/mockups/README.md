@@ -15,13 +15,13 @@ Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie lateral
 | UX-01 | Homepage | [PNG](extracts/UX-01-homepage.png) | Approvata 26/11/2026; staging RC9 OK |
 | UX-02 | Categoria elenco | [PNG](extracts/UX-02-categoria-elenco.png) | Approvata 26/11/2026; staging RC9 OK |
 | UX-03 | Categoria griglia | [PNG ](extracts/UX-03-categoria-griglia.png) · [HTML](boards/UX-03.html) | Approvata 26/11/2026; staging RC9 OK |
-| UX-04 | Articolo | [PNG](extracts/UX-04-articolo.png) | Archiviata, approvazione da registrare |
-| UX-05 | Longform | [PNG ](extracts/UX-05-longform.png) · [HTML](boards/UX-05.html) | Proposta completa, da approvare |
-| UX-06 | Recensione | [PNG](extracts/UX-06-recensione.png) | Archiviata, approvazione da registrare |
-| UX-07 | Intervista | [PNG](extracts/UX-07-intervista.png) | Archiviata, approvazione da registrare |
+| UX-04 | Articolo | [PNG](extracts/UX-04-articolo.png) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
+| UX-05 | Longform | [PNG ](extracts/UX-05-longform.png) · [HTML](boards/UX-05.html) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
+| UX-06 | Recensione | [PNG](extracts/UX-06-recensione.png) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
+| UX-07 | Intervista | [PNG](extracts/UX-07-intervista.png) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
 | UX-08 | Dossier | [PNG ](extracts/UX-08-dossier.png) · [HTML](boards/UX-08.html) | Approvata 26/11/2026; staging RC9 OK |
-| UX-09 | Archivio | [PNG ](extracts/UX-09-archivio.png) · [HTML](boards/UX-09.html) | Proposta completa, da approvare |
-| UX-10 | Autore | [PNG ](extracts/UX-10-autore.png) · [HTML](boards/UX-10.html) | Proposta completa, da approvare |
+| UX-09 | Archivio | [PNG ](extracts/UX-09-archivio.png) · [HTML](boards/UX-09.html) | Approvata 26/11/2026; staging RC10 KO, ricollaudo mirato RC11 |
+| UX-10 | Autore | [PNG ](extracts/UX-10-autore.png) · [HTML](boards/UX-10.html) | Approvata 26/11/2026; staging RC10 OK, ricollaudo mirato RC11 |
 | UX-11 | Homepage mobile | [PNG ](extracts/UX-11-homepage-mobile.png) · [HTML](boards/UX-11.html) | Proposta completa, da approvare |
 | UX-12 | Articolo mobile | [HTML](boards/UX-12.html) | Proposta completa, da approvare |
 | UX-13 | Dark | [HTML](boards/UX-13.html) | Proposta completa, da approvare |
@@ -45,4 +45,4 @@ Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie lateral
 
 [Specifiche e criteri](SPECIFICHE.md) · [Manifest con SHA-256, sorgenti e ritagli](manifest.json) · [Provenienza originali](originals-manifest.json).
 
-13 riferimenti originali archiviati; 8 tavole HTML di completamento predisposte, comprese UX-12 e UX-13 precedentemente mancanti. Tutti i 15 criteri hanno ora un riferimento visivo. 6 riferimenti UX approvati (01/02/03/08/14/15); 9 da approvare. Confronto staging OK per UX-01/02/03/08; REG-04 generale ancora aperto. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.
+13 riferimenti originali archiviati; 8 tavole HTML di completamento predisposte, comprese UX-12 e UX-13 precedentemente mancanti. Tutti i 15 criteri hanno ora un riferimento visivo. 12 riferimenti UX approvati (01–10/14/15); 3 da approvare. Confronto staging OK per UX-01/02/03/08; REG-04 generale ancora aperto. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.

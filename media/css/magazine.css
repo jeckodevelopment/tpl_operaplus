@@ -296,3 +296,34 @@ body.operaplus.op-magazine .op-mag-category .blog-item .fields-container>.field-
 .op-magazine .op-mag-masthead--compact .op-mag-masthead__body{padding-block:16px 19px}
 .op-magazine .op-mag-masthead--compact h1{font-size:clamp(29px,3.3vw,46px)!important}
 .op-magazine .op-mag-masthead--compact p{font-size:clamp(15px,1.5vw,19px)}
+
+/* RC11: breadcrumb shares the theatrical masthead, with or without page heading. */
+.op-magazine .op-mag-masthead--breadcrumb-only .op-mag-masthead__body{padding-block:13px}
+body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb{padding:0!important;margin:0 0 12px!important;border:0}
+body.operaplus.op-magazine .op-mag-masthead--breadcrumb-only .op-breadcrumb{margin:0!important}
+body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb :is(li,a,span){font:400 15px/1.5 Georgia,serif;color:#fff!important;letter-spacing:0;overflow-wrap:anywhere}
+body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb li+li:before{content:'›';color:#e9c69e!important}
+body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb a:hover{text-decoration:underline}
+body.operaplus.op-magazine .op-mag-masthead .op-breadcrumb a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.op-magazine .op-mag-article .com-content-article>.article-info,.op-magazine .op-mag-article .com-content-article>.op-mag-reading-time{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 0 14px;margin:8px 0 18px;border-bottom:1px solid var(--mag-rule);font:400 13px/1.55 Manrope,system-ui,sans-serif;color:var(--mag-muted)!important}
+.op-magazine .op-mag-article .article-info :is(dt,dd){margin:0;font:inherit;color:inherit!important}
+.op-magazine .op-mag-article .article-info dt{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
+.op-magazine .op-mag-article .article-info dd+dd:before{content:'·';margin-inline-end:10px;color:var(--mag-accent)}
+.op-magazine .op-mag-article .article-info .createdby{font-weight:600}
+.op-magazine .op-mag-article .article-info a{color:var(--mag-ink)!important;text-decoration:none}
+.op-magazine .op-mag-article .article-info a:hover{text-decoration:underline}
+.op-magazine .op-mag-article .article-info dd.op-mag-reading-time{display:inline-block;padding:0;border:0}
+.op-magazine .op-mag-archive .filter-search{align-items:end;gap:12px;margin-bottom:12px;border:1px solid var(--mag-rule);border-radius:4px}
+.op-magazine .op-mag-archive .filter-search>.mb-2{flex:1 1 100%}
+.op-magazine .op-mag-archive .filter-search input{width:100%}
+.op-magazine .op-mag-archive .filter-search .btn{background:#632b3a;color:#fff!important;min-height:44px;padding:9px 16px;border:1px solid #632b3a;border-radius:3px}
+.op-magazine .op-mag-archive .filter-search .btn:hover{background:#4e2431}
+.op-magazine .op-mag-archive #archive-items>.op-mag-archive__item{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin:0;padding:18px 0}
+.op-magazine .op-mag-archive #archive-items>.op-mag-archive__item--image{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+.op-magazine .op-mag-archive__image{min-width:0;aspect-ratio:16/10;overflow:hidden;border-radius:3px;background:var(--mag-rule)}
+.op-magazine .op-mag-archive__image :is(figure,a,img){display:block;width:100%;height:100%;margin:0;object-fit:cover}
+.op-magazine .op-mag-archive__copy{min-width:0;overflow-wrap:anywhere}
+.op-magazine .op-mag-archive__copy .page-header{margin:0 0 6px}
+.op-magazine .op-mag-archive #archive-items h2{font-size:clamp(21px,2.4vw,28px)!important;margin:0 0 8px!important}
+.op-magazine .op-mag-archive__copy .intro{font:400 15px/1.6 Manrope,system-ui,sans-serif;color:var(--mag-muted)}
+@media(max-width:480px){.op-magazine .op-mag-archive #archive-items>.op-mag-archive__item--image{grid-template-columns:minmax(0,1fr)}.op-magazine .op-mag-archive .filter-search>*{min-width:0;max-width:100%}}

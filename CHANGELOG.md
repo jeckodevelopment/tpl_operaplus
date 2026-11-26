@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.11] — 2026-11-26 (collaudo grafico 7B)
+
+- Breadcrumb nativo nella fascia sfumata anche senza intestazione; metadati e tempo di lettura in byline editoriale; scheda spettacolo a fine testo; archivio con immagini, lista e filtri coerenti. Longform e Standard invariati. Ricollaudo mirato richiesto, issue #60.
+
 ## [2.0.0-rc.10] — 2026-11-26 (estensione fascia editoriale)
 
 - Pagine editoriali interne: intestazione nativa Joomla come fascia sfumata. Titolo nativo, immagine generale o personalizzata, sottotitolo e altezza via plugin facoltativo Extensions 1.0.2. Homepage, Standard, corsi e Itemid ereditati invariati.

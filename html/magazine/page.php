@@ -42,18 +42,20 @@ if ($magInternal) {
     $magBanner = $assetUrl($magInternal['image']) ?: $magBanner;
 }
 ?>
-<?php if ($magazineLanding || $magInternal) : ?>
-<header class="op-mag-masthead<?php echo $magInternal ? ' op-mag-masthead--internal op-mag-masthead--' . $magInternal['height'] : ''; ?>">
+<?php if ($magazineLanding || $magInternal || $magBreadcrumb !== '') : ?>
+<header class="op-mag-masthead<?php echo $magInternal ? ' op-mag-masthead--internal op-mag-masthead--' . $magInternal['height'] : (!$magazineLanding ? ' op-mag-masthead--breadcrumb-only' : ''); ?>">
     <?php if ($magBanner !== '') : ?><img class="op-mag-masthead__image" src="<?php echo $e($magBanner); ?>" alt="" fetchpriority="high"><?php endif; ?>
     <div class="op-container op-mag-masthead__body">
+        <?php if ($magBreadcrumb !== '') : ?><div class="op-breadcrumb op-mag-masthead__breadcrumb"><?php echo $magBreadcrumb; ?></div><?php endif; ?>
+        <?php if ($magazineLanding || $magInternal) : ?>
         <h1><?php echo $e($magTitle); ?></h1>
         <?php if ($magSubtitle !== '') : ?><p><?php echo $e($magSubtitle); ?></p><?php endif; ?>
+        <?php endif; ?>
     </div>
 </header>
 <?php endif; ?>
 <main id="main-content" class="op-mag-main"><div class="op-container">
     <jdoc:include type="message" />
-    <?php if ($magBreadcrumb !== '') : ?><div class="op-breadcrumb"><?php echo $magBreadcrumb; ?></div><?php endif; ?>
     <?php echo $magTop; ?>
     <?php foreach ($magRows as [$mainPosition, $mainHtml, $asideHtml]) : ?>
         <div class="op-mag-row<?php echo $magHasAside ? '' : ' op-mag-row--full'; ?>" data-magazine-section="<?php echo $e($mainPosition); ?>">

@@ -126,3 +126,5 @@ Nel solo stile Magazine, Aspetto: Proporzioni immagini (16:10 predefinito, 16:9,
 ### Fascia editoriale delle pagine interne (RC10)
 
 Nella voce di menu editoriale: Visualizzazione pagina → Mostra intestazione pagina = Sì; Intestazione pagina personalizzata oppure titolo menu. La fascia sostituisce l'intestazione nativa visibile e usa l'immagine generale dello stile. Il plugin Sistema – Opera+ Fascia editoriale (Extensions 1.0.2, da abilitare) aggiunge immagine locale, sottotitolo e altezza compatta/normale. Vale per menu diretti categoria Magazine, articolo, archivio Magazine e autore Magazine; non si eredita su dettagli collegati dalla categoria. Homepage e Standard invariati.
+
+RC11: pubblicare il normale modulo Percorso di navigazione nella posizione `breadcrumb`. In Magazine viene visualizzato nella fascia sfumata, anche senza intestazione pagina; rispetta le assegnazioni del modulo. In Standard resta invariato. La scheda spettacolo è in fondo al testo della recensione; i metadati articolo rispettano le opzioni Joomla.

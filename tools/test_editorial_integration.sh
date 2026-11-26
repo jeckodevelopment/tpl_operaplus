@@ -236,9 +236,9 @@ class Order(HTMLParser):
     def handle_data(self, data):
         if 'CI public body' in data: self.order.append('body')
 p=Order(); p.feed(open(sys.argv[1]).read())
-assert p.order.count('panel')==1 and 'image' in p.order and 'body' in p.order and p.order.index('image')<p.order.index('panel')<p.order.index('body'),p.order
+assert p.order.count('panel')==1 and 'image' in p.order and 'body' in p.order and p.order.index('image')<p.order.index('body')<p.order.index('panel'),p.order
 PY
-# Without a full image the panel still precedes the text, and empty values omit it.
+# Without a full image the panel still follows the text, and empty values omit it.
 db "UPDATE ci_content SET images=JSON_REMOVE(images,'$.image_fulltext') WHERE id=$article;"
 curl -fsSL "$reviewurl" > "$page"
 contains 'CI performance venue'
@@ -247,7 +247,7 @@ db "DELETE FROM ci_fields_values WHERE field_id=$reviewfield; DELETE FROM ci_fie
 curl -fsSL "$reviewurl" > "$page"
 absent 'class="op-mag-review"'
 contains 'CI public body'
-echo 'Native Magazine review: cover before fact sheet before article body; empty field omission passed.'
+echo 'Native Magazine review: cover before article body before fact sheet; empty field omission passed.'
 
 # RC10: actual menu heading and inherited Itemid isolation.
 db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-list&id=$catid',params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI editorial heading','$.op_masthead_image','images/menu-banner.jpg','$.op_masthead_subtitle','CI menu subtitle','$.op_masthead_height','normal') WHERE id=$category_menu;"

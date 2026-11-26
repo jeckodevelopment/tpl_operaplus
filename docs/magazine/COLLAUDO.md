@@ -75,6 +75,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alterare i 95 casi del CSV. Conferma differenziale limitata alla fascia e alle regressioni dichiarate, non nuova esecuzione integrale dei casi storici. Avanzamento 66/95 OK, 29 non eseguiti, nessun KO noto. Passaggio al lotto 7B UX-04/05/06/07/09/10; REG-04 ancora da completare.
 
+**Lotto 7B — 26 novembre 2026:** RC10 / Extensions 1.0.2. Tutti i sei riferimenti approvati (incluse proposte HTML UX-05/09/10); UX-04/05/06/07/10 OK, UX-09 KO. Precisazioni successive: breadcrumb in fascia sfumata anche senza intestazione, metadati articolo da allineare, scheda spettacolo a fine testo (supera precedente scelta RC9), archivio difforme; longform attuale accettato. [Issue #60](https://github.com/jeckodevelopment/tpl_operaplus/issues/60). 71/95 OK dichiarati, 1 KO, 23 non eseguiti; ricollaudo mirato RC11 aperto, senza alterare esiti storici. Estensione fascia RC10 confermata.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

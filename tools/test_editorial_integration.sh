@@ -5,7 +5,8 @@ set -euo pipefail
 root="$(pwd)"
 db(){ mysql --protocol=TCP -h 127.0.0.1 -u joomla_test -N -B joomla_test -e "$1"; }
 (cd .ci-extensions && python3 tools/package.py)
-(cd "$JOOMLA_ROOT" && php cli/joomla.php extension:install --no-interaction --path="$root/.ci-extensions/dist/pkg_operaplus-1.0.0.zip")
+extensions_version="$(cat .ci-extensions/VERSION)"
+(cd "$JOOMLA_ROOT" && php cli/joomla.php extension:install --no-interaction --path="$root/.ci-extensions/dist/pkg_operaplus-$extensions_version.zip")
 mid="$(db "SELECT id FROM ci_template_styles WHERE template='operaplus' AND JSON_UNQUOTE(JSON_EXTRACT(params,'$.presentationMode'))='magazine'")"
 [[ "$mid" =~ ^[0-9]+$ ]]
 # Force a regular Magazine page even when using the native featured home route.

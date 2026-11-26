@@ -11,6 +11,20 @@ jobs:
   lifecycle:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - joomla: '6.0.0'
+            php: '8.3'
+            extensions_ref: ${{ matrix.extensions_ref }}
+            checksum: cbf61cbb5e0eacd9db1aed0da93a532d6accbb7d54c36662f3f7432a3e4b573d
+            checksum_tool: sha256sum
+          - joomla: '6.2.1'
+            php: '8.5.13'
+            extensions_ref: 31069fce95a261f4065255ab7c73b6886cd69a74
+            checksum: 7dc3d9adfef1816c11cf10fc5ec26abd33fa9779
+            checksum_tool: sha1sum
     services:
       database:
         image: mysql:8.0
@@ -32,7 +46,7 @@ jobs:
           fetch-depth: 0
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '${{ matrix.php }}'
           extensions: mysqli, pdo_mysql, mbstring, xml, zip, intl, gd, curl
           coverage: none
       - name: Build current and baseline template packages
@@ -50,11 +64,11 @@ jobs:
           echo "::add-mask::$password"
           echo "JOOMLA_TEST_USER=ciadmin" >> "$GITHUB_ENV"
           echo "JOOMLA_TEST_PASSWORD=$password" >> "$GITHUB_ENV"
-      - name: Install official Joomla 6.0.0
+      - name: Install official Joomla ${{ matrix.joomla }}
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 --max-time 180 -o "$RUNNER_TEMP/joomla.zip" https://github.com/joomla/joomla-cms/releases/download/6.0.0/Joomla_6.0.0-Stable-Full_Package.zip
-          echo "cbf61cbb5e0eacd9db1aed0da93a532d6accbb7d54c36662f3f7432a3e4b573d  $RUNNER_TEMP/joomla.zip" | sha256sum --check
+          curl --fail --location --retry 3 --max-time 180 -o "$RUNNER_TEMP/joomla.zip" https://github.com/joomla/joomla-cms/releases/download/${{ matrix.joomla }}/Joomla_${{ matrix.joomla }}-Stable-Full_Package.zip
+          echo "${{ matrix.checksum }}  $RUNNER_TEMP/joomla.zip" | ${{ matrix.checksum_tool }} --check
           mkdir -p "$RUNNER_TEMP/joomla"
           unzip -q "$RUNNER_TEMP/joomla.zip" -d "$RUNNER_TEMP/joomla"
           cd "$RUNNER_TEMP/joomla"
@@ -64,14 +78,14 @@ jobs:
           JOOMLA_ROOT: ${{ runner.temp }}/joomla
           MYSQL_PWD: ci-test-password
         run: bash tools/test_template_styles.sh
-      - name: Checkout stable editorial extensions
+      - name: Checkout pinned editorial extensions
         uses: actions/checkout@v4
         with:
           repository: jeckodevelopment/operaplus-extensions
           ref: 74e2bd02c4383ace61af0b56908d8797574d1b15
           path: .ci-extensions
           persist-credentials: false
-      - name: Verify real Magazine integration with stable extensions
+      - name: Verify real Magazine integration with pinned extensions
         env:
           JOOMLA_ROOT: ${{ runner.temp }}/joomla
           MYSQL_PWD: ci-test-password

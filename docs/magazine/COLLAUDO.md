@@ -38,6 +38,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 4C — 26 novembre 2026:** RC6, Extensions 1.0.1. AUT-01/02/03 KO: grafica profilo corretta, elenco articoli non visibile. [BUG-012, issue #44](https://github.com/jeckodevelopment/tpl_operaplus/issues/44). 41/95 OK, 3 KO, 51 non conclusi. RC7: isolare parametri Contenuti, rispettare scelta esplicita del menu contatto, costruire route da ID/alias; test nativo con contatto, articoli pubblici, riservati, futuri e altro autore, opzione elenco disattivata e utente scollegato. Causa esatta sullo staging non confermata, ricollaudo richiesto.
 
+**Ricollaudo lotto 4C — 26 novembre 2026:** RC7 / Extensions 1.0.1: AUT-01/02/03 ancora KO, nessuna nota aggiuntiva. Il test nativo RC7 era positivo su Joomla 6.0.0 / PHP 8.3 / Extensions 1.0.0; non riproduceva lo staging (Joomla 6.2.1 / PHP 8.5.13 / Extensions 1.0.1). Aggiunta matrice CI per entrambe le combinazioni, pacchetti ufficiali con checksum pubblicati e commit extensions fissati. Nessuna modifica runtime e nessuna nuova RC finché non emergono evidenze. BUG-012 aperto; 41/95 OK, 3 KO, 51 non eseguiti. Distinguere se la sezione articoli è assente, se mostra il messaggio vuoto o se il markup non è visibile.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

@@ -32,6 +32,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo lotto 4A — 26 novembre 2026:** RC5, Extensions 1.0.1. CAT-01/02/03/05 OK; CAT-04 KO residuo: paginazione delle categorie OK, contrasto dei link precedente/successivo nel singolo articolo insufficiente. [Issue #39](https://github.com/jeckodevelopment/tpl_operaplus/issues/39). 37/95 casi OK, 1 KO, 57 non conclusi. RC6 interviene esclusivamente sul plugin nativo pagenavigation tramite CSS Magazine, senza alterare routing o paginazione categorie. Ricollaudo CAT-04 mirato e verifica regressione della paginazione; approvazione grafica generale separata.
 
+**Ricollaudo CAT-04 — 26 novembre 2026:** RC6, Extensions 1.0.1: OK, nessuna nota. Verifica mirata dei pulsanti precedente/successivo e regressione paginazione categorie positiva. CAT-01/02/03/05 già OK su RC5, non interessati dalla correzione CSS circoscritta alla navigazione del singolo articolo; verifica paginazione compresa in CAT-04. Lotto 4A: 5/5, 38/95 casi cumulativi OK, nessun KO residuo noto. BUG-009–011 risolti; chiusura issue #39 dopo integrazione di questo registro. Approvazione grafica generale resta distinta. Passaggio a lotto 4B (ARC-01–03) su RC6.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

@@ -41,6 +41,33 @@ try {
  await page.waitForFunction(()=>document.querySelector('.op-menu-toggle').getAttribute('aria-expanded')==='false');
  await page.setViewportSize({width:375,height:760});
  assert.equal(await page.locator('#op-navigation').isVisible(),false);
+ // Delay the deferred script and examine the first-render mobile header.
+ const delayed=await browser.newPage({viewport:{width:375,height:760}});
+ const fs=await import('node:fs/promises');
+ const html=await fs.readFile(resolve('dist/magazine/detail.html'),'utf8');
+ const script=await fs.readFile(resolve('media/js/template.js'),'utf8');
+ let release;
+ const gate=new Promise(resolve=>{release=resolve});
+ await delayed.route('https://fixture.invalid/**',async route=>{
+   if(route.request().url().endsWith('/nav.js')){
+     await gate;
+     await route.fulfill({contentType:'application/javascript',body:script});
+   }else{
+     await route.fulfill({contentType:'text/html',body:html.replace(/<script>[\s\S]*?<\/script>/,'<script defer src="/nav.js"></script>')});
+   }
+ });
+ const loading=delayed.goto('https://fixture.invalid/',{waitUntil:'domcontentloaded'});
+ try{
+   await delayed.locator('#main-content').waitFor({state:'visible'});
+   assert.equal(await delayed.locator('body').evaluate(el=>el.classList.contains('op-nav-ready')),false);
+   assert.equal(await delayed.locator('#op-navigation').isVisible(),false);
+   assert.equal(await delayed.locator('.op-menu-toggle').isVisible(),true);
+ }finally{release()}
+ await loading;
+ assert.equal(await delayed.locator('#op-navigation').isVisible(),false);
+ await delayed.locator('.op-menu-toggle').click();
+ assert.equal(await delayed.locator('#op-navigation').isVisible(),true);
+ await delayed.close();
  const nojs=await browser.newPage({javaScriptEnabled:false,viewport:{width:320,height:760}});
  await nojs.goto(url);
  assert.equal(await nojs.locator('#op-navigation').isVisible(),true);

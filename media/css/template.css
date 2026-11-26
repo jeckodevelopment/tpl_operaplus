@@ -533,3 +533,10 @@ body.operaplus:not(.op-nav-ready) .op-header .op-navigation li>:is(ul,.mod-menu_
 body.operaplus:not(.op-nav-ready) .op-header{position:static}
 body.operaplus .op-menu-toggle{min-height:44px;min-width:44px}
 }
+
+/* Stable initial mobile header with scripting enabled. */
+@media(max-width:900px) and (scripting:enabled){
+body.operaplus:not(.op-nav-ready) .op-header .op-menu-toggle{display:inline-flex!important}
+body.operaplus:not(.op-nav-ready) .op-header .op-navigation{display:none!important}
+body.operaplus:not(.op-nav-ready).sticky-header .op-header{position:sticky}
+}

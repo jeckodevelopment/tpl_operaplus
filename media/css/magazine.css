@@ -262,3 +262,29 @@ body.operaplus.op-magazine .op-mag-article .pagenavigation a.btn:is(:hover,:focu
 .op-magazine .op-mag-article .pagenavigation [class*="icon-chevron-"]{flex:none;font:700 20px/1 system-ui,sans-serif}
 .op-magazine .op-mag-article .pagenavigation .icon-chevron-left::before{content:'‹'}
 .op-magazine .op-mag-article .pagenavigation .icon-chevron-right::before{content:'›'}
+
+
+/* RC8: native category read-more, editorial interview and native review fields. */
+body.operaplus.op-magazine .op-mag-category .readmore a.btn{display:inline-flex;align-items:center;gap:8px;max-width:100%;min-height:44px;background:#632b3a;border:1px solid #632b3a;color:#fff!important;text-decoration:none;white-space:normal;overflow-wrap:anywhere}
+body.operaplus.op-magazine .op-mag-category .readmore a.btn:is(:hover,:focus-visible){background:#4e2431;border-color:#4e2431;color:#fff!important}
+.op-magazine .op-mag-category .readmore .icon-chevron-right::before{content:'›'}
+.op-magazine .op-mag-category .readmore .icon-chevron-left::before{content:'‹'}
+.op-magazine .op-mag-article .com-content-article__body :is(.op-interview-question,.op-interview-answer){position:relative;padding-inline-start:48px;max-width:none;min-height:34px}
+body.operaplus.op-magazine .op-mag-article .com-content-article__body .op-interview-question{font:700 18px/1.55 Manrope,system-ui,sans-serif;color:var(--mag-accent)!important;margin:28px 0 12px}
+body.operaplus.op-magazine .op-mag-article .com-content-article__body .op-interview-answer{font:400 19px/1.75 Georgia,serif;color:var(--mag-ink)!important;margin:0 0 26px}
+.op-magazine .op-mag-article .com-content-article__body :is(.op-interview-question,.op-interview-answer)::before{position:absolute;inset-inline-start:0;top:0;display:grid;place-items:center;width:34px;height:34px;font:700 17px/1 Manrope,system-ui,sans-serif;border-radius:2px}
+.op-magazine .op-mag-article .com-content-article__body .op-interview-question::before{content:'D';background:#632b3a;color:#fff}
+.op-magazine .op-mag-article .com-content-article__body .op-interview-answer::before{content:'R';background:color-mix(in srgb,var(--mag-accent) 9%,var(--mag-bg));color:var(--mag-accent);border:1px solid var(--mag-rule)}
+.op-magazine .op-mag-article--review .fields-container{margin:22px 0;padding:20px;list-style:none}
+body.operaplus.op-magazine .op-mag-article--review .fields-container .field-entry{display:block;padding:9px 0;border-bottom:1px solid var(--mag-rule);font:400 15px/1.5 Manrope,system-ui,sans-serif;color:var(--mag-ink)!important;overflow-wrap:anywhere}
+.op-magazine .op-mag-article--review .fields-container .field-entry:first-child{padding-top:0}
+.op-magazine .op-mag-article--review .fields-container .field-entry:last-child{border-bottom:0;padding-bottom:0}
+.op-magazine .op-mag-article--review .fields-container .field-label{display:inline-block;min-width:32%;font-weight:700;color:var(--mag-muted)}
+.op-magazine .op-mag-article--review .fields-container .field-value{color:var(--mag-ink)}
+@media(max-width:560px){.op-magazine .op-mag-article .com-content-article__body :is(.op-interview-question,.op-interview-answer){padding-inline-start:40px}.op-magazine .op-mag-article--review .fields-container .field-label{display:block;min-width:0}}
+
+/* Category previews: native fields are compact editorial metadata, not a bullet list. */
+.op-magazine .op-mag-category .blog-item .fields-container{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 12px;padding:0}
+body.operaplus.op-magazine .op-mag-category .blog-item .fields-container>.field-entry{display:block;list-style:none;margin:0;padding:0;font:400 13px/1.5 Manrope,system-ui,sans-serif;color:var(--mag-ink)!important;overflow-wrap:anywhere;min-width:0;max-width:100%}
+.op-magazine .op-mag-category .blog-item .fields-container>.field-entry .field-label{font-weight:600;color:var(--mag-muted)}
+.op-magazine .op-mag-category .blog-item .fields-container>.field-entry .field-value{color:var(--mag-ink)}

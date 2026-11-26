@@ -17,7 +17,7 @@ jobs:
         include:
           - joomla: '6.0.0'
             php: '8.3'
-            extensions_ref: ${{ matrix.extensions_ref }}
+            extensions_ref: 74e2bd02c4383ace61af0b56908d8797574d1b15
             checksum: cbf61cbb5e0eacd9db1aed0da93a532d6accbb7d54c36662f3f7432a3e4b573d
             checksum_tool: sha256sum
           - joomla: '6.2.1'
@@ -82,7 +82,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: jeckodevelopment/operaplus-extensions
-          ref: 74e2bd02c4383ace61af0b56908d8797574d1b15
+          ref: ${{ matrix.extensions_ref }}
           path: .ci-extensions
           persist-credentials: false
       - name: Verify real Magazine integration with pinned extensions

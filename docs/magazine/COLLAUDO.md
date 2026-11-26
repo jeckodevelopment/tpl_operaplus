@@ -34,6 +34,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo CAT-04 — 26 novembre 2026:** RC6, Extensions 1.0.1: OK, nessuna nota. Verifica mirata dei pulsanti precedente/successivo e regressione paginazione categorie positiva. CAT-01/02/03/05 già OK su RC5, non interessati dalla correzione CSS circoscritta alla navigazione del singolo articolo; verifica paginazione compresa in CAT-04. Lotto 4A: 5/5, 38/95 casi cumulativi OK, nessun KO residuo noto. BUG-009–011 risolti; chiusura issue #39 dopo integrazione di questo registro. Approvazione grafica generale resta distinta. Passaggio a lotto 4B (ARC-01–03) su RC6.
 
+**Lotto 4B — 26 novembre 2026:** RC6, Extensions 1.0.1. ARC-01/02/03 OK, nessuna nota. Sessione 4: 8/11, avanzamento cumulativo 41/95 casi OK; nessun KO residuo noto. Passaggio a lotto 4C AUT-01–03. Approvazione grafica delle tavole distinta dal collaudo funzionale.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

@@ -85,6 +85,10 @@ jobs:
           ref: ${{ matrix.extensions_ref }}
           path: .ci-extensions
           persist-credentials: false
+      - name: Verify isolated Atlas feed resilience
+        run: |
+          php .ci-extensions/tests/index.php
+          php tools/test_atlas_resilience.php
       - name: Verify real Magazine integration with pinned extensions
         env:
           JOOMLA_ROOT: ${{ runner.temp }}/joomla

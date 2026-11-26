@@ -50,6 +50,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo BUG-016 — 26 novembre 2026:** RC9 / Extensions 1.0.1. Il collaudatore conferma che la scheda spettacolo è correttamente posizionata dopo l'immagine completa. REV-04: ricollaudo mirato OK; gli altri esiti del lotto 5B restano validi, senza estendere la conferma ai casi grafici generali UX. Sessione 5 conclusa 9/9; complessivo 53/95 OK, 42 non eseguiti, nessun rilievo irrisolto noto. Passaggio a Sessione 6 con RC9.
 
+**Lotto 6A — 26 novembre 2026:** RC9 / Extensions 1.0.1. INT-02/03/04/08 OK dichiarati, nessuna nota. INT-08: test tecnico isolato aggiunto alla matrice CI (cinque tipi, esclusione stagioni, feed indisponibile con cache valida/assente e cooldown), senza chiamate di rete; chiusura subordinata alla CI. 57/95 OK manuali, 38 non eseguiti. Passaggio al lotto 6B CTA e sidebar.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

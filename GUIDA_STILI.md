@@ -122,3 +122,7 @@ Imposta titolo e descrizione nelle voci di menu e negli articoli Joomla; nel cam
 
 ## Parametri grafici Magazine (1.28.0)
 Nel solo stile Magazine, Aspetto: Proporzioni immagini (16:10 predefinito, 16:9, 1:1), Oscuramento copertina (classico o più marcato), Separatori editoriali (sì/no). Non cambiano ritratti, miniature compatte e mosaico; metadati, numero articoli, colonne e titoli si governano nei moduli o nelle voci di menu native. Le impostazioni restano locali allo stile e non modificano i contenuti. Vedi le guide [amministratore](docs/magazine/ADMIN_GUIDE.md) e [redattore](docs/magazine/EDITOR_GUIDE.md).
+
+### Fascia editoriale delle pagine interne (RC10)
+
+Nella voce di menu editoriale: Visualizzazione pagina → Mostra intestazione pagina = Sì; Intestazione pagina personalizzata oppure titolo menu. La fascia sostituisce l'intestazione nativa visibile e usa l'immagine generale dello stile. Il plugin Sistema – Opera+ Fascia editoriale (Extensions 1.0.2, da abilitare) aggiunge immagine locale, sottotitolo e altezza compatta/normale. Vale per menu diretti categoria Magazine, articolo, archivio Magazine e autore Magazine; non si eredita su dettagli collegati dalla categoria. Homepage e Standard invariati.

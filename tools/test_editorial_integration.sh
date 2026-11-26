@@ -248,6 +248,34 @@ curl -fsSL "$reviewurl" > "$page"
 absent 'class="op-mag-review"'
 contains 'CI public body'
 echo 'Native Magazine review: cover before fact sheet before article body; empty field omission passed.'
+
+# RC10: actual menu heading and inherited Itemid isolation.
+db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-list&id=$catid',params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI editorial heading','$.op_masthead_image','images/menu-banner.jpg','$.op_masthead_subtitle','CI menu subtitle','$.op_masthead_height','normal') WHERE id=$category_menu;"
+caturl="$url/index.php?option=com_content&view=category&layout=magazine-list&id=$catid&Itemid=$category_menu"
+curl -fsSL "$caturl" > "$page"
+contains 'op-mag-masthead--internal op-mag-masthead--normal'
+contains 'images/menu-banner.jpg'
+contains 'CI menu subtitle'
+contains 'op-mag-has-masthead'
+curl -fsSL "$url/index.php?option=com_content&view=article&id=$article&Itemid=$category_menu" > "$page"
+absent 'op-mag-masthead--internal'
+contains 'CI public body'
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',0) WHERE id=$category_menu;"
+curl -fsSL "$caturl" > "$page"
+absent 'op-mag-masthead--internal'
+db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','','$.op_masthead_image','https://evil.example/invalid.jpg','$.op_masthead_height','invalid') WHERE id=$category_menu; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineBanner','images/fallback-banner.jpg') WHERE id=$mid;"
+curl -fsSL "$caturl" > "$page"
+contains 'op-mag-masthead--internal op-mag-masthead--compact'
+contains 'images/fallback-banner.jpg'
+contains 'CI category'
+absent 'evil.example/invalid.jpg'
+db "UPDATE ci_menu SET link='index.php?option=com_content&view=article&layout=magazine-review&id=$article',params=JSON_SET(params,'$.page_heading','CI editorial review heading') WHERE id=$category_menu;"
+curl -fsSL "$reviewurl" > "$page"
+contains 'op-mag-masthead--internal'
+contains 'CI editorial review heading'
+contains 'CI SEO article'
+contains 'CI public body'
+echo 'Native menu heading: direct category/article, per-menu fields, fallback, off and inherited Itemid passed.'
 db "DELETE FROM ci_menu WHERE id=$category_menu; UPDATE ci_extensions SET enabled=$sef_enabled WHERE type='plugin' AND folder='system' AND element='sef';"
 echo 'Magazine category intro toggle, metadata and pagination passed.'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal')); DELETE FROM ci_modules WHERE title IN ('CI landing marker','CI related-sidebar','CI related-compact','CI related-horizontal'); DELETE FROM ci_content WHERE alias='ci-related-sibling'; UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineHomeMenu',999999) WHERE id=$mid;"

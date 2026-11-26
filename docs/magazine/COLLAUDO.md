@@ -60,6 +60,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 7A — 26 novembre 2026:** RC9 / Extensions 1.0.1. UX-01/02/03/08 OK e riferimenti grafici esplicitamente approvati (comprese proposte HTML di completamento UX-03/08). Nota: richiesta di chiarimento sulla fascia sfumata nelle pagine interne; attualmente solo landing per specifica SET-03, non è un KO. Eventuale estensione configurabile da concordare. 66/95 OK, 29 non eseguiti. REG-04 generale ancora aperto; passaggio a lotto 7B.
 
+**Estensione concordata 26/11/2026 — RC10:** fascia interna su intestazione nativa Joomla, titolo personalizzato/fallback menu; plugin amministrativo facoltativo Extensions 1.0.2 per immagine, sottotitolo e altezza. SET-03 conserva il comportamento landing; regressione mirata UX-01/02/03/08 e REG-04: sì/no, immagine personalizzata/fallback, titolo singolo, dettaglio ereditato, Standard, articolo, archivio e autore. Esiti storici conservati; verifica differenziale RC10 richiesta.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

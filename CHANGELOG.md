@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.10] — 2026-11-26 (estensione fascia editoriale)
+
+- Pagine editoriali interne: intestazione nativa Joomla come fascia sfumata. Titolo nativo, immagine generale o personalizzata, sottotitolo e altezza via plugin facoltativo Extensions 1.0.2. Homepage, Standard, corsi e Itemid ereditati invariati.
+
 ## [2.0.0-rc.9] — 2026-11-26 (collaudo 5B)
 
 - Recensione Magazine: scheda spettacolo dopo l'immagine completa, prima del testo. In assenza di immagine resta all'inizio del corpo. Eventi Joomla, testo originale, tempo di lettura e controlli ACL preservati. BUG-016: conferma grafica mirata richiesta.

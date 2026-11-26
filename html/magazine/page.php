@@ -35,9 +35,15 @@ $magBottom = $position('main-bottom');
 $magTitle = (string) $this->params->get('magazineTitle', 'Magazine');
 $magSubtitle = (string) $this->params->get('magazineSubtitle', '');
 $magBanner = $assetUrl($this->params->get('magazineBanner', ''));
+$magInternal = !$magazineLanding ? \Joomla\CMS\Factory::getApplication()->get('operaplus.menuMasthead', null) : null;
+if ($magInternal) {
+    $magTitle = $magInternal['title'];
+    $magSubtitle = $magInternal['subtitle'];
+    $magBanner = $assetUrl($magInternal['image']) ?: $magBanner;
+}
 ?>
-<?php if ($magazineLanding) : ?>
-<header class="op-mag-masthead">
+<?php if ($magazineLanding || $magInternal) : ?>
+<header class="op-mag-masthead<?php echo $magInternal ? ' op-mag-masthead--internal op-mag-masthead--' . $magInternal['height'] : ''; ?>">
     <?php if ($magBanner !== '') : ?><img class="op-mag-masthead__image" src="<?php echo $e($magBanner); ?>" alt="" fetchpriority="high"><?php endif; ?>
     <div class="op-container op-mag-masthead__body">
         <h1><?php echo $e($magTitle); ?></h1>

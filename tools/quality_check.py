@@ -42,7 +42,7 @@ for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer')
 
 # Uncompressed runtime asset budgets; exclude third-party Joomla assets.
 # RC5/RC6: allow at most 4 KB for scoped category metadata and native navigation CSS.
-for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 36000, "media/js/template.js": 12000}.items():
+for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 37000, "media/js/template.js": 12000}.items():
     size = (root / path).stat().st_size
     assert size <= limit, f"Runtime asset budget exceeded: {path}: {size} > {limit}"
     print(f"{path}: {size}/{limit} bytes")

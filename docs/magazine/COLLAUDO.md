@@ -83,6 +83,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 7C — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. UX-11/12/13, RESP-01 e DARK-01 tutti OK dichiarati, nessuna nota; riferimenti UX-11/12/13 esplicitamente approvati, incluse tavole HTML di completamento. Tutti i 15 riferimenti UX ora approvati, confronto staging UX-14/15 e REG-04 aggregato ancora da eseguire. 77/95 OK, 18 non eseguiti, nessun rilievo irrisolto noto. Sessione 7: 15/18. Passaggio a lotto 7D UX-14/15 e REG-04. Dispositivo/viewport effettivo non specificato dal collaudatore; nessuna nuova versione.
 
+**Lotto 7D — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. UX-14, UX-15 e REG-04 tutti OK dichiarati, nessuna nota. Approvazione grafica complessiva esplicita, incluse evoluzioni concordate durante il collaudo; 15/15 riferimenti UX approvati e confronto staging superato. Sessione 7 conclusa 18/18; 80/95 OK, 15 non eseguiti, nessun rilievo irrisolto noto. Restano sessione 8 (10 casi), BASE-INV e BASE-T10, sessione 9 (3 casi). Nessuna approvazione del rilascio stabile implicita; mantenere baseline RC12 e separare evidenze CI da verifiche sullo staging.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

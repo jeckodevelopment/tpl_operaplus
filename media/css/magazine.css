@@ -282,3 +282,9 @@ body.operaplus.op-magazine .op-mag-article--review .fields-container .field-entr
 .op-magazine .op-mag-article--review .fields-container .field-label{display:inline-block;min-width:32%;font-weight:700;color:var(--mag-muted)}
 .op-magazine .op-mag-article--review .fields-container .field-value{color:var(--mag-ink)}
 @media(max-width:560px){.op-magazine .op-mag-article .com-content-article__body :is(.op-interview-question,.op-interview-answer){padding-inline-start:40px}.op-magazine .op-mag-article--review .fields-container .field-label{display:block;min-width:0}}
+
+/* Category previews: native fields are compact editorial metadata, not a bullet list. */
+.op-magazine .op-mag-category .blog-item .fields-container{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 12px;padding:0}
+body.operaplus.op-magazine .op-mag-category .blog-item .fields-container>.field-entry{display:block;list-style:none;margin:0;padding:0;font:400 13px/1.5 Manrope,system-ui,sans-serif;color:var(--mag-ink)!important;overflow-wrap:anywhere;min-width:0;max-width:100%}
+.op-magazine .op-mag-category .blog-item .fields-container>.field-entry .field-label{font-weight:600;color:var(--mag-muted)}
+.op-magazine .op-mag-category .blog-item .fields-container>.field-entry .field-value{color:var(--mag-ink)}

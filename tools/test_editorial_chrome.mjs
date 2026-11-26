@@ -38,7 +38,7 @@ try {
  console.log('Native article previous/next markup: contrast, arrows, responsive size and category pagination regression passed.');
 
  // Native read-more, TinyMCE interview classes and Joomla automatic fields.
- await page.setContent(`<style>${readFileSync('media/css/template.css','utf8')}\n${readFileSync('media/css/magazine.css','utf8')}</style><body class="operaplus op-magazine theme-light is-internal"><main class="op-mag-main"><div class="op-mag-content"><div class="op-content"><div class="op-mag-category"><p class="readmore"><a class="btn btn-secondary" href="#article"><span class="icon-chevron-right" aria-hidden="true"></span> Leggi tutto</a></p></div><div class="op-mag-article op-mag-article--interview"><div class="com-content-article__body"><p class="op-interview-question">Come nasce questa produzione?</p><p class="op-interview-answer">Da un lungo percorso di ricerca musicale e teatrale.</p><blockquote>Una citazione.</blockquote></div></div><div class="op-mag-article op-mag-article--review"><ul class="fields-container"><li class="field-entry teatro"><span class="field-label">Teatro: </span><span class="field-value">Teatro Regio di Torino</span></li></ul></div></div></div></main></body>`);
+ await page.setContent(`<style>${readFileSync('media/css/template.css','utf8')}\n${readFileSync('media/css/magazine.css','utf8')}</style><body class="operaplus op-magazine theme-light is-internal"><main class="op-mag-main"><div class="op-mag-content"><div class="op-content"><div class="op-mag-category"><div class="blog-item"><div class="item-content"><ul class="fields-container"><li class="field-entry teatro"><span class="field-label">Teatro: </span><span class="field-value">Teatro Regio di Torino</span></li><li class="field-entry citta"><span class="field-label">Città: </span><span class="field-value">Torino</span></li></ul><div class="op-mag-category-intro"><ul id="ordinary-list"><li>Testo con elenco normale</li></ul></div><p class="readmore"><a class="btn btn-secondary" href="#article"><span class="icon-chevron-right" aria-hidden="true"></span> Leggi tutto</a></p></div></div></div><div class="op-mag-article op-mag-article--interview"><div class="com-content-article__body"><p class="op-interview-question">Come nasce questa produzione?</p><p class="op-interview-answer">Da un lungo percorso di ricerca musicale e teatrale.</p><blockquote>Una citazione.</blockquote></div></div><div class="op-mag-article op-mag-article--review"><ul class="fields-container"><li class="field-entry teatro"><span class="field-label">Teatro: </span><span class="field-value">Teatro Regio di Torino</span></li></ul></div></div></div></main></body>`);
  for(const theme of ['light','dark']){
   await page.evaluate(theme=>{document.body.classList.toggle('theme-light',theme==='light');document.body.classList.toggle('theme-dark',theme==='dark')},theme);
   for(const width of [1200,375,320]){
@@ -53,8 +53,17 @@ try {
     assert.ok(await p.evaluate(el=>parseFloat(getComputedStyle(el).paddingInlineStart)>=40));
    }
    assert.equal(await page.locator('.op-interview-question').evaluate(el=>getComputedStyle(el).fontWeight),'700');
-   assert.equal(await page.locator('.field-label').evaluate(el=>getComputedStyle(el).fontWeight),'700');
-   assert.equal(await page.locator('.field-value').evaluate(el=>getComputedStyle(el).color),theme==='light'?'rgb(36, 28, 29)':'rgb(244, 236, 228)');
+   assert.equal(await page.locator('.op-mag-article--review .field-label').evaluate(el=>getComputedStyle(el).fontWeight),'700');
+   assert.equal(await page.locator('.op-mag-article--review .field-value').evaluate(el=>getComputedStyle(el).color),theme==='light'?'rgb(36, 28, 29)':'rgb(244, 236, 228)');
+   const fields=page.locator('.op-mag-category .fields-container');
+   assert.equal(await fields.evaluate(el=>getComputedStyle(el).listStyleType),'none');
+   assert.equal(await fields.evaluate(el=>getComputedStyle(el).display),'flex');
+   for(const li of await fields.locator('.field-entry').all()){
+    assert.equal(await li.evaluate(el=>getComputedStyle(el).listStyleType),'none');
+    assert.equal(await li.evaluate(el=>getComputedStyle(el).fontSize),'13px');
+    assert.equal(await li.locator('.field-value').evaluate(el=>getComputedStyle(el).color),theme==='light'?'rgb(36, 28, 29)':'rgb(244, 236, 228)');
+   }
+   assert.equal(await page.locator('#ordinary-list').evaluate(el=>getComputedStyle(el).listStyleType),'disc');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   }
  }

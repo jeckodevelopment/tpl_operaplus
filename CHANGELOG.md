@@ -6,7 +6,7 @@ Le date sono riportate solo quando documentate con certezza. Per installazione e
 
 ## [2.0.0-rc.8] — 2026-11-26 (collaudo 5A)
 
-- Magazine: contrasto Leggi tutto nativo, marcatori editoriali D/R e gerarchia dell'intervista anche nell'editor, campi automatici Joomla della recensione con etichette e valori leggibili. Nessun cambiamento alla navigazione longform, ai campi strutturati o allo stile Standard. BUG-013–015: ricollaudo manuale richiesto.
+- Magazine: contrasto Leggi tutto nativo, marcatori editoriali D/R e gerarchia dell'intervista anche nell'editor, campi automatici Joomla della recensione con etichette e valori leggibili; nelle categorie, Teatro e altri campi diventano metadati compatti senza punti elenco. Nessun cambiamento alla navigazione longform, ai campi strutturati o allo stile Standard. BUG-013–015: ricollaudo manuale richiesto.
 
 ## [2.0.0-rc.7] — 2026-11-26 (collaudo 4C)
 

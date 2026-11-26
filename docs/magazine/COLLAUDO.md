@@ -42,6 +42,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo definitivo lotto 4C — 26 novembre 2026:** RC7 / Extensions 1.0.1. La diagnostica ha mostrato l'assenza dell'intera sezione articoli; dopo aver impostato esplicitamente Articoli utente = Mostra nel contatto e nella voce di menu (10 articoli, utente collegato), salvato e svuotato la cache, il collaudatore ha confermato la visualizzazione. Il parametro ereditato originario non è stato identificato. AUT-01/02/03 OK, nessuna nota. BUG-012 risolto nella configurazione verificata; nessuna RC8 necessaria. PR #46 integrata con CI positiva anche su Joomla 6.2.1 / PHP 8.5.13 / Extensions 1.0.1. Sessione 4 completata: 11/11; complessivo 44/95 OK, 51 residui, nessun KO noto. Approvazione grafica generale separata. Passaggio alla sessione 5 su RC7.
 
+**Lotto 5A — 26 novembre 2026:** RC7 / Extensions 1.0.1. ART-01/02/03 OK, ART-04/05 KO; riscontrato anche difetto collaterale Leggi tutto nella categoria (riaprire verifica CAT-04 mirata senza annullare storico). [BUG-013–015, issue #48](https://github.com/jeckodevelopment/tpl_operaplus/issues/48). 47/95 OK dichiarati, 2 KO, 46 non eseguiti; verifica regressione aggiuntiva Leggi tutto aperta. RC8: CSS circoscritto Magazine, D/R anche nell'editor, campi automatici Joomla distinti dalla scheda strutturata REV-01–04. Ricollaudo ART-04/05, Leggi tutto, controllo longform. Approvazione grafica definitiva distinta.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

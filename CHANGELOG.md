@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0-rc.8] — 2026-11-26 (collaudo 5A)
+
+- Magazine: contrasto Leggi tutto nativo, marcatori editoriali D/R e gerarchia dell'intervista anche nell'editor, campi automatici Joomla della recensione con etichette e valori leggibili. Nessun cambiamento alla navigazione longform, ai campi strutturati o allo stile Standard. BUG-013–015: ricollaudo manuale richiesto.
+
 ## [2.0.0-rc.7] — 2026-11-26 (collaudo 4C)
 
 - Scheda autore Magazine: opzione articoli esplicita della voce di menu, recupero tramite modello Contenuti con parametri globali isolati e collegamenti nativi costruiti dall'identità dell'articolo. Conservati filtri autore, ACL, stato, lingua e pubblicazione; profilo grafico invariato. BUG-012 in ricollaudo manuale.

@@ -36,4 +36,27 @@ try {
   }
  }
  console.log('Native article previous/next markup: contrast, arrows, responsive size and category pagination regression passed.');
+
+ // Native read-more, TinyMCE interview classes and Joomla automatic fields.
+ await page.setContent(`<style>${readFileSync('media/css/template.css','utf8')}\n${readFileSync('media/css/magazine.css','utf8')}</style><body class="operaplus op-magazine theme-light is-internal"><main class="op-mag-main"><div class="op-mag-content"><div class="op-content"><div class="op-mag-category"><p class="readmore"><a class="btn btn-secondary" href="#article"><span class="icon-chevron-right" aria-hidden="true"></span> Leggi tutto</a></p></div><div class="op-mag-article op-mag-article--interview"><div class="com-content-article__body"><p class="op-interview-question">Come nasce questa produzione?</p><p class="op-interview-answer">Da un lungo percorso di ricerca musicale e teatrale.</p><blockquote>Una citazione.</blockquote></div></div><div class="op-mag-article op-mag-article--review"><ul class="fields-container"><li class="field-entry teatro"><span class="field-label">Teatro: </span><span class="field-value">Teatro Regio di Torino</span></li></ul></div></div></div></main></body>`);
+ for(const theme of ['light','dark']){
+  await page.evaluate(theme=>{document.body.classList.toggle('theme-light',theme==='light');document.body.classList.toggle('theme-dark',theme==='dark')},theme);
+  for(const width of [1200,375,320]){
+   await page.setViewportSize({width,height:900});
+   const more=page.locator('.readmore a');
+   const colors=()=>more.evaluate(el=>{const s=getComputedStyle(el);return [s.color,s.backgroundColor]});
+   assert.deepEqual(await colors(),['rgb(255, 255, 255)','rgb(99, 43, 58)']);
+   await more.hover();assert.deepEqual(await colors(),['rgb(255, 255, 255)','rgb(78, 36, 49)']);await page.mouse.move(0,0);
+   for(const [selector,letter] of [['.op-interview-question','D'],['.op-interview-answer','R']]){
+    const p=page.locator(selector);
+    assert.equal(await p.evaluate(el=>getComputedStyle(el,'::before').content),'"'+letter+'"');
+    assert.ok(await p.evaluate(el=>parseFloat(getComputedStyle(el).paddingInlineStart)>=40));
+   }
+   assert.equal(await page.locator('.op-interview-question').evaluate(el=>getComputedStyle(el).fontWeight),'700');
+   assert.equal(await page.locator('.field-label').evaluate(el=>getComputedStyle(el).fontWeight),'700');
+   assert.equal(await page.locator('.field-value').evaluate(el=>getComputedStyle(el).color),theme==='light'?'rgb(36, 28, 29)':'rgb(244, 236, 228)');
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  }
+ }
+ console.log('Editorial read-more, interview D/R and native review fields passed.');
 } finally {await browser.close();}

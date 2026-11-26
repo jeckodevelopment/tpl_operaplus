@@ -3,3 +3,9 @@ p.op-editorial-lead{font:500 23px/1.5 Georgia,serif;color:inherit;margin:0 0 1.2
 p.op-interview-question{font:700 18px/1.5 system-ui,sans-serif;color:#632b3a;margin:26px 0 8px}
 p.op-interview-answer{font:400 19px/1.75 Georgia,serif;color:inherit;margin:0 0 22px}
 @media(prefers-color-scheme:dark){p.op-interview-question{color:#a86578}}
+
+/* Editorial D/R cues match the frontend while keeping TinyMCE classes importable. */
+p.op-interview-question,p.op-interview-answer{position:relative;padding-inline-start:48px;min-height:34px}
+p.op-interview-question::before,p.op-interview-answer::before{position:absolute;inset-inline-start:0;top:0;display:grid;place-items:center;width:34px;height:34px;font:700 17px/1 system-ui,sans-serif;border-radius:2px}
+p.op-interview-question::before{content:'D';background:#632b3a;color:#fff}
+p.op-interview-answer::before{content:'R';background:#f1e6e2;color:#632b3a;border:1px solid #d9cec4}

@@ -56,6 +56,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Lotto 6B — 26 novembre 2026:** RC9 / Extensions 1.0.1. INT-05/07/09 tutti OK dichiarati, nessuna nota. 60/95 OK, 35 non eseguiti, nessun KO noto. Sessione 6: 7/9; restano INT-01 e INT-06. Approvazione grafica generale separata.
 
+**Lotto 6C — 26 novembre 2026:** RC9 / Extensions 1.0.1. INT-01 e INT-06 OK dichiarati, nessuna nota. Sessione 6 conclusa 9/9, complessivo 62/95 OK, 33 non eseguiti. Nessun rilievo irrisolto noto. Passaggio a Sessione 7: approvazione esplicita dei riferimenti UX, confronto staging, responsive e dark; approvazione grafica distinta dal collaudo funzionale.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

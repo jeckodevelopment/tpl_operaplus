@@ -81,6 +81,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Ricollaudo definitivo lotto 7B — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. BUG-017 (breadcrumb dopo titolo/sottotitolo) e BUG-018 (metadati articolo) entrambi OK dichiarati, nessuna nota. Confermati i precedenti OK RC11 per BUG-019, UX-09, REG-LONGFORM, REG-STANDARD. [Issue #60](https://github.com/jeckodevelopment/tpl_operaplus/issues/60) risolta; [PR #62](https://github.com/jeckodevelopment/tpl_operaplus/pull/62) integrata con CI positiva. Verifica differenziale, non nuova esecuzione integrale degli UX precedenti; sei riferimenti già approvati, 6/6 casi lotto 7B. Totale 72/95 OK, 23 non eseguiti, nessun rilievo irrisolto noto. REG-04 aggregato ancora da eseguire. Passaggio a lotto 7C UX-11/12/13, RESP-01, DARK-01.
 
+**Lotto 7C — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. UX-11/12/13, RESP-01 e DARK-01 tutti OK dichiarati, nessuna nota; riferimenti UX-11/12/13 esplicitamente approvati, incluse tavole HTML di completamento. Tutti i 15 riferimenti UX ora approvati, confronto staging UX-14/15 e REG-04 aggregato ancora da eseguire. 77/95 OK, 18 non eseguiti, nessun rilievo irrisolto noto. Sessione 7: 15/18. Passaggio a lotto 7D UX-14/15 e REG-04. Dispositivo/viewport effettivo non specificato dal collaudatore; nessuna nuova versione.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

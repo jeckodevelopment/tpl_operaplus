@@ -104,8 +104,8 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Preview telefono, non pagina integrale.
 - Criteri: Header compatto, menu utilizzabile, copertina leggibile, sidebar sotto main, nessuno scroll orizzontale a 320 px; conservare priorità editoriali.
 - Requisiti/test correlati: RESP-01; A11Y-01.
-- Proposta di completamento: [UX-11 HTML](boards/UX-11.html), revisione 01; non ancora approvata.
-- Stato del riferimento: `parziale`; approvazione definitiva da registrare; collaudo manuale da eseguire.
+- Proposta di completamento: [UX-11 HTML](boards/UX-11.html), revisione 01; approvata il 27/11/2026.
+- Stato del riferimento: `approvato_archiviato`; proposta HTML approvata 27/11/2026 e confronto staging RC12 OK. REG-04 generale ancora aperto.
 
 ## UX-12 — Articolo mobile
 
@@ -113,8 +113,8 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Nessuna tavola originale ritrovata.
 - Criteri: Titolo e metadati con reflow, immagine fluida, testo leggibile, scheda e correlati in colonna; focus e link raggiungibili.
 - Requisiti/test correlati: RESP-01; A11Y-01.
-- Proposta di completamento: [UX-12 HTML](boards/UX-12.html), revisione 01; non ancora approvata.
-- Stato del riferimento: `mancante`; tavola da completare e approvare; collaudo da eseguire.
+- Proposta di completamento: [UX-12 HTML](boards/UX-12.html), revisione 01; approvata il 27/11/2026.
+- Stato del riferimento: `approvato_archiviato`; proposta HTML approvata 27/11/2026 e confronto staging RC12 OK. REG-04 generale ancora aperto.
 
 ## UX-13 — Dark
 
@@ -122,8 +122,8 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Nessuna tavola originale ritrovata.
 - Criteri: Palette scura coerente, contrasto testo/metadati/link/CTA e focus, stesso layout e immagini; nessuna inversione indiscriminata.
 - Requisiti/test correlati: DARK-01; A11Y-01.
-- Proposta di completamento: [UX-13 HTML](boards/UX-13.html), revisione 01; non ancora approvata.
-- Stato del riferimento: `mancante`; tavola da completare e approvare; collaudo da eseguire.
+- Proposta di completamento: [UX-13 HTML](boards/UX-13.html), revisione 01; approvata il 27/11/2026.
+- Stato del riferimento: `approvato_archiviato`; proposta HTML approvata 27/11/2026 e confronto staging RC12 OK. REG-04 generale ancora aperto.
 
 ## UX-14 — Box Atlas
 

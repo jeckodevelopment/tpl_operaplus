@@ -40,6 +40,8 @@ Procedura prevista per RC3: ripetere SET-01 (versione e date dei sei manifest Ex
 
 **Ricollaudo lotto 4C — 26 novembre 2026:** RC7 / Extensions 1.0.1: AUT-01/02/03 ancora KO, nessuna nota aggiuntiva. Il test nativo RC7 era positivo su Joomla 6.0.0 / PHP 8.3 / Extensions 1.0.0; non riproduceva lo staging (Joomla 6.2.1 / PHP 8.5.13 / Extensions 1.0.1). Aggiunta matrice CI per entrambe le combinazioni, pacchetti ufficiali con checksum pubblicati e commit extensions fissati. Nessuna modifica runtime e nessuna nuova RC finché non emergono evidenze. BUG-012 aperto; 41/95 OK, 3 KO, 51 non eseguiti. Distinguere se la sezione articoli è assente, se mostra il messaggio vuoto o se il markup non è visibile.
 
+**Ricollaudo definitivo lotto 4C — 26 novembre 2026:** RC7 / Extensions 1.0.1. La diagnostica ha mostrato l'assenza dell'intera sezione articoli; dopo aver impostato esplicitamente Articoli utente = Mostra nel contatto e nella voce di menu (10 articoli, utente collegato), salvato e svuotato la cache, il collaudatore ha confermato la visualizzazione. Il parametro ereditato originario non è stato identificato. AUT-01/02/03 OK, nessuna nota. BUG-012 risolto nella configurazione verificata; nessuna RC8 necessaria. PR #46 integrata con CI positiva anche su Joomla 6.2.1 / PHP 8.5.13 / Extensions 1.0.1. Sessione 4 completata: 11/11; complessivo 44/95 OK, 51 residui, nessun KO noto. Approvazione grafica generale separata. Passaggio alla sessione 5 su RC7.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

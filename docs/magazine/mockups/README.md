@@ -25,8 +25,8 @@ Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie lateral
 | UX-11 | Homepage mobile | [PNG ](extracts/UX-11-homepage-mobile.png) · [HTML](boards/UX-11.html) | Approvata 27/11/2026; staging RC12 OK |
 | UX-12 | Articolo mobile | [HTML](boards/UX-12.html) | Approvata 27/11/2026; staging RC12 OK |
 | UX-13 | Dark | [HTML](boards/UX-13.html) | Approvata 27/11/2026; staging RC12 OK |
-| UX-14 | Box Atlas | [PNG](extracts/UX-14-atlas.png) | Approvata e archiviata |
-| UX-15 | Box CTA | [PNG](extracts/UX-15-cta.png) | Approvata e archiviata |
+| UX-14 | Box Atlas | [PNG](extracts/UX-14-atlas.png) | Approvata e archiviata; staging RC12 OK 27/11/2026 |
+| UX-15 | Box CTA | [PNG](extracts/UX-15-cta.png) | Approvata e archiviata; staging RC12 OK 27/11/2026 |
 
 ## Originali integrali
 
@@ -45,4 +45,4 @@ Le decisioni scritte approvate prevalgono sulle bozze: asse 8+4, notizie lateral
 
 [Specifiche e criteri](SPECIFICHE.md) · [Manifest con SHA-256, sorgenti e ritagli](manifest.json) · [Provenienza originali](originals-manifest.json).
 
-13 riferimenti originali archiviati; 8 tavole HTML di completamento predisposte, comprese UX-12 e UX-13 precedentemente mancanti. Tutti i 15 criteri hanno ora un riferimento visivo. 15/15 riferimenti UX approvati. Confronto staging OK per UX-01–13, con ricollaudi differenziali RC11/RC12 per il lotto 7B; UX-14/15 ancora da verificare; REG-04 generale ancora aperto. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.
+13 riferimenti originali archiviati; 8 tavole HTML di completamento predisposte, comprese UX-12 e UX-13 precedentemente mancanti. Tutti i 15 criteri hanno ora un riferimento visivo. 15/15 riferimenti UX approvati. Confronto staging OK per tutti gli UX-01–15, inclusi ricollaudi differenziali RC11/RC12; REG-04 superato il 27/11/2026. Il collaudo visuale sul sito rimane separato. Nessun nuovo rilascio o deployment.

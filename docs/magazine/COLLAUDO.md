@@ -85,6 +85,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 7D — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. UX-14, UX-15 e REG-04 tutti OK dichiarati, nessuna nota. Approvazione grafica complessiva esplicita, incluse evoluzioni concordate durante il collaudo; 15/15 riferimenti UX approvati e confronto staging superato. Sessione 7 conclusa 18/18; 80/95 OK, 15 non eseguiti, nessun rilievo irrisolto noto. Restano sessione 8 (10 casi), BASE-INV e BASE-T10, sessione 9 (3 casi). Nessuna approvazione del rilascio stabile implicita; mantenere baseline RC12 e separare evidenze CI da verifiche sullo staging.
 
+**Lotto 8A — 27 novembre 2026 (ora italiana):** RC12 / Extensions 1.0.2. REG-01/02/03 tutti OK dichiarati, nessuna nota. 83/95 OK, 12 non eseguiti, nessun KO noto; sessione 8: 3/10. Evidenze tecniche complementari della RC12: workflow qualità 45908193421, lifecycle 45908193420, entrambi positivi. La matrice nativa usa il commit Extensions 1.0.2 precedente all'ultimo commit di test del plugin; non confondere CI con esiti manuali. Budget asset rispettati (template.css 77434/78000 byte, magazine.css 39938/41000, template.js 11404/12000); CWV reali e anteprima social sullo staging restano da verificare. Passaggio a lotto 8B SEO-01/PERF-01/REG-06. Nessuna approvazione stabile implicita.
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

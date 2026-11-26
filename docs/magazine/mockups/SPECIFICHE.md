@@ -27,7 +27,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Riquadro parziale, non nuova approvazione.
 - Criteri: Schede uniformi, colonne configurabili e responsive, metadati nativi; eventuale primo fondo non cambia dimensioni; non introdurre filtri non previsti da Joomla.
 - Requisiti/test correlati: MAG-02; CFG-02.
-- Proposta di completamento: [UX-03 HTML](boards/UX-03.html), revisione 01; non ancora approvata.
+- Proposta di completamento: [UX-03 HTML](boards/UX-03.html), revisione 01; approvata il 26/11/2026.
 - Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026 e confronto staging RC9 OK. REG-04 generale ancora aperto.
 
 ## UX-04 — Articolo
@@ -74,7 +74,7 @@ Riferimenti originali del 24 novembre 2026. Le specifiche testuali consolidano l
 - Evidenza: Riquadro parziale.
 - Criteri: Copertina tematica, titolo e descrizione, raccolta coerente di articoli; nessun contenuto fisso; schede uniformi.
 - Requisiti/test correlati: MAG-05.
-- Proposta di completamento: [UX-08 HTML](boards/UX-08.html), revisione 01; non ancora approvata.
+- Proposta di completamento: [UX-08 HTML](boards/UX-08.html), revisione 01; approvata il 26/11/2026.
 - Stato del riferimento: `approvato_archiviato`; approvazione esplicita 26/11/2026 e confronto staging RC9 OK. REG-04 generale ancora aperto.
 
 ## UX-09 — Archivio

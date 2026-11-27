@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.1.0-rc.2] — 2026-11-28
+
+- Standard: sfondo trasparente del contenitore sidebar, senza alterare i pannelli dei singoli moduli; gli spazi mostrano lo sfondo pagina. Magazine: menu Ecosistema discreto, allineato al logo sulla destra, senza sottolineatura permanente, con menu editoriale distinto e target mobile da 44 px.
+
 ## [2.1.0-rc.1] — 2026-11-27
 
 - Navigazione Ecosistema opzionale per Magazine, con posizione Joomla `magazine-topnav`, un solo hamburger mobile e logo verso la homepage editoriale configurata. Standard e feed stabile invariati. Collaudo manuale aggiuntivo richiesto.

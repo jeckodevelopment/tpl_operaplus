@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.1.0-rc.3] — 2026-11-28
+
+- Magazine: menu Ecosistema allineato in alto a destra nella riga del logo, con colore accentato bordeaux (chiaro) / oro rosato (scuro), peso più leggibile, separatori sottili e nessuna colonna vuota se mancano le azioni header. Logo, menu editoriale e hamburger invariati.
+
 ## [2.1.0-rc.2] — 2026-11-28
 
 - Standard: sfondo trasparente del contenitore sidebar, senza alterare i pannelli dei singoli moduli; gli spazi mostrano lo sfondo pagina. Magazine: menu Ecosistema discreto, allineato al logo sulla destra, senza sottolineatura permanente, con menu editoriale distinto e target mobile da 44 px.

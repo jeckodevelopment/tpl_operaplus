@@ -50,7 +50,7 @@ id,ambito,requisito,criterio_accettazione,issue,stato_implementazione,stato_coll
 "SEO-01","SEO","SEO","Semantica, metadati, canonical e OG senza regressioni","5","completato","superato","SEO-01;REG-03;REG-06;BASE-T08"
 "A11Y-01","A11Y","Accessibilità","WCAG AA contrasto, tastiera e semantica","5","completato","superato","A11Y-01;REG-05;MOD-11;RESP-01"
 "PERF-01","PERF","Prestazioni","Asset condizionali, cache, niente query superflue","5","completato","non_superato","PERF-01;REG-06;INT-08"
-"SEC-01","SEC","Sicurezza","ACL, escaping, validazione URL, controlli statici","5","completato","in_corso","SEC-01;SEC-02;MOD-07;CAT-05;AUT-02;REV-03;REG-06"
+"SEC-01","SEC","Sicurezza","ACL, escaping, validazione URL, controlli statici","5","completato","superato","SEC-01;SEC-02;MOD-07;CAT-05;AUT-02;REV-03;REG-06"
 "REL-01","REL","Rilascio","CI, ZIP verificato, update server, staging e tag finale","5","in_corso","in_corso","REL-02;REL-03"
 "DOC-01","DOC","Piano progettuale","PROJECT_PLAN.md e matrice versionati","1","completato","non_eseguito","DOC-01;BASE-INV"
 "DOC-02","DOC","Guida redattore","Documentazione stili, layout e moduli","1","completato","non_eseguito","DOC-02/03"

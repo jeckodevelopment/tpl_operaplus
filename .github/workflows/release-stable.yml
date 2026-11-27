@@ -1,0 +1,71 @@
+name: Publish stable 2.0.0
+on:
+  push:
+    branches: [main]
+    paths: ['docs/releases/2.0.0-approved.md']
+permissions:
+  contents: read
+concurrency:
+  group: operaplus-stable-2.0.0
+  cancel-in-progress: false
+jobs:
+  quality:
+    uses: ./.github/workflows/template-ci.yml
+  lifecycle:
+    uses: ./.github/workflows/template-lifecycle.yml
+  publish:
+    needs: [quality, lifecycle]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: operaplus-template-installable
+          path: dist
+      - name: Verify approval and publish immutable assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          version="$(python3 -c 'import xml.etree.ElementTree as E;print(E.parse("templateDetails.xml").getroot().findtext("version"))')"
+          test "$GITHUB_REF" = refs/heads/main
+          test "$version" = 2.0.0
+          test -f docs/releases/2.0.0-approved.md
+          (cd dist && sha256sum --check "tpl_operaplus-$version.zip.sha256")
+          if gh release view "v$version" >/dev/null 2>&1; then
+            echo "Release already exists; refusing to overwrite immutable assets"
+            exit 1
+          fi
+          test -z "$(git ls-remote --tags origin "refs/tags/v$version")"
+          gh release create "v$version" "dist/tpl_operaplus-$version.zip" "dist/tpl_operaplus-$version.zip.sha256" --target "$GITHUB_SHA" --latest --title "Opera+ Template $version" --notes-file docs/releases/2.0.0-approved.md
+      - name: Verify public ZIP and generate stable feed
+        run: |
+          set -euo pipefail
+          version=2.0.0
+          curl --fail --location --retry 5 --retry-all-errors --max-time 120 -o "$RUNNER_TEMP/public.zip" "https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v$version/tpl_operaplus-$version.zip"
+          curl --fail --location --retry 5 --retry-all-errors --max-time 120 -o "$RUNNER_TEMP/public.sha256" "https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v$version/tpl_operaplus-$version.zip.sha256"
+          cmp "$RUNNER_TEMP/public.zip" "dist/tpl_operaplus-$version.zip"
+          cmp "$RUNNER_TEMP/public.sha256" "dist/tpl_operaplus-$version.zip.sha256"
+          python3 - <<'PY'
+          import hashlib, pathlib, xml.etree.ElementTree as ET
+          version = '2.0.0'
+          filename = f'tpl_operaplus-{version}.zip'
+          digest = hashlib.sha256((pathlib.Path('dist') / filename).read_bytes()).hexdigest()
+          root = ET.Element('updates')
+          u = ET.SubElement(root, 'update')
+          for key, val in {'name':'Opera+ Template','description':'Opera+ template for Joomla 6','element':'operaplus','type':'template','client':'site','version':version,'sha256':digest}.items():
+              ET.SubElement(u,key).text = val
+          ET.SubElement(ET.SubElement(u,'downloads'),'downloadurl',{'type':'full','format':'zip'}).text = f'https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v{version}/{filename}'
+          ET.SubElement(u,'targetplatform',{'name':'joomla','version':r'6\..*'})
+          ET.SubElement(u,'php_minimum').text = '8.3.0'
+          ET.SubElement(ET.SubElement(u,'tags'),'tag').text = 'stable'
+          ET.indent(root)
+          ET.ElementTree(root).write('dist/stable.xml',encoding='utf-8',xml_declaration=True)
+          print('Verified public package SHA-256:',digest)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verified-stable-update-feed
+          path: dist/stable.xml

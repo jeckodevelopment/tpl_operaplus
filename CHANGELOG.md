@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.0.0] — 2026-11-27
+
+- Rilascio stabile del template con stili nativi Standard e Magazine, layout editoriali, integrazioni Atlas e CTA, accessibilità, SEO e ottimizzazioni responsive. 95/95 casi di collaudo accettati; 15/15 riferimenti grafici approvati. Lighthouse dichiarato 98/100, LCP 2,1 s, CLS 0 (misure di laboratorio). Nessuna modifica funzionale rispetto alla RC13. Installare con backup e verificare su staging.
+
 ## [2.0.0-rc.13] — 2026-11-27 (stabilità del rendering)
 
 - Evita la visualizzazione transitoria del menu mobile esteso nei browser con supporto alla media query scripting; preserva la navigazione senza JS. Nessuna variazione grafica intenzionale dopo l'inizializzazione. Issue #67: misurazione Lighthouse e attribuzione CLS/LCP sullo staging ancora necessarie.

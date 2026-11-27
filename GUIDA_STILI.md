@@ -128,3 +128,9 @@ Nel solo stile Magazine, Aspetto: Proporzioni immagini (16:10 predefinito, 16:9,
 Nella voce di menu editoriale: Visualizzazione pagina → Mostra intestazione pagina = Sì; Intestazione pagina personalizzata oppure titolo menu. La fascia sostituisce l'intestazione nativa visibile e usa l'immagine generale dello stile. Il plugin Sistema – Opera+ Fascia editoriale (Extensions 1.0.2, da abilitare) aggiunge immagine locale, sottotitolo e altezza compatta/normale. Vale per menu diretti categoria Magazine, articolo, archivio Magazine e autore Magazine; non si eredita su dettagli collegati dalla categoria. Homepage e Standard invariati.
 
 RC11: pubblicare il normale modulo Percorso di navigazione nella posizione `breadcrumb`. In Magazine viene visualizzato nella fascia sfumata, anche senza intestazione pagina; rispetta le assegnazioni del modulo. In Standard resta invariato. La scheda spettacolo è in fondo al testo della recensione; i metadati articolo rispettano le opzioni Joomla.
+
+## Doppia navigazione Magazine
+
+- Creare un menu Joomla **Ecosistema** con Home, Corsi (quando disponibile), Atlas e Osservatorio. Usare Alias voce di menu per le destinazioni Joomla canoniche e URL per le applicazioni autonome, nella stessa scheda.
+- Pubblicare un modulo Menu nativo in `magazine-topnav`, titolo nascosto, solo primo livello, assegnato a tutte le pagine Magazine. Il menu editoriale continua a usare `menu`; assegnare il menu istituzionale esclusivamente alle pagine Standard. Impostare la voce homepage Magazine in Aspetto per il link del logo.
+- Desktop: collegamenti compatti in alto a destra; mobile (fino a 900 px): un solo hamburger con gruppo editoriale seguito dal gruppo ecosistema. Nessun menu aggiuntivo per mobile. Se il modulo non produce contenuto la posizione scompare. Standard non renderizza la posizione.

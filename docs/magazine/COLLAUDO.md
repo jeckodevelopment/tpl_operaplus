@@ -845,3 +845,13 @@ La colonna `casi_collaudo` della matrice collega i requisiti ai casi; gli ID MOD
 | BASE-03 | SET-01, SET-02, SET-05, REL-02 |
 | MAG-10 | SET-03, SET-04, HOME-04, HOME-05 |
 | MAG-11 | AUT-01, AUT-02, AUT-03 |
+
+
+## Evoluzione 2.1 — doppia navigazione (collaudo aggiuntivo, non ancora eseguito)
+
+Baseline 2.0.0 accettata invariata; verifiche aggiuntive su staging prima della promozione stabile.
+
+- Desktop 1440 e 901 px: menu ecosistema in alto a destra, menu editoriale leggibile, logo verso homepage Magazine configurata; con header-actions attivo nessuna sovrapposizione.
+- Mobile 320, 390, 768 e 900 px: un hamburger, ordine editoriale / ecosistema, nessun overflow; apertura, chiusura, Escape, focus, navigazione da tastiera e cambio breakpoint. Verificare anche senza JS.
+- Verificare pagina articolo, categoria e homepage Magazine; URL Home, Corsi, Atlas e Osservatorio canonici nella stessa scheda. Nessun menu istituzionale completo nel Magazine.
+- Disattivare modulo ecosistema: resa preesistente senza spazi vuoti. Provare solo ecosistema senza menu editoriale. Verificare Standard anche con modulo assegnato globalmente: nessuna variazione. Ripetere Lighthouse e controllo metadati/OG.

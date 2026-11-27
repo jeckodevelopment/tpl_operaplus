@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.1.0] — 2026-11-28
+
+- Rilascio stabile delle modifiche 2.1.0-rc.1–3: doppia navigazione Magazine, menu Ecosistema allineato in alto a destra nella fascia del logo, hamburger unico mobile, separazione dei moduli Standard. Nessuna modifica funzionale rispetto alla RC3, approvata dall'utente. Pubblicazione dopo CI; aggiornamento Joomla dopo verifica dell'asset pubblico.
+
 ## [2.1.0-rc.3] — 2026-11-28
 
 - Magazine: menu Ecosistema allineato in alto a destra nella riga del logo, con colore accentato bordeaux (chiaro) / oro rosato (scuro), peso più leggibile, separatori sottili e nessuna colonna vuota se mancano le azioni header. Logo, menu editoriale e hamburger invariati.

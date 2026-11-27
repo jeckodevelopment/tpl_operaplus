@@ -864,3 +864,7 @@ Baseline 2.0.0 accettata invariata; verifiche aggiuntive su staging prima della 
 #### Rifinitura RC3 (da verificare)
 
 - Desktop Magazine: il bordo superiore del menu Ecosistema è allineato all'inizio della fascia del logo; il logo resta sulla prima riga e non si sposta verso il basso. Verificare colore, contrasto, separatori, bordo destro senza header-actions, eventuali header-actions e larghezza 901 px. Ripetere su tema scuro. Mobile e Standard invariati; approvazione grafica su staging ancora necessaria.
+
+### Approvazione 2.1.0
+
+L'utente ha confermato il 28 novembre 2026 (ora italiana) la resa e il funzionamento del template RC3: «perfetto, mi piace, funziona». Ha richiesto espressamente la versione stabile. CI della PR #78 superata; baseline RC3 merge `3d65a76cd2156c938215f2c426017da0ad8dc38a`. Non attribuire esiti individuali ai casi aggiuntivi non esplicitamente rendicontati; nessuna nuova misura Lighthouse dichiarata. Pubblicazione subordinata a CI e verifica ZIP pubblico. Verifica aggiornamento Joomla dopo attivazione feed.

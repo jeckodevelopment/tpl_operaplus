@@ -93,6 +93,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 8D — 27 novembre 2026:** SEC-01 e SEC-02 OK dichiarati: accesso guest/autorizzato, articoli non pubblicati, catalogo corsi, campi personalizzati e recensioni, metadati/Open Graph e validazione immagini. Nessuna anomalia. 89/95 OK, 1 KO in ricollaudo (PERF-01), 5 non eseguiti; sessione 8: 9/10 OK. Nessuna approvazione stabile implicita.
 
+**Lotto 9A e audit conclusivo — 27 novembre 2026:** BASE-T10, DOC-02/03 e gate prerelease REL-03 OK dichiarati; audit statico BASE-INV e DOC-01 OK (60 requisiti, 95 procedure, nessun ID orfano; tutte le posizioni 1.x conservate, override, token e asset condizionali verificati). PERF-01: Performance 98, LCP 2,1 s, CLS 0 dichiarati, miglioramento da 51/94; rilievo originario superato, chiusura dell'intera procedura sospesa per profilo/risultati distinti home/categoria/articolo non attestati. 94/95 OK, 1 bloccato per evidenze residue, nessun KO attuale, nessun non eseguito. Feed stabile vuoto verificato nel repository; REL-01 resta in corso fino ad approvazione esplicita, tag stabile, verifica feed/ZIP/checksum e aggiornamento staging. Nessuna certificazione CWV reali o approvazione stabile implicita.
+
 
 ## Dati della sessione
 

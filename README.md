@@ -53,7 +53,7 @@ Prima di pubblicare in produzione, verifica sempre la release nell'ambiente Joom
 ## Autore e licenza
 
 **Jecko Development** — https://jeckodevelopment.com. Il manifest dichiara GNU GPL v2 o successiva; le eventuali risorse grafiche hanno licenze proprie.
-Per il Magazine, consulta il [piano](docs/magazine/PROJECT_PLAN.md), la [matrice](docs/magazine/REQUIREMENTS.csv) e il [registro di collaudo](docs/magazine/COLLAUDO.md). Le integrazioni editoriali richiedono il [pacchetto Opera+ Extensions 1.0.0](https://github.com/jeckodevelopment/operaplus-extensions/releases/tag/v1.0.0).
+Per il Magazine, consulta il [piano](docs/magazine/PROJECT_PLAN.md), la [matrice](docs/magazine/REQUIREMENTS.csv) e il [registro di collaudo](docs/magazine/COLLAUDO.md). Le integrazioni editoriali richiedono il [pacchetto Opera+ Extensions](https://github.com/jeckodevelopment/operaplus-extensions/releases).
 
 Guide operative Magazine: [amministratore](docs/magazine/ADMIN_GUIDE.md) · [redattore](docs/magazine/EDITOR_GUIDE.md).
-Release Candidate: [note e checklist di rilascio](docs/releases/2.0.0-rc.2.md). Gli aggiornamenti automatici seguono esclusivamente il canale stabile; nessun aggiornamento RC automatico. Scaricare lo ZIP della prerelease e verificare SHA-256 prima dell'installazione su staging.
+Rilascio 2.0.0: [note e checklist](docs/releases/2.0.0-approved.md). Gli aggiornamenti automatici seguono esclusivamente il canale stabile; nessun aggiornamento RC automatico. Verificare SHA-256 e installare su staging prima della produzione.

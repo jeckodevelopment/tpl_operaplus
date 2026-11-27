@@ -91,6 +91,8 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 8C — 27 novembre 2026:** REG-05 e A11Y-01 OK dichiarati (tastiera, menu, zoom 200%, contrasto, navigazione senza JavaScript, semantica e lettore di schermo); nessuna anomalia. Extensions 1.1.1 confermata, versione template/commit installato e strumenti non riconfermati. 87/95 OK, 1 KO (PERF-01 in ricollaudo), 7 non eseguiti; sessione 8: 7/10 OK. Ricollaudo parziale PERF-01: conversione WebP funzionante e Lighthouse Performance 94 dichiarato; LCP/CLS aggiornati, profilo e misure su categoria/articolo non ancora attestati (issue #67). Nessuna certificazione WCAG o approvazione stabile implicita.
 
+**Lotto 8D — 27 novembre 2026:** SEC-01 e SEC-02 OK dichiarati: accesso guest/autorizzato, articoli non pubblicati, catalogo corsi, campi personalizzati e recensioni, metadati/Open Graph e validazione immagini. Nessuna anomalia. 89/95 OK, 1 KO in ricollaudo (PERF-01), 5 non eseguiti; sessione 8: 9/10 OK. Nessuna approvazione stabile implicita.
+
 
 ## Dati della sessione
 

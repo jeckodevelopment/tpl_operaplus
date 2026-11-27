@@ -89,6 +89,9 @@ Esiti aggiuntivi fuori dal denominatore originario, registrati qui per non alter
 
 **Lotto 8B — 27 novembre 2026:** RC12 / Extensions 1.0.2. SEO-01 e REG-06 OK; PERF-01 KO. Lighthouse dichiarato: Performance 51, Accessibility 98, Best Practices 100, SEO 100; FCP 1,1 s, LCP 10,7 s, TBT 0 ms, CLS 0,906, Speed Index 1,1 s. Audit LCP successivamente fornito: TTFB 260 ms, resource load delay 20 ms, resource load duration 110 ms, element render delay 120 ms (somma 510 ms, non riconciliata con 10,7 s). URL, viewport, elemento LCP e attribuzione shift non forniti. [Issue #67](https://github.com/jeckodevelopment/tpl_operaplus/issues/67). 85/95 OK, 1 KO, 9 non eseguiti. RC13: correzione circoscritta a menu mobile prima dell'inizializzazione; nessuna modifica speculativa priorità immagini. Ripetere Lighthouse stessa pagina e profilo, registrare LCP element e layout shift culprits. Nessuna modifica Extensions.
 
+**Lotto 8C — 27 novembre 2026:** REG-05 e A11Y-01 OK dichiarati (tastiera, menu, zoom 200%, contrasto, navigazione senza JavaScript, semantica e lettore di schermo); nessuna anomalia. Extensions 1.1.1 confermata, versione template/commit installato e strumenti non riconfermati. 87/95 OK, 1 KO (PERF-01 in ricollaudo), 7 non eseguiti; sessione 8: 7/10 OK. Ricollaudo parziale PERF-01: conversione WebP funzionante e Lighthouse Performance 94 dichiarato; LCP/CLS aggiornati, profilo e misure su categoria/articolo non ancora attestati (issue #67). Nessuna certificazione WCAG o approvazione stabile implicita.
+
+
 ## Dati della sessione
 
 - Collaudatore, data, ambiente di staging:

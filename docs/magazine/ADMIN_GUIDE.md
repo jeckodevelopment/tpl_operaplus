@@ -30,3 +30,9 @@ Le posizioni -aside abbinano moduli CTA, Articoli o Atlas. L'asse 8+4 resta comu
 Impostare descrizioni menu/articoli e immagine OG predefinita (preferibilmente 1200×630, ottimizzata). La foto articolo prevale sui fallback; plugin SEO via API documento conservati. Impostare URL e canonical coerenti in Joomla/plugin SEO; il fallback template rimuove soltanto tracking noto, non normalizza tutte le route equivalenti. Usare immagini già ottimizzate, cache Joomla secondo compatibilità dei moduli e compressione HTTP del server. Il template non implementa una cache parallela.
 
 Eseguire [COLLAUDO.md](COLLAUDO.md), con particolare attenzione a mobile 320–430 px, zoom, contrasto, navigation, login, ACL, Open Graph e Core Web Vitals. Registrare esiti ed evidenze, senza confondere CI con accettazione manuale. Il passaggio a produzione e il tag stabile restano subordinati al collaudo. In caso di problemi riattivare le assegnazioni Standard o ripristinare il backup verificato; non disinstallare il template attivo.
+
+## Doppia navigazione Magazine
+
+- Creare un menu Joomla **Ecosistema** con Home, Corsi (quando disponibile), Atlas e Osservatorio. Usare Alias voce di menu per le destinazioni Joomla canoniche e URL per le applicazioni autonome, nella stessa scheda.
+- Pubblicare un modulo Menu nativo in `magazine-topnav`, titolo nascosto, solo primo livello, assegnato a tutte le pagine Magazine. Il menu editoriale continua a usare `menu`; assegnare il menu istituzionale esclusivamente alle pagine Standard. Impostare la voce homepage Magazine in Aspetto per il link del logo.
+- Desktop: collegamenti compatti in alto a destra; mobile (fino a 900 px): un solo hamburger con gruppo editoriale seguito dal gruppo ecosistema. Nessun menu aggiuntivo per mobile. Se il modulo non produce contenuto la posizione scompare. Standard non renderizza la posizione.

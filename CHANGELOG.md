@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [2.1.0-rc.1] — 2026-11-27
+
+- Navigazione Ecosistema opzionale per Magazine, con posizione Joomla `magazine-topnav`, un solo hamburger mobile e logo verso la homepage editoriale configurata. Standard e feed stabile invariati. Collaudo manuale aggiuntivo richiesto.
+
 ## [2.0.0] — 2026-11-27
 
 - Rilascio stabile del template con stili nativi Standard e Magazine, layout editoriali, integrazioni Atlas e CTA, accessibilità, SEO e ottimizzazioni responsive. 95/95 casi di collaudo accettati; 15/15 riferimenti grafici approvati. Lighthouse dichiarato 98/100, LCP 2,1 s, CLS 0 (misure di laboratorio). Nessuna modifica funzionale rispetto alla RC13. Installare con backup e verificare su staging.

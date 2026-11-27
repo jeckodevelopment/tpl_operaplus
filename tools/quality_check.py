@@ -42,7 +42,7 @@ for cls in ('op-editorial-lead', 'op-interview-question', 'op-interview-answer')
 
 # Uncompressed runtime asset budgets; exclude third-party Joomla assets.
 # RC5/RC6: allow at most 4 KB for scoped category metadata and native navigation CSS.
-for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 41000, "media/js/template.js": 12000}.items():
+for path, limit in {"media/css/template.css": 78000, "media/css/magazine.css": 42000, "media/js/template.js": 12000}.items():
     size = (root / path).stat().st_size
     assert size <= limit, f"Runtime asset budget exceeded: {path}: {size} > {limit}"
     print(f"{path}: {size}/{limit} bytes")
@@ -91,3 +91,12 @@ assert manifest.findtext("./updateservers/server") == "https://raw.githubusercon
 # Acceptance traceability (not manual acceptance).
 import runpy
 runpy.run_path(str(root / 'tools/verify_acceptance.py'))
+
+# Dual navigation: one native module rendering, guarded by Magazine mode.
+header = (root / 'index.php').read_text()
+assert manifest.find("./positions/position[.='magazine-topnav']") is not None
+assert "$isMagazine && $this->countModules('magazine-topnav')" in header
+assert header.count("getBuffer('modules', 'magazine-topnav'") == 1
+assert header.count('id="op-navigation"') == 1
+assert header.count('class="op-menu-toggle"') == 1
+assert header.index('class="op-mag-editorial"') < header.index('class="op-mag-topnav"')

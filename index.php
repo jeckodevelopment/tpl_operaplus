@@ -3,6 +3,7 @@
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
 $app = Factory::getApplication();
@@ -78,6 +79,14 @@ if ($isMagazine) {
     $magazineClasses = opMagazineClasses($this->params);
     $magazineLanding = opMagazineLanding($activeMenu, $defaultMenu, (int) $this->params->get('magazineHomeMenu', 0), $app->getInput());
 }
+$brandHref = $siteRoot;
+$hasEditorialNav = (bool) $this->countModules('menu');
+$ecosystemNav = $isMagazine && $this->countModules('magazine-topnav')
+    ? trim((string) $this->getBuffer('modules', 'magazine-topnav', ['style' => 'none']))
+    : '';
+if ($isMagazine && ($magazineHome = $menu->getItem((int) $this->params->get('magazineHomeMenu', 0)))) {
+    $brandHref = Route::_('index.php?Itemid=' . (int) $magazineHome->id, false);
+}
 $showMain = $isMagazine || !$isHome || $showHomeComponent || (bool) $this->countModules('breadcrumb or main-top or sidebar-left or sidebar-right or main-bottom');
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 ?>
@@ -98,14 +107,19 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 <body id="top" data-op-menu-mode="<?php echo $menuMode; ?>" class="operaplus<?php echo $isMagazine ? ' op-magazine ' . $magazineClasses : ''; ?> <?php echo $isHome ? 'is-home' : 'is-internal'; ?> theme-<?php echo $pageTheme; ?> <?php echo $this->params->get('stickyHeader', 1) ? 'sticky-header' : ''; ?>">
 <a class="skip-link" href="<?php echo $showMain ? '#main-content' : ($this->countModules('hero') ? '#home-hero' : '#site-footer'); ?>"><?php echo Text::_('TPL_OPERAPLUS_SKIP'); ?></a>
 <?php if ($this->countModules('topbar')) : ?><div class="op-topbar"><div class="op-container"><jdoc:include type="modules" name="topbar" style="none" /></div></div><?php endif; ?>
-<header class="op-header"><div class="op-container op-header-inner">
-  <a class="op-brand" href="<?php echo $e($siteRoot); ?>" aria-label="<?php echo $brand; ?> – <?php echo $e(Text::_('TPL_OPERAPLUS_HOME_LABEL')); ?>">
+<header class="op-header"><div class="op-container op-header-inner<?php echo $ecosystemNav !== '' ? ' op-mag-dual-nav' : ''; ?>">
+  <a class="op-brand" href="<?php echo $e($brandHref); ?>" aria-label="<?php echo $brand; ?> – <?php echo $e(Text::_('TPL_OPERAPLUS_HOME_LABEL')); ?>">
     <?php if ($logo) : ?><img src="<?php echo htmlspecialchars($logo, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo $brand; ?>" /><?php else : ?><span class="op-wordmark"><?php echo $brand; ?></span><?php endif; ?>
   </a>
   <?php if ($this->countModules('header-actions')) : ?><div class="op-header-actions"><jdoc:include type="modules" name="header-actions" style="none" /></div><?php endif; ?>
-  <?php if ($this->countModules('menu')) : ?>
+  <?php if ($hasEditorialNav || $ecosystemNav !== '') : ?>
     <button type="button" class="op-menu-toggle" aria-expanded="false" aria-controls="op-navigation" aria-label="<?php echo Text::_('TPL_OPERAPLUS_MENU'); ?>"><span></span><span></span><span></span></button>
-    <nav id="op-navigation" class="op-navigation" aria-label="<?php echo Text::_('TPL_OPERAPLUS_MENU'); ?>"><jdoc:include type="modules" name="menu" style="none" /></nav>
+    <nav id="op-navigation" class="op-navigation" aria-label="<?php echo Text::_('TPL_OPERAPLUS_MENU'); ?>">
+      <?php if ($ecosystemNav !== '') : ?>
+        <?php if ($hasEditorialNav) : ?><div class="op-mag-editorial" role="group" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_EDITORIAL_NAV')); ?>"><jdoc:include type="modules" name="menu" style="none" /></div><?php endif; ?>
+        <div class="op-mag-topnav" role="group" aria-label="<?php echo $e(Text::_('TPL_OPERAPLUS_MAG_ECOSYSTEM_NAV')); ?>"><?php echo $ecosystemNav; ?></div>
+      <?php else : ?><jdoc:include type="modules" name="menu" style="none" /><?php endif; ?>
+    </nav>
   <?php endif; ?>
 </div></header>
 <?php if ($this->countModules('announcement')) : ?><div class="op-announcement"><div class="op-container"><jdoc:include type="modules" name="announcement" style="none" /></div></div><?php endif; ?>

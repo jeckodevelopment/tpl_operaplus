@@ -860,3 +860,7 @@ Baseline 2.0.0 accettata invariata; verifiche aggiuntive su staging prima della 
 
 - Standard chiaro: impilare CTA Newsletter chiare/scure e Atlas in sidebar, verificare che i distacchi abbiano lo sfondo della pagina; moduli nativi Login e Menu conservano il proprio pannello. Controllare anche tema scuro.
 - Magazine: verificare menu Ecosistema nella stessa riga del logo, allineato a destra, font discreto, nessuna decorazione permanente; controllare focus, header-actions, 901 px, mobile e contrasto in entrambi i temi. Conferma grafica manuale necessaria.
+
+#### Rifinitura RC3 (da verificare)
+
+- Desktop Magazine: il bordo superiore del menu Ecosistema è allineato all'inizio della fascia del logo; il logo resta sulla prima riga e non si sposta verso il basso. Verificare colore, contrasto, separatori, bordo destro senza header-actions, eventuali header-actions e larghezza 901 px. Ripetere su tema scuro. Mobile e Standard invariati; approvazione grafica su staging ancora necessaria.

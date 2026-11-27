@@ -102,3 +102,7 @@ assert header.count('class="op-menu-toggle"') == 1
 assert header.index('class="op-mag-editorial"') < header.index('class="op-mag-topnav"')
 
 assert 'theme-light:not(.op-magazine) .op-sidebar{background:transparent!important' in (root / 'media/css/template.css').read_text()
+
+mag_css = (root / 'media/css/magazine.css').read_text()
+assert '.op-mag-dual-nav .op-mag-topnav{grid-row:1;grid-column:2;justify-self:end;align-self:start}' in mag_css
+assert '.op-mag-dual-nav .op-brand{grid-row:1;grid-column:1}' in mag_css

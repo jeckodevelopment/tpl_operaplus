@@ -855,3 +855,8 @@ Baseline 2.0.0 accettata invariata; verifiche aggiuntive su staging prima della 
 - Mobile 320, 390, 768 e 900 px: un hamburger, ordine editoriale / ecosistema, nessun overflow; apertura, chiusura, Escape, focus, navigazione da tastiera e cambio breakpoint. Verificare anche senza JS.
 - Verificare pagina articolo, categoria e homepage Magazine; URL Home, Corsi, Atlas e Osservatorio canonici nella stessa scheda. Nessun menu istituzionale completo nel Magazine.
 - Disattivare modulo ecosistema: resa preesistente senza spazi vuoti. Provare solo ecosistema senza menu editoriale. Verificare Standard anche con modulo assegnato globalmente: nessuna variazione. Ripetere Lighthouse e controllo metadati/OG.
+
+### Ritocchi grafici RC2 (da verificare)
+
+- Standard chiaro: impilare CTA Newsletter chiare/scure e Atlas in sidebar, verificare che i distacchi abbiano lo sfondo della pagina; moduli nativi Login e Menu conservano il proprio pannello. Controllare anche tema scuro.
+- Magazine: verificare menu Ecosistema nella stessa riga del logo, allineato a destra, font discreto, nessuna decorazione permanente; controllare focus, header-actions, 901 px, mobile e contrasto in entrambi i temi. Conferma grafica manuale necessaria.

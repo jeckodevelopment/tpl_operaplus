@@ -521,6 +521,7 @@ body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.
 }
 body.operaplus:is(.theme-light,.theme-dark) :is(.moduletable,.moduletable-card,.card,.op-card):has(> .card-body > :is(.op-cta-shell,.op-atlas-module)) > .card-body{padding:0!important;background:transparent!important;border:0!important}
 body.operaplus .op-sidebar :is(.op-cta-shell,.op-atlas-module){min-width:0}
+body.operaplus.theme-light:not(.op-magazine) .op-sidebar{background:transparent!important;border-color:transparent!important}
 
 /* Progressive navigation: without JS mobile users still have access to all links. */
 body.operaplus.op-nav-ready .op-navigation li.op-menu-dismissed:not(.op-menu-open)>:is(ul,.mod-menu__sub){display:none!important}

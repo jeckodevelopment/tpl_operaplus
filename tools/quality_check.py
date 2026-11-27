@@ -100,3 +100,5 @@ assert header.count("getBuffer('modules', 'magazine-topnav'") == 1
 assert header.count('id="op-navigation"') == 1
 assert header.count('class="op-menu-toggle"') == 1
 assert header.index('class="op-mag-editorial"') < header.index('class="op-mag-topnav"')
+
+assert 'theme-light:not(.op-magazine) .op-sidebar{background:transparent!important' in (root / 'media/css/template.css').read_text()

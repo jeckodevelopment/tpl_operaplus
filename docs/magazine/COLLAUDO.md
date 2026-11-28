@@ -868,3 +868,8 @@ Baseline 2.0.0 accettata invariata; verifiche aggiuntive su staging prima della 
 ### Approvazione 2.1.0
 
 L'utente ha confermato il 28 novembre 2026 (ora italiana) la resa e il funzionamento del template RC3: «perfetto, mi piace, funziona». Ha richiesto espressamente la versione stabile. CI della PR #78 superata; baseline RC3 merge `3d65a76cd2156c938215f2c426017da0ad8dc38a`. Non attribuire esiti individuali ai casi aggiuntivi non esplicitamente rendicontati; nessuna nuova misura Lighthouse dichiarata. Pubblicazione subordinata a CI e verifica ZIP pubblico. Verifica aggiornamento Joomla dopo attivazione feed.
+
+
+### Patch 2.1.1 — gerarchia del titolo articolo
+
+Rilascio richiesto il 28 novembre 2026. Correzione PR #81, merge `c6e13ce077fc338dc5977aba8364527195488cae`, CI qualità e Joomla 6.0.0/6.2.1 superata. Ricollaudo manuale mirato dopo installazione: articolo raggiunto da categoria, H1 unico con titolo articolo, categoria come informazione secondaria, quattro layout Magazine, breadcrumb, pagina categoria, responsive e modalità scura. Esiti manuali della patch non ancora acquisiti. Nessuna nuova misura Lighthouse.

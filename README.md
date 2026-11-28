@@ -2,7 +2,7 @@
 
 Template responsive per il sito di **Opera+**, progetto di divulgazione dell’opera lirica. Sviluppato da [Jecko Development](https://jeckodevelopment.com).
 
-**Versione:** 2.1.0 (stabile) · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
+**Versione:** 2.1.1 (stabile) · **Piattaforma:** Joomla 6 · **Ambiente di riferimento:** staging.
 
 ## Funzionalità
 
@@ -56,4 +56,4 @@ Prima di pubblicare in produzione, verifica sempre la release nell'ambiente Joom
 Per il Magazine, consulta il [piano](docs/magazine/PROJECT_PLAN.md), la [matrice](docs/magazine/REQUIREMENTS.csv) e il [registro di collaudo](docs/magazine/COLLAUDO.md). Le integrazioni editoriali richiedono il [pacchetto Opera+ Extensions](https://github.com/jeckodevelopment/operaplus-extensions/releases).
 
 Guide operative Magazine: [amministratore](docs/magazine/ADMIN_GUIDE.md) · [redattore](docs/magazine/EDITOR_GUIDE.md).
-Rilascio 2.1.0: [note e checklist](docs/releases/2.1.0-approved.md). Gli aggiornamenti automatici seguono esclusivamente il canale stabile; nessun aggiornamento RC automatico. Verificare SHA-256 e installare su staging prima della produzione.
+Rilascio 2.1.1: [note e checklist](docs/releases/2.1.1-approved.md). Gli aggiornamenti automatici seguono esclusivamente il canale stabile; nessun aggiornamento RC automatico. Verificare SHA-256 e installare su staging prima della produzione.

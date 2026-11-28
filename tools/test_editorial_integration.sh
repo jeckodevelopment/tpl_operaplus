@@ -110,6 +110,38 @@ home="$(db "SELECT id FROM ci_menu WHERE client_id=0 AND home=1 LIMIT 1")"
 curl -fsS "$url/index.php?option=com_content&view=article&id=$article&Itemid=$home&utm_source=ci" > "$page"
 contains 'CI public body'
 assert_head article /images/article.jpg
+contains 'alt="CI portrait"'
+# Fallback uses native full-image markup and intro metadata, without saving a second image.
+articleurl="$url/index.php?option=com_content&view=article&id=$article&Itemid=$home"
+db "UPDATE ci_content SET images=JSON_OBJECT('image_intro','images/intro.jpg','image_intro_alt','CI intro alt','image_intro_caption','CI intro caption','image_fulltext_alt','CI stale alt') WHERE id=$article;"
+before_images="$(db "SELECT images FROM ci_content WHERE id=$article")"
+curl -fsS "$articleurl" > "$page"
+assert_head article /images/intro.jpg
+contains 'alt="CI intro alt"'
+contains 'CI intro caption'
+absent 'CI stale alt'
+python3 - "$page" <<'PY'
+from html.parser import HTMLParser
+import sys
+class Images(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.count=0
+    def handle_starttag(self,tag,attrs):
+        if tag=='img' and 'images/intro.jpg' in dict(attrs).get('src',''): self.count+=1
+p=Images(); p.feed(open(sys.argv[1]).read())
+assert p.count==1,p.count
+PY
+test "$(db "SELECT images FROM ci_content WHERE id=$article")" = "$before_images"
+db "UPDATE ci_template_styles SET params=JSON_SET(params,'$.magazineIntroImageFallback',0) WHERE id=$mid;"
+curl -fsS "$articleurl" > "$page"
+absent 'alt="CI intro alt"'
+absent 'CI intro caption'
+db "UPDATE ci_template_styles SET params=JSON_REMOVE(params,'$.magazineIntroImageFallback') WHERE id=$mid; UPDATE ci_content SET images='{}' WHERE id=$article;"
+curl -fsS "$articleurl" > "$page"
+absent 'alt="CI intro alt"'
+absent 'CI intro caption'
+db "UPDATE ci_content SET images=JSON_OBJECT('image_fulltext','images/article.jpg','image_intro','images/intro.jpg','image_fulltext_alt','CI portrait') WHERE id=$article;"
+echo 'Magazine image fallback: native cover, metadata, no duplicate or database change, opt-out passed.'
 
 # BUG-008: native Articles modules in both related layouts, using the inherited
 # landing Itemid and two public articles in the same category.

@@ -31,3 +31,20 @@ foreach(['com_content/archive/magazine-archive','com_contact/contact/magazine-au
   check(is_file($path.'.php')&&simplexml_load_file($path.'.xml')!==false,'New native metadata');
 }
 echo "Review fact sheet and archive/author layout metadata passed.\n";
+
+require_once __DIR__.'/../html/seo.php';
+$root = 'https://example.invalid/';
+$intro = ['image_intro'=>'images/intro.webp#joomlaImage://local-images/intro.webp?width=800&height=450','image_intro_alt'=>'Teatro','image_intro_caption'=>'Didascalia','image_intro_alt_empty'=>1,'image_fulltext_alt'=>'Old alt','image_fulltext_caption'=>'Old caption'];
+$original = json_encode($intro);
+$rendered = json_decode(opMagazineArticleImages($original,true,true,$root),true);
+foreach (['','_alt','_caption','_alt_empty'] as $suffix) {
+    check($rendered['image_fulltext'.$suffix]===$intro['image_intro'.$suffix],'Intro metadata '.$suffix);
+}
+check(opMagazineArticleImages($original,false,true,$root)===$original,'Disabled');
+check(opMagazineArticleImages($original,true,false,$root)===$original,'Restricted');
+foreach (['{}','invalid',json_encode(['image_intro'=>'javascript:alert(1)']),json_encode($intro+['image_fulltext'=>'images/full.jpg'])] as $unchanged) {
+    check(opMagazineArticleImages($unchanged,true,true,$root)===$unchanged,'No fallback when no safe intro or explicit full image');
+}
+$bare = json_decode(opMagazineArticleImages(json_encode(['image_intro'=>'images/intro.jpg','image_fulltext'=>'','image_fulltext_alt'=>'stale']),true,true,$root),true);
+check($bare['image_fulltext']==='images/intro.jpg'&&!isset($bare['image_fulltext_alt']),'No stale full metadata');
+echo "Magazine introductory image fallback checks passed.\n";

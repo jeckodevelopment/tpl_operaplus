@@ -47,7 +47,11 @@ if ($magInternal) {
     <?php if ($magBanner !== '') : ?><img class="op-mag-masthead__image" src="<?php echo $e($magBanner); ?>" alt="" fetchpriority="high"><?php endif; ?>
     <div class="op-container op-mag-masthead__body">
         <?php if ($magazineLanding || $magInternal) : ?>
+        <?php if (!empty($magInternal['articleContext'])) : ?>
+        <?php if ($magTitle !== '') : ?><div class="op-mag-masthead__context"><?php echo $e($magTitle); ?></div><?php endif; ?>
+        <?php else : ?>
         <h1><?php echo $e($magTitle); ?></h1>
+        <?php endif; ?>
         <?php if ($magSubtitle !== '') : ?><p><?php echo $e($magSubtitle); ?></p><?php endif; ?>
         <?php endif; ?>
         <?php if ($magBreadcrumb !== '') : ?><div class="op-breadcrumb op-mag-masthead__breadcrumb"><?php echo $magBreadcrumb; ?></div><?php endif; ?>

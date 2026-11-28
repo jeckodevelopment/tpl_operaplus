@@ -249,6 +249,25 @@ absent 'class="op-mag-review"'
 contains 'CI public body'
 echo 'Native Magazine review: cover before article body before fact sheet; empty field omission passed.'
 
+# Assert the semantic H1, not just the presence of heading text.
+assert_h1() {
+  python3 - "$page" "$1" <<'PY'
+from html.parser import HTMLParser
+import sys
+class Headings(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.active=False; self.titles=[]
+    def handle_starttag(self, tag, attrs):
+        if tag=='h1': self.active=True; self.titles.append('')
+    def handle_data(self, data):
+        if self.active: self.titles[-1]+=data
+    def handle_endtag(self, tag):
+        if tag=='h1': self.active=False
+p=Headings(); p.feed(open(sys.argv[1]).read())
+assert [' '.join(title.split()) for title in p.titles]==[sys.argv[2]],p.titles
+PY
+}
+
 # RC10: actual menu heading and inherited Itemid isolation.
 db "UPDATE ci_menu SET link='index.php?option=com_content&view=category&layout=magazine-list&id=$catid',params=JSON_SET(params,'$.show_page_heading',1,'$.page_heading','CI editorial heading','$.op_masthead_image','images/menu-banner.jpg','$.op_masthead_subtitle','CI menu subtitle','$.op_masthead_height','normal') WHERE id=$category_menu;"
 caturl="$url/index.php?option=com_content&view=category&layout=magazine-list&id=$catid&Itemid=$category_menu"
@@ -257,9 +276,13 @@ contains 'op-mag-masthead--internal op-mag-masthead--normal'
 contains 'images/menu-banner.jpg'
 contains 'CI menu subtitle'
 contains 'op-mag-has-masthead'
-curl -fsSL "$url/index.php?option=com_content&view=article&id=$article&Itemid=$category_menu" > "$page"
-absent 'op-mag-masthead--internal'
-contains 'CI public body'
+# The category still owns its masthead H1 (native duplicate is visually suppressed).
+for layout in default magazine-article magazine-review magazine-interview magazine-longform; do
+  curl -fsSL "$url/index.php?option=com_content&view=article&layout=$layout&id=$article&Itemid=$category_menu" > "$page"
+  absent 'op-mag-masthead--internal'
+  contains 'CI public body'
+  assert_h1 'CI SEO article'
+done
 db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',0) WHERE id=$category_menu;"
 curl -fsSL "$caturl" > "$page"
 absent 'op-mag-masthead--internal'
@@ -273,8 +296,10 @@ db "UPDATE ci_menu SET link='index.php?option=com_content&view=article&layout=ma
 curl -fsSL "$reviewurl" > "$page"
 contains 'op-mag-masthead--internal'
 contains 'CI editorial review heading'
+contains 'op-mag-masthead__context'
 contains 'CI SEO article'
 contains 'CI public body'
+assert_h1 'CI SEO article'
 echo 'Native menu heading: direct category/article, per-menu fields, fallback, off and inherited Itemid passed.'
 
 # RC11: real native breadcrumb, reading time in metadata, archive filters and thumbnails.
@@ -304,8 +329,10 @@ absent 'op-mag-masthead--breadcrumb-only'
 python3 - "$page" <<'PY'
 import sys
 s=open(sys.argv[1]).read().split('<header class="op-mag-masthead',1)[1].split('</header>',1)[0]
-assert s.index('<h1>') < s.index('CI combined subtitle') < s.index('op-mag-masthead__breadcrumb'), s
+assert s.index('op-mag-masthead__context') < s.index('CI combined subtitle') < s.index('op-mag-masthead__breadcrumb'), s
+assert '<h1' not in s, s
 PY
+assert_h1 'CI SEO article'
 db "DELETE FROM ci_modules_menu WHERE moduleid IN (SELECT id FROM ci_modules WHERE title='CI breadcrumb'); DELETE FROM ci_modules WHERE title='CI breadcrumb';"
 db "UPDATE ci_menu SET params=JSON_SET(params,'$.show_page_heading',0) WHERE id=$category_menu;"
 curl -fsSL "$reviewurl" > "$page"

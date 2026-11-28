@@ -18,6 +18,10 @@ Questa guida descrive **come configurare Joomla e usare le classi CSS**. Non è 
 - `pre-footer`: modulo Personalizzato con titolo, testo e CTA `.op-button`.
 - `main-top`, `main-bottom`, `courses`, `story`, `mission`, `schools`, `association`, `contacts`: posizioni editoriali.
 
+## Immagini degli articoli Magazine
+
+In **Aspetto → Magazine → Immagine introduttiva come fallback** (attivo per impostazione predefinita), basta selezionare l’immagine introduttiva. Il singolo articolo usa quella stessa immagine, con testo alternativo e didascalia, se manca l’immagine articolo completo. Una copertina completa esplicita ha sempre precedenza. Il fallback è solo di visualizzazione, anche per gli articoli già pubblicati: nessuna modifica al database, ai file, allo stile Standard o ai corsi. Disattivando l’opzione si ripristina la resa nativa; la priorità Open Graph preesistente (completa, introduttiva, salvo metadati SEO espliciti) resta invariata.
+
 ## Corsi: utilizzare gli articoli di Joomla
 
 Crea una categoria alias `corsi` e una voce di menu **Blog di categoria**. Per ogni articolo usa Titolo, Alias autore (compositore), Immagine introduttiva, Immagine articolo completo, Tag e contenuto. Gli override del template leggono questi campi automaticamente; il nome della categoria rispetta le opzioni native. Il collegamento alla scheda usa `TPL_OPERAPLUS_DISCOVER_COURSE`. Le copertine non vengono ritagliate.

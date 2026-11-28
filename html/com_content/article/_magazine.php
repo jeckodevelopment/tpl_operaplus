@@ -73,9 +73,17 @@ try {
         Factory::getApplication()->set('operaplus.menuMasthead', $opMasthead);
     }
     echo '<div class="op-mag-article op-mag-article--' . $opMode . '">';
+    $opOriginalImages = $this->item->images;
     try {
+        $this->item->images = opMagazineArticleImages(
+            (string) $opOriginalImages,
+            (bool) $opStyle->get('magazineIntroImageFallback', 1),
+            (bool) $this->item->params->get('access-view', false),
+            \Joomla\CMS\Uri\Uri::root()
+        );
         require JPATH_SITE . '/components/com_content/tmpl/article/default.php';
     } finally {
+        $this->item->images = $opOriginalImages;
         $opEvent->afterDisplayTitle = $opAfterTitle;
         $this->item->text = $opArticleText;
         if ($opOriginalMinutes === null) { unset($this->item->opMagazineReadingMinutes); }

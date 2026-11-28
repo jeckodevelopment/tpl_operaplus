@@ -4,6 +4,10 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
+## [Non rilasciato]
+
+- Magazine: il titolo del singolo articolo è l'H1 anche quando la voce di menu della categoria imposta un'intestazione. Le intestazioni dei menu direttamente associati agli articoli restano contesto visivo; categorie, archivio e stile Standard invariati.
+
 ## [2.1.0] — 2026-11-28
 
 - Rilascio stabile delle modifiche 2.1.0-rc.1–3: doppia navigazione Magazine, menu Ecosistema allineato in alto a destra nella fascia del logo, hamburger unico mobile, separazione dei moduli Standard. Nessuna modifica funzionale rispetto alla RC3, approvata dall'utente. Pubblicazione dopo CI; aggiornamento Joomla dopo verifica dell'asset pubblico.

@@ -291,7 +291,6 @@ body.operaplus.op-magazine .op-mag-category .blog-item .fields-container>.field-
 
 /* Native page heading is presented once in the internal Magazine masthead. */
 .op-magazine .op-mag-has-masthead>.com-content-category-blog>.page-header:has(>h1),
-.op-magazine .op-mag-has-masthead>.com-content-article>.page-header:has(>h1),
 .op-magazine .op-mag-has-masthead>.com-content-archive>.page-header:has(>h1){display:none}
 .op-magazine .op-mag-masthead--compact .op-mag-masthead__body{padding-block:16px 19px}
 .op-magazine .op-mag-masthead--compact h1{font-size:clamp(29px,3.3vw,46px)!important}
@@ -350,3 +349,7 @@ body.operaplus.op-magazine .op-header .op-navigation .op-mag-topnav :is(ul.mod-m
 .op-mag-dual-nav .op-mag-editorial+.op-mag-topnav{border-top:1px solid var(--mag-rule);margin-top:.75rem;padding-top:.75rem}
 body.operaplus.op-magazine .op-header .op-navigation .op-mag-topnav :is(ul.mod-menu,ul.menu)>li>a{font:500 .875rem/1.4 system-ui,sans-serif!important;min-height:44px}
 }
+
+/* On single articles the banner is context, not a competing page heading. */
+.op-magazine .op-mag-masthead__context{font:600 16px/1.35 Georgia,serif;color:#fff;letter-spacing:.035em;margin:0 0 8px;overflow-wrap:anywhere}
+.op-magazine .op-mag-article .page-header h1{overflow-wrap:anywhere}

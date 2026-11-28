@@ -58,16 +58,21 @@ try {
     $opMasthead = opMagazineRegisterMasthead(Factory::getApplication());
     $opOriginalViewParams = $this->params;
     $opOriginalItemParams = $this->item->params;
+    // Joomla's native article layout uses H2 when show_page_heading is enabled.
+    // A category Itemid may inherit that option even without an internal masthead.
+    // The article owns the H1; a directly assigned menu banner is contextual only.
+    $this->params = clone $this->params;
+    $this->params->set('show_page_heading', 0);
+    $this->item->params = clone $this->item->params;
+    $this->item->params->set('show_title', 1);
     if ($opMasthead) {
-        $this->params = clone $this->params;
-        $this->params->set('show_page_heading', 1);
-        $this->params->set('page_heading', $opMasthead['title']);
+        $opMasthead['articleContext'] = true;
         if (trim((string) $this->item->title) === $opMasthead['title']) {
-            $this->item->params = clone $this->item->params;
-            $this->item->params->set('show_title', 0);
+            $opMasthead['title'] = '';
         }
+        Factory::getApplication()->set('operaplus.menuMasthead', $opMasthead);
     }
-    echo '<div class="op-mag-article op-mag-article--' . $opMode . ($opMasthead ? ' op-mag-has-masthead' : '') . '">';
+    echo '<div class="op-mag-article op-mag-article--' . $opMode . '">';
     try {
         require JPATH_SITE . '/components/com_content/tmpl/article/default.php';
     } finally {

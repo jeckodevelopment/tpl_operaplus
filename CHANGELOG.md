@@ -4,7 +4,7 @@ Cronologia delle modifiche al template, dalla versione più recente alla meno re
 
 Le date sono riportate solo quando documentate con certezza. Per installazione e utilizzo consulta il [README](README.md) e la [guida agli stili](GUIDA_STILI.md).
 
-## [Non rilasciato]
+## [2.1.1] — 2026-11-28
 
 - Magazine: il titolo del singolo articolo è l'H1 anche quando la voce di menu della categoria imposta un'intestazione. Le intestazioni dei menu direttamente associati agli articoli restano contesto visivo; categorie, archivio e stile Standard invariati.
 

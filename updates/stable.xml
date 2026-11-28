@@ -6,10 +6,10 @@
     <element>operaplus</element>
     <type>template</type>
     <client>site</client>
-    <version>2.1.1</version>
-    <sha256>bc78474e56fa6717ed442a2686fde3da6d9092ac0684773087666f066dc36356</sha256>
+    <version>2.1.2</version>
+    <sha256>afb4532371f7f34f8801788a0cca49d8aa594f79ba8cd3327343ecf23c2d0ac5</sha256>
     <downloads>
-      <downloadurl type="full" format="zip">https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v2.1.1/tpl_operaplus-2.1.1.zip</downloadurl>
+      <downloadurl type="full" format="zip">https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v2.1.2/tpl_operaplus-2.1.2.zip</downloadurl>
     </downloads>
     <targetplatform name="joomla" version="6\..*" />
     <php_minimum>8.3.0</php_minimum>

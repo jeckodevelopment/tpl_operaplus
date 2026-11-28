@@ -1,12 +1,12 @@
-name: Publish stable 2.1.1
+name: Publish stable 2.1.2
 on:
   push:
     branches: [main]
-    paths: ['docs/releases/2.1.1-approved.md']
+    paths: ['docs/releases/2.1.2-approved.md']
 permissions:
   contents: read
 concurrency:
-  group: operaplus-stable-2.1.1
+  group: operaplus-stable-2.1.2
   cancel-in-progress: false
 jobs:
   quality:
@@ -31,26 +31,26 @@ jobs:
           set -euo pipefail
           version="$(python3 -c 'import xml.etree.ElementTree as E;print(E.parse("templateDetails.xml").getroot().findtext("version"))')"
           test "$GITHUB_REF" = refs/heads/main
-          test "$version" = 2.1.1
-          test -f docs/releases/2.1.1-approved.md
+          test "$version" = 2.1.2
+          test -f docs/releases/2.1.2-approved.md
           (cd dist && sha256sum --check "tpl_operaplus-$version.zip.sha256")
           if gh release view "v$version" >/dev/null 2>&1; then
             echo "Release already exists; refusing to overwrite immutable assets"
             exit 1
           fi
           test -z "$(git ls-remote --tags origin "refs/tags/v$version")"
-          gh release create "v$version" "dist/tpl_operaplus-$version.zip" "dist/tpl_operaplus-$version.zip.sha256" --target "$GITHUB_SHA" --latest --title "Opera+ Template $version" --notes-file docs/releases/2.1.1-approved.md
+          gh release create "v$version" "dist/tpl_operaplus-$version.zip" "dist/tpl_operaplus-$version.zip.sha256" --target "$GITHUB_SHA" --latest --title "Opera+ Template $version" --notes-file docs/releases/2.1.2-approved.md
       - name: Verify public ZIP and generate stable feed
         run: |
           set -euo pipefail
-          version=2.1.1
+          version=2.1.2
           curl --fail --location --retry 5 --retry-all-errors --max-time 120 -o "$RUNNER_TEMP/public.zip" "https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v$version/tpl_operaplus-$version.zip"
           curl --fail --location --retry 5 --retry-all-errors --max-time 120 -o "$RUNNER_TEMP/public.sha256" "https://github.com/jeckodevelopment/tpl_operaplus/releases/download/v$version/tpl_operaplus-$version.zip.sha256"
           cmp "$RUNNER_TEMP/public.zip" "dist/tpl_operaplus-$version.zip"
           cmp "$RUNNER_TEMP/public.sha256" "dist/tpl_operaplus-$version.zip.sha256"
           python3 - <<'PY'
           import hashlib, pathlib, xml.etree.ElementTree as ET
-          version = '2.1.1'
+          version = '2.1.2'
           filename = f'tpl_operaplus-{version}.zip'
           digest = hashlib.sha256((pathlib.Path('dist') / filename).read_bytes()).hexdigest()
           root = ET.Element('updates')

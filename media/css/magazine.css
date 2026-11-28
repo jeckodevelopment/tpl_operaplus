@@ -350,6 +350,4 @@ body.operaplus.op-magazine .op-header .op-navigation .op-mag-topnav :is(ul.mod-m
 body.operaplus.op-magazine .op-header .op-navigation .op-mag-topnav :is(ul.mod-menu,ul.menu)>li>a{font:500 .875rem/1.4 system-ui,sans-serif!important;min-height:44px}
 }
 
-/* On single articles the banner is context, not a competing page heading. */
-.op-magazine .op-mag-masthead__context{font:600 16px/1.35 Georgia,serif;color:#fff;letter-spacing:.035em;margin:0 0 8px;overflow-wrap:anywhere}
-.op-magazine .op-mag-article .page-header h1{overflow-wrap:anywhere}
+.op-magazine .op-mag-masthead__context{font-weight:600;margin-bottom:8px}
